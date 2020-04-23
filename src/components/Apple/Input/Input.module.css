@@ -1,0 +1,64 @@
+.transparent {
+    position: relative;
+    max-width: 300px;
+    padding: 60px 50px;
+    margin-top: 50px;
+    background-size: cover;
+}
+.transparent:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to right bottom,rgba(0, 0, 0, 0.3),rgba(0, 0, 0, 0.4));
+}
+.form_inner {position: relative;}
+.form_inner h3 {
+    position: relative;
+    margin-top: 0;
+    color: white;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    font-size: 26px;
+    text-transform: uppercase;
+}
+.form_inner h3:after {
+    content: "";
+    position :absolute;
+    left: 0;
+    bottom: -6px;
+    height: 2px;
+    width: 60px;
+    background: #ffffff;
+}
+.form_inner label {
+    display: block;
+    padding-left: 15px;
+    font-family: 'Roboto', sans-serif;
+    color: rgba(255,255,255,.6);
+    text-transform: uppercase;
+    font-size: 14px;
+}
+.form_inner input {
+    display: block;
+    width: 100%;
+    padding: 0 15px;
+    margin: 10px 0 15px;
+    border-width: 0;
+    line-height: 40px;
+    border-radius: 20px;
+    color: white;
+    background: rgba(255,255,255,.2);
+    font-family: 'Roboto', sans-serif;
+}
+.form_inner input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+}
+
+.form_inner input[type="submit"] {
+    width: 200px;
+    margin-left: 50px;
+}
