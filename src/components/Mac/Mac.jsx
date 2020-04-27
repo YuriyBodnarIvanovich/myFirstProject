@@ -1,8 +1,5 @@
 import React from 'react';
-import MacItems from './MacItems/MacItems';
 import MacStyle from './Mac.module.css';
-import ButtonBack from "./Button/ButtonBack/ButtonBack";
-import ButtonNext from "./Button/ButtonNext/ButtonNext";
 import Content from "./Content/Content";
 
 const Mac = (props) =>{

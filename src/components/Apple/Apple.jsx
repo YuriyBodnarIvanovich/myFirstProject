@@ -38,8 +38,17 @@ const Apple = (props) =>{
                                 <SocialButton/>
                                 <Input Username = {props.UserName} upUserName={props.upUserName}
                                        upEmail={props.upEmail} email={props.UsersEmail}
-                                       upPassword={props.upPassword} password={props.password}
-                                       authentication={props.authentication} upStatus={props.changeStatus}/>
+                                       upPassword={props.upPassword} password={props.UserPassword}
+                                       authentication={props.authentication} upStatus={props.changeStatus}
+                                       upStatusSignedIn={props.changeStatusSignedIn}
+                                        savedName={props.savedName}
+                                        savedEmail={props.savedEmail}
+                                        savedPassword={props.savedPassword}
+                                        savedNameMethod={props.saveUserName}
+                                        savedEmailMethod={props.saveUserEmail}
+                                        savePasswordMethod={props.saveUserPassword}
+                                        exception={props.exception}
+                                        exceptionMethod={props.changeStateOfException}/>
                         </div>
                     </div>
                 </div>

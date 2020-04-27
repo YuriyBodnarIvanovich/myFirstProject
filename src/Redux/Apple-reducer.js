@@ -2,6 +2,13 @@ const CHANGE_EMAIL = 'CHANGE_EMAIL';
 const CHANGE_PASSWORD = 'CHANGE_PASSWORD';
 const CHANGE_USERNAME = 'CHANGE_USERNAME';
 const CHANGE_STATUS_AUTHENTICATION = 'CHANGE_STATUS_AUTHENTICATION';
+const CHANGE_STATUS_SIGNED_IN = 'CHANGE_STATUS_SIGNED_IN';
+const SAVED_NAME = 'CHANGE_SAVED_NAME';
+const SAVED_EMAIL = 'CHANGE_SAVED_EMAIL';
+const SAVED_PASSWORD = 'CHANGE_SAVED_PASSWORD';
+const CHANGE_EXCEPTION = 'CHANGE_EXCEPTION';
+
+
 let Date = {
     video: "https://ak7.picdn.net/shutterstock/videos/1023583117/preview/stock-footage-online-banking-with-smart-phone-lifestyle-easy-pay-using-smart-phone-or-digital-device.webm",
     extraInformation: "Apple Inc. is an American multinational technology company headquartered in Cupertino," +
@@ -34,16 +41,24 @@ let Date = {
             nomination: "Apple TV App of the Year",
         }
     ],
-    name:'Yuriy Bodnar',
-    email: 'urabodnargood@gmail.com',
-    password:'greedisgood',
+    name:'',
+    email: '',
+    password:'',
 
-    authentication: false
+    authentication: false,
+    signedIn: false,
+    exception: true,
+
+    savedName: '',
+    savedEmail: '',
+    savedPassword: ''
+
 };
 
 const AppleReducer = (state = Date,action) =>{
     switch (action.type) {
         case CHANGE_EMAIL:{
+            console.log(action.emailAdr)
             return {
                 ...state,
                 email: action.emailAdr
@@ -69,6 +84,37 @@ const AppleReducer = (state = Date,action) =>{
                 authentication: action.authentication
             }
         }
+        case CHANGE_STATUS_SIGNED_IN:{
+            return{
+                ...state,
+                signedIn: action.signedIn
+            }
+        }
+        case SAVED_NAME:{
+            return{
+                ...state,
+                savedName: action.savedName
+            }
+        }
+        case SAVED_EMAIL:{
+            console.log(action.savedEmail)
+            return{
+                ...state,
+                savedEmail: action.savedEmail
+            }
+        }
+        case SAVED_PASSWORD:{
+            return {
+                ...state,
+                savedPassword: action.savedPassword
+            }
+        }
+        case CHANGE_EXCEPTION:{
+            return{
+                ...state,
+                exception: action.exception
+            }
+        }
     }
     return state;
 }
@@ -77,4 +123,9 @@ export const inputEmail= (upEmail) =>({type: CHANGE_EMAIL, emailAdr:upEmail})
 export const inputPassword = (upPassword) =>({type:CHANGE_PASSWORD, PasswordUser:upPassword})
 export const inputUserName = (upName) =>({type:CHANGE_USERNAME,UserName:upName})
 export const changeAuthentication =  (upStatus) =>({type:CHANGE_STATUS_AUTHENTICATION,authentication:upStatus})
+export const changeStatusSignedIn = (upStatusSigned) =>({type:CHANGE_STATUS_SIGNED_IN,signedIn: upStatusSigned})
+export const saveUserName = (savedName) =>({type:SAVED_NAME,savedName:savedName})
+export const saveUserEmail = (savedEmail) =>({type:SAVED_EMAIL,savedEmail:savedEmail})
+export const saveUserPassword = (savedPassword) =>({type:SAVED_PASSWORD,savedPassword:savedPassword})
+export const changeStateException = (exception)=>({type:CHANGE_EXCEPTION,exception:exception})
 export default AppleReducer;

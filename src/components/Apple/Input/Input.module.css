@@ -58,7 +58,7 @@
     opacity: 0;
 }
 
-.form_inner input[type="submit"] {
+.form_inner button {
     width: 200px;
     margin-left: 50px;
 }

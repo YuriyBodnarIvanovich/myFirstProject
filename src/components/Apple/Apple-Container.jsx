@@ -1,7 +1,13 @@
 import React from "react";
 import Apple from "./Apple";
 import {connect} from "react-redux";
-import {changeAuthentication, inputEmail, inputPassword, inputUserName} from "../../Redux/Apple-reducer";
+import {
+    changeAuthentication, changeStateException,
+    changeStatusSignedIn,
+    inputEmail,
+    inputPassword,
+    inputUserName, saveUserEmail, saveUserName, saveUserPassword
+} from "../../Redux/Apple-reducer";
 
 const mapStateToProps = (state)=>{
     return{
@@ -13,7 +19,15 @@ const mapStateToProps = (state)=>{
         UsersEmail: state.ApplePage.email,
         UserPassword: state.ApplePage.password,
 
-        authentication:state.ApplePage.authentication
+        authentication:state.ApplePage.authentication,
+
+        singIn: state.ApplePage.signedIn,
+        exception: state.ApplePage.exception,
+
+        savedName: state.ApplePage.savedName,
+        savedEmail: state.ApplePage.savedEmail,
+        savedPassword: state.ApplePage.savedPassword
+
     }
 }
 const mapDispatchToProps = (dispatch)=>{
@@ -21,7 +35,12 @@ const mapDispatchToProps = (dispatch)=>{
         upEmail:(upEmail)=>{dispatch(inputEmail(upEmail))},
         upPassword:(upPassword)=>{dispatch(inputPassword(upPassword))},
         upUserName:(upName)=>{dispatch(inputUserName(upName))},
-        changeStatus: (upStatus) =>{dispatch(changeAuthentication(upStatus))}
+        changeStatus: (upStatus) =>{dispatch(changeAuthentication(upStatus))},
+        changeStatusSignedIn: (upStatus)=>{dispatch(changeStatusSignedIn(upStatus))},
+        saveUserName: (name)=>{dispatch(saveUserName(name))},
+        saveUserEmail:(email)=>{dispatch(saveUserEmail(email))},
+        saveUserPassword:(password)=>{dispatch(saveUserPassword(password))},
+        changeStateOfException:(exception)=>{dispatch(changeStateException(exception))}
     }
 }
 const AppleContainer = connect(mapStateToProps,mapDispatchToProps)(Apple);
