@@ -5,14 +5,10 @@ const SingIn = (props) =>{
 
     function check() {
         if(props.savedEmail === props.userEmail && props.savedPassword === props.userPassword){
-            console.log(props.savedPassword);
-            console.log(props.userPassword);
             props.changeStateOfException(true);
-            console.log('true')
+
         }
         else {
-            console.log(props.savedPassword);
-            console.log(props.userPassword);
             props.changeStateOfException(false);
             console.log('wrong')
         }

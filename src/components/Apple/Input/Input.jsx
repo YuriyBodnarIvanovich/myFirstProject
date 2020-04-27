@@ -5,6 +5,14 @@ import SingIn from "./Sing in/SingIn";
 const Input = (props) =>{
     let status = props.authentication;
     
+    
+    function checkActiveButton() {
+        if(props.savedName==='' || props.savedEmail==='' || props.savedPassword === ''){
+            return    <input type="submit" value="Login" onClick={login} id='loginButton' disabled/>;
+        }else {
+            return    <input type="submit" value="Login" onClick={login} id='loginButton'/>
+        }
+    }
     function login() {
         props.upStatus(true)
     }
@@ -34,7 +42,7 @@ const Input = (props) =>{
                     <label htmlFor="password" >Password</label>
                     <input id="password" type="password"  value={props.savedPassword}
                            onChange={(event)=>{props.savePasswordMethod(event.target.value)}} />
-                    <input type="submit" value="Login" onClick={login}/>
+                    {checkActiveButton()}
                 </div>
             </div>
         )

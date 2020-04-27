@@ -48,7 +48,9 @@ const Apple = (props) =>{
                                         savedEmailMethod={props.saveUserEmail}
                                         savePasswordMethod={props.saveUserPassword}
                                         exception={props.exception}
-                                        exceptionMethod={props.changeStateOfException}/>
+                                        exceptionMethod={props.changeStateOfException}
+                                        activeButton={props.activeButton}
+                                        changeActiveButton={props.changeActiveButton}/>
                         </div>
                     </div>
                 </div>

@@ -2,6 +2,7 @@ import React from "react";
 import Apple from "./Apple";
 import {connect} from "react-redux";
 import {
+    changeActiveButton,
     changeAuthentication, changeStateException,
     changeStatusSignedIn,
     inputEmail,
@@ -26,7 +27,9 @@ const mapStateToProps = (state)=>{
 
         savedName: state.ApplePage.savedName,
         savedEmail: state.ApplePage.savedEmail,
-        savedPassword: state.ApplePage.savedPassword
+        savedPassword: state.ApplePage.savedPassword,
+
+        activeButton: state.ApplePage.activeButton
 
     }
 }
@@ -40,7 +43,8 @@ const mapDispatchToProps = (dispatch)=>{
         saveUserName: (name)=>{dispatch(saveUserName(name))},
         saveUserEmail:(email)=>{dispatch(saveUserEmail(email))},
         saveUserPassword:(password)=>{dispatch(saveUserPassword(password))},
-        changeStateOfException:(exception)=>{dispatch(changeStateException(exception))}
+        changeStateOfException:(exception)=>{dispatch(changeStateException(exception))},
+        changeActiveButton:(status)=>{dispatch(changeActiveButton(status))}
     }
 }
 const AppleContainer = connect(mapStateToProps,mapDispatchToProps)(Apple);

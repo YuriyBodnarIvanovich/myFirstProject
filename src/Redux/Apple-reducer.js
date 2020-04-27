@@ -7,6 +7,7 @@ const SAVED_NAME = 'CHANGE_SAVED_NAME';
 const SAVED_EMAIL = 'CHANGE_SAVED_EMAIL';
 const SAVED_PASSWORD = 'CHANGE_SAVED_PASSWORD';
 const CHANGE_EXCEPTION = 'CHANGE_EXCEPTION';
+const CHANGE_ACTIVE_BUTTON = 'CHANGE_ACTIVE_BUTTON';
 
 
 let Date = {
@@ -51,7 +52,10 @@ let Date = {
 
     savedName: '',
     savedEmail: '',
-    savedPassword: ''
+    savedPassword: '',
+
+
+    activeButton: false
 
 };
 
@@ -115,6 +119,12 @@ const AppleReducer = (state = Date,action) =>{
                 exception: action.exception
             }
         }
+        case CHANGE_ACTIVE_BUTTON:{
+            return{
+                ...state,
+                activeButton: action.activeButton
+            }
+        }
     }
     return state;
 }
@@ -128,4 +138,5 @@ export const saveUserName = (savedName) =>({type:SAVED_NAME,savedName:savedName}
 export const saveUserEmail = (savedEmail) =>({type:SAVED_EMAIL,savedEmail:savedEmail})
 export const saveUserPassword = (savedPassword) =>({type:SAVED_PASSWORD,savedPassword:savedPassword})
 export const changeStateException = (exception)=>({type:CHANGE_EXCEPTION,exception:exception})
+export const changeActiveButton = (status) =>({type:CHANGE_ACTIVE_BUTTON,activeButton:status})
 export default AppleReducer;
