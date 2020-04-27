@@ -1,3 +1,7 @@
+const CHANGE_EMAIL = 'CHANGE_EMAIL';
+const CHANGE_PASSWORD = 'CHANGE_PASSWORD';
+const CHANGE_USERNAME = 'CHANGE_USERNAME';
+const CHANGE_STATUS_AUTHENTICATION = 'CHANGE_STATUS_AUTHENTICATION';
 let Date = {
     video: "https://ak7.picdn.net/shutterstock/videos/1023583117/preview/stock-footage-online-banking-with-smart-phone-lifestyle-easy-pay-using-smart-phone-or-digital-device.webm",
     extraInformation: "Apple Inc. is an American multinational technology company headquartered in Cupertino," +
@@ -29,10 +33,48 @@ let Date = {
             secondName: "The Explorers Network", hrefOfCiteSecond:"https://developer.apple.com/app-store/best-of-2019/the-explorers-network",
             nomination: "Apple TV App of the Year",
         }
-    ]
+    ],
+    name:'Yuriy Bodnar',
+    email: 'urabodnargood@gmail.com',
+    password:'greedisgood',
+
+    authentication: false
 };
 
 const AppleReducer = (state = Date,action) =>{
+    switch (action.type) {
+        case CHANGE_EMAIL:{
+            return {
+                ...state,
+                email: action.emailAdr
+            }
+        }
+        case CHANGE_PASSWORD:{
+
+            return{
+                ...state,
+                password: action.PasswordUser
+            }
+        }
+        case CHANGE_USERNAME:{
+            console.log(action.UserName)
+            return {
+                ...state,
+                name: action.UserName
+            }
+        }
+        case CHANGE_STATUS_AUTHENTICATION:{
+            return{
+                ...state,
+                authentication: action.authentication
+            }
+        }
+    }
     return state;
 }
+
+export const inputEmail= (upEmail) =>({type: CHANGE_EMAIL, emailAdr:upEmail})
+export const inputPassword = (upPassword) =>({type:CHANGE_PASSWORD, PasswordUser:upPassword})
+export const inputUserName = (upName) =>({type:CHANGE_USERNAME,UserName:upName})
+export const changeAuthentication =  (upStatus) =>({type:CHANGE_STATUS_AUTHENTICATION,authentication:upStatus})
 export default AppleReducer;

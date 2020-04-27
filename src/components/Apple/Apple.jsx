@@ -36,7 +36,10 @@ const Apple = (props) =>{
                                 </div>
                             </div>
                                 <SocialButton/>
-                                <Input />
+                                <Input Username = {props.UserName} upUserName={props.upUserName}
+                                       upEmail={props.upEmail} email={props.UsersEmail}
+                                       upPassword={props.upPassword} password={props.password}
+                                       authentication={props.authentication} upStatus={props.changeStatus}/>
                         </div>
                     </div>
                 </div>
