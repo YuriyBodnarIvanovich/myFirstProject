@@ -21,7 +21,7 @@ const Apple = (props) =>{
                     <div className={AppleStyle.container}>
                         <div className={AppleStyle.intro_title}>
                             <div className={AppleStyle.title}>
-                                <h1>Welcome to Apple store!!!</h1>
+                                <h1>{props.hideInputBox ? 'Welcome' : props.savedName + ' welcome'} to Apple store!!!</h1>
                             </div>
                             <div className={AppleStyle.grow}>
                                 <b className={AppleStyle.title_one}>About us</b>
