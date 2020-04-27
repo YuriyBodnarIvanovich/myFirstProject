@@ -49,8 +49,8 @@ const Apple = (props) =>{
                                         savePasswordMethod={props.saveUserPassword}
                                         exception={props.exception}
                                         exceptionMethod={props.changeStateOfException}
-                                        activeButton={props.activeButton}
-                                        changeActiveButton={props.changeActiveButton}/>
+                                        hideInputBox={props.hideInputBox}
+                                       hideInputBoxMethod={props.hideInputBoxMethod}/>
                         </div>
                     </div>
                 </div>

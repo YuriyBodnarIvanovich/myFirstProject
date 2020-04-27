@@ -25,27 +25,33 @@ const Input = (props) =>{
                     upUserPassword={props.upPassword}
                     savedName={props.savedName} savedEmail={props.savedEmail}
                     savedPassword={props.savedPassword}
-                    exception={props.exception} changeStateOfException={props.exceptionMethod}/>
+                    exception={props.exception} changeStateOfException={props.exceptionMethod}
+                    hideInputBox={props.hideInputBox} hideInputBoxMethod={props.hideInputBoxMethod}/>
         );
     }else{
-        return(
-            <div className={InputStyle.transparent}>
-                <div className={InputStyle.form_inner}>
-                    <h3>Please registration</h3>
-                    <label htmlFor="username">Name</label>
-                    <input type="text" id="username" value={props.savedName}
-                           onChange={(event)=>{props.savedNameMethod(event.target.value)}}
-                           required/>
-                    <label htmlFor="username">Email</label>
-                    <input type="email" id="username" value={props.savedEmail}
-                           onChange={(event)=>{props.savedEmailMethod(event.target.value)}}/>
-                    <label htmlFor="password" >Password</label>
-                    <input id="password" type="password"  value={props.savedPassword}
-                           onChange={(event)=>{props.savePasswordMethod(event.target.value)}} />
-                    {checkActiveButton()}
+        if(props.hideInputBox){
+            return(
+                <div className={InputStyle.transparent}>
+                    <div className={InputStyle.form_inner}>
+                        <h3>Please registration</h3>
+                        <label htmlFor="username">Name</label>
+                        <input type="text" id="username" value={props.savedName}
+                               onChange={(event)=>{props.savedNameMethod(event.target.value)}}
+                               required/>
+                        <label htmlFor="username">Email</label>
+                        <input type="email" id="username" value={props.savedEmail}
+                               onChange={(event)=>{props.savedEmailMethod(event.target.value)}}/>
+                        <label htmlFor="password" >Password</label>
+                        <input id="password" type="password"  value={props.savedPassword}
+                               onChange={(event)=>{props.savePasswordMethod(event.target.value)}} />
+                        {checkActiveButton()}
+                    </div>
                 </div>
-            </div>
-        )
+            )
+        }else{
+            return '';
+        }
+
     }
 }
 export default Input;

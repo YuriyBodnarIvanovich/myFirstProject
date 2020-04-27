@@ -4,7 +4,7 @@ import {connect} from "react-redux";
 import {
     changeActiveButton,
     changeAuthentication, changeStateException,
-    changeStatusSignedIn,
+    changeStatusSignedIn, hideInputBox,
     inputEmail,
     inputPassword,
     inputUserName, saveUserEmail, saveUserName, saveUserPassword
@@ -29,7 +29,7 @@ const mapStateToProps = (state)=>{
         savedEmail: state.ApplePage.savedEmail,
         savedPassword: state.ApplePage.savedPassword,
 
-        activeButton: state.ApplePage.activeButton
+        hideInputBox: state.ApplePage.hideInputBox
 
     }
 }
@@ -44,7 +44,7 @@ const mapDispatchToProps = (dispatch)=>{
         saveUserEmail:(email)=>{dispatch(saveUserEmail(email))},
         saveUserPassword:(password)=>{dispatch(saveUserPassword(password))},
         changeStateOfException:(exception)=>{dispatch(changeStateException(exception))},
-        changeActiveButton:(status)=>{dispatch(changeActiveButton(status))}
+        hideInputBoxMethod:(status)=>{dispatch(hideInputBox(status))}
     }
 }
 const AppleContainer = connect(mapStateToProps,mapDispatchToProps)(Apple);
