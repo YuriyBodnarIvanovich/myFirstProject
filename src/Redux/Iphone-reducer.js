@@ -1,10 +1,15 @@
 const CHANGE_COLOR = 'CHANGE_COLOR';
-
+// 'Экран (4.7", IPS, 1334x750)/ Apple A10 Fusion/ основная камера: 12 Мп, фронтальная камера: ' +
+// '7 Мп/ RAM 2 ГБ/ 32 ГБ встроенной памяти/ 3G/ LTE/ GPS/ Nano-SIM/ iOS 10'
 let initialDate = {
     iphone7:[
         {name:'Apple iPhone 7', price:10499,
-            character:'Экран (4.7", IPS, 1334x750)/ Apple A10 Fusion/ основная камера: 12 Мп, фронтальная камера: ' +
-                '7 Мп/ RAM 2 ГБ/ 32 ГБ встроенной памяти/ 3G/ LTE/ GPS/ Nano-SIM/ iOS 10'
+            character: {
+                screen: '(4.7", IPS, 1334x750)',processor:'Apple A10 Fusion',
+                camera:{basicCamera:'12 Мп',frontCamera:'7 Мп'},
+                RAM:'2 ГБ',internalMemory:'32 ГБ встроенной памяти',
+                operatingSystem:'iOS 10',remainder:'3G/ LTE/ GPS/ Nano-SIM/',
+            }
         }
     ],
     iphone7Color:[

@@ -5,7 +5,6 @@ import AppleStyle from "../Apple/Apple.module.css";
 const src_video = 'https://ak.picdn.net/shutterstock/videos/1042417903/preview/stock-footage-minsk-belarus-dec-close-up-woman-s-hands-keeping-and-unpacking-new-apple-iphone-pro.webm';
 
 const Iphone = (props)=>{
-    // props.changeColorOfMain(props.iphone7Color[0].imgUrlOne);
     function changeColor(colorButton) {
         let colorAdd;
         if(colorButton === props.iphone7Color[0].id){
@@ -32,7 +31,7 @@ const Iphone = (props)=>{
                                 <img className={IphoneStyle.main_photo} src={props.stateColorIphone7} alt='some'/>
                             </div>
                             <div className={IphoneStyle.AdditionalInformation}>
-                                <div><h2>{props.iphone7[0].name}</h2> </div>
+                                <div><h2>{props.name}</h2> </div>
                                 <div>
                                     <button className={IphoneStyle.colorButtonColder} id='Golden'
                                             onClick={(e)=>{changeColor(e.target.getAttribute('id'))}}>
@@ -47,13 +46,17 @@ const Iphone = (props)=>{
                                 <div><b>variable</b></div>
                                 <div className={IphoneStyle.contentPrice}>
                                     <b>Price </b>
-                                    <b className={IphoneStyle.price}> {" " + props.iphone7[0].price}</b>
+                                    <b className={IphoneStyle.price}> {" " + props.price}</b>
                                 </div>
                             </div>
                         </div>
                         <div className={IphoneStyle.characterStyle}>
                             <h3>
-                                {props.iphone7[0].character}
+                                 {"Screen  " + props.screen}   {" / Processor  " + props.processor}
+                                 {" / FrontCamera  " + props.frontCamera}  {" / BasicCamera  " + props.basicCamera}
+                                 {" / Internal Memory  " + props.internalMemory}
+                                 {" / Operating System  " + props.operatingSystem}  {" / RAM  " + props.RAM}
+                                 {" / Remainder  " + props.remainder}
                             </h3>
                         </div>
                     </div>
