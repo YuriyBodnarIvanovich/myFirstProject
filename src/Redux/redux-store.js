@@ -1,10 +1,12 @@
 import {combineReducers, createStore} from 'redux';
 import macReducer from './Mac-reducer';
 import AppleReducer from "./Apple-reducer";
+import IphoneReducer from "./Iphone-reducer";
 
 let reducer = combineReducers({
     macPage: macReducer,
     ApplePage: AppleReducer,
+    IphonePage: IphoneReducer
 });
 let store = createStore(reducer);
 

@@ -13,6 +13,9 @@ const Menu = () =>{
             <div className={MenuStyle.item}>
                 <NavLink to='/Mac' activeClassName={MenuStyle.active}>Mac</NavLink>
             </div>
+            <div className={MenuStyle.item}>
+                <NavLink to='/IPhone' activeClassName={MenuStyle.active}>IPhone</NavLink>
+            </div>
 
         </div>
     );

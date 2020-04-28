@@ -2,7 +2,6 @@ import React from "react";
 import Apple from "./Apple";
 import {connect} from "react-redux";
 import {
-    changeActiveButton,
     changeAuthentication, changeStateException,
     changeStatusSignedIn, hideInputBox,
     inputEmail,
