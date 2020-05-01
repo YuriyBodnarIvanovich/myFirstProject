@@ -82,3 +82,9 @@
     display: block;
     color: #191616;
 }
+
+.containerForItems{
+    display: flex;
+    flex-direction: column;
+
+}

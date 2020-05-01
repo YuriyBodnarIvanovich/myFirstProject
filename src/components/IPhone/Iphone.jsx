@@ -1,91 +1,100 @@
 import React from 'react';
 import IphoneStyle from './Iphone.module.css';
 import AppleStyle from "../Apple/Apple.module.css";
+import IphoneItems from './IphoneItems/iPhoneItems';
 
 const src_video = 'https://ak.picdn.net/shutterstock/videos/1042417903/preview/stock-footage-minsk-belarus-dec-close-up-woman-s-hands-keeping-and-unpacking-new-apple-iphone-pro.webm';
 
 const Iphone = (props)=>{
-    function changeColor(colorButton) {
-        let colorAdd;
-        if(colorButton === props.iphone7Color[0].id){
-            colorAdd=props.iphone7Color[0].imgUrlOne;
-        }
-        else if(colorButton === props.iphone7Color[1].id){
-            colorAdd=props.iphone7Color[1].imgUrlOne;
-        }else {
-            colorAdd=props.iphone7Color[2].imgUrlOne;
-        }
-        props.changeColorOfMain(colorAdd);
 
+    let iPhoneItems = props.data.arrayItems.map((p)=><IphoneItems name={p.name}
+                                                                  stateColorIphone7={p.stateColorIphone7}
+                                                                  price={p.price} index={p.key}
+                                                                  changeMainIndexOfArray={props.changeMainIndexOfArray}/>)
+
+    let iPhones = JSON.parse(JSON.stringify(props.data.array));
+
+    function changeColor(colorButton) {
+        if(colorButton === props.data.array[props.data.index].photo[0].id){
+            iPhones[props.data.index].stateColorIphone7=props.data.array[props.data.index].photo[0].imgUrlOne;
+        }
+        else if(colorButton === props.data.array[props.data.index].photo[1].id){
+            iPhones[props.data.index].stateColorIphone7=props.data.array[props.data.index].photo[1].imgUrlOne;
+        }else {
+            iPhones[props.data.index].stateColorIphone7=props.data.array[props.data.index].photo[2].imgUrlOne;
+        }
+        props.changeMainArray(iPhones);
     }
 
-    /////////////////////////////////////////////////////////////////
     let addPrice=0;
     function changeCameraPrime() {
         addPrice = 2000;
-        if(props.buttonNormalPrimeStatus === false){
+        if(props.data.array[props.data.index].buttonNormalPrimeStatus === false){
             addPrice -=1000;
         }
-        props.changeFrontCamera('9 Мп');
-        props.changeBasicCamera('14 Мп');
-        props.changePrice(props.price + addPrice);
-        props.changeNormalButton(true);
-        props.changeStatusPrimeButtonCamera(false);
+        iPhones[props.data.index].character.camera.frontCamera = '9 Мп';
+        iPhones[props.data.index].character.camera.basicCamera = '14 Мп';
+        iPhones[props.data.index].price = Number(props.data.array[props.data.index].price) + Number(addPrice);
+        iPhones[props.data.index].buttonNormalPrimeStatus = true;
+        iPhones[props.data.index].buttonCameraPrimeStatus = false;
+        props.changeMainArray(iPhones);
     }
     function changeFrontCameraNormal() {
         addPrice = 1000;
-        if(props.buttonCameraPrimeStatus === false){
-            addPrice -=2000
+        if(props.data.array[props.data.index].buttonCameraPrimeStatus === false){
+            addPrice -= 2000
         }
-        props.changeFrontCamera('7 Мп');
-        props.changeBasicCamera('12 Мп');
-        props.changePrice(props.price + addPrice);
-        props.changeNormalButton(false);
-        props.changeStatusPrimeButtonCamera(true);
+        iPhones[props.data.index].character.camera.frontCamera = '7 Мп';
+        iPhones[props.data.index].character.camera.basicCamera = '12 Мп';
+        iPhones[props.data.index].price = Number(props.data.array[props.data.index].price) + Number(addPrice);
+        iPhones[props.data.index].buttonNormalPrimeStatus = false;
+        iPhones[props.data.index].buttonCameraPrimeStatus = true;
+        props.changeMainArray(iPhones);
     }
-
     function MemoryPrime() {
         addPrice = 4000;
-        if(props.buttonMemoryNormalStatus === false){
+        if(props.data.array[props.data.index].buttonMemoryNormalStatus === false){
             addPrice -= 2000;
         }
-        props.changeInternalMemory('128 Гб');
-        props.changePrice(props.price + addPrice);
-        props.changeStatusOfMemoryButtonNormal(true);
-        props.changeStatusOfMemoryButtonPrime(false);
+        iPhones[props.data.index].character.internalMemory = '128 Гб';
+        iPhones[props.data.index].price = Number(props.data.array[props.data.index].price) + Number(addPrice);
+        iPhones[props.data.index].buttonMemoryNormalStatus = true;
+        iPhones[props.data.index].buttonMemoryPrimeStatus = false;
+        props.changeMainArray(iPhones);
     }
-
     function MemoryNormal() {
         addPrice = 2000;
-        if(props.buttonMemoryPrimeStatus === false){
+        if(props.data.array[props.data.index].buttonMemoryPrimeStatus === false){
             addPrice -= 4000;
         }
-        props.changeInternalMemory('64 Гб');
-        props.changePrice(props.price + addPrice);
-        props.changeStatusOfMemoryButtonNormal(false);
-        props.changeStatusOfMemoryButtonPrime(true);
+        iPhones[props.data.index].character.internalMemory = '64 Гб';
+        iPhones[props.data.index].price = Number(props.data.array[props.data.index].price) + Number(addPrice);
+        iPhones[props.data.index].buttonMemoryNormalStatus = false;
+        iPhones[props.data.index].buttonMemoryPrimeStatus = true;
+        props.changeMainArray(iPhones);
     }
     function RAMPrime() {
         addPrice =4000;
-        if(props.buttonRAM_NormalStatus === false){
+        if(props.data.array[props.data.index].buttonRAM_NormalStatus === false){
             addPrice -= 2000;
         }
-        props.changeRAM('6');
-        props.changePrice(props.price + addPrice);
-        props.changeStatusOfRAM_NormalButton(true);
-        props.changeStatusOfRAM_PrimeButton(false);
+        iPhones[props.data.index].character.RAM = '6';
+        iPhones[props.data.index].price = Number(props.data.array[props.data.index].price) + Number(addPrice);
+        iPhones[props.data.index].buttonRAM_NormalStatus = true;
+        iPhones[props.data.index].buttonRAM_PrimeStatus = false;
+        props.changeMainArray(iPhones)
     }
     function RAMNormal() {
         addPrice =2000;
-        if(props.buttonRAM_PrimeStatus === false){
+        if(props.data.array[props.data.index].buttonRAM_PrimeStatus === false){
             addPrice -=4000;
         }
-        props.changeRAM('4');
-        props.changePrice(props.price + addPrice);
-        props.changeStatusOfRAM_NormalButton(false);
-        props.changeStatusOfRAM_PrimeButton(true);
+        iPhones[props.data.index].character.RAM = '4';
+        iPhones[props.data.index].price = Number(props.data.array[props.data.index].price)+ Number(addPrice);
+        iPhones[props.data.index].buttonRAM_NormalStatus = false;
+        iPhones[props.data.index].buttonRAM_PrimeStatus = true;
+        props.changeMainArray(iPhones)
     }
-
     return(
         <div className={AppleStyle.intro}>
             <div className={AppleStyle.video}>
@@ -96,10 +105,10 @@ const Iphone = (props)=>{
                     <div className={IphoneStyle.showPhone}>
                         <div className={IphoneStyle.row}>
                             <div>
-                                <img className={IphoneStyle.main_photo} src={props.stateColorIphone7} alt='some'/>
+                                <img className={IphoneStyle.main_photo} src={props.data.array[props.data.index].stateColorIphone7} alt='some'/>
                             </div>
                             <div className={IphoneStyle.AdditionalInformation}>
-                                <div><h2>{props.name}</h2> </div>
+                                <div><h2>{props.data.array[props.data.index].name}</h2> </div>
                                 <div>
                                     <button className={IphoneStyle.colorButtonColder} id='Golden'
                                             onClick={(e)=>{changeColor(e.target.getAttribute('id'))}}>
@@ -113,37 +122,86 @@ const Iphone = (props)=>{
                                 </div>
                                 <div>
                                    <b className={IphoneStyle.Items}>Camera:</b>
-                                    {props.buttonNormalPrimeStatus ? <button className={IphoneStyle.buttonCheck} onClick={changeFrontCameraNormal} > 12  and 7 </button> : <button className={IphoneStyle.buttonCheck} onClick={changeFrontCameraNormal} disabled> 12  and 7 </button>}
-                                    {props.buttonCameraPrimeStatus ? <button className={IphoneStyle.buttonCheck} onClick={changeCameraPrime}> 14  and 9 </button> : <button className={IphoneStyle.buttonCheck} onClick={changeCameraPrime} disabled> 14  and 9 </button> }
+
+                                    {
+                                        props.data.array[props.data.index].buttonNormalPrimeStatus ?
+                                        <button className={IphoneStyle.buttonCheck} onClick={changeFrontCameraNormal} >
+                                            {props.data.array[props.data.index].buttonTextOfCameraOptionsNormal}
+                                        </button> :
+                                        <button className={IphoneStyle.buttonCheck} onClick={changeFrontCameraNormal} disabled>
+                                            {props.data.array[props.data.index].buttonTextOfCameraOptionsNormal}
+                                        </button>
+                                    }
+                                    {
+                                        props.data.array[props.data.index].buttonCameraPrimeStatus ?
+                                        <button className={IphoneStyle.buttonCheck} onClick={changeCameraPrime}>
+                                            {props.data.array[props.data.index].buttonTextOfCameraOptionsPrime} </button> :
+                                        <button className={IphoneStyle.buttonCheck} onClick={changeCameraPrime} disabled>
+                                            {props.data.array[props.data.index].buttonTextOfCameraOptionsPrime}
+                                        </button>
+                                    }
                                     <br/>
                                     <b className={IphoneStyle.Items}>Memory:</b>
-                                    {props.buttonMemoryNormalStatus ? <button className={IphoneStyle.buttonCheck} onClick={MemoryNormal}> 64 Гб </button> : <button className={IphoneStyle.buttonCheck} onClick={MemoryNormal} disabled> 64 Гб </button>}
-                                    {props.buttonMemoryPrimeStatus ? <button className={IphoneStyle.buttonCheck} onClick={MemoryPrime}> 128 Гб</button> : <button className={IphoneStyle.buttonCheck} onClick={MemoryPrime} disabled> 128 Гб</button>}
+                                    {
+                                        props.data.array[props.data.index].buttonMemoryNormalStatus ?
+                                        <button className={IphoneStyle.buttonCheck} onClick={MemoryNormal}>
+                                            {props.data.array[props.data.index].buttonTextOfMemoryNormal}
+                                        </button> :
+                                        <button className={IphoneStyle.buttonCheck} onClick={MemoryNormal} disabled>
+                                            {props.data.array[props.data.index].buttonTextOfMemoryNormal}
+                                        </button>
+                                    }
+                                    {
+                                        props.data.array[props.data.index].buttonMemoryPrimeStatus ?
+                                        <button className={IphoneStyle.buttonCheck} onClick={MemoryPrime}>
+                                            {props.data.array[props.data.index].buttonTextOfMemoryPrime}
+                                        </button> :
+                                        <button className={IphoneStyle.buttonCheck} onClick={MemoryPrime} disabled>
+                                            {props.data.array[props.data.index].buttonTextOfMemoryPrime}
+                                        </button>
+                                    }
                                     <br/>
                                     <b className={IphoneStyle.Items}>RAM:</b>
-                                    {props.buttonRAM_NormalStatus ? <button className={IphoneStyle.buttonCheck} onClick={RAMNormal}> 4 Гб </button>  : <button className={IphoneStyle.buttonCheck} onClick={RAMNormal} disabled> 4 Гб </button>}
-                                    {props.buttonRAM_PrimeStatus ? <button className={IphoneStyle.buttonCheck} onClick={RAMPrime}> 6 Гб</button> : <button className={IphoneStyle.buttonCheck} onClick={RAMPrime} disabled> 6 Гб</button> }
+                                    {
+                                        props.data.array[props.data.index].buttonRAM_NormalStatus ?
+                                        <button className={IphoneStyle.buttonCheck} onClick={RAMNormal}>
+                                            {props.data.array[props.data.index].buttonTextOfRAMNormal}</button>  :
+                                        <button className={IphoneStyle.buttonCheck} onClick={RAMNormal} disabled>
+                                            {props.data.array[props.data.index].buttonTextOfRAMNormal}
+                                        </button>
+                                    }
+                                    {
+                                        props.data.array[props.data.index].buttonRAM_PrimeStatus ?
+                                        <button className={IphoneStyle.buttonCheck} onClick={RAMPrime}>
+                                            {props.data.array[props.data.index].buttonTextOfRAMPrime}</button> :
+                                        <button className={IphoneStyle.buttonCheck} onClick={RAMPrime} disabled>
+                                            {props.data.array[props.data.index].buttonTextOfRAMPrime}
+                                        </button>
+                                    }
                                 </div>
                                 <div className={IphoneStyle.contentPrice}>
                                     <b>Price: </b>
-                                    <b className={IphoneStyle.price}> {" " + props.price}</b>
+                                    <b className={IphoneStyle.price}> {" " + props.data.array[props.data.index].price}</b>
                                 </div>
                             </div>
                         </div>
                         <div className={IphoneStyle.characterStyle}>
                             <h3>
-                                 {"Screen  " + props.screen}   {" / Processor  " + props.processor}
-                                 {" / FrontCamera  " + props.frontCamera}  {" / BasicCamera  " + props.basicCamera}
-                                 {" / Internal Memory  " + props.internalMemory}
-                                 {" / Operating System  " + props.operatingSystem}  {" / RAM  " + props.RAM}
-                                 {" / Remainder  " + props.remainder}
+                                 {"Screen  " + props.data.array[props.data.index].character.screen}   {" / Processor  " + props.data.array[props.data.index].character.processor}
+                                 {" / FrontCamera  " + props.data.array[props.data.index].character.camera.frontCamera}  {" / BasicCamera  " + props.data.array[props.data.index].character.camera.basicCamera}
+                                 {" / Internal Memory  " + props.data.array[props.data.index].character.internalMemory}
+                                 {" / Operating System  " + props.data.array[props.data.index].character.operatingSystem}  {" / RAM  " + props.data.array[props.data.index].character.RAM}
+                                 {" / Remainder  " + props.data.array[props.data.index].character.remainder}
                             </h3>
                         </div>
                     </div>
+                    <div className={IphoneStyle.containerForItems}>
+                        {iPhoneItems}
+                    </div>
+
                 </div>
             </div>
         </div>
     )
 }
-
 export default Iphone;
