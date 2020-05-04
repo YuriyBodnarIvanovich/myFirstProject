@@ -39,7 +39,7 @@
 .colorButtonColder{
     width: 40px;
     height: 40px;
-    background-color: #F7AF47;
+    /*background-color: #F7AF47;*/
     border-radius: 25px;
     border: none;
     margin: 8px;
@@ -47,7 +47,7 @@
 .colorButtonBlack{
     width: 40px;
     height: 40px;
-    background-color: black;
+    /*background-color: black;*/
     border-radius: 25px;
     border: none;
     margin: 8px;
@@ -55,7 +55,7 @@
 .colorButtonRose{
     width: 40px;
     height: 40px;
-    background-color: pink;
+    /*background-color: pink;*/
     border-radius: 25px;
     border: none;
     margin: 8px;
@@ -86,5 +86,45 @@
 .containerForItems{
     display: flex;
     flex-direction: column;
+}
 
+.Up{
+    position: absolute;
+    width: 100px;
+    height: 50px;
+    margin-left: 450px;
+    transition-duration: 0.4s;
+    background-color: white;
+    color: black;
+    font-size: 28px;
+    border: 2px solid black;
+    border-radius: 30px;
+}
+.Up:hover {
+    background-color: black; /* Green */
+    color: white;
+    border: 2px solid white;
+}
+.Dawn{
+    position: absolute;
+
+    width: 100px;
+    height: 50px;
+
+    margin-left: 450px;
+    margin-top: 570px;
+    transition-duration: 0.4s;
+    background-color: white;
+    color: black;
+    font-size: 28px;
+    border: 2px solid black;
+    border-radius: 30px;
+}
+.Dawn:hover {
+    background-color: black; /* Green */
+    color: white;
+    border: 2px solid white;
+}
+.forItems{
+    margin-top: 50px;
 }
