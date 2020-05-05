@@ -5,6 +5,7 @@ import MacContainer from './components/Mac/Mac-Container';
 import AppleContainer from "./components/Apple/Apple-Container";
 import {BrowserRouter,Route} from 'react-router-dom';
 import IphoneContainer from "./components/IPhone/Iphone-Container";
+import CartContainer from "./components/Cart/Cart-Container";
 
 function App(props) {
   return (
@@ -18,6 +19,8 @@ function App(props) {
                            render={ () => <AppleContainer />} />
                     <Route path='/IPhone'
                            render={ () => <IphoneContainer />} />
+                    <Route path='/Cart'
+                           render={ () => <CartContainer />} />
                 </div>
             </div>
       </BrowserRouter>

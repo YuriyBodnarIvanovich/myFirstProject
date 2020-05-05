@@ -5,6 +5,7 @@ const CHANGE_MIN = 'CHANGE_MIN';
 const CHANGE_MAX = 'CHANGE_MAX';
 const CHANGE_STATUS_UP = 'CHANGE_STATUS_UP';
 const CHANGE_STATUS_DAWN = 'CHANGE_STATUS_DAWN';
+const CHANGE_MAIN_COLOR = 'CHANGE_MAIN_COLOR';
 
 let initialDate ={
      iPhones: [
@@ -57,7 +58,9 @@ let initialDate ={
 
             firstColor: '#E8A038',
             secondColor: '#000000',
-            thirdColor: '#F39191'
+            thirdColor: '#F39191',
+
+            mainColor: '#E8A038'
 
         },
          {
@@ -109,7 +112,9 @@ let initialDate ={
 
              firstColor: '#E7A4B0',
              secondColor: '#EDD9DD',
-             thirdColor: '#000000'
+             thirdColor: '#000000',
+
+             mainColor: '#E7A4B0'
 
          },
          {
@@ -161,7 +166,9 @@ let initialDate ={
 
              firstColor: '#000000',
              secondColor: '#5B937A',
-             thirdColor: '#FFE4B5'
+             thirdColor: '#FFE4B5',
+
+             mainColor: '#000000'
 
          },
          {
@@ -204,7 +211,9 @@ let initialDate ={
 
              firstColor: '#444243',
              secondColor: '#C6C6C6',
-             thirdColor: '#FFE4B5'
+             thirdColor: '#FFE4B5',
+
+             mainColor: '#444243'
 
          },
          {
@@ -247,7 +256,9 @@ let initialDate ={
 
              firstColor: '#ffffff',
              secondColor: '#000000',
-             thirdColor: '#FF0000'
+             thirdColor: '#FF0000',
+
+             mainColor: '#ffffff'
 
          },
          {
@@ -290,7 +301,9 @@ let initialDate ={
 
              firstColor: '#FF0000',
              secondColor: '#FFFB03',
-             thirdColor: '#A088D0'
+             thirdColor: '#A088D0',
+
+             mainColor: '#FF0000'
 
          },
          {
@@ -333,7 +346,9 @@ let initialDate ={
 
              firstColor: '#FFE4B5',
              secondColor: '#000000',
-             thirdColor: '#DAD6E3'
+             thirdColor: '#DAD6E3',
+
+             mainColor: '#FFE4B5'
 
          },
          {
@@ -376,7 +391,9 @@ let initialDate ={
 
              firstColor: '#000000',
              secondColor: '#F4F3F6',
-             thirdColor: '#FF0000'
+             thirdColor: '#FF0000',
+
+             mainColor: '#000000'
 
          },
          {
@@ -419,7 +436,9 @@ let initialDate ={
 
              firstColor: '#F4EDFF',
              secondColor: '#000000',
-             thirdColor: '#F0FF00'
+             thirdColor: '#F0FF00',
+
+             mainColor: '#F4EDFF'
 
          },
     ],
@@ -465,7 +484,9 @@ let initialDate ={
 
             firstColor: '#E8A038',
             secondColor: '#000000',
-            thirdColor: '#F39191'
+            thirdColor: '#F39191',
+
+            mainColor: '#E8A038'
 
         },
         {
@@ -508,7 +529,9 @@ let initialDate ={
 
             firstColor: '#E7A4B0',
             secondColor: '#EDD9DD',
-            thirdColor: '#000000'
+            thirdColor: '#000000',
+
+            mainColor: '#E7A4B0'
 
         },
         {
@@ -551,7 +574,9 @@ let initialDate ={
 
             firstColor: '#000000',
             secondColor: '#5B937A',
-            thirdColor: '#FFE4B5'
+            thirdColor: '#FFE4B5',
+
+            mainColor: '#000000'
 
         },
     ],
@@ -610,6 +635,15 @@ const IphoneReducer = (state=initialDate,action) =>{
                 statusDawn: action.status
             }
         }
+        case CHANGE_MAIN_COLOR:{
+            return{
+                ...state,
+                iPhones: {
+                    ...state.iPhones,
+                    mainColor:action.color
+                }
+            }
+        }
     }
     return state;
 }
@@ -622,5 +656,6 @@ export const  changeMin = (value) =>({type:CHANGE_MIN, value: value})
 export const changeMax = (value) =>({type:CHANGE_MAX,value: value})
 export const changeStatusOfButtonDawn = (status) =>({type:CHANGE_STATUS_DAWN,status:status})
 export const changeStatusOfButtonUp = (status) =>({type:CHANGE_STATUS_UP,status:status})
+export const changeMainColor = (color)=>({type:CHANGE_MAIN_COLOR,color:color})
 
 export default IphoneReducer;

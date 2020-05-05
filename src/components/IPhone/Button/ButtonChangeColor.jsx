@@ -5,15 +5,23 @@ import IphoneStyle from "../Iphone.module.css";
 const ButtonColor = (props) =>{
     let iPhones = JSON.parse(JSON.stringify(props.data.array));
 
-
     function changeColor(colorButton) {
         if(colorButton === props.data.array[props.data.index].photo[0].id){
             iPhones[props.data.index].stateColorIphone7=props.data.array[props.data.index].photo[0].imgUrlOne;
+            // props.changeMainColor(props.data.array[props.data.index].firstColor);
+            iPhones[props.data.index].mainColor = props.data.array[props.data.index].firstColor;
+            props.changeMainArray(iPhones);
         }
         else if(colorButton === props.data.array[props.data.index].photo[1].id){
             iPhones[props.data.index].stateColorIphone7=props.data.array[props.data.index].photo[1].imgUrlOne;
+            // props.changeMainColor(props.data.array[props.data.index].secondColor);
+            iPhones[props.data.index].mainColor = props.data.array[props.data.index].secondColor;
+            props.changeMainArray(iPhones);
         }else {
             iPhones[props.data.index].stateColorIphone7=props.data.array[props.data.index].photo[2].imgUrlOne;
+            // props.changeMainColor(props.data.array[props.data.index].thirdColor);
+            iPhones[props.data.index].mainColor = props.data.array[props.data.index].thirdColor;
+            props.changeMainArray(iPhones);
         }
         props.changeMainArray(iPhones);
     }

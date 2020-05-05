@@ -47,6 +47,13 @@ const Iphone = (props)=>{
             props.changeStatusDawn(false);
         }
     }
+    
+    function addToCart() {
+        let catalog = [];
+        catalog = [...props.arrayOfCart];
+        catalog.push(props.data.array[props.data.index])
+        props.changeArrayCart(catalog);
+    }
 
     return(
         <div className={AppleStyle.intro}>
@@ -63,12 +70,15 @@ const Iphone = (props)=>{
                             <div className={IphoneStyle.AdditionalInformation}>
                                 <div><h2>{props.data.array[props.data.index].name}</h2> </div>
                                 <ButtonColor data={props.data} changeMainArray={props.changeMainArray}
-                                             colorOfButton={props.colorOfButton}/>
+                                             colorOfButton={props.colorOfButton} mainColor={props.mainColor}
+                                             changeMainColor={props.changeMainColor}/>
                                 <ButtonParameter  data={props.data} changeMainArray={props.changeMainArray}/>
                                 <div className={IphoneStyle.contentPrice}>
                                     <b>Price: </b>
                                     <b className={IphoneStyle.price}> {" " + props.data.array[props.data.index].price}</b>
                                 </div>
+
+                                <button onClick={addToCart}>Add to Cart</button>
                             </div>
                         </div>
                         <div className={IphoneStyle.characterStyle}>
