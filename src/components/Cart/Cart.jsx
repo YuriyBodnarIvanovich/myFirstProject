@@ -6,6 +6,7 @@ const Cart = (props) =>{
     let catalog = props.arrayOfProducts.map((p,index)=><Table name={p.name} price={p.price} index={index} color={p.mainColor}/>)
     return(
         <div className={CartStyle.main}>
+            {console.log(props.arrayOfProducts)}
             <table style={{overflowX: 'auto'}}>
                 <tr>
                     <th>№</th>

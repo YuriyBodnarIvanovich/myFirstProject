@@ -2,11 +2,11 @@ import React from 'react';
 import Iphone from "./Iphone";
 import {connect} from "react-redux";
 import {
-    changeIphoneItemsArray,
+    changeIphoneItemsArray, changeKeyOfItems,
     changeMainArray, changeMainColor,
     changeMainIndex,
     changeMax,
-    changeMin, changeStatusOfButtonDawn, changeStatusOfButtonUp
+    changeMin, changeNumberClickDown, changeStatusOfButtonDawn, changeStatusOfButtonUp
 } from "../../Redux/Iphone-reducer";
 import {changeArrayProducts} from "../../Redux/Cart-reducer";
 
@@ -38,7 +38,9 @@ const mapStateToProps= (state) =>{
 
         arrayOfCart: state.CartPage.Product,
 
-        mainColor: state.IphonePage.mainColor
+        mainColor: state.IphonePage.mainColor,
+
+        numberClickDown: state.IphonePage.numberClickDown
     }
 }
 const mapDispatchToProps = (dispatch) =>{
@@ -54,7 +56,10 @@ const mapDispatchToProps = (dispatch) =>{
         changeStatusDawn: (status)=>{dispatch(changeStatusOfButtonDawn(status))},
 
         changeArrayCart: (newArray) =>{dispatch(changeArrayProducts(newArray))},
-        changeMainColor:(color)=>{dispatch(changeMainColor(color))}
+        changeMainColor:(color)=>{dispatch(changeMainColor(color))},
+
+        changeNumberClickDown: (number)=>{dispatch(changeNumberClickDown(number))},
+        changeKeyOfItems: (key) =>{dispatch(changeKeyOfItems(key))}
     }
 }
 const IphoneContainer = connect(mapStateToProps,mapDispatchToProps)(Iphone);

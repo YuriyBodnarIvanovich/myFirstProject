@@ -19,7 +19,9 @@ const Menu = () =>{
             <div className={MenuStyle.item} >
                 <NavLink to='/Cart' activeClassName={MenuStyle.active}>Cart</NavLink>
             </div>
-
+            <div className={MenuStyle.item} >
+                <NavLink to='/Admin' activeClassName={MenuStyle.active}>Admin</NavLink>
+            </div>
         </div>
     );
 

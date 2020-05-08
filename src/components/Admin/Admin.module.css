@@ -1,0 +1,73 @@
+.main{
+
+    color: #191616;
+    width: 100%;
+    max-height: 100vh;
+}
+.container{
+    background-color: #323131;
+    width: 100%;
+    margin-top: 60px;
+    height: 889px;
+    box-sizing: border-box;
+    padding: 100px;
+    display: flex;
+    flex-direction: row;
+}
+
+.explain{
+    width: 600px;
+    height: 600px;
+    background-color: white;
+    border-radius: 30px;
+    padding: 30px;
+    margin-right: 200px;
+    display: flex;
+    flex-direction: column;
+}
+.options{
+    width: 600px;
+    height: 600px;
+    background-color: white;
+    border-radius: 30px;
+    padding: 30px;
+}
+.img{
+    width: 300px;
+    height: 330px;
+}
+.container_two{
+    display: flex;
+    flex-direction: row;
+}
+.up{
+    width: 100px;
+    height: 25px;
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    margin-top: 100px;
+    margin-left: 400px;
+}
+.down{
+    width: 100px;
+    height: 25px;
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    margin-top: 850px;
+    margin-left: 400px;
+
+}
+.containerOfButton{
+    background-color: #323131;
+    width: 100%;
+    margin-top: 60px;
+    height: 889px;
+    box-sizing: border-box;
+    padding: 100px;
+    display: flex;
+    flex-direction: column;
+}

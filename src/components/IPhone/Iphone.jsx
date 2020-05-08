@@ -8,6 +8,7 @@ import ButtonColor from "./Button/ButtonChangeColor";
 const src_video = 'https://ak.picdn.net/shutterstock/videos/1042417903/preview/stock-footage-minsk-belarus-dec-close-up-woman-s-hands-keeping-and-unpacking-new-apple-iphone-pro.webm';
 
 const Iphone = (props)=>{
+
     let iPhoneItems = props.data.arrayItems.map((p)=><IphoneItems name={p.name}
                                                                   stateColorIphone7={p.stateColorIphone7}
                                                                   price={p.price} index={p.key}
@@ -19,6 +20,7 @@ const Iphone = (props)=>{
         let y = 0;
         props.changeMin(props.min - 3);
         props.changeMax(props.max - 3);
+
         for(let i = props.min - 3; i < props.max - 3; i++){
             catalog[y] = props.data.array[i];
             y++;
@@ -31,6 +33,7 @@ const Iphone = (props)=>{
             props.changeStatusUp(false);
         }
         props.changeStatusDawn(true);
+        props.changeNumberClickDown(props.numberClickDown - 3);
     }
     function next() {
         let catalog = [];
@@ -38,20 +41,30 @@ const Iphone = (props)=>{
         props.changeMin(props.min + 3);
         props.changeMax(props.max +3);
         for(let i = props.min + 3; i < props.max + 3; i++){
-            catalog[y] = props.data.array[i];
-            y++;
+            if(props.data.array[i] == null){
+                break;
+            }else {
+                catalog[y] = props.data.array[i];
+                y++;
+            }
         }
+        console.log(props.data.arrayItems.length)
         props.changeIphoneItemsArray(catalog);
         props.changeStatusUp(true);
-        if(props.data.arrayItems[2] === props.data.array[props.data.array.length - 4]){
+        props.changeNumberClickDown(props.numberClickDown + 3);
+        let difference  = props.data.array.length - props.numberClickDown;
+
+        if(difference < 3 ){
             props.changeStatusDawn(false);
         }
+
     }
     
     function addToCart() {
         let catalog = [];
-        catalog = [...props.arrayOfCart];
-        catalog.push(props.data.array[props.data.index])
+        catalog = JSON.parse(JSON.stringify(props.arrayOfCart));
+        catalog.push(JSON.parse(JSON.stringify(props.data.array[props.data.index])))
+        catalog[catalog.length - 1].key = catalog.length + 1;
         props.changeArrayCart(catalog);
     }
 
@@ -102,7 +115,6 @@ const Iphone = (props)=>{
                         {props.statusDawn ? <button className={IphoneStyle.Dawn} onClick={next}>dawn</button> : <button className={IphoneStyle.Dawn} onClick={next} disabled>dawn</button>}
 
                     </div>
-
                 </div>
             </div>
         </div>
