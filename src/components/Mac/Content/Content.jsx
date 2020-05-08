@@ -3,18 +3,16 @@ import MacStyle from "../Mac.module.css";
 import ButtonBack from "../Button/ButtonBack/ButtonBack";
 import ButtonNext from "../Button/ButtonNext/ButtonNext";
 import MacItems from "../MacItems/MacItems";
-import BackButtonStyle from "../Button/ButtonBack/BackButton.module.css";
 
 const Content =(props) =>{
     function showCatalog() {
-        props.method.upDateStatusContent(false);
+         props.method({type:'CHANGE_STATE_OF_CONTENT',showContent:false});
     }
-
     function showContent() {
-        let catalog =  props.data.newArray.map((p)=><MacItems imgSrc = {p.imgSrc} number={p.id}
-                                                              price={p.price} name={p.name}
-                                                              onePhoto={p.onePhoto} twoPhoto={p.twoPhoto}
-                                                              characteristics={p.characteristics}/>)
+        const catalog =  props.data.imgData.filter((_, index) => props.data.min <= index && index < props.data.max && props.data.min >= 0).map((element)=><MacItems imgSrc = {element.imgSrc} number={element.id}
+                                                     price={element.price} name={element.name}
+                                                     onePhoto={element.onePhoto} twoPhoto={element.twoPhoto}
+                                                     characteristics={element.characteristics}/>)
         return(<div>
                 <div className={MacStyle.main} id={"demo"}>
                     {catalog}

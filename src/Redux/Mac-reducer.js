@@ -1,6 +1,3 @@
-const UP_DATE_NEW_PAGE = 'UP-DATE-NEW-PAGE';
-const CHANGE_STATE_OF_BACK_BUTTON = 'CHANGE_STATE_OF_BACK_BUTTON';
-const CHANGE_STATE_OF_NEXT_BUTTON = 'CHANGE_STATE_OF_NEXT_BUTTON';
 const CHANGE_MIN ='CHANGE_MIN';
 const CHANGE_MAX ='CHANGE_MAX';
 const CHANGE_STATE_OF_CONTENT = 'CHANGE_STATE_OF_CONTENT';
@@ -50,30 +47,10 @@ let initialState = {
     ],
     min: 0,
     max: 3,
-    backShow: false,
-    nextShow: true,
     centerContentShow:true
 };
 const macReducer = (state= initialState,action) =>{
     switch(action.type){
-        case UP_DATE_NEW_PAGE:{
-            return{
-                ...state,
-                page: action.newArray,
-            };
-        }
-        case CHANGE_STATE_OF_BACK_BUTTON:{
-            return{
-                ...state,
-                backShow: action.backShow,
-            };
-        }
-        case CHANGE_STATE_OF_NEXT_BUTTON:{
-            return{
-                ...state,
-                nextShow: action.nextShow,
-            };
-        }
         case CHANGE_MIN:{
             return{
                 ...state,
@@ -86,34 +63,15 @@ const macReducer = (state= initialState,action) =>{
                 max: action.max,
             };
         }
-
         case CHANGE_STATE_OF_CONTENT:{
             return{
                 ...state,
-                centerContentShow: action.nextShow,
+                centerContentShow: action.showContent,
             };
         }
         default:
             return state;
     }
 }
-
-export const updateNewPageCreator = (newArray) =>
-    ({type:UP_DATE_NEW_PAGE,newArray:newArray})
-
-export const updateStateOfBackButton = (status) =>
-    ({type:CHANGE_STATE_OF_BACK_BUTTON,backShow:status})
-
-export const updateStateOfNEXTButton = (status) =>
-    ({type:CHANGE_STATE_OF_NEXT_BUTTON,nextShow:status})
-
-export const updateMin = (min) =>
-    ({type:CHANGE_MIN,min:min})
-
-export const updateMax = (max) =>
-    ({type:CHANGE_MAX,max:max})
-
-export const updateStateOfShowContent = (status) =>
-    ({type:CHANGE_STATE_OF_CONTENT,centerContentShow:status})
 
 export default macReducer;

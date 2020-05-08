@@ -1,8 +1,5 @@
 import React from "react";
 import MacPageStyle from './MacPage.module.css';
-import MacItems from "../MacItems";
-import Mac from "../../Mac";
-
 const MacPage = (props) =>{
     return(
         <div>
