@@ -2,9 +2,10 @@ import React from "react";
 import ItemsStyle from './IphoneItems.module.css'
 const IphoneItems = (props) =>{
     function changeIndex() {
-        let number = Number(props.index)
-        props.changeMainIndexOfArray(number)
+        let number = Number(props.index);
+        props.dispatch({type:'CHANGE_MAIN_INDEX',index: number});
     }
+
     return(
         <div className={ItemsStyle.container}>
             <b className={ItemsStyle.name}>{props.name}</b>
@@ -14,6 +15,7 @@ const IphoneItems = (props) =>{
                 </div>
                 <div>
                     <b className={ItemsStyle.price}> {props.price} </b>
+                    {props.index}
                     <br/>
                     <button className={ItemsStyle.button} onClick={changeIndex}>Open</button>
                 </div>

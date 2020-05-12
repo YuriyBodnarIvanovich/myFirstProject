@@ -1,9 +1,9 @@
 const CHANGE_STATUS_OF_SHOW_OPTION = 'CHANGE_STATUS_OF_SHOW_OPTION';
+const CHANGE_INDEX_OF_COLOR = 'CHANGE_INDEX_OF_COLOR';
 
 let initialData ={
     newElement: [
         {
-            key:0,
             name: '', price: 0,
             character: {
                 screen: '',processor:'',
@@ -16,20 +16,10 @@ let initialData ={
             },
             photo:[
                 {
-                    id:'Golden',imgUrlOne: '',
+                    color:'',imgUrlOne: '',
                     imgUrlTwo:'',
                     imgUrlThree:'',
                 },
-                {
-                    id:'Black',imgUrlOne: '',
-                    imgUrlTwo: '',
-                    imgUrlThree: '',
-                },
-                {
-                    id:'Rose',imgUrlOne:'',
-                    imgUrlTwo:'',
-                    imgUrlThree:'',
-                }
             ],
             stateColorIphone7:'',
 
@@ -39,14 +29,19 @@ let initialData ={
             buttonMemoryPrimeStatus:true,
             buttonRAM_NormalStatus:true,
             buttonRAM_PrimeStatus:true,
-            firstColor: '',
-            secondColor: '',
-            thirdColor: '',
             mainColor: ''
 
         },
     ],
-    showOption: true
+    color:[
+        {
+            color:'',imgUrlOne: '',
+            imgUrlTwo:'',
+            imgUrlThree:'',
+        },
+    ],
+    showOption: true,
+    indexOfColor: 0
 }
 
 const AdminReducer = (state = initialData,action) =>{
@@ -57,11 +52,14 @@ const AdminReducer = (state = initialData,action) =>{
                 showOption: action.status
             }
         }
+        case CHANGE_INDEX_OF_COLOR:{
+            return{
+                ...state,
+                indexOfColor: action.newIndex
+            }
+        }
 
     }
     return state;
 }
-
-export const changeStatusOfShowOption = (status) =>({type:CHANGE_STATUS_OF_SHOW_OPTION,status:status})
-
 export default AdminReducer;

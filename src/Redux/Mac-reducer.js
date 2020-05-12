@@ -34,17 +34,6 @@ let initialState = {
 
 
     ],
-    page: [
-        {id: 0, imgSrc: "https://i8.rozetka.ua/goods/17179027/apple_muhr2_images_17179027048.jpg", name:"Apple MacBook Pro 13", price: 50999,
-            onePhoto: "https://i2.rozetka.ua/goods/17178612/apple_muhp2_images_17178612984.jpg", twoPhoto:"https://i8.rozetka.ua/goods/17171769/191882174_images_17171769931.jpg",
-            characteristics: "Экран 13.3\" IPS (2560x1600), глянцевый / Intel Core i5-8257U (1.4 - 3.9 ГГц) / RAM 8 ГБ / SSD 256 ГБ / Intel Iris Plus Graphics 645 / Wi-Fi / Bluetooth / MacOS Mojave / 1.37 кг / серебристый"},
-        {id: 1, imgSrc: "https://i2.rozetka.ua/goods/10747076/apple_mpxq2ua_a_images_10747076260.jpg", name:"Apple A1708 MacBook Pro Retina 13", price: 42238,
-            onePhoto: "https://i2.rozetka.ua/goods/2039400/copy_apple_a1708_macbook_pro_13_mll42ua_a_5938218bbf3b1_images_2039400576.jpg",twoPhoto:"https://i2.rozetka.ua/goods/2039400/copy_apple_a1708_macbook_pro_13_mll42ua_a_5938218bbf3b1_images_2039400654.jpg",
-            characteristics:"Экран 13.3\" IPS (2560x1600) Retina, глянцевый / Intel Core i5 (2.3 - 3.6 ГГц) / RAM 8 ГБ / SSD 128 ГБ / Intel Iris Plus Graphics 640 / без ОД / Wi-Fi / Bluetooth / веб-камера / macOS Sierra / 1.37 кг / космический серый"},
-        {id: 2, imgSrc: "https://i8.rozetka.ua/goods/17134424/apple_macbook_air_13_128gb_2019_mvfm2_gold_images_17134424644.jpg", name:"Apple MacBook Air 13", price: 30999,
-            onePhoto: "https://i8.rozetka.ua/goods/17747610/apple_macbook_air_2020_256_gold_images_17747610619.jpg",twoPhoto:"https://i2.rozetka.ua/goods/17747608/apple_macbook_air_2020_256_gold_images_17747608435.jpg",
-            characteristics:"Экран 13.3\" IPS (2560x1600), глянцевый / Intel Core i3 (1.1 - 3.2 ГГц) / RAM 8 ГБ / SSD 256 ГБ / Intel Iris Plus Graphics / Wi-Fi / Bluetooth / macOS Catalina / 1.29 кг / золотой"},
-    ],
     min: 0,
     max: 3,
     centerContentShow:true

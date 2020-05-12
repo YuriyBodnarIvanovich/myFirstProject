@@ -4,70 +4,70 @@ import AppleStyle from "../Apple/Apple.module.css";
 import IphoneItems from './IphoneItems/iPhoneItems';
 import ButtonParameter from "./Button/ButtonParameter";
 import ButtonColor from "./Button/ButtonChangeColor";
-
+import {useDispatch, useSelector} from "react-redux";
+import ContentPage from "./ContentPage/ContentPage";
 const src_video = 'https://ak.picdn.net/shutterstock/videos/1042417903/preview/stock-footage-minsk-belarus-dec-close-up-woman-s-hands-keeping-and-unpacking-new-apple-iphone-pro.webm';
 
-const Iphone = (props)=>{
+const Iphone = ()=>{
+    const data = useSelector(state=>state.IphonePage);
+    const dataCart = useSelector(state=>state.CartPage);
+    const dispatch = useDispatch();
 
-    let iPhoneItems = props.data.arrayItems.map((p)=><IphoneItems name={p.name}
-                                                                  stateColorIphone7={p.stateColorIphone7}
-                                                                  price={p.price} index={p.key}
-                                                                  changeMainIndexOfArray={props.changeMainIndexOfArray}/>)
-
-    let iPhones = JSON.parse(JSON.stringify(props.data.array));
+    const iPhoneItems = data.iPhones.filter((_,index)=>
+            data.min <= index && index < data.max).map((element)=><IphoneItems
+            name={element.name}
+            stateColorIphone7={element.stateColorIphone7}
+            price={element.price} index={data.iPhones.indexOf(element)} dispatch={dispatch} key={element.key}/>)
     function last() {
-        let catalog = [];
-        let y = 0;
-        props.changeMin(props.min - 3);
-        props.changeMax(props.max - 3);
-
-        for(let i = props.min - 3; i < props.max - 3; i++){
-            catalog[y] = props.data.array[i];
-            y++;
+        if((data.iPhones.length - 2)% 3 ===0 && data.min === 0){
+            console.log('((data.iPhones.length - 2)% 3 ===0)');
+            dispatch({type:'CHANGE_MIN_IPHONES',value:data.iPhones.length -2 });
+            dispatch({type:'CHANGE_MAX_IPHONES',value:data.iPhones.length +1});
         }
-        props.changeIphoneItemsArray(catalog);
-        if(props.data.arrayItems[0] === props.data.array[3]){
-            props.changeStatusUp(false);
+        else if((data.iPhones.length - 1)% 3 ===0 && data.min === 0){
+            console.log('((data.iPhones.length - 1)% 3 ===0)');
+            dispatch({type:'CHANGE_MIN_IPHONES',value:data.iPhones.length -1 });
+            dispatch({type:'CHANGE_MAX_IPHONES',value:data.iPhones.length +2});
         }
-        if(props.data.arrayItems[0] === props.data.array[0]){
-            props.changeStatusUp(false);
-        }
-        props.changeStatusDawn(true);
-        props.changeNumberClickDown(props.numberClickDown - 3);
-    }
-    function next() {
-        let catalog = [];
-        let y = 0;
-        props.changeMin(props.min + 3);
-        props.changeMax(props.max +3);
-        for(let i = props.min + 3; i < props.max + 3; i++){
-            if(props.data.array[i] == null){
-                break;
-            }else {
-                catalog[y] = props.data.array[i];
-                y++;
+        else {
+            dispatch({type:'CHANGE_MIN_IPHONES',value:data.min - 3});
+            dispatch({type:'CHANGE_MAX_IPHONES',value:data.max - 3});
+            if(data.min === 0){
+                dispatch({type:'CHANGE_MIN_IPHONES',value:data.iPhones.length -3});
+                dispatch({type:'CHANGE_MAX_IPHONES',value:data.iPhones.length});
             }
         }
-        console.log(props.data.arrayItems.length)
-        props.changeIphoneItemsArray(catalog);
-        props.changeStatusUp(true);
-        props.changeNumberClickDown(props.numberClickDown + 3);
-        let difference  = props.data.array.length - props.numberClickDown;
-
-        if(difference < 3 ){
-            props.changeStatusDawn(false);
+    }
+    function next() {
+        if(data.max >= data.iPhones.length  -1 && data.iPhones.length % 3 === 0){
+            dispatch({type:'CHANGE_MIN_IPHONES',value:0});
+            dispatch({type:'CHANGE_MAX_IPHONES',value: 3});
+        }
+        if( data.max === data.iPhones.length  + 3  || data.max === data.iPhones.length  +4  && data.iPhones.length % 3 !== 0){
+            console.log('true');
+            dispatch({type:'CHANGE_MIN_IPHONES',value:0});
+            dispatch({type:'CHANGE_MAX_IPHONES',value: 3});
         }
 
+        if((data.iPhones.length - 2)% 3 ===0 && data.min === data.iPhones.length - 2){
+            console.log('((data.iPhones.length - 2)% 3 ===0)');
+            dispatch({type:'CHANGE_MIN_IPHONES',value: 0 });
+            dispatch({type:'CHANGE_MAX_IPHONES',value: 3});
+        }
+        else if((data.iPhones.length - 1)% 3 ===0 && data.min === data.iPhones.length - 1){
+            console.log('((data.iPhones.length - 1)% 3 ===0)');
+            dispatch({type:'CHANGE_MIN_IPHONES',value:0 });
+            dispatch({type:'CHANGE_MAX_IPHONES',value:3});
+        }
+        else {
+            dispatch({type:'CHANGE_MIN_IPHONES',value:data.min + 3});
+            dispatch({type:'CHANGE_MAX_IPHONES',value:data.max + 3});
+            if(data.min === data.iPhones.length -3){
+                dispatch({type:'CHANGE_MIN_IPHONES',value:0});
+                dispatch({type:'CHANGE_MAX_IPHONES',value:3});
+            }
+        }
     }
-    
-    function addToCart() {
-        let catalog = [];
-        catalog = JSON.parse(JSON.stringify(props.arrayOfCart));
-        catalog.push(JSON.parse(JSON.stringify(props.data.array[props.data.index])))
-        catalog[catalog.length - 1].key = catalog.length + 1;
-        props.changeArrayCart(catalog);
-    }
-
     return(
         <div className={AppleStyle.intro}>
             <div className={AppleStyle.video}>
@@ -75,45 +75,13 @@ const Iphone = (props)=>{
             </div>
             <div className={AppleStyle.intro_content}>
                 <div className={AppleStyle.container}>
-                    <div className={IphoneStyle.showPhone}>
-                        <div className={IphoneStyle.row}>
-                            <div>
-                                <img className={IphoneStyle.main_photo} src={props.data.array[props.data.index].stateColorIphone7} alt='some'/>
-                            </div>
-                            <div className={IphoneStyle.AdditionalInformation}>
-                                <div><h2>{props.data.array[props.data.index].name}</h2> </div>
-                                <ButtonColor data={props.data} changeMainArray={props.changeMainArray}
-                                             colorOfButton={props.colorOfButton} mainColor={props.mainColor}
-                                             changeMainColor={props.changeMainColor}/>
-                                <ButtonParameter  data={props.data} changeMainArray={props.changeMainArray}/>
-                                <div className={IphoneStyle.contentPrice}>
-                                    <b>Price: </b>
-                                    <b className={IphoneStyle.price}> {" " + props.data.array[props.data.index].price}</b>
-                                </div>
-
-                                <button onClick={addToCart}>Add to Cart</button>
-                            </div>
-                        </div>
-                        <div className={IphoneStyle.characterStyle}>
-                            <h3>
-                                 {"Screen  " + props.data.array[props.data.index].character.screen}
-                                 {" / Processor  " + props.data.array[props.data.index].character.processor}
-                                 {" / FrontCamera  " + props.data.array[props.data.index].character.camera.frontCamera}
-                                 {" / BasicCamera  " + props.data.array[props.data.index].character.camera.basicCamera}
-                                 {" / Internal Memory  " + props.data.array[props.data.index].character.internalMemory}
-                                 {" / Operating System  " + props.data.array[props.data.index].character.operatingSystem}
-                                 {" / RAM  " + props.data.array[props.data.index].character.RAM}
-                                 {" / Remainder  " + props.data.array[props.data.index].character.remainder}
-                            </h3>
-                        </div>
-                    </div>
+                    <ContentPage  data={data} dispatch={dispatch} dataCart={dataCart}/>
                     <div className={IphoneStyle.containerForItems}>
-                        {props.statusUp ? <button className={IphoneStyle.Up} onClick={last}>Up</button> : <button className={IphoneStyle.Up} disabled>Up</button> }
+                        <button className={IphoneStyle.Up} onClick={last}>Up</button>
                         <div className={IphoneStyle.forItems}>
                             {iPhoneItems}
                         </div>
-                        {props.statusDawn ? <button className={IphoneStyle.Dawn} onClick={next}>dawn</button> : <button className={IphoneStyle.Dawn} onClick={next} disabled>dawn</button>}
-
+                        <button className={IphoneStyle.Dawn} onClick={next}>dawn</button>
                     </div>
                 </div>
             </div>

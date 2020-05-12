@@ -1,14 +1,12 @@
 import React from 'react';
 import './App.css';
 import Menu from "./components/Menu/Menu";
-// import MacContainer from './components/Mac/Mac-Container';
 import AppleContainer from "./components/Apple/Apple-Container";
 import {BrowserRouter,Route} from 'react-router-dom';
-import IphoneContainer from "./components/IPhone/Iphone-Container";
-import CartContainer from "./components/Cart/Cart-Container";
 import Admin from "./components/Admin/Admin";
-import AdminContainer from "./components/Admin/Admin-Container";
 import Mac from "./components/Mac/Mac";
+import Iphone from "./components/IPhone/Iphone";
+import Cart from "./components/Cart/Cart";
 
 function App(props) {
   return (
@@ -21,11 +19,11 @@ function App(props) {
                     <Route path='/Apple'
                            render={ () => <AppleContainer />} />
                     <Route path='/IPhone'
-                           render={ () => <IphoneContainer />} />
+                           render={ () => <Iphone />} />
                     <Route path='/Cart'
-                           render={ () => <CartContainer />} />
+                           render={ () => <Cart />} />
                     <Route path='/Admin'
-                           render={ () => <AdminContainer/>} />
+                           render={ () => <Admin/>} />
                 </div>
             </div>
       </BrowserRouter>
