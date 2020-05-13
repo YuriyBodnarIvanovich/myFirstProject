@@ -16,15 +16,12 @@ const Admin = () =>{
         catalog = [...dataIPhones.iPhones];
         catalog[dataIPhones.adminIndex].name = name;
         dispatch({type:'CHANGE_ARRAY',array:catalog});
-        // props.changeMainArray(catalog);
     }
     function changePrice(price) {
         let catalog = [];
         catalog = [...dataIPhones.iPhones];
         catalog[dataIPhones.adminIndex].price = price;
         dispatch({type:'CHANGE_ARRAY',array:catalog});
-
-        // props.changeMainArray(catalog);
     }
     function changePhoto(photo) {
         let catalog = [];
@@ -94,21 +91,30 @@ const Admin = () =>{
         dispatch({type:'CHANGE_ARRAY',array:catalog});
     }
     function up() {
-        // props.changeAdminIndex(props.adminIndex - 1)
+
+        if(dataIPhones.adminIndex === 0){
+            dispatch({type:'CHANGE_ADMIN_INDEX', index:dataIPhones.iPhones.length-1 });
+        }
+        else {
+            dispatch({type:'CHANGE_ADMIN_INDEX', index:dataIPhones.adminIndex -1 });
+        }
     }
     function down() {
-        // props.changeAdminIndex(props.adminIndex + 1)
+
+        if(dataIPhones.adminIndex === dataIPhones.iPhones.length-1){
+            dispatch({type:'CHANGE_ADMIN_INDEX', index:0});
+        }
+        else {
+            dispatch({type:'CHANGE_ADMIN_INDEX', index:dataIPhones.adminIndex +1 });
+        }
     }
 
     function addNewProduct() {
         let catalog = [];
         catalog = JSON.parse(JSON.stringify(dataIPhones.iPhones));
         catalog.unshift(JSON.parse(JSON.stringify(dataAdmin.newElement[0])));
-        // props.changeMainArray(catalog);
         dispatch({type:'CHANGE_ARRAY',array:catalog});
         dispatch({type:'CHANGE_STATUS_OF_SHOW_OPTION',status:false});
-        // props.changeStatusOfShowOption(false);
-        // console.log(props.iPhones);
     }
 
     function showOption() {

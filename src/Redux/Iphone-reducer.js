@@ -14,7 +14,12 @@ let initialDate ={
      iPhones: [
         {
             key: 0,
-            name: 'Apple iPhone 7', price:'10499',
+            name: 'Apple iPhone 7', price:10499,
+            startPrice:10499,
+            startPriceRAM:0,
+            startPriceInternalMemory: 0,
+            startPriceBasicCamera: 0,
+            startPriceFrontCamera: 0,
             character: {
                 screen: '(4.7", IPS, 1334x750)',processor:'Apple A10 Fusion',
                 RAM:'2 ГБ',internalMemory:'32 ГБ',
@@ -42,6 +47,26 @@ let initialDate ={
                 }
             ],
             stateColorIphone7:'https://i1.rozetka.ua/goods/1757072/apple_iphone_7_32gb_gold_images_1757072500.jpg',
+            buttonOption:[
+                {
+                    RAM: {value:'2 Гб',price:0},
+                    internalMemory:{value:'32 Гб',price:0},
+                    basicCamera:{value:'12 Мп',price:0},
+                    frontCamera:{value:'7 Мп',price:0},
+                },
+                {
+                    RAM: {value:'3 Гб',price:1000},
+                    internalMemory:{value:'64 Гб',price:1200},
+                    basicCamera:{value:'13 Мп',price:700},
+                    frontCamera:{value:'8 Мп',price:500},
+                },
+                {
+                    RAM: {value:'4 Гб',price:2000},
+                    internalMemory:{value:'128 Гб',price:2500},
+                    basicCamera:{value:'16 Мп',price:2000},
+                    frontCamera:{value:'12 Мп',price: 1700},
+                },
+            ],
 
             buttonNormalPrimeStatus: true,
             buttonCameraPrimeStatus: true,
@@ -65,6 +90,11 @@ let initialDate ={
          {
              key: 1,
              name: 'Apple iPhone 8', price:13999,
+             startPrice:13999,
+             startPriceRAM:0,
+             startPriceInternalMemory: 0,
+             startPriceBasicCamera: 0,
+             startPriceFrontCamera: 0,
              character: {
                  screen: '(4.7", IPS, 1334х750)',processor:'Apple A11 Bionic',
                  RAM:'2 ГБ',internalMemory:'64 ГБ',
@@ -92,6 +122,26 @@ let initialDate ={
                  }
              ],
              stateColorIphone7:'https://i1.rozetka.ua/goods/2356298/apple_iphone_8_64gb_gold_images_2356298777.jpg',
+             buttonOption:[
+                 {
+                     RAM: {value:'2 Гб',price:0},
+                     internalMemory:{value:'64 Гб',price:0},
+                     basicCamera:{value:'12 Мп',price:0},
+                     frontCamera:{value:'7 Мп',price:0},
+                 },
+                 {
+                     RAM: {value:'3 Гб',price:750},
+                     internalMemory:{value:'128 Гб',price:900},
+                     basicCamera:{value:'14 Мп',price:1200},
+                     frontCamera:{value:'8 Мп',price:1000},
+                 },
+                 {
+                     RAM: {value:'4 Гб',price:1500},
+                     internalMemory:{value:'264 Гб',price:1800},
+                     basicCamera:{value:'16 Мп',price:2400},
+                     frontCamera:{value:'12 Мп',price:2400},
+                 },
+             ],
 
              buttonNormalPrimeStatus: true,
              buttonCameraPrimeStatus: true,
@@ -115,6 +165,11 @@ let initialDate ={
          {
              key:2,
              name: 'Apple iPhone 11 Pro', price:32999,
+             startPrice:32999,
+             startPriceRAM:0,
+             startPriceInternalMemory: 0,
+             startPriceBasicCamera: 0,
+             startPriceFrontCamera: 0,
              character: {
                  screen: '(5.8", OLED (Super Retina XDR)',processor:'Apple A13 Bionic',
                  RAM:'4 ГБ',internalMemory:'64 ГБ',
@@ -143,7 +198,26 @@ let initialDate ={
              ],
 
              stateColorIphone7:'https://i2.rozetka.ua/goods/14627865/copy_apple_iphone_11_pro_64gb_space_gray_5daee6335b321_images_14627865069.jpg',
-
+             buttonOption:[
+                 {
+                     RAM: {value:'4 Гб',price:0},
+                     internalMemory:{value:'64 Гб',price:0},
+                     basicCamera:{value:'12 Мп',price:0},
+                     frontCamera:{value:'12 Мп',price:0},
+                 },
+                 {
+                     RAM: {value:'6 Гб',price:2500},
+                     internalMemory:{value:'128 Гб',price:1800},
+                     basicCamera:{value:'14 Мп',price:2000},
+                     frontCamera:{value:'14 Мп',price:2000},
+                 },
+                 {
+                     RAM: {value:'8 Гб',price:8000},
+                     internalMemory:{value:'264 Гб',price:3600},
+                     basicCamera:{value:'16 Мп',price:4000},
+                     frontCamera:{value:'16 Мп',price:4000},
+                 },
+             ],
              buttonNormalPrimeStatus: true,
              buttonCameraPrimeStatus: true,
              buttonMemoryNormalStatus:true,
@@ -166,6 +240,11 @@ let initialDate ={
          {
              key: 3,
              name: 'Apple iPhone Xs', price:20499,
+             startPrice:20499,
+             startPriceRAM: 0,
+             startPriceInternalMemory: 0,
+             startPriceBasicCamera: 0,
+             startPriceFrontCamera: 0,
              character: {
                  screen: '(5.8", OLED (Super Retina HD),',processor:'Apple A12 Bionic',
                  RAM:'2 ГБ',internalMemory:'64 ГБ',
@@ -193,7 +272,26 @@ let initialDate ={
                  }
              ],
              stateColorIphone7:'https://i8.rozetka.ua/goods/16325894/copy_apple_iphone_xs_64_gb_space_gray_5e1d9b20d628e_images_16325894376.jpg',
-
+             buttonOption:[
+                 {
+                     RAM: {value:'2 Гб',price:0},
+                     internalMemory:{value:'64 Гб',price:0},
+                     basicCamera:{value:'12 Мп',price:0},
+                     frontCamera:{value:'7 Мп',price:0},
+                 },
+                 {
+                     RAM: {value:'3 Гб',price:1000},
+                     internalMemory:{value:'128 Гб',price:900},
+                     basicCamera:{value:'14 Мп',price:1500},
+                     frontCamera:{value:'8 Мп',price:1200},
+                 },
+                 {
+                     RAM: {value:'4 Гб',price:2000},
+                     internalMemory:{value:'264 Гб',price: 1800},
+                     basicCamera:{value:'16 Мп ',price:3000},
+                     frontCamera:{value:'10 Мп',price:2400},
+                 },
+             ],
              buttonNormalPrimeStatus: true,
              buttonCameraPrimeStatus: true,
              buttonMemoryNormalStatus:true,
@@ -208,6 +306,11 @@ let initialDate ={
          {
              key: 4,
              name: 'Apple iPhone SE', price:14500,
+             startPrice:14500,
+             startPriceRAM:0,
+             startPriceInternalMemory: 0,
+             startPriceBasicCamera: 0,
+             startPriceFrontCamera: 0,
              character: {
                  screen: '(4.7", IPS, 1334x750)',processor:'Apple A10 Fusion',
                  RAM:'2 ГБ',internalMemory:'64 ГБ',
@@ -235,7 +338,26 @@ let initialDate ={
                  }
              ],
              stateColorIphone7:'https://i8.rozetka.ua/goods/17801797/apple_iphone_se_64gb_white_images_17801797603.png',
-
+             buttonOption:[
+                 {
+                     RAM: {value:'2 Гб',price:0},
+                     internalMemory:{value:'64 Гб',price:0},
+                     basicCamera:{value:'12 Мп',price:0},
+                     frontCamera:{value:'7 Мп',price:0},
+                 },
+                 {
+                     RAM: {value:'3 Гб',price:1000},
+                     internalMemory:{value:'128 Гб',price:900},
+                     basicCamera:{value:'14 Мп',price:1500},
+                     frontCamera:{value:'8 Мп',price:1200},
+                 },
+                 {
+                     RAM: {value:'4 Гб',price:2000},
+                     internalMemory:{value:'264 Гб',price: 1800},
+                     basicCamera:{value:'16 Мп ',price:3000},
+                     frontCamera:{value:'10 Мп',price:2400},
+                 },
+             ],
              buttonNormalPrimeStatus: true,
              buttonCameraPrimeStatus: true,
              buttonMemoryNormalStatus:true,
@@ -249,6 +371,11 @@ let initialDate ={
          {
              key: 5,
              name: 'Apple iPhone 11', price:25000,
+             startPrice:25000,
+             startPriceRAM:0,
+             startPriceInternalMemory: 0,
+             startPriceBasicCamera: 0,
+             startPriceFrontCamera: 0,
              character: {
                  screen: '(6.1", IPS (Liquid Retina HD)',processor:'Apple A13 Bionic',
                  RAM:'4 ГБ',internalMemory:'128 ГБ',
@@ -276,7 +403,26 @@ let initialDate ={
                  }
              ],
              stateColorIphone7:'https://i1.rozetka.ua/goods/14762258/copy_apple_iphone_11_128gb_red_5db814d987ff2_images_14762258688.png',
-
+             buttonOption:[
+                 {
+                     RAM: {value:'4 Гб',price:0},
+                     internalMemory:{value:'128 Гб',price:0},
+                     basicCamera:{value:'12 Мп',price:0},
+                     frontCamera:{value:'12 Мп',price:0},
+                 },
+                 {
+                     RAM: {value:'5 Гб',price:1000},
+                     internalMemory:{value:'264 Гб',price: 1400},
+                     basicCamera:{value:'14 Мп',price:1800},
+                     frontCamera:{value:'14 Мп',price:1800},
+                 },
+                 {
+                     RAM: {value:'6 Гб',price:2000},
+                     internalMemory:{value:'528 Гб',price:3000},
+                     basicCamera:{value:'16 Мп',price:3600},
+                     frontCamera:{value:'16 Мп',price:3600},
+                 },
+             ],
              buttonNormalPrimeStatus: true,
              buttonCameraPrimeStatus: true,
              buttonMemoryNormalStatus:true,
@@ -290,6 +436,11 @@ let initialDate ={
          {
              key: 6,
              name: 'Apple iPhone Xs Max', price:27000,
+             startPrice:27000,
+             startPriceRAM:0,
+             startPriceInternalMemory: 0,
+             startPriceBasicCamera: 0,
+             startPriceFrontCamera: 0,
              character: {
                  screen: '(6.5", OLED (Super Retina HD)',processor:'Apple A10 Fusion',
                  RAM:'2 ГБ',internalMemory:'32 ГБ',
@@ -317,7 +468,26 @@ let initialDate ={
                  }
              ],
              stateColorIphone7:'https://i8.rozetka.ua/goods/16327049/copy_apple_iphone_xs_max_256_gb_gold_5e1dad97d9101_images_16327049117.jpg',
-
+             buttonOption:[
+                 {
+                     RAM: {value:'2 Гб',price:0},
+                     internalMemory:{value:'32 Гб',price:0},
+                     basicCamera:{value:'12 Гб',price:0},
+                     frontCamera:{value:'7 Гб',price:0},
+                 },
+                 {
+                     RAM: {value:'3 Гб',price:1100},
+                     internalMemory:{value:'64 Гб',price:1000},
+                     basicCamera:{value:'13 Мп',price:1500},
+                     frontCamera:{value:'8 Мп',price:1300},
+                 },
+                 {
+                     RAM: {value:'4 Гб',price:2200},
+                     internalMemory:{value:'128 Гб',price:2500},
+                     basicCamera:{value:'14 Мп',price:3000},
+                     frontCamera:{value:'10 Мп',price:3400},
+                 },
+             ],
              buttonNormalPrimeStatus: true,
              buttonCameraPrimeStatus: true,
              buttonMemoryNormalStatus:true,
@@ -331,6 +501,11 @@ let initialDate ={
          {
              key: 7,
              name: 'iPhone Xr', price:18500,
+             startPrice:18500,
+             startPriceRAM:0,
+             startPriceInternalMemory: 0,
+             startPriceBasicCamera: 0,
+             startPriceFrontCamera: 0,
              character: {
                  screen: '(6.1", IPS, 1792х828)',processor:'Apple A12 Bionic',
                  RAM:'2 ГБ',internalMemory:'64 ГБ',
@@ -358,7 +533,26 @@ let initialDate ={
                  }
              ],
              stateColorIphone7:'https://i1.foxtrot.com.ua/product/MediumImages/6423091_1.jpg',
-
+             buttonOption:[
+                 {
+                     RAM: {value:'2 Гб',price:0},
+                     internalMemory:{value:'64 Гб',price:0},
+                     basicCamera:{value:'12 Гб',price:0},
+                     frontCamera:{value:'7 Гб',price:0},
+                 },
+                 {
+                     RAM: {value:'3 Гб',price:1100},
+                     internalMemory:{value:'128 Гб',price:1000},
+                     basicCamera:{value:'13 Мп',price:1500},
+                     frontCamera:{value:'8 Мп',price:1300},
+                 },
+                 {
+                     RAM: {value:'4 Гб',price:2200},
+                     internalMemory:{value:'264 Гб',price:2500},
+                     basicCamera:{value:'14 Мп',price:3000},
+                     frontCamera:{value:'10 Мп',price:3400},
+                 },
+             ],
              buttonNormalPrimeStatus: true,
              buttonCameraPrimeStatus: true,
              buttonMemoryNormalStatus:true,
@@ -372,6 +566,11 @@ let initialDate ={
          {
              key: 8,//false not active
              name: 'iPhone 7 Plus', price:13500,
+             startPrice:13500,
+             startPriceRAM:0,
+             startPriceInternalMemory: 0,
+             startPriceBasicCamera: 0,
+             startPriceInternalFrontCamera: 0,
              character: {
                  screen: '(4.7", IPS, 1334x750)',processor:'Apple A10 Fusion',
                  RAM:'2 ГБ',internalMemory:'32 ГБ',
@@ -399,7 +598,26 @@ let initialDate ={
                  }
              ],
              stateColorIphone7:'https://i1.foxtrot.com.ua/product/MediumImages/6307826_1.jpg',
-
+             buttonOption:[
+                 {
+                     RAM: {value:'2 Гб',price:0},
+                     internalMemory:{value:'32 Гб',price:0},
+                     basicCamera:{value:'12 Гб',price:0},
+                     frontCamera:{value:'7 Гб',price:0},
+                 },
+                 {
+                     RAM: {value:'3 Гб',price:1100},
+                     internalMemory:{value:'64 Гб',price:1000},
+                     basicCamera:{value:'13 Мп',price:1500},
+                     frontCamera:{value:'8 Мп',price:1300},
+                 },
+                 {
+                     RAM: {value:'4 Гб',price:2200},
+                     internalMemory:{value:'128 Гб',price:2500},
+                     basicCamera:{value:'14 Мп',price:3000},
+                     frontCamera:{value:'10 Мп',price:3400},
+                 },
+             ],
              buttonNormalPrimeStatus: true,
              buttonCameraPrimeStatus: true,
              buttonMemoryNormalStatus:true,

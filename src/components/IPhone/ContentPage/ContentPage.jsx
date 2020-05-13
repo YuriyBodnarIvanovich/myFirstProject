@@ -1,6 +1,7 @@
 import React from "react";
 import IphoneStyle from "../Iphone.module.css";
 import ButtonColor from "../Button/ButtonChangeColor";
+import ButtonParameter from "../Button/ButtonParameter";
 
 const ContentPage = (props) =>{
 
@@ -27,6 +28,7 @@ const ContentPage = (props) =>{
                     <div className={IphoneStyle.row}>
                         {colorArray}
                     </div>
+                    <ButtonParameter data={props.data} dispatch={props.dispatch} />
                     <div className={IphoneStyle.contentPrice}>
                         <b>Price: </b>
                         <b className={IphoneStyle.price}> {" " + props.data.iPhones[props.data.indexOfMainArray].price}</b>
