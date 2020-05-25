@@ -16,7 +16,7 @@
 }
 
 .explain{
-    width: 600px;
+    width: 700px;
     height: 600px;
     background-color: white;
     border-radius: 30px;
@@ -100,4 +100,15 @@
 .character b{
     display: block;
     width: 300px;
+}
+
+.last{
+    width: 60px;
+    height: 30px;
+    margin-top: 150px;
+}
+.next{
+    width: 60px;
+    height: 30px;
+    margin-top: 150px;
 }

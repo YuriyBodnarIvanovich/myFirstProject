@@ -1,10 +1,16 @@
 const CHANGE_STATUS_OF_SHOW_OPTION = 'CHANGE_STATUS_OF_SHOW_OPTION';
 const CHANGE_INDEX_OF_COLOR = 'CHANGE_INDEX_OF_COLOR';
+const CHANGE_STATUS_OF_OPTION_BUTTON_ADMIN = 'CHANGE_STATUS_OF_OPTION_BUTTON_ADMIN';
 
 let initialData ={
     newElement: [
         {
-            name: '', price: 0,
+            name: '', price:0,
+            startPrice:0,//the some price but not change
+            startPriceRAM:0,
+            startPriceInternalMemory: 0,
+            startPriceBasicCamera: 0,
+            startPriceInternalFrontCamera: 0,
             character: {
                 screen: '',processor:'',
                 RAM:'',internalMemory:'',
@@ -16,31 +22,54 @@ let initialData ={
             },
             photo:[
                 {
-                    color:'',imgUrlOne: '',
-                    imgUrlTwo:'',
-                    imgUrlThree:'',
+                    color:'',
+                    imgSrc:[
+                        {src:''},
+                        {src:''},
+                        {src:''},
+                    ],
                 },
             ],
             stateColorIphone7:'',
-
+            buttonOption:[
+                {
+                    RAM: {value:'',price:0},
+                    internalMemory:{value:'',price:0},
+                    basicCamera:{value:'',price:0},
+                    frontCamera:{value:'',price:0},
+                },
+            ],
             buttonNormalPrimeStatus: true,
             buttonCameraPrimeStatus: true,
             buttonMemoryNormalStatus:true,
             buttonMemoryPrimeStatus:true,
             buttonRAM_NormalStatus:true,
             buttonRAM_PrimeStatus:true,
-            mainColor: ''
+            mainColor: '',
+            status: true,
 
         },
     ],
-    color:[
+    photo:[//new element for color array in element of array iphone
         {
-            color:'',imgUrlOne: '',
-            imgUrlTwo:'',
-            imgUrlThree:'',
+            color:'',
+            imgSrc:[
+                {src:''},
+                {src:''},
+                {src:''},
+            ],
+        },
+    ],
+    buttonOption:[// new element for options
+        {
+            RAM: {value:'',price:0},
+            internalMemory:{value:'',price:0},
+            basicCamera:{value:'',price:0},
+            frontCamera:{value:'',price:0},
         },
     ],
     showOption: true,
+    statusOfOptionButton: false,
     indexOfColor: 0
 }
 
@@ -58,7 +87,12 @@ const AdminReducer = (state = initialData,action) =>{
                 indexOfColor: action.newIndex
             }
         }
-
+        case CHANGE_STATUS_OF_OPTION_BUTTON_ADMIN:{
+            return{
+                ...state,
+                statusOfOptionButton: action.upStatus
+            }
+        }
     }
     return state;
 }

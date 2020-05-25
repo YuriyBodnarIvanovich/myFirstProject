@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import './App.css';
 import Menu from "./components/Menu/Menu";
 import AppleContainer from "./components/Apple/Apple-Container";
@@ -7,6 +7,8 @@ import Admin from "./components/Admin/Admin";
 import Mac from "./components/Mac/Mac";
 import Iphone from "./components/IPhone/Iphone";
 import Cart from "./components/Cart/Cart";
+import axios from "axios";
+import {useDispatch} from "react-redux";
 
 function App(props) {
   return (
@@ -19,7 +21,7 @@ function App(props) {
                     <Route path='/Apple'
                            render={ () => <AppleContainer />} />
                     <Route path='/IPhone'
-                           render={ () => <Iphone />} />
+                           render={ () =><Iphone />} />
                     <Route path='/Cart'
                            render={ () => <Cart />} />
                     <Route path='/Admin'

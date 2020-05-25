@@ -2,15 +2,13 @@ import React from "react";
 import AdminStyle from './Admin.module.css';
 import {useDispatch, useSelector} from "react-redux";
 import ButtonColor from "../IPhone/Button/ButtonChangeColor";
+import axios from "axios";
+import ButtonParameter from "../IPhone/Button/ButtonParameter";
 
 const Admin = () =>{
     const dataAdmin = useSelector(state=>state.AdminPage);
     const dataIPhones = useSelector(state=>state.IphonePage);
     const dispatch = useDispatch();
-
-    const colorShow = dataIPhones.iPhones[dataIPhones.adminIndex].photo.map((element,index)=>
-        <ButtonColor color={element.color} id={index} data={dataIPhones} dispatch={dispatch}/>);
-
     function changeName(name) {
         let catalog = [];
         catalog = [...dataIPhones.iPhones];
@@ -35,17 +33,17 @@ const Admin = () =>{
         catalog[dataIPhones.adminIndex].photo[dataAdmin.indexOfColor].color = color;
         dispatch({type:'CHANGE_ARRAY',array:catalog});
     }
-    function addPhoto(photo) {
+    function addPhoto(photo,id) {
         let catalog = [];
         catalog = JSON.parse(JSON.stringify(dataIPhones.iPhones));
-        catalog[dataIPhones.adminIndex].photo[dataAdmin.indexOfColor].imgUrlOne = photo;
+        catalog[dataIPhones.adminIndex].photo[dataAdmin.indexOfColor].imgSrc[id].src = photo;
         catalog[dataIPhones.adminIndex].stateColorIphone7 = photo;
         dispatch({type:'CHANGE_ARRAY',array:catalog});
     }
     function addNewColor() {
         let catalog = [];
         catalog = JSON.parse(JSON.stringify(dataIPhones.iPhones));
-        catalog[dataIPhones.adminIndex].photo.push(dataAdmin.color[0]);
+        catalog[dataIPhones.adminIndex].photo.push(dataAdmin.photo[0]);
         dispatch({type:'CHANGE_ARRAY',array:catalog});
         dispatch({type:'CHANGE_INDEX_OF_COLOR',newIndex:dataAdmin.indexOfColor + 1});
     }
@@ -91,7 +89,6 @@ const Admin = () =>{
         dispatch({type:'CHANGE_ARRAY',array:catalog});
     }
     function up() {
-
         if(dataIPhones.adminIndex === 0){
             dispatch({type:'CHANGE_ADMIN_INDEX', index:dataIPhones.iPhones.length-1 });
         }
@@ -108,6 +105,35 @@ const Admin = () =>{
             dispatch({type:'CHANGE_ADMIN_INDEX', index:dataIPhones.adminIndex +1 });
         }
     }
+    function last() {
+
+        let array = [];
+        array = JSON.parse(JSON.stringify(dataIPhones.iPhones));
+        if(dataIPhones.indexOfPhoto === 0){
+            dispatch({type:'CHANGE_INDEX_OF_PHOTO',newIndex: 2});
+
+        }
+        else {
+            dispatch({type:'CHANGE_INDEX_OF_PHOTO',newIndex:dataIPhones.indexOfPhoto - 1});
+        }
+        array[dataIPhones.adminIndex].stateColorIphone7 =
+            array[dataIPhones.adminIndex].photo[dataIPhones.indexOfColor].imgSrc[dataIPhones.indexOfPhoto].src;
+        dispatch({type:'CHANGE_ARRAY',array:array});
+    }
+    function next() {
+
+        let array = [];
+        array = JSON.parse(JSON.stringify(dataIPhones.iPhones));
+        if(dataIPhones.indexOfPhoto <2){
+            dispatch({type:'CHANGE_INDEX_OF_PHOTO',newIndex:dataIPhones.indexOfPhoto + 1});
+        }
+        else {
+            dispatch({type:'CHANGE_INDEX_OF_PHOTO',newIndex:0});
+        }
+        array[dataIPhones.adminIndex].stateColorIphone7 =
+            array[dataIPhones.adminIndex].photo[dataIPhones.indexOfColor].imgSrc[dataIPhones.indexOfPhoto].src;
+        dispatch({type:'CHANGE_ARRAY',array:array});
+    }
 
     function addNewProduct() {
         let catalog = [];
@@ -116,7 +142,6 @@ const Admin = () =>{
         dispatch({type:'CHANGE_ARRAY',array:catalog});
         dispatch({type:'CHANGE_STATUS_OF_SHOW_OPTION',status:false});
     }
-
     function showOption() {
         return(
             <div className={AdminStyle.main}>
@@ -128,23 +153,34 @@ const Admin = () =>{
         )
     }
     function showProduct() {
+        const colorShow = dataIPhones.iPhones[dataIPhones.adminIndex].photo.map((element,index)=>
+            <ButtonColor color={element.color} id={index} data={dataIPhones} dispatch={dispatch} way='admin'/>);
+
         return(
             <div className={AdminStyle.main}>
                 <div className={AdminStyle.container}>
                     <button className={AdminStyle.up} onClick={up}>Up</button>
                     <div className={AdminStyle.explain}>
-                        <div className={AdminStyle.container_two}>
-                            <div>
-                                <img src={dataIPhones.iPhones[dataIPhones.adminIndex].stateColorIphone7} className={AdminStyle.img}/>
-                            </div>
-                            <div>
-                                <h3>{dataIPhones.iPhones[dataIPhones.adminIndex].name}</h3>
-                                <div className={AdminStyle.row}>
-                                    {colorShow}
+                        <div>
+                            <div className={AdminStyle.container_two}>
+                                <button className={AdminStyle.last} onClick={last}>last</button>
+                                <div>
+                                    <img src={dataIPhones.iPhones[dataIPhones.adminIndex].stateColorIphone7} className={AdminStyle.img}/>
                                 </div>
-                                <br/>
-                                <h3>{'Price:  ' + dataIPhones.iPhones[dataIPhones.adminIndex].price}</h3>
+                                <button className={AdminStyle.next} onClick={next}>next</button>
+                                <div style={{marginLeft:'50px'}}>
+                                    <h3>{dataIPhones.iPhones[dataIPhones.adminIndex].name}</h3>
+                                    <div className={AdminStyle.row}>
+                                        {colorShow}
+                                    </div>
+                                    <br/>
+                                    <h3>{'Price:  ' + dataIPhones.iPhones[dataIPhones.adminIndex].price}</h3>
+                                    <div>
+                                        <ButtonParameter data={dataIPhones} dispatch={dispatch} word={'Admin'} from={dataIPhones.adminIndex}/>
+                                    </div>
+                                </div>
                             </div>
+
                         </div>
                         <div>
                             <h3>
@@ -177,13 +213,32 @@ const Admin = () =>{
                                       value={dataIPhones.iPhones[dataIPhones.adminIndex].photo[dataAdmin.indexOfColor].color}>
                             </textarea>
                             <p>
-                                Input photo for this color:
+                                Input photo for this color:<br/>
+
                             </p>
-                            <textarea onChange={(event)=>{addPhoto(event.target.value)}}
-                                      value={dataIPhones.iPhones[dataIPhones.adminIndex].photo[dataAdmin.indexOfColor].imgUrlOne}>
+                            <b><br/>First color:<br/></b>
+                            <textarea onChange={(event)=>{addPhoto(event.target.value,0)}}
+                                      value={dataIPhones.iPhones[dataIPhones.adminIndex].photo[dataAdmin.indexOfColor].imgSrc[0].src}>
+                            </textarea>
+                            <b><br/>Second color<br/></b>
+                            <textarea onChange={(event)=>{addPhoto(event.target.value,1)}}
+                                  value={dataIPhones.iPhones[dataIPhones.adminIndex].photo[dataAdmin.indexOfColor].imgSrc[1].src}>
+                            </textarea>
+                             <b><br/>Third color<br/></b>
+                            <textarea onChange={(event)=>{addPhoto(event.target.value,2)}}
+                                  value={dataIPhones.iPhones[dataIPhones.adminIndex].photo[dataAdmin.indexOfColor].imgSrc[2].src}>
                             </textarea>
                             <br />
-                            <button onClick={addNewColor}>add new color</button>
+                            <button onClick={addNewColor}>add new color</button>//Add function and create button 24/05/2020
+                            <p>Options:</p>
+                            <b><br/>Ram:<br/></b>
+                            <textarea > </textarea>
+                            <b><br/>Internal Memory:<br/></b>
+                            <textarea> </textarea>
+                            <b><br/>Front Camera:<br/></b>
+                            <textarea> </textarea>
+                            <b><br/>Basic Camera:<br/></b>
+                            <textarea> </textarea>
                         <div className={AdminStyle.character}>
                             <div>
                                 <h1>Features: </h1>
@@ -234,11 +289,30 @@ const Admin = () =>{
             </div>
         )
     }
+
+    function download() {
+        axios.get('http://localhost:3001/iPhone').then((response) => {
+            let resData = response.data;
+            console.log(resData);
+            dispatch({type:'CHANGE_ARRAY',array:resData});
+        });
+        return(
+            <h1 style={{color:'#fff'}}>Waiting download</h1>
+        )
+    }
     const status = dataAdmin.showOption;
-    if(status){
-        return showOption();
+    function showPage() {
+            if(status){
+                return showOption();
+            }else {
+                return  showProduct();
+            }
+    }
+
+    if(dataIPhones.iPhones.length === 0){
+        return download();
     }else {
-        return  showProduct();
+        return  showPage();
     }
 
 }

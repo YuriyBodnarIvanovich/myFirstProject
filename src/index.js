@@ -4,8 +4,8 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import store from "./Redux/redux-store";
-import {Provider} from 'react-redux';
-
+import {Provider, useDispatch} from 'react-redux';
+import axios from "axios";
 ReactDOM.render(
   <React.StrictMode>
       <Provider store={store}>
