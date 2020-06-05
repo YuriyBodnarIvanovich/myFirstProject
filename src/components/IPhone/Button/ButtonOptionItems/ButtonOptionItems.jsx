@@ -6,11 +6,12 @@ const ButtonOptionItem = (props) =>{
         array=[...props.data.iPhones];
         array[props.data.indexOfMainArray][props.option] = props.price;
 
-        array[props.data.indexOfMainArray].price = array[props.data.indexOfMainArray].startPrice +
-        array[props.data.indexOfMainArray].startPriceRAM
-        + array[props.data.indexOfMainArray].startPriceInternalMemory
-        + array[props.data.indexOfMainArray].startPriceFrontCamera
-        + array[props.data.indexOfMainArray].startPriceBasicCamera;
+        array[props.data.indexOfMainArray].price = Number(array[props.data.indexOfMainArray].startPrice) +
+            Number(array[props.data.indexOfMainArray].startPriceRAM)
+        + Number(array[props.data.indexOfMainArray].startPriceInternalMemory)
+        + Number(array[props.data.indexOfMainArray].startPriceFrontCamera)
+        + Number(array[props.data.indexOfMainArray].startPriceBasicCamera);
+        
         props.dispatch({type:'CHANGE_ARRAY',array:array});
     }
     function nothing() {

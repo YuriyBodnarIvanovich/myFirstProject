@@ -12,7 +12,7 @@ const ButtonParameter = (props) =>{
                 index={index}
                 data={props.data}
                 dispatch={props.dispatch}
-                option='RAM'/>)
+                option='startPriceRAM'/>)
     const buttonOptionCatalogInternalMemory = props.data.iPhones[props.from].buttonOption
         .map((element,index)=>
             <ButtonOptionItem
@@ -21,7 +21,7 @@ const ButtonParameter = (props) =>{
                 index={index}
                 data={props.data}
                 dispatch={props.dispatch}
-                option='InternalMemory'/>)
+                option='startPriceInternalMemory'/>)
     const buttonOptionCatalogFrontCamera = props.data.iPhones[props.from].buttonOption
         .map((element,index)=>
             <ButtonOptionItem
@@ -30,7 +30,7 @@ const ButtonParameter = (props) =>{
                 index={index}
                 data={props.data}
                 dispatch={props.dispatch}
-                option='FrontCamera'/>)
+                option='startPriceFrontCamera'/>)
     const buttonOptionCatalogBasicCamera = props.data.iPhones[props.from].buttonOption
         .map((element,index)=>
             <ButtonOptionItem
@@ -39,7 +39,7 @@ const ButtonParameter = (props) =>{
                 index={index}
                 data={props.data}
                 dispatch={props.dispatch}
-                option='BasicCamera'/>)
+                option='startPriceBasicCamera'/>)
     return(
         <div>
             <b>Ram:</b>

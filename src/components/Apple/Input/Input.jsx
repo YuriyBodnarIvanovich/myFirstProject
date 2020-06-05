@@ -3,48 +3,43 @@ import InputStyle from './Input.module.css';
 import SingIn from "./Sing in/SingIn";
 
 const Input = (props) =>{
-    let status = props.authentication;
+    let status = props.data.authentication;
     
     
     function checkActiveButton() {
-        if(props.savedName==='' || props.savedEmail==='' || props.savedPassword === ''){
-            return    <input type="submit" value="Login" onClick={login} id='loginButton' disabled/>;
+        if(props.data.savedName==='' || props.data.savedEmail==='' || props.data.savedPassword === ''){
+            return    <input type="submit" value="Login" onClick={login} id='loginButton' disabled/>
         }else {
             return    <input type="submit" value="Login" onClick={login} id='loginButton'/>
         }
     }
     function login() {
-        props.upStatus(true)
+        props.dispatch({type:'CHANGE_STATUS_OF_OPTION_BUTTON_ADMIN',upStatus: true});
+        alert('h');
     }
+
     if(status){
         return(
-            <SingIn SingInStatus={props.signedIn} SingInStatusChange={props.changeStatusSignedIn}
-                    userName={props.username}
-                    userEmail={props.email} userPassword={props.password}
-                    upUserName={props.upUserName} upUserEmail={props.upEmail}
-                    upUserPassword={props.upPassword}
-                    savedName={props.savedName} savedEmail={props.savedEmail}
-                    savedPassword={props.savedPassword}
-                    exception={props.exception} changeStateOfException={props.exceptionMethod}
-                    hideInputBox={props.hideInputBox} hideInputBoxMethod={props.hideInputBoxMethod}/>
+            <SingIn data={props.data} dispatch={props.dispatch}/>
         );
     }else{
-        if(props.hideInputBox){
+        if(props.data.hideInputBox){
             return(
                 <div className={InputStyle.transparent}>
                     <div className={InputStyle.form_inner}>
                         <h3>Please registration</h3>
                         <label htmlFor="username">Name</label>
-                        <input type="text" id="username" value={props.savedName}
-                               onChange={(event)=>{props.savedNameMethod(event.target.value)}}
-                               required/>
+                        <input type="text" id="username" value={props.data.savedName}
+                               onChange={(event)=>{props.dispatch({type:'CHANGE_SAVED_NAME',savedName:event.target.value})}} required/>
                         <label htmlFor="username">Email</label>
-                        <input type="email" id="username" value={props.savedEmail}
-                               onChange={(event)=>{props.savedEmailMethod(event.target.value)}}/>
+                        <input type="email" id="username" value={props.data.savedEmail}
+                               onChange={(event)=>{props.dispatch({type:'CHANGE_SAVED_EMAIL',savedEmail:event.target.value})}}/>
                         <label htmlFor="password" >Password</label>
-                        <input id="password" type="password"  value={props.savedPassword}
-                               onChange={(event)=>{props.savePasswordMethod(event.target.value)}} />
+                        <input id="password" type="password"  value={props.data.savedPassword}
+                               onChange={(event)=>{props.dispatch({type:'CHANGE_SAVED_PASSWORD',savedPassword:event.target.value})}} />
                         {checkActiveButton()}
+                        <button onClick={login}>Enter for Admin</button>
+
                     </div>
                 </div>
             )

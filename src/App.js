@@ -1,7 +1,6 @@
 import React, {useEffect} from 'react';
 import './App.css';
 import Menu from "./components/Menu/Menu";
-import AppleContainer from "./components/Apple/Apple-Container";
 import {BrowserRouter,Route} from 'react-router-dom';
 import Admin from "./components/Admin/Admin";
 import Mac from "./components/Mac/Mac";
@@ -9,6 +8,7 @@ import Iphone from "./components/IPhone/Iphone";
 import Cart from "./components/Cart/Cart";
 import axios from "axios";
 import {useDispatch} from "react-redux";
+import Apple from "./components/Apple/Apple";
 
 function App(props) {
   return (
@@ -19,7 +19,7 @@ function App(props) {
                     <Route path='/Mac'
                            render={ () => <Mac />} />
                     <Route path='/Apple'
-                           render={ () => <AppleContainer />} />
+                           render={ () => <Apple />} />
                     <Route path='/IPhone'
                            render={ () =><Iphone />} />
                     <Route path='/Cart'

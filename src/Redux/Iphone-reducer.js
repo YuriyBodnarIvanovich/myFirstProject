@@ -25,7 +25,7 @@ let initialDate ={
     statusDawn: true,
     numberClickDown: 3,
     adminIndex: 0,
-    statusOfOptionButton: false
+    statusOfOptionButton: false,
 }
 
 const IphoneReducer = (state=initialDate,action) =>{

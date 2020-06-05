@@ -1,6 +1,7 @@
 const CHANGE_STATUS_OF_SHOW_OPTION = 'CHANGE_STATUS_OF_SHOW_OPTION';
 const CHANGE_INDEX_OF_COLOR = 'CHANGE_INDEX_OF_COLOR';
 const CHANGE_STATUS_OF_OPTION_BUTTON_ADMIN = 'CHANGE_STATUS_OF_OPTION_BUTTON_ADMIN';
+const CHANGE_INDEX_OF_OPTION = 'CHANGE_INDEX_OF_OPTION';
 
 let initialData ={
     newElement: [
@@ -62,14 +63,14 @@ let initialData ={
     ],
     buttonOption:[// new element for options
         {
-            RAM: {value:'',price:0},
-            internalMemory:{value:'',price:0},
-            basicCamera:{value:'',price:0},
-            frontCamera:{value:'',price:0},
+            RAM: {value:' ',price:0},
+            internalMemory:{value:' ',price:0},
+            basicCamera:{value:' ',price:0},
+            frontCamera:{value:' ',price:0},
         },
     ],
     showOption: true,
-    statusOfOptionButton: false,
+    indexOfOption: 0,
     indexOfColor: 0
 }
 
@@ -91,6 +92,12 @@ const AdminReducer = (state = initialData,action) =>{
             return{
                 ...state,
                 statusOfOptionButton: action.upStatus
+            }
+        }
+        case CHANGE_INDEX_OF_OPTION:{
+            return {
+                ...state,
+                indexOfOption: action.newIndex
             }
         }
     }

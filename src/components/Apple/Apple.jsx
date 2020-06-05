@@ -3,9 +3,14 @@ import AppleStyle from './Apple.module.css';
 import TopProgram from "./TopProgram/TopProgram";
 import SocialButton from "./social networks/SocialButton";
 import Input from "./Input/Input";
+import {useDispatch, useSelector} from "react-redux";
 
-const Apple = (props) =>{
-    let topProgramArray = props.topPrograms.map((p)=><TopProgram imgSrc={p.imgSrc}
+const Apple = () =>{
+
+    const data = useSelector(state => state.ApplePage);
+    const dispatch = useDispatch();
+
+    let topProgramArray = data.topPrograms.map((p)=><TopProgram imgSrc={p.imgSrc}
                                                                       nameProgram={p.nameProgram}
                                                                       hrefOfCite={p.hrefOfCite}
                                                                       secondName={p.secondName}
@@ -15,18 +20,18 @@ const Apple = (props) =>{
         <div>
             <div className={AppleStyle.intro}>
                 <div className={AppleStyle.video}>
-                    <video className={AppleStyle.video_media} src={props.SrcVideo} autoPlay muted loop> </video>
+                    <video className={AppleStyle.video_media} src={data.video} autoPlay muted loop> </video>
                 </div>
                 <div className={AppleStyle.intro_content}>
                     <div className={AppleStyle.container}>
                         <div className={AppleStyle.intro_title}>
                             <div className={AppleStyle.title}>
-                                <h1>{props.hideInputBox ? 'Welcome' : props.savedName + ' welcome'} to Apple store!!!</h1>
+                                <h1>{data.hideInputBox ? 'Welcome' : data.savedName + ' welcome'} to Apple store!!!</h1>
                             </div>
                             <div className={AppleStyle.grow}>
                                 <b className={AppleStyle.title_one}>About us</b>
                                 <div>
-                                    {props.extraInformation}
+                                    {data.extraInformation}
                                 </div>
                             </div>
                             <div className={AppleStyle.content_two}>
@@ -36,21 +41,7 @@ const Apple = (props) =>{
                                 </div>
                             </div>
                                 <SocialButton/>
-                                <Input Username = {props.UserName} upUserName={props.upUserName}
-                                       upEmail={props.upEmail} email={props.UsersEmail}
-                                       upPassword={props.upPassword} password={props.UserPassword}
-                                       authentication={props.authentication} upStatus={props.changeStatus}
-                                       upStatusSignedIn={props.changeStatusSignedIn}
-                                        savedName={props.savedName}
-                                        savedEmail={props.savedEmail}
-                                        savedPassword={props.savedPassword}
-                                        savedNameMethod={props.saveUserName}
-                                        savedEmailMethod={props.saveUserEmail}
-                                        savePasswordMethod={props.saveUserPassword}
-                                        exception={props.exception}
-                                        exceptionMethod={props.changeStateOfException}
-                                        hideInputBox={props.hideInputBox}
-                                       hideInputBoxMethod={props.hideInputBoxMethod}/>
+                                <Input data={data} dispatch={dispatch}/>
                         </div>
                     </div>
                 </div>
