@@ -1,14 +1,15 @@
 const CHANGE_EMAIL = 'CHANGE_EMAIL';
 const CHANGE_PASSWORD = 'CHANGE_PASSWORD';
-const CHANGE_USERNAME = 'CHANGE_USERNAME';
-const CHANGE_STATUS_AUTHENTICATION = 'CHANGE_STATUS_AUTHENTICATION';
-const CHANGE_STATUS_SIGNED_IN = 'CHANGE_STATUS_SIGNED_IN';
+const CHANGE_ADMIN_STATUS = 'CHANGE_ADMIN_STATUS';
+const CHANGE_STATUS_OF_SHOW_INPUT_BOX = 'CHANGE_STATUS_OF_SHOW_INPUT_BOX';
+const CHANGE_STATUS_OF_SING = 'CHANGE_STATUS_OF_SING';
 const CHANGE_SAVED_NAME = 'CHANGE_SAVED_NAME';
 const CHANGE_SAVED_EMAIL = 'CHANGE_SAVED_EMAIL';
 const CHANGE_SAVED_PASSWORD = 'CHANGE_SAVED_PASSWORD';
-const CHANGE_EXCEPTION = 'CHANGE_EXCEPTION';
-const HIDE_INPUT_BOX = 'HIDE_INPUT_BOX';
-const CHANGE_ADMIN_STATUS = 'CHANGE_ADMIN_STATUS';
+const CHANGE_STATUS_OF_ERROR_SING_IN = 'CHANGE_STATUS_OF_ERROR_SING_IN';
+const CHANGE_STATUS_OF_USER = 'CHANGE_STATUS_OF_USER';
+const CHANGE_STATUS_OF_SING_COMPONENTS ='CHANGE_STATUS_OF_SING_COMPONENTS';
+const CHANGE_STATUS_OF_REGISTRATION = 'CHANGE_STATUS_OF_REGISTRATION';
 
 
 let Date = {
@@ -43,25 +44,26 @@ let Date = {
             nomination: "Apple TV App of the Year",
         }
     ],
-    name:'',
-    email: '',
+
+    savedName: '',//для збереження даних з реєстрації про користувача
+    savedEmail: '',
+    savedPassword: '',
+
+    email: '',//дані які порівнюються при вході 'sing', тобто дані самого користувача
     password:'',
+    userStatus:false,
 
     adminName: 'adminApple',//admin data for
     passwordAdmin: 'gg',
     adminStatus: false,
 
-    authentication: false,
-    signedIn: false,
-    exception: true,
+    exception:false,
 
-    savedName: '',
-    savedEmail: '',
-    savedPassword: '',
+    showInputBox: false,//для загальної компоненти вводу даних
+    singStatus: true,//для вибору реєстрації чи входу
 
-
-    hideInputBox: true
-
+    singStatusOfComponent: false,
+    registrationStatusOfComponent: false,
 };
 
 const AppleReducer = (state = Date,action) =>{
@@ -80,77 +82,69 @@ const AppleReducer = (state = Date,action) =>{
                 password: action.PasswordUser
             }
         }
-        case CHANGE_USERNAME:{
-            console.log(action.UserName)
-            return {
-                ...state,
-                name: action.UserName
-            }
-        }
-        case CHANGE_STATUS_AUTHENTICATION:{
-            return{
-                ...state,
-                authentication: action.authentication
-            }
-        }
-        case CHANGE_STATUS_SIGNED_IN:{
-            return{
-                ...state,
-                signedIn: action.signedIn
-            }
-        }
-        case CHANGE_SAVED_NAME:{
-            return{
-                ...state,
-                savedName: action.savedName
-            }
-        }
-        case CHANGE_SAVED_EMAIL:{
-            console.log(action.savedEmail)
-            return{
-                ...state,
-                savedEmail: action.savedEmail
-            }
-        }
-        case CHANGE_SAVED_PASSWORD:{
-            return {
-                ...state,
-                savedPassword: action.savedPassword
-            }
-        }
-        case CHANGE_EXCEPTION:{
-            return{
-                ...state,
-                exception: action.exception
-            }
-        }
-        case HIDE_INPUT_BOX:{
-            return{
-                ...state,
-                hideInputBox: action.hideInputBox
-            }
-        }
         case CHANGE_ADMIN_STATUS:{
             return {
                 ...state,
                 adminStatus: action.status
             }
         }
+        case CHANGE_STATUS_OF_SHOW_INPUT_BOX:{//new items
+            return{
+                ...state,
+                showInputBox: action.status
+            }
+        }
+        case CHANGE_STATUS_OF_SING:{
+            return {
+                ...state,
+                singStatus:action.status
+            }
+        }
+        case CHANGE_SAVED_NAME:{
+            return {
+                ...state,
+                savedName:action.savedName
+            }
+        }
+        case CHANGE_SAVED_EMAIL:{
+            return {
+                ...state,
+                savedEmail:action.savedEmail
+            }
+        }
+        case CHANGE_SAVED_PASSWORD:{
+            return{
+                ...state,
+                savedPassword: action.savedPassword
+            }
+        }
+        case CHANGE_STATUS_OF_ERROR_SING_IN:{
+            return{
+                ...state,
+                exception: action.exception
+            }
+        }
+        case CHANGE_STATUS_OF_USER:{
+            return {
+                ...state,
+                userStatus: action.userStatus
+            }
+        }
+        case CHANGE_STATUS_OF_SING_COMPONENTS:{
+            return {
+                ...state,
+                singStatusOfComponent: action.status
+            }
+        }
+        case  CHANGE_STATUS_OF_REGISTRATION:{
+            return{
+                ...state,
+                registrationStatusOfComponent: action.status
+            }
+        }
 
     }
     return state;
 }
-
-export const inputEmail= (upEmail) =>({type: CHANGE_EMAIL, emailAdr:upEmail})
-export const inputPassword = (upPassword) =>({type:CHANGE_PASSWORD, PasswordUser:upPassword})
-export const inputUserName = (upName) =>({type:CHANGE_USERNAME,UserName:upName})
-export const changeAuthentication =  (upStatus) =>({type:CHANGE_STATUS_AUTHENTICATION,authentication:upStatus})
-export const changeStatusSignedIn = (upStatusSigned) =>({type:CHANGE_STATUS_SIGNED_IN,signedIn: upStatusSigned})
-// export const saveUserName = (savedName) =>({type:SAVED_NAME,savedName:savedName})
-// export const saveUserEmail = (savedEmail) =>({type:SAVED_EMAIL,savedEmail:savedEmail})
-// export const saveUserPassword = (savedPassword) =>({type:SAVED_PASSWORD,savedPassword:savedPassword})
-export const changeStateException = (exception)=>({type:CHANGE_EXCEPTION,exception:exception})
-export const hideInputBox = (status) =>({type:HIDE_INPUT_BOX,activeButton:status})
-export const changeAdminStatus = (status)=>({type:CHANGE_ADMIN_STATUS,adminStatus:status})
 
 export default AppleReducer;

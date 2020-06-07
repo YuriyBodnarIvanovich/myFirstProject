@@ -1,0 +1,25 @@
+.fieldStyle{
+    display: flex;
+    flex-direction: row;
+}
+.fieldStyle img{
+    width: 30px;
+    height: 30px;
+    border-radius: 20px;
+    display: block;
+    margin-left: 15px;
+}
+.fieldStyle b{
+    color: white;
+    margin-bottom: 10px;
+    display: block;
+    margin-top: 10px;
+}
+.fieldStyle button{
+    color: black;
+    background-color: white;
+    border-radius: 5px;
+    font-size: 20px;
+    height: 30px;
+
+}

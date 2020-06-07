@@ -3,6 +3,7 @@ import MacStyle from "../Mac.module.css";
 import ButtonBack from "../Button/ButtonBack/ButtonBack";
 import ButtonNext from "../Button/ButtonNext/ButtonNext";
 import MacItems from "../MacItems/MacItems";
+import Input from "../../Apple/Input/Input";
 
 const Content =(props) =>{
     function showCatalog() {
@@ -13,7 +14,9 @@ const Content =(props) =>{
                                                      price={element.price} name={element.name}
                                                      onePhoto={element.onePhoto} twoPhoto={element.twoPhoto}
                                                      characteristics={element.characteristics}/>)
-        return(<div>
+        return(
+            <div>
+                {props.dataApple.showInputBox ? <Input data={props.dataApple} dispatch={props.method}/> : ''}
                 <div className={MacStyle.main} id={"demo"}>
                     {catalog}
                 </div>
@@ -25,6 +28,7 @@ const Content =(props) =>{
     function showButton() {
         return(
             <div className={MacStyle.content}>
+                {props.dataApple.showInputBox ? <Input data={props.dataApple} dispatch={props.method}/> : ''}
                 <button id={'showContent'} className={MacStyle.showContent} onClick={showCatalog}>show content</button>
             </div>)
     }

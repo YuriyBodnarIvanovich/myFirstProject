@@ -7,12 +7,14 @@ import ButtonColor from "./Button/ButtonChangeColor";
 import {useDispatch, useSelector} from "react-redux";
 import ContentPage from "./ContentPage/ContentPage";
 import axios from "axios";
+import Input from "../Apple/Input/Input";
 const src_video = 'https://ak.picdn.net/shutterstock/videos/1042417903/preview/stock-footage-minsk-belarus-dec-close-up-woman-s-hands-keeping-and-unpacking-new-apple-iphone-pro.webm';
 
 const Iphone = ()=>{
 
     const dispatch = useDispatch();
     const data = useSelector(state=>state.IphonePage);
+    const dataApple = useSelector(state=>state.ApplePage);
     const dataCart = useSelector(state=>state.CartPage);
     const iPhoneItems = data.iPhones.filter((_,index)=>
             data.min <= index && index < data.max).map((element)=><IphoneItems
@@ -88,6 +90,7 @@ const Iphone = ()=>{
                 </div>
                 <div className={AppleStyle.intro_content}>
                     <div className={AppleStyle.container}>
+                        {dataApple.showInputBox ? <Input data={dataApple} dispatch={dispatch}/> : ''}
                         <ContentPage  data={data} dispatch={dispatch} dataCart={dataCart}/>
                         <div className={IphoneStyle.containerForItems}>
                             <button className={IphoneStyle.Up} onClick={last}>Up</button>
