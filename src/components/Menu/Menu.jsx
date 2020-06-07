@@ -22,9 +22,6 @@ const Menu = () =>{
                     <NavLink to='/IPhone' activeClassName={MenuStyle.active}>IPhone</NavLink>
                 </div>
                 <div className={MenuStyle.item} >
-                    {data.userStatus ? <NavLink to='/Cart' activeClassName={MenuStyle.active}>Cart</NavLink> : ''}
-                </div>
-                <div className={MenuStyle.item} >
                     {data.adminStatus ?  <NavLink to='/Admin' activeClassName={MenuStyle.active}>Admin</NavLink> : ''}
                 </div>
             </div>

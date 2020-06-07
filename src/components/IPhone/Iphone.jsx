@@ -8,6 +8,7 @@ import {useDispatch, useSelector} from "react-redux";
 import ContentPage from "./ContentPage/ContentPage";
 import axios from "axios";
 import Input from "../Apple/Input/Input";
+import UserMenu from "../Menu/UserField/UserMenu/UserMenu";
 const src_video = 'https://ak.picdn.net/shutterstock/videos/1042417903/preview/stock-footage-minsk-belarus-dec-close-up-woman-s-hands-keeping-and-unpacking-new-apple-iphone-pro.webm';
 
 const Iphone = ()=>{
@@ -91,6 +92,7 @@ const Iphone = ()=>{
                 <div className={AppleStyle.intro_content}>
                     <div className={AppleStyle.container}>
                         {dataApple.showInputBox ? <Input data={dataApple} dispatch={dispatch}/> : ''}
+                        {dataApple.userMenuStatus ? <UserMenu/> : ''}
                         <ContentPage  data={data} dispatch={dispatch} dataCart={dataCart}/>
                         <div className={IphoneStyle.containerForItems}>
                             <button className={IphoneStyle.Up} onClick={last}>Up</button>

@@ -49,6 +49,7 @@
     text-shadow: 0px 0px 6px rgba(255,255,255,0.9);
     display: block;
     width: 900px;
+    z-index: 3;
 }
 .title h1{
     font-size: 62px;

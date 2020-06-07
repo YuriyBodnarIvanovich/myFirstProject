@@ -4,6 +4,7 @@ import TopProgram from "./TopProgram/TopProgram";
 import SocialButton from "./social networks/SocialButton";
 import Input from "./Input/Input";
 import {useDispatch, useSelector} from "react-redux";
+import UserMenu from "../Menu/UserField/UserMenu/UserMenu";
 
 const Apple = () =>{
 
@@ -25,6 +26,7 @@ const Apple = () =>{
                 <div className={AppleStyle.intro_content}>
                     <div className={AppleStyle.container}>
                         <div className={AppleStyle.intro_title}>
+                            {data.userMenuStatus ? <UserMenu/> : ''}
                             <div className={AppleStyle.title}>
                                 <h1>{data.showInputBox ? 'Welcome' : data.savedName + ' welcome'} to Apple store!!!</h1>
                             </div>

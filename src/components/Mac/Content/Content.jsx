@@ -4,6 +4,7 @@ import ButtonBack from "../Button/ButtonBack/ButtonBack";
 import ButtonNext from "../Button/ButtonNext/ButtonNext";
 import MacItems from "../MacItems/MacItems";
 import Input from "../../Apple/Input/Input";
+import UserMenu from "../../Menu/UserField/UserMenu/UserMenu";
 
 const Content =(props) =>{
     function showCatalog() {
@@ -17,6 +18,7 @@ const Content =(props) =>{
         return(
             <div>
                 {props.dataApple.showInputBox ? <Input data={props.dataApple} dispatch={props.method}/> : ''}
+                {props.dataApple.userMenuStatus ? <UserMenu/> : ''}
                 <div className={MacStyle.main} id={"demo"}>
                     {catalog}
                 </div>
@@ -29,6 +31,7 @@ const Content =(props) =>{
         return(
             <div className={MacStyle.content}>
                 {props.dataApple.showInputBox ? <Input data={props.dataApple} dispatch={props.method}/> : ''}
+                {props.dataApple.userMenuStatus ? <UserMenu/> : ''}
                 <button id={'showContent'} className={MacStyle.showContent} onClick={showCatalog}>show content</button>
             </div>)
     }

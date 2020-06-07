@@ -17,7 +17,11 @@ const UserField = () =>{
         dispatch({type:'CHANGE_STATUS_OF_SING',status:true});
     }
     function clickUser() {
-        alert('hello');
+            if (data.userMenuStatus === false) {
+                dispatch({type:'CHANGE_STATUS_OF_USER_MENU',status:true});
+            } else {
+                dispatch({type:'CHANGE_STATUS_OF_USER_MENU',status:false});
+            }
     }
 
     return(

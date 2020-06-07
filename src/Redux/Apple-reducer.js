@@ -8,11 +8,10 @@ const CHANGE_SAVED_EMAIL = 'CHANGE_SAVED_EMAIL';
 const CHANGE_SAVED_PASSWORD = 'CHANGE_SAVED_PASSWORD';
 const CHANGE_STATUS_OF_ERROR_SING_IN = 'CHANGE_STATUS_OF_ERROR_SING_IN';
 const CHANGE_STATUS_OF_USER = 'CHANGE_STATUS_OF_USER';
-const CHANGE_STATUS_OF_SING_COMPONENTS ='CHANGE_STATUS_OF_SING_COMPONENTS';
-const CHANGE_STATUS_OF_REGISTRATION = 'CHANGE_STATUS_OF_REGISTRATION';
+const CHANGE_STATUS_OF_USER_MENU = 'CHANGE_STATUS_OF_USER_MENU';
 
 
-let Date = {
+const Date = {
     video: "https://ak7.picdn.net/shutterstock/videos/1023583117/preview/stock-footage-online-banking-with-smart-phone-lifestyle-easy-pay-using-smart-phone-or-digital-device.webm",
     extraInformation: "Apple Inc. is an American multinational technology company headquartered in Cupertino," +
         "                                                    California, that designs, develops, and sells consumer electronics," +
@@ -62,8 +61,8 @@ let Date = {
     showInputBox: false,//для загальної компоненти вводу даних
     singStatus: true,//для вибору реєстрації чи входу
 
-    singStatusOfComponent: false,
-    registrationStatusOfComponent: false,
+    userMenuStatus:false
+
 };
 
 const AppleReducer = (state = Date,action) =>{
@@ -130,18 +129,13 @@ const AppleReducer = (state = Date,action) =>{
                 userStatus: action.userStatus
             }
         }
-        case CHANGE_STATUS_OF_SING_COMPONENTS:{
+        case CHANGE_STATUS_OF_USER_MENU:{
             return {
                 ...state,
-                singStatusOfComponent: action.status
+                userMenuStatus: action.status
             }
         }
-        case  CHANGE_STATUS_OF_REGISTRATION:{
-            return{
-                ...state,
-                registrationStatusOfComponent: action.status
-            }
-        }
+
 
     }
     return state;
