@@ -3,26 +3,21 @@ import InputStyle from "../../Input.module.css";
 
 const SingIn = (props) =>{
     function check() {
-        if(props.data.savedEmail === props.data.email && props.data.savedPassword === props.data.password){
-            props.dispatch({type:'CHANGE_STATUS_OF_SHOW_INPUT_BOX',status:false});
-            props.dispatch({type:'CHANGE_STATUS_OF_USER',userStatus:true});
-            props.dispatch({type:'CHANGE_STATUS_OF_SING_COMPONENTS',status:false});
+        for(let i = 0;i<props.data.Users.length;i++){
+            if(props.data.Users[i].email === props.data.email && props.data.Users[i].password ===props.data.password){
+                props.dispatch({type:'CHANGE_STATUS_OF_SHOW_INPUT_BOX',status:false});
+                props.dispatch({type:'CHANGE_STATUS_OF_USER',userStatus:true});
+                props.dispatch({type:'CHANGE_STATUS_OF_SING_COMPONENTS',status:false});
+                props.dispatch({type:'CHANGE_INDEX_OF_USER',newIndex:i});
+                break;
+            }
+            else {
+                if(i === props.data.Users.length-1 ){
+                    props.dispatch({type:'CHANGE_STATUS_OF_ERROR_SING_IN',exception:true});
+                }
+            }
         }
-        else {
-            props.dispatch({type:'CHANGE_STATUS_OF_ERROR_SING_IN',exception:true});
-        }
-
-        if(props.data.email === props.data.adminName && props.data.password === props.data.passwordAdmin){
-            props.dispatch({type:'CHANGE_STATUS_OF_SHOW_INPUT_BOX',status:false});
-            props.dispatch({type:'CHANGE_SAVED_NAME',savedName:'Admin'})
-            props.dispatch({type:'CHANGE_ADMIN_STATUS',status:true});
-            props.dispatch({type:'CHANGE_STATUS_OF_SING_COMPONENTS',status:false});
-            props.dispatch({type:'CHANGE_SAVED_NAME',savedName:'Admin'});
-            props.dispatch({type:'CHANGE_STATUS_OF_USER',userStatus:true});
-        }
-        else {
-            props.dispatch({type:'CHANGE_STATUS_OF_ERROR_SING_IN',exception:true});
-        }
+        console.log(props.data.Users);
     }
     return(
         <div className={InputStyle.modalWindowInput}>

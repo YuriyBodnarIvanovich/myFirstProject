@@ -1,14 +1,16 @@
 const CHANGE_EMAIL = 'CHANGE_EMAIL';
 const CHANGE_PASSWORD = 'CHANGE_PASSWORD';
-const CHANGE_ADMIN_STATUS = 'CHANGE_ADMIN_STATUS';
 const CHANGE_STATUS_OF_SHOW_INPUT_BOX = 'CHANGE_STATUS_OF_SHOW_INPUT_BOX';
 const CHANGE_STATUS_OF_SING = 'CHANGE_STATUS_OF_SING';
-const CHANGE_SAVED_NAME = 'CHANGE_SAVED_NAME';
-const CHANGE_SAVED_EMAIL = 'CHANGE_SAVED_EMAIL';
-const CHANGE_SAVED_PASSWORD = 'CHANGE_SAVED_PASSWORD';
 const CHANGE_STATUS_OF_ERROR_SING_IN = 'CHANGE_STATUS_OF_ERROR_SING_IN';
 const CHANGE_STATUS_OF_USER = 'CHANGE_STATUS_OF_USER';
 const CHANGE_STATUS_OF_USER_MENU = 'CHANGE_STATUS_OF_USER_MENU';
+const CHANGE_STATUS_OF_PROFILE_SETTING = "CHANGE_STATUS_OF_PROFILE_SETTING";
+const CHANGE_STATUS_OF_CART_ADDITIONALLY = "CHANGE_STATUS_OF_CART_ADDITIONALLY";
+const CHANGE_STATUS_OF_DELIVERY = 'CHANGE_STATUS_OF_DELIVERY';
+const CHANGE_ARRAY_OF_USERS = 'CHANGE_ARRAY_OF_USERS';
+const CHANGE_FIELD_OF_NEW_USER = 'CHANGE_FIELD_OF_NEW_USER';
+const CHANGE_INDEX_OF_USER = 'CHANGE_INDEX_OF_USER';
 
 
 const Date = {
@@ -43,25 +45,52 @@ const Date = {
             nomination: "Apple TV App of the Year",
         }
     ],
+    Users:[
+        {
+            name:'adminApple',
+            email:'urabodnargood@gmail.com',
+            password:'gg',
+            mainPhoto:'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQ9rfXBvEVc6tQWBhA1wqnftqTujmN345DbOzLT-EQGWr5kNJRn&usqp=CAU',
+            adminStatus: true,
+            CartList:[],
 
-    savedName: '',//для збереження даних з реєстрації про користувача
-    savedEmail: '',
-    savedPassword: '',
+        },
+    ],
+    newItemsOfCart:[
+        {
+            name:'',
+            color:'',
+            price:''
+        }
+    ],
+    newElement: [
+        {
+            name:'',
+            email:'',
+            password:'',
+            mainPhoto:'',
+            adminStatus: false,
+            CartList:[]
+        },
+    ],
 
     email: '',//дані які порівнюються при вході 'sing', тобто дані самого користувача
     password:'',
     userStatus:false,
-
-    adminName: 'adminApple',//admin data for
-    passwordAdmin: 'gg',
-    adminStatus: false,
-
     exception:false,
+
+    indexOfUsers: 0,
 
     showInputBox: false,//для загальної компоненти вводу даних
     singStatus: true,//для вибору реєстрації чи входу
 
-    userMenuStatus:false
+    userMenuStatus:false,
+
+    profileSettingStatus: true,
+    cartAdditionallyStatus: false,
+    delivery:false,
+
+
 
 };
 
@@ -81,12 +110,7 @@ const AppleReducer = (state = Date,action) =>{
                 password: action.PasswordUser
             }
         }
-        case CHANGE_ADMIN_STATUS:{
-            return {
-                ...state,
-                adminStatus: action.status
-            }
-        }
+
         case CHANGE_STATUS_OF_SHOW_INPUT_BOX:{//new items
             return{
                 ...state,
@@ -97,24 +121,6 @@ const AppleReducer = (state = Date,action) =>{
             return {
                 ...state,
                 singStatus:action.status
-            }
-        }
-        case CHANGE_SAVED_NAME:{
-            return {
-                ...state,
-                savedName:action.savedName
-            }
-        }
-        case CHANGE_SAVED_EMAIL:{
-            return {
-                ...state,
-                savedEmail:action.savedEmail
-            }
-        }
-        case CHANGE_SAVED_PASSWORD:{
-            return{
-                ...state,
-                savedPassword: action.savedPassword
             }
         }
         case CHANGE_STATUS_OF_ERROR_SING_IN:{
@@ -135,8 +141,42 @@ const AppleReducer = (state = Date,action) =>{
                 userMenuStatus: action.status
             }
         }
-
-
+        case CHANGE_STATUS_OF_PROFILE_SETTING:{
+            return{
+                ...state,
+                profileSettingStatus: action.status
+            }
+        }
+        case CHANGE_STATUS_OF_CART_ADDITIONALLY:{
+            return{
+                ...state,
+                cartAdditionallyStatus: action.status
+            }
+        }
+        case CHANGE_STATUS_OF_DELIVERY:{
+            return {
+                ...state,
+                delivery:action.status
+            }
+        }
+        case CHANGE_ARRAY_OF_USERS:{
+            return{
+                ...state,
+                Users: action.newArray
+            }
+        }
+        case CHANGE_FIELD_OF_NEW_USER:{
+            return{
+                ...state,
+                newElement: action.newElement
+            }
+        }
+        case CHANGE_INDEX_OF_USER:{
+            return{
+                ...state,
+                indexOfUsers: action.newIndex
+            }
+        }
     }
     return state;
 }

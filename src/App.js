@@ -9,8 +9,9 @@ import Cart from "./components/Cart/Cart";
 import axios from "axios";
 import {useDispatch} from "react-redux";
 import Apple from "./components/Apple/Apple";
+import Profile from "./components/Profile/Profile";
 
-function App(props) {
+function App() {
   return (
       <BrowserRouter>
             <div className="main">
@@ -26,6 +27,8 @@ function App(props) {
                            render={ () => <Cart />} />
                     <Route path='/Admin'
                            render={ () => <Admin/>} />
+                    <Route path='/Profile'
+                           render={ () => <Profile/>} />
                 </div>
             </div>
       </BrowserRouter>

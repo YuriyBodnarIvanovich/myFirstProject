@@ -4,10 +4,11 @@ import Table from "./Table/Table";
 import {useDispatch, useSelector} from "react-redux";
 
 const Cart = () =>{
-    const dataCart = useSelector(state =>state.CartPage);
+    // const dataCart = useSelector(state =>state.CartPage);
+    const dataApple = useSelector(state => state.ApplePage);
     const dispatch = useDispatch();
 
-    let catalog = dataCart.Product.map((p,index)=><Table name={p.name} price={p.price} index={index} color={p.mainColor}/>)
+    let catalog = dataApple.Users[dataApple.indexOfUsers].CartList.map((p,index)=><Table name={p.name} price={p.price} index={index} color={p.color}/>)
     return(
         <div className={CartStyle.main}>
             <table style={{overflowX: 'auto'}}>

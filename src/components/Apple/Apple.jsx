@@ -28,7 +28,7 @@ const Apple = () =>{
                         <div className={AppleStyle.intro_title}>
                             {data.userMenuStatus ? <UserMenu/> : ''}
                             <div className={AppleStyle.title}>
-                                <h1>{data.showInputBox ? 'Welcome' : data.savedName + ' welcome'} to Apple store!!!</h1>
+                                <h1>{data.userStatus ?  data.Users[data.indexOfUsers].name + ' welcome' : 'Welcome'} to Apple store!!!</h1>
                             </div>
                             <div className={AppleStyle.grow}>
                                 <b className={AppleStyle.title_one}>About us</b>
