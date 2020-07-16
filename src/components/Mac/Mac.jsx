@@ -23,7 +23,7 @@ const Mac = () =>{
                 <div className={MacStyle.video}>
                     <video className={MacStyle.video_media} src={"https://ak0.picdn.net/shutterstock/videos/1030780100/preview/stock-footage-a-laptop-keyboard-that-glows-in-the-dark-business-technology-image-colorful-light-illumination.webm"} autoPlay muted loop> </video>
                 </div>
-                <Content data={mainData} method={dispatch} dataApple={dataApple}/>
+                <Content data={mainData} dispatch={dispatch} dataApple={dataApple}/>
             </div>
         </div>
     );

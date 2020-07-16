@@ -1,21 +1,27 @@
 import React from 'react';
 import MacItemsStyle from './MacItem.module.css';
-import MacPage from "./MacPage/MacPage";
+
 const ItemMac = (props) =>{
+    function show() {
+        props.dispatch({type:'CHANGE_ID_OF_ITEM_SHOW',newId:props.number});
+        props.dispatch({type:'CHANGE_STATUS_OF_ITEM_SHOW',status:true});
+    }
     return(
         <div className={MacItemsStyle.container}>
             <div>
-                <img  className={MacItemsStyle.ImgItems} src={props.imgSrc}/>
+                <img  className={MacItemsStyle.ImgItems} src={props.photo[0].src}/>
             </div>
             <div className={MacItemsStyle.information}>
-                <b>{props.name}</b>
-                <h3 className={MacItemsStyle.price}>{props.price}</h3>
+                <div className={MacItemsStyle.name}>
+                    <b>{props.name}</b>
+                </div>
+                <div className={MacItemsStyle.price}>
+                    <b className={MacItemsStyle.price}>{props.price}</b>
+                </div>
             </div>
-            <MacPage  imgSrc={props.imgSrc} key={props.id}
-                      name={props.name} price={props.price}
-                      onePhoto={props.onePhoto}
-                      twoPhoto={props.twoPhoto}
-                      characteristics={props.characteristics}/>
+            <div>
+                <button className={MacItemsStyle.show} onClick={show}>show</button>
+            </div>
         </div>
     );
 };

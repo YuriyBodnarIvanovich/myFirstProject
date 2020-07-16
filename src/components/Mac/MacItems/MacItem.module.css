@@ -11,32 +11,43 @@
 }
 .information{
     width: 200px;
-    height: 60px;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+}
+.name{
+    width: 190px;
+    height: 40px;
+    font-size: 17px;
+}
+.price{
+    width: 190px;
+    height: 30px;
+    color: #419610;
+    margin-top: 5px;
+    margin-left: 70px;
+    font-size: 20px;
 }
 .ImgItems{
     width: 200px;
     height: 110px;
 }
-.price{
-    color: #808080;
-    margin-top: 20px;
-    margin-left: 120px;
-}
-.button {
+.show {
     transition-duration: 0.4s;
     width: 100px;
     height: 30px;
-    margin-top: 50px;
-    margin-left: 80px;
+    margin-top: 20px;
+    margin-left: 50px;
     background-color: white;
     border-radius: 8px;
     color: black;
     border-color: black;
+    font-size: 20px;
+    cursor: pointer;
 
 }
 
-.button:hover {
+.show:hover {
     color: white;
     background-color: black;
-
 }
