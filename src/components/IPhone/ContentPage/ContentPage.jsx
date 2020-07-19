@@ -11,12 +11,6 @@ const ContentPage = (props) =>{
         <ButtonColor color={element.color} id={index} data={props.data} dispatch={props.dispatch} way='iPhone'/>);
 
     function addToCart() {
-        // let catalog = [];
-        // catalog = JSON.parse(JSON.stringify(props.dataCart.Product));
-        // catalog.push(JSON.parse(JSON.stringify(props.data.iPhones[props.data.indexOfMainArray])))
-        // catalog[catalog.length - 1].key = catalog.length + 1;
-        // props.dispatch({type:'CHANGE_ARRAY_CART',newProducts:catalog});
-        // console.log(props.dataCart.Product);
         let Users = JSON.parse(JSON.stringify(dataApple.Users));
         let newItem = JSON.parse(JSON.stringify(dataApple.newItemsOfCart));
         newItem[0].name = props.data.iPhones[props.data.indexOfMainArray].name;

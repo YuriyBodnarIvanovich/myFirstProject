@@ -9,7 +9,6 @@ const Mac = () =>{
     useEffect(() => {
         axios.get('http://localhost:3001/mac').then((response) => {
             let resData = response.data;
-            console.log(resData);
             dispatch({type:'PUT_ARRAY',newArray:resData});
         });
     }, [])

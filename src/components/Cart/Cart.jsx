@@ -4,7 +4,6 @@ import Table from "./Table/Table";
 import {useDispatch, useSelector} from "react-redux";
 
 const Cart = () =>{
-    // const dataCart = useSelector(state =>state.CartPage);
     const dataApple = useSelector(state => state.ApplePage);
     const dispatch = useDispatch();
 

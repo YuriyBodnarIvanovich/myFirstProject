@@ -45,17 +45,7 @@ const Date = {
             nomination: "Apple TV App of the Year",
         }
     ],
-    Users:[
-        {
-            name:'adminApple',
-            email:'urabodnargood@gmail.com',
-            password:'gg',
-            mainPhoto:'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQ9rfXBvEVc6tQWBhA1wqnftqTujmN345DbOzLT-EQGWr5kNJRn&usqp=CAU',
-            adminStatus: true,
-            CartList:[],
-
-        },
-    ],
+    Users:[],
     newItemsOfCart:[
         {
             name:'',

@@ -1,12 +1,21 @@
-import React from "react";
+import React, {useEffect} from "react";
 import AppleStyle from './Apple.module.css';
 import TopProgram from "./TopProgram/TopProgram";
 import SocialButton from "./social networks/SocialButton";
 import Input from "./Input/Input";
 import {useDispatch, useSelector} from "react-redux";
 import UserMenu from "../Menu/UserField/UserMenu/UserMenu";
+import axios from 'axios';
 
 const Apple = () =>{
+
+    useEffect(()=>{
+        axios.get('http://localhost:3001/Apple').then((response)=>{
+            let resData = response.data;
+            dispatch({type:'CHANGE_ARRAY_OF_USERS',newArray:resData});
+            console.log(resData);
+        })
+    }, [])
 
     const data = useSelector(state => state.ApplePage);
     const dispatch = useDispatch();
