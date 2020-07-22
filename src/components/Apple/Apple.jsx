@@ -10,7 +10,7 @@ import axios from 'axios';
 const Apple = () =>{
 
     useEffect(()=>{
-        axios.get('http://localhost:3001/Apple').then((response)=>{
+        axios.get('http://localhost:3001').then((response)=>{
             let resData = response.data;
             dispatch({type:'CHANGE_ARRAY_OF_USERS',newArray:resData});
             console.log(resData);

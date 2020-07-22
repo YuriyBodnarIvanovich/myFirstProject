@@ -14,7 +14,7 @@ const Mac = () =>{
     }, [])
     const mainData = useSelector(state=>state.macPage);
     const dispatch = useDispatch();
-
+    
     const dataApple = useSelector(state =>state.ApplePage);
     return(
         <div>

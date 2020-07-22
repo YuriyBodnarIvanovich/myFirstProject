@@ -3,12 +3,14 @@ import IphoneStyle from "../Iphone.module.css";
 import ButtonColor from "../Button/ButtonChangeColor";
 import ButtonParameter from "../Button/ButtonParameter";
 import {useSelector} from "react-redux";
+import axios from "axios";
 
 const ContentPage = (props) =>{
     const dataApple = useSelector(state=>state.ApplePage);
 
     const colorArray = props.data.iPhones[props.data.indexOfMainArray].photo.map((element,index)=>
         <ButtonColor color={element.color} id={index} data={props.data} dispatch={props.dispatch} way='iPhone'/>);
+
 
     function addToCart() {
         let Users = JSON.parse(JSON.stringify(dataApple.Users));
@@ -18,6 +20,19 @@ const ContentPage = (props) =>{
         newItem[0].price = props.data.iPhones[props.data.indexOfMainArray].price;
         Users[dataApple.indexOfUsers].CartList.push(newItem[0]);
         props.dispatch({type:'CHANGE_ARRAY_OF_USERS',newArray:Users});
+
+        axios.post('http://localhost:3001/some', {
+            name:props.data.iPhones[props.data.indexOfMainArray].name,
+            color:props.data.iPhones[props.data.indexOfMainArray].mainColor,
+            price:props.data.iPhones[props.data.indexOfMainArray].price,
+            userEmail:dataApple.Users[dataApple.indexOfUsers].email
+        })
+            .then(function (response) {
+                console.log(response);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
     }
     function last() {
         let array = [];
