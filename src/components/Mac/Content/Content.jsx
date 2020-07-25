@@ -6,8 +6,10 @@ import MacItems from "../MacItems/MacItems";
 import Input from "../../Apple/Input/Input";
 import UserMenu from "../../Menu/UserField/UserMenu/UserMenu";
 import MacPage from "../MacItems/MacPage/MacPage";
+import {useSelector} from "react-redux";
 
 const Content =(props) =>{
+    const dataApple = useSelector(state=>state.ApplePage)
     function showCatalog() {
          props.dispatch({type:'CHANGE_STATE_OF_CONTENT',showContent:false});
     }
@@ -27,13 +29,11 @@ const Content =(props) =>{
                 {props.dataApple.showInputBox ? <Input data={props.dataApple} dispatch={props.dispatch}/> : ''}
                 {props.dataApple.userMenuStatus ? <UserMenu/> : ''}
                 <div className={MacStyle.main} id={"demo"}>
-                    {props.data.itemsStatusShow ? <MacPage data={props.data} dispatch={props.dispatch}/> : ''}
+                    {props.data.itemsStatusShow ? <MacPage data={props.data}  dataApple={dataApple} dispatch={props.dispatch}/> : ''}
                     {catalog}
                 </div>
                 {props.data.itemsStatusShow ? '' :<ButtonBack data={props.data} dispatch={props.dispatch}/> }
                 {props.data.itemsStatusShow ? '' :<ButtonNext data={props.data} dispatch={props.dispatch}/> }
-
-
             </div>
         )
     }

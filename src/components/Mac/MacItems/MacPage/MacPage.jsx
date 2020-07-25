@@ -1,6 +1,7 @@
 import React from "react";
 import MacPageStyle from './MacPage.module.css';
 import ModalPhoto from "./ModalPhoto/ModalPhoto";
+import axios from "axios";
 
 const MacPage = (props) =>{
     function hide() {
@@ -10,6 +11,22 @@ const MacPage = (props) =>{
         props.dispatch({type:'CHANGE_INDEX_OF_MODAL_PHOTO',newIndex:index});
         props.dispatch({type:'CHANGE_STATUS_OF_MODAL_PHOTO',status:true});
     }
+
+    function addToCart() {
+        axios.post('http://localhost:3001/some', {
+            name:props.data.imgData[props.data.idItemsShow].name,
+            color:'#E8A038',
+            price:props.data.imgData[props.data.idItemsShow].price,
+            userEmail:props.dataApple.Users[props.dataApple.indexOfUsers].email
+        })
+            .then(function (response) {
+                console.log(response);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    }
+
     return(
         <div className={MacPageStyle.modalWindow}>
             {props.data.statusOfModalWindow ? <ModalPhoto
@@ -18,6 +35,8 @@ const MacPage = (props) =>{
             <div>
                 <b className={MacPageStyle.name}>{props.data.imgData[props.data.idItemsShow].name}</b>
                 <b className={MacPageStyle.end} onClick={hide}> X </b>
+                <br/>
+                <b className={MacPageStyle.name}>{props.data.imgData[props.data.idItemsShow].price}</b>
             </div>
             <div className={MacPageStyle.containerOfPhoto}>
                 <div className={MacPageStyle.photo}>
@@ -47,6 +66,7 @@ const MacPage = (props) =>{
                 <br/>
                 <b>remainder: {" " + props.data.imgData[props.data.idItemsShow].characters.remainder }</b>
             </div>
+            <button className={MacPageStyle.addToCart} onClick={addToCart}>Add to Cart</button>
         </div>
     );
 }

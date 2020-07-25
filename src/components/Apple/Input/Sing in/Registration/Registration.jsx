@@ -1,5 +1,6 @@
 import React from "react";
 import InputStyle from "../../Input.module.css";
+import axios from 'axios';
 
 const Registration = (props) =>{
     function onChangeValue(keyWord,value) {
@@ -22,6 +23,20 @@ const Registration = (props) =>{
         newUsersArray.push(newElement[0]);
         props.dispatch({type:'CHANGE_ARRAY_OF_USERS',newArray:newUsersArray});
         props.dispatch({type:'CHANGE_STATUS_OF_SING',status: false});
+
+
+        axios.post('http://localhost:3001/registration', {
+            name:props.data.newElement[0].name,
+            email:props.data.newElement[0].email,
+            password:props.data.newElement[0].password,
+            avatarPhoto: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSPXphSfUmRO80leHLmJ61fqUYRf_BPp5UyFw&usqp=CAU'
+        })
+            .then(function (response) {
+                console.log(response);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
     }
     return(
         <div className={InputStyle.modalWindowInput}>

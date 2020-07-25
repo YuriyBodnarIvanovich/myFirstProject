@@ -1,6 +1,6 @@
 .modalWindow{
     width: 1200px;
-    height: 550px;
+    height: 580px;
     background-color: white;
     border-radius: 20px;
     margin-left: 295px;
@@ -64,4 +64,19 @@
 }
 .end:hover{
     color: #989C96;
+}
+
+.addToCart{
+    width: 150px;
+    height: 30px;
+    font-size: 20px;
+    background-color: #191616;
+    color: white;
+    border-radius: 20px;
+    margin-left: 500px;
+    margin-top: 30px;
+}
+.addToCart:hover{
+    background-color: white;
+    color: #191616;
 }
