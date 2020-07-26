@@ -36,32 +36,22 @@ connection.connect(function(err){
 //проблема в тому що виводуться тільки користувачі які мають щось в кошику
 //потрібно це виправити 26.07.2020
 
-connection.query("SELECT  products.name AS ProductName, prices.Price,colorOfPhoto.color,\n" +
-    "\tnameOfUser.name, password.password, email.email, avatarPhoto.avatarPhotoUser,\n" +
-    "    cart.idusers AS cartId, users.idusers AS usersId\n" +
-    "FROM products\n" +
-    "INNER JOIN cart\n" +
-    "\tUSING(idProduct)\n" +
-    "INNER JOIN colorOfPhoto\n" +
-    "\tUSING(idcolorOfPhoto)\n" +
-    "INNER JOIN prices\n" +
-    "\tUSING(idPrice)\n" +
-    "INNER JOIN users\n" +
-    "\tUSING(idusers)\n" +
+connection.query("SELECT idusers, name,email,password, avatarPhotoUser\n" +
+    "FROM users\n" +
     "INNER JOIN nameOfUser\n" +
     "\tUSING(idnameOfUser)\n" +
-    "INNER JOIN password\n" +
-    "\tUSING(idpassword)\n" +
     "INNER JOIN email\n" +
     "\tUSING(idemail)\n" +
-    "INNER JOIN avatarPhoto\n" +
+    "INNER JOIN password\n" +
+    "\tUSING(idpassword)\n" +
+    "INNER JOIN(avatarPhoto)\n" +
     "\tUSING(idavatarPhoto)",function (err,result) {
     function onlyUnique(value, index, arr) {
         return arr.map(function(e) { return e.name; }).indexOf(value.name) === index;
     }
     Users = result.filter(onlyUnique).map((element,index)=>{
         return{
-            idUser: element.usersId,
+            idUser: element.idusers,
             name: element.name,
             email: element.email,
             password: element.password,
@@ -69,16 +59,27 @@ connection.query("SELECT  products.name AS ProductName, prices.Price,colorOfPhot
             CartList:[]
         }
     });
-    Users.forEach(function (item,index) {
-        item.CartList = result.filter((element)=>{return item.idUser === element.cartId}).map((p)=>{
-            return{
-                name: p.ProductName,
-                price: p.Price,
-                color: p.color
-            }
-        })
+    console.log(Users)
 
-    })
+    connection.query("SELECT idcart, products.name AS ProductName,  prices.Price AS Price,  colorOfPhoto.color AS color, idusers\n" +
+        "FROM cart\n" +
+        "INNER JOIN products\n" +
+        "\tUSING(idProduct)\n" +
+        "INNER JOIN colorOfPhoto\n" +
+        "\tUSING(idColorOfPhoto)\n" +
+        "INNER JOIN prices\n" +
+        "\tON products.idPrice = prices.idPrice",function(err,resultCart) {
+        Users.forEach(function (item, index) {
+            item.CartList = resultCart.filter((element) =>
+            {return item.idUser === element.idusers}).map((p) => {
+                return {
+                    name: p.ProductName,
+                    price: p.Price,
+                    color: p.color
+                };
+            });
+        });
+    });
 })
 
 app.get('/users',function (request,response) {
