@@ -11,25 +11,22 @@ const Registration = (props) =>{
     }
     function checkActiveButton() {
         if(props.data.newElement[0].name==='' || props.data.newElement[0].email==='' || props.data.newElement[0].password === ''){
-            return    <input type="submit" value="Login" onClick={login} id='loginButton' disabled/>
+            return    <input type="submit" value="singUp" onClick={singUp} id='singUpButton' disabled/>
         }else {
-            return    <input type="submit" value="Login" onClick={login} id='loginButton'/>
+            return    <input type="submit" value="singUp" onClick={singUp} id='singUpButton'/>
         }
     }
-    function login() {
+    function singUp() {
         let newUsersArray = [];
         newUsersArray = JSON.parse(JSON.stringify(props.data.Users));
         let newElement = JSON.parse(JSON.stringify(props.data.newElement));
         newUsersArray.push(newElement[0]);
         props.dispatch({type:'CHANGE_ARRAY_OF_USERS',newArray:newUsersArray});
         props.dispatch({type:'CHANGE_STATUS_OF_SING',status: false});
-
-
-        axios.post('http://localhost:3001/registration', {
-            name:props.data.newElement[0].name,
+        axios.post('http://localhost:3001/singUp', {
+            name: props.data.newElement[0].name,
             email:props.data.newElement[0].email,
             password:props.data.newElement[0].password,
-            avatarPhoto: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSPXphSfUmRO80leHLmJ61fqUYRf_BPp5UyFw&usqp=CAU'
         })
             .then(function (response) {
                 console.log(response);
@@ -53,7 +50,7 @@ const Registration = (props) =>{
                     <input id="password" type="password"  value={props.data.newElement[0].password}
                            onChange={(event)=>{onChangeValue('password',event.target.value)}} />
                     {checkActiveButton()}
-                    <button onClick={login}>You have account</button>
+                    <button onClick={singUp}>You have account</button>
                 </div>
             </div>
         </div>

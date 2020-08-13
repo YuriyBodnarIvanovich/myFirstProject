@@ -1,7 +1,13 @@
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
+const AuthenticationClient = require('auth0').AuthenticationClient;
 const app = express();
+
+const JwtStrategy = require('passport-jwt').Strategy;
+const    ExtractJwt = require('passport-jwt').ExtractJwt;
+
+
 app.use(cors());
 
 app.use(
@@ -17,12 +23,148 @@ let  imgData = [];
 let iPhonesDB = [];
 let Users =[];
 
+
 const mysql = require("mysql2");
+const passport = require("passport");
 const connection = mysql.createConnection({
     host: "localhost",
     user: "bond",
     database: "PRODUCTS_NEW",
     password: "pass"
+});
+
+const auth0 = new AuthenticationClient({
+    domain: 'dev-uwll33xb.eu.auth0.com',
+    clientId: 'j5ou2Xj09ajlhSZLM57f68nqPBj9RN7G',
+    clientSecret: 'T9SNiX6na8Sshg6qeFQVXjzsz5GA5hx-AgWsLyD05TOXjYwzyDsr9M-htlStDQ4H',
+    scope: 'read:users update:users',
+});
+
+
+
+app.post('/singUp',(req,res)=>{
+    console.log("Name: "+ req.body.name + " email: "  + req.body.email + " pass: " + req.body.password);
+    const data = {
+        username: req.body.name,
+        email: req.body.email,
+        password: req.body.password,
+        connection: 'Username-Password-Authentication' // Optional field.
+    };
+
+    auth0.database.signUp(data, function (err, userData) {
+        if (err) {
+            console.log(err);
+        }
+        else{
+            connection.query("SELECT COUNT(*) AS Number\n" +
+                "FROM nameOfUser",function (err,result) {
+                addData(result[0].Number+1,'idNameOfUser');
+            });
+            connection.query("SELECT COUNT(*) AS Number\n" +
+                "FROM email",function(err,result){
+                addData(result[0].Number+1,'idEmail')
+            });
+            connection.query("SELECT COUNT(*) AS Number\n" +
+                "FROM avatarPhoto",function(err,result){
+                addData(result[0].Number+1,'idAvatarPhoto')
+            });
+            let idNameOfUser;
+            let idEmail;
+            let idAvatarPhoto;
+
+            function addData(data,kindOfData){
+                if(kindOfData==='idNameOfUser'){
+                    idNameOfUser = data;
+                    const fieldName = [idNameOfUser,req.body.name]
+                    const sql = "INSERT INTO nameOfUser(idnameOfUser,name) VALUES(?,?)"
+                    connection.query(sql,fieldName,function (err,result) {
+                        if(err) console.log(err);
+                        else console.log("Данные добавлены");
+                    })
+                }
+                else if(kindOfData==='idEmail'){
+                    idEmail =data;
+                    const fieldName = [idEmail,req.body.email]
+                    const sql = "INSERT INTO email(idemail,email) VALUES(?,?)"
+                    connection.query(sql,fieldName,function (err,result) {
+                        if(err) console.log(err);
+                        else console.log("Данные добавлены");
+                    })
+                }
+                else{
+                    idAvatarPhoto = data;
+                    const fieldName = [idAvatarPhoto,req.body.avatarPhoto]
+                    const sql = "INSERT INTO avatarPhoto(idavatarPhoto,avatarPhotoUser) VALUES(?,?)"
+                    connection.query(sql,fieldName,function (err,result) {
+                        if(err) console.log(err);
+                        else console.log("Данные добавлены");
+                    })
+                }
+
+                if(idNameOfUser !== undefined && idEmail !== undefined  && idAvatarPhoto !== undefined){
+                    const fieldUser = [idNameOfUser,idEmail,idAvatarPhoto]
+                    const sql = "INSERT INTO users(idnameOfUser,idemail,idavatarPhoto) VALUES(?,?,?)"
+                    connection.query(sql,fieldUser,function (err,result) {
+                        if(err) console.log(err);
+                        else console.log("Users Данные добавлены");
+                    })
+                }
+            }
+        }
+        console.log("UserData: " + userData);
+    });
+});
+connection.query("SELECT idusers, name,email, avatarPhotoUser\n" +
+    "    FROM users\n" +
+    "    INNER JOIN nameOfUser\n" +
+    "    USING(idnameOfUser)\n" +
+    "    INNER JOIN email\n" +
+    "    USING(idemail)\n" +
+    "    INNER JOIN(avatarPhoto)\n" +
+    "    USING(idavatarPhoto)",function (err,result) {
+    function onlyUnique(value, index, arr) {
+        return arr.map(function(e) { return e.name; }).indexOf(value.name) === index;
+    }
+    Users = result.filter(onlyUnique).map((element,index)=>{
+        return{
+            idUser: element.idusers,
+            name: element.name,
+            email: element.email,
+            mainPhoto: element.avatarPhotoUser,
+            CartList:[]
+        }
+    });
+    console.log("Users Open!!!")
+    console.log(Users)
+});
+app.post('/authorize',(req,res)=>{
+    console.log("Name: "+ req.body.name + " email: "  + req.body.email + " pass: " + req.body.password);
+    const data = {
+        username: req.body.email,
+        password: req.body.password,
+        realm: 'Username-Password-Authentication', // Optional field.
+    };
+
+    auth0.oauth.passwordGrant(data, function (err, userData) {
+        if (err) {
+            console.log(err);
+        }
+        else{
+            console.log(userData);
+            for(let user of Users){
+                if(req.body.email === user.email){
+                    return res.status(200).json({
+                        token: userData
+                    });
+                }
+            }
+        }
+    });
+});
+
+app.post('/checkToken',(req,res)=>{
+    console.log('JWT TOKEN!');
+
 });
 
 connection.connect(function(err){
@@ -33,35 +175,8 @@ connection.connect(function(err){
         console.log("Подключение к серверу MySQL успешно установлено");
     }
 });
-//проблема в тому що виводуться тільки користувачі які мають щось в кошику
-//потрібно це виправити 26.07.2020
 
-connection.query("SELECT idusers, name,email,password, avatarPhotoUser\n" +
-    "FROM users\n" +
-    "INNER JOIN nameOfUser\n" +
-    "\tUSING(idnameOfUser)\n" +
-    "INNER JOIN email\n" +
-    "\tUSING(idemail)\n" +
-    "INNER JOIN password\n" +
-    "\tUSING(idpassword)\n" +
-    "INNER JOIN(avatarPhoto)\n" +
-    "\tUSING(idavatarPhoto)",function (err,result) {
-    function onlyUnique(value, index, arr) {
-        return arr.map(function(e) { return e.name; }).indexOf(value.name) === index;
-    }
-    Users = result.filter(onlyUnique).map((element,index)=>{
-        return{
-            idUser: element.idusers,
-            name: element.name,
-            email: element.email,
-            password: element.password,
-            mainPhoto: element.avatarPhotoUser,
-            CartList:[]
-        }
-    });
-    console.log(Users)
-
-    connection.query("SELECT idcart, products.name AS ProductName,  prices.Price AS Price,  colorOfPhoto.color AS color, idusers\n" +
+connection.query("SELECT idcart, products.name AS ProductName,  prices.Price AS Price,  colorOfPhoto.color AS color, idusers\n" +
         "FROM cart\n" +
         "INNER JOIN products\n" +
         "\tUSING(idProduct)\n" +
@@ -69,95 +184,25 @@ connection.query("SELECT idusers, name,email,password, avatarPhotoUser\n" +
         "\tUSING(idColorOfPhoto)\n" +
         "INNER JOIN prices\n" +
         "\tON products.idPrice = prices.idPrice",function(err,resultCart) {
-        Users.forEach(function (item, index) {
-            item.CartList = resultCart.filter((element) =>
-            {return item.idUser === element.idusers}).map((p) => {
-                return {
-                    name: p.ProductName,
-                    price: p.Price,
-                    color: p.color
-                };
-            });
+    Users.forEach(function (item, index) {
+        item.CartList = resultCart.filter((element) =>
+        {return item.idUser === element.idusers}).map((p) => {
+            return {
+                name: p.ProductName,
+                price: p.Price,
+                color: p.color
+            };
         });
     });
-})
+});
+
 
 app.get('/users',function (request,response) {
     console.log('Users open!');
     response.send(Users);
 });
-app.post('/registration',(req,res)=>{
-    connection.query("SELECT COUNT(*) AS Number\n" +
-        "FROM nameOfUser",function (err,result) {
-        addData(result[0].Number+1,'idNameOfUser');
-    });
-    connection.query("SELECT COUNT(*) AS Number\n" +
-        "FROM email",function(err,result){
-        addData(result[0].Number+1,'idEmail')
-    });
-    connection.query("SELECT COUNT(*) AS Number\n" +
-        "FROM password",function(err,result){
-        addData(result[0].Number+1,'idPassword')
-    });
-    connection.query("SELECT COUNT(*) AS Number\n" +
-        "FROM avatarPhoto",function(err,result){
-        addData(result[0].Number+1,'idAvatarPhoto')
-    });
-    let idNameOfUser;
-    let idEmail;
-    let idPassword;
-    let idAvatarPhoto;
 
-    function addData(data,kindOfData){
-        if(kindOfData==='idNameOfUser'){
-            idNameOfUser = data;
-            const fieldName = [idNameOfUser,req.body.name]
-            const sql = "INSERT INTO nameOfUser(idnameOfUser,name) VALUES(?,?)"
-            connection.query(sql,fieldName,function (err,result) {
-                if(err) console.log(err);
-                else console.log("Данные добавлены");
-            })
-        }
-        else if(kindOfData==='idEmail'){
-            idEmail =data;
-            const fieldName = [idEmail,req.body.email]
-            const sql = "INSERT INTO email(idemail,email) VALUES(?,?)"
-            connection.query(sql,fieldName,function (err,result) {
-                if(err) console.log(err);
-                else console.log("Данные добавлены");
-            })
-        }
-        else if(kindOfData==='idPassword'){
-            idPassword = data;
-            const fieldName = [idPassword,req.body.password]
-            const sql = "INSERT INTO password(idpassword,password) VALUES(?,?)"
-            connection.query(sql,fieldName,function (err,result) {
-                if(err) console.log(err);
-                else console.log("Данные добавлены");
-            })
-        }
-        else{
-            idAvatarPhoto = data;
-            const fieldName = [idAvatarPhoto,req.body.avatarPhoto]
-            const sql = "INSERT INTO avatarPhoto(idavatarPhoto,avatarPhotoUser) VALUES(?,?)"
-            connection.query(sql,fieldName,function (err,result) {
-                if(err) console.log(err);
-                else console.log("Данные добавлены");
-            })
-        }
-
-        if(idNameOfUser !== undefined && idEmail !== undefined && idPassword !== undefined && idAvatarPhoto !== undefined){
-            const fieldUser = [idNameOfUser,idEmail,idPassword,idAvatarPhoto]
-            const sql = "INSERT INTO users(idnameOfUser,idemail,idpassword,idavatarPhoto) VALUES(?,?,?,?)"
-            connection.query(sql,fieldUser,function (err,result) {
-                if(err) console.log(err);
-                else console.log("Users Данные добавлены");
-            })
-        }
-    }
-});
-
-app.post('/some', (req, res) => {
+app.post('/addToCart', (req, res) => {
     let idUser;
     let idProduct;
     let idColor;

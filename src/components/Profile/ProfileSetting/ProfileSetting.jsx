@@ -28,14 +28,13 @@ const ProfileSetting  = () =>{
                 <br/>
                 <textarea value={dataApple.Users[dataApple.indexOfUsers].email} onChange={event => {onChangeField('email',event.target.value)}}> </textarea>
                 <br/>
-                <b>Password:</b>
+                {/*<b>Password:</b>*/}
                 <br/>
-                <textarea value={dataApple.Users[dataApple.indexOfUsers].password} onChange={event => {onChangeField('password',event.target.value)}}> </textarea>
+                {/*<textarea value={dataApple.Users[dataApple.indexOfUsers].password} onChange={event => {onChangeField('password',event.target.value)}}> </textarea>*/}
                 <br/>
                 <b>Photo:</b>
                 <br/>
                 <textarea value={dataApple.Users[dataApple.indexOfUsers].mainPhoto} onChange={event => {onChangeField('mainPhoto',event.target.value)}}> </textarea>
-                <br/>
             </div>
             <div className={ProfileStyle.vl}> </div>
             <div className={ProfileStyle.showDataContainer}>
@@ -44,8 +43,6 @@ const ProfileSetting  = () =>{
                     <h3>{dataApple.Users[dataApple.indexOfUsers].name}</h3>
                     <h2>Email: </h2>
                     <h3>{dataApple.Users[dataApple.indexOfUsers].email}</h3>
-                    <h2>Password</h2>
-                    <h3>{dataApple.Users[dataApple.indexOfUsers].password}</h3>
                 </div>
                 <div style={{marginLeft:"300px"}}>
                     <img src={dataApple.Users[dataApple.indexOfUsers].mainPhoto} alt={'avatar'}/>

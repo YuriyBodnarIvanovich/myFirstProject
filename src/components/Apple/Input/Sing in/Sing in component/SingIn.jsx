@@ -1,22 +1,27 @@
 import React from "react";
 import InputStyle from "../../Input.module.css";
+import axios from "axios";
+import {useDispatch} from "react-redux";
+import {response} from "express";
 
 const SingIn = (props) =>{
+    const dispatch = useDispatch(state => state.ApplePage);
+
     function check() {
-        for(let i = 0;i<props.data.Users.length;i++){
-            if(props.data.Users[i].email === props.data.email && props.data.Users[i].password ===props.data.password){
-                props.dispatch({type:'CHANGE_STATUS_OF_SHOW_INPUT_BOX',status:false});
-                props.dispatch({type:'CHANGE_STATUS_OF_USER',userStatus:true});
-                props.dispatch({type:'CHANGE_STATUS_OF_SING_COMPONENTS',status:false});
-                props.dispatch({type:'CHANGE_INDEX_OF_USER',newIndex:i});
-                break;
-            }
-            else {
-                if(i === props.data.Users.length-1 ){
-                    props.dispatch({type:'CHANGE_STATUS_OF_ERROR_SING_IN',exception:true});
-                }
-            }
-        }
+        axios.post('http://localhost:3001/authorize', {
+            email:props.data.email,
+            password:props.data.password,
+        })
+            .then(function (response) {
+                console.log(response);
+                console.log(response.data.token);
+                localStorage.setItem('tokenUser', response.data.token);
+                dispatch({type:'CHANGE_STATUS_OF_USER',userStatus:true});
+                dispatch({type:'CHANGE_STATUS_OF_SHOW_INPUT_BOX',status:false});
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
         console.log(props.data.Users);
     }
     return(
