@@ -164,7 +164,6 @@ app.post('/authorize',(req,res)=>{
 
 app.post('/checkToken',(req,res)=>{
     console.log('JWT TOKEN!');
-
 });
 
 connection.connect(function(err){

@@ -2,7 +2,6 @@ import React from "react";
 import InputStyle from "../../Input.module.css";
 import axios from "axios";
 import {useDispatch} from "react-redux";
-import {response} from "express";
 
 const SingIn = (props) =>{
     const dispatch = useDispatch(state => state.ApplePage);

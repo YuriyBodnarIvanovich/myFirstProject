@@ -20,8 +20,8 @@ const ContentPage = (props) =>{
         newItem[0].price = props.data.iPhones[props.data.indexOfMainArray].price;
         Users[dataApple.indexOfUsers].CartList.push(newItem[0]);
         props.dispatch({type:'CHANGE_ARRAY_OF_USERS',newArray:Users});
-        // console.log(window.localStorage.getItem('tokenUser'));
-        // console.log(localStorage.getItem('tokenUser'));
+        console.log(window.localStorage.getItem('tokenUser'));
+        console.log(localStorage.getItem('tokenUser'));
 
         axios.post('http://localhost:3001/addToCart', {
             name:props.data.iPhones[props.data.indexOfMainArray].name,
