@@ -13,8 +13,8 @@ const SingIn = (props) =>{
         })
             .then(function (response) {
                 console.log(response);
-                console.log(response.data.token);
-                localStorage.setItem('tokenUser', response.data.token);
+                console.log(response.data.token.id_token);
+                localStorage.setItem('token', response.data.token.id_token);
                 dispatch({type:'CHANGE_STATUS_OF_USER',userStatus:true});
                 dispatch({type:'CHANGE_STATUS_OF_SHOW_INPUT_BOX',status:false});
             })

@@ -3,9 +3,22 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const AuthenticationClient = require('auth0').AuthenticationClient;
 const app = express();
+const jwt = require('jsonwebtoken');
+const request = require("request");
 
-const JwtStrategy = require('passport-jwt').Strategy;
-const    ExtractJwt = require('passport-jwt').ExtractJwt;
+const passportJWT = require("passport-jwt");
+
+const passport = require("passport");
+const ExtractJwt = passportJWT.ExtractJwt;
+const JwtStrategy = passportJWT.Strategy;
+
+
+// const passportJWT = require("passport-jwt");
+// const JwtStrategy = require('passport-jwt').Strategy;
+// const ExtractJwt = require('passport-jwt').ExtractJwt;
+// const passportAuth = require('./passport');
+
+
 
 
 app.use(cors());
@@ -23,9 +36,60 @@ let  imgData = [];
 let iPhonesDB = [];
 let Users =[];
 
+// app.post('/checkToken',passport.authenticate('jwt', {session: false}),(req,res)=>{
+//     console.log('JWT TOKEN!');
+//
+
+
+    const secretOfKey = '-----BEGIN CERTIFICATE-----\n' +
+        'MIIDDTCCAfWgAwIBAgIJI2W4WWI+fqlZMA0GCSqGSIb3DQEBCwUAMCQxIjAgBgNV\n' +
+        'BAMTGWRldi11d2xsMzN4Yi5ldS5hdXRoMC5jb20wHhcNMjAwNzIwMTk1NjQ2WhcN\n' +
+        'MzQwMzI5MTk1NjQ2WjAkMSIwIAYDVQQDExlkZXYtdXdsbDMzeGIuZXUuYXV0aDAu\n' +
+        'Y29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAzO0RcUTK1FpWoDw9\n' +
+        'yodZqVVAx8j8oUTptgiqokxtpKb5YfHbI2wtlDT74UbYj6N/N4Dn4Ca8OQbo9sae\n' +
+        'vFmRTDzeOiem24CLuikF6viKzFsbhShKODa7rkYiq3sqNxT9GS8m6uGH+3Ggf+8D\n' +
+        'hEFPrM/sy855yFWm8Y4+zg0W4K06TPOyWohgbgYvKyRss6XEtvH2fWzmCBRQMGC/\n' +
+        'O24nEhPtyC6YcHkL09Tg/03fiL1qHCODdwtxAjkFdRu3LUzOCVu3meNlQjQEzxU+\n' +
+        'p9A0suK/kP7D8svpvgEE5HEFqXBPujX96eiB0jzVXQr8m6qICLKhJkM3HNNELTh6\n' +
+        'svdolQIDAQABo0IwQDAPBgNVHRMBAf8EBTADAQH/MB0GA1UdDgQWBBQ0ARQtsQu2\n' +
+        '3W6oW4pKFGlI1Dj8MDAOBgNVHQ8BAf8EBAMCAoQwDQYJKoZIhvcNAQELBQADggEB\n' +
+        'ABED/Mr0ZBgMBB8zcdKt/nVu4csu7rtDCt9QF5NTmx+rRt7/EpCOm3x7R2oVYISD\n' +
+        'r7RcT8f6T2p/azZnpNCDDIDkjWr4Ep//qju95OJQaIoivrZwX2fLuGG2v72G4yio\n' +
+        'AcPka4oigbFgOYa6s4u6vTBl3IptVW9Ocm4m4dXCz576kdWuKJoN7MK+Q4DnGY2e\n' +
+        '62Gtx32yKiC0CgErEZrttPiA6+hXW93ufwwC3llFlBhHz2g0D0z3ADLtmOedFu3R\n' +
+        'Jha7ptxyHFN5r3kYKUKKxvXf/CQ0/zm0/ygwKbvKdQLJwNuCh0kXMcraOducK/T0\n' +
+        '0BlrL37n/yuGc6hgVlAIZzM=\n' +
+        '-----END CERTIFICATE-----';
+
+//
+//     const options = {
+//         jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken('authorization'),
+//         secretOrKey: secretOfKey,
+//         algorithm:['RS256'],
+//     }
+//     passport.use(new JwtStrategy(options, function(jwt_payload, done) {
+//         Users.forEach((item)=>{
+//            if(item.idAuth0 === jwt_payload.sub){
+//                console.log(item);
+//            }
+//         });
+//     }));
+// });
+
+
+const jwtOptions = {}
+jwtOptions.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
+jwtOptions.secretOrKey = secretOfKey;
+
+const strategy = new JwtStrategy(jwtOptions, function(jwt_payload, next) {
+    console.log('payload received', jwt_payload);
+    next(null, {id: 'testId'})
+});
+
+passport.use(strategy);
+
 
 const mysql = require("mysql2");
-const passport = require("passport");
 const connection = mysql.createConnection({
     host: "localhost",
     user: "bond",
@@ -114,7 +178,7 @@ app.post('/singUp',(req,res)=>{
         console.log("UserData: " + userData);
     });
 });
-connection.query("SELECT idusers, name,email, avatarPhotoUser\n" +
+connection.query("SELECT idusers, name,email, avatarPhotoUser, subOfAuth0 AS idAuth\n" +
     "    FROM users\n" +
     "    INNER JOIN nameOfUser\n" +
     "    USING(idnameOfUser)\n" +
@@ -128,6 +192,7 @@ connection.query("SELECT idusers, name,email, avatarPhotoUser\n" +
     Users = result.filter(onlyUnique).map((element,index)=>{
         return{
             idUser: element.idusers,
+            idAuth0:element.idAuth,
             name: element.name,
             email: element.email,
             mainPhoto: element.avatarPhotoUser,
@@ -162,9 +227,10 @@ app.post('/authorize',(req,res)=>{
     });
 });
 
-app.post('/checkToken',(req,res)=>{
-    console.log('JWT TOKEN!');
-});
+app.use(passport.initialize());
+app.use(passport.session());
+
+
 
 connection.connect(function(err){
     if (err) {
@@ -201,7 +267,7 @@ app.get('/users',function (request,response) {
     response.send(Users);
 });
 
-app.post('/addToCart', (req, res) => {
+app.post('/addToCart',passport.authenticate('jwt', { session: false }), (req, res) => {
     let idUser;
     let idProduct;
     let idColor;
@@ -232,6 +298,7 @@ app.post('/addToCart', (req, res) => {
         addData(result[0].Number,'idCart');
 
     });
+    res.json({message: "Success!"});
     function addData(data,kindData) {
         if(kindData==='idUser'){
             idUser = data;
