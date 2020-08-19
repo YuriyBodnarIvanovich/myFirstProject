@@ -7,10 +7,8 @@ import axios from "axios";
 
 const ContentPage = (props) =>{
     const dataApple = useSelector(state=>state.ApplePage);
-
     const colorArray = props.data.iPhones[props.data.indexOfMainArray].photo.map((element,index)=>
         <ButtonColor color={element.color} id={index} data={props.data} dispatch={props.dispatch} way='iPhone'/>);
-
 
     function addToCart() {
         let Users = JSON.parse(JSON.stringify(dataApple.Users));
@@ -20,10 +18,6 @@ const ContentPage = (props) =>{
         newItem[0].price = props.data.iPhones[props.data.indexOfMainArray].price;
         Users[dataApple.indexOfUsers].CartList.push(newItem[0]);
         props.dispatch({type:'CHANGE_ARRAY_OF_USERS',newArray:Users});
-
-        console.log("add to cart");
-        console.log(localStorage.getItem('token'));
-
 
         axios.post('http://localhost:3001/addToCart', {
             name:props.data.iPhones[props.data.indexOfMainArray].name,
@@ -37,26 +31,12 @@ const ContentPage = (props) =>{
             .catch(function (error) {
                 console.log(error);
             });
-
-
-
-
-        // axios.post('http://localhost:3001/checkToken', {
-        //     headers: {"authorization" : `Bearer ${localStorage.getItem('token')}`}
-        // })
-        //     .then(function (response) {
-        //         console.log(response);
-        //     })
-        //     .catch(function (error) {
-        //         console.log(error);
-        //     });
     }
     function last() {
         let array = [];
         array = JSON.parse(JSON.stringify(props.data.iPhones));
         if(props.data.indexOfPhoto === 0){
             props.dispatch({type:'CHANGE_INDEX_OF_PHOTO',newIndex: 2});
-
         }
         else {
             props.dispatch({type:'CHANGE_INDEX_OF_PHOTO',newIndex:props.data.indexOfPhoto - 1});
@@ -112,8 +92,6 @@ const ContentPage = (props) =>{
                 </h3>
             </div>
         </div>
-
-
     )
 }
 export default ContentPage;

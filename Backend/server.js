@@ -1,110 +1,38 @@
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
+const mysql = require("mysql2");
 const AuthenticationClient = require('auth0').AuthenticationClient;
 const app = express();
-const jwt = require('jsonwebtoken');
-const request = require("request");
-
-const passportJWT = require("passport-jwt");
-
+const strategy = require('./passport').strategy;
 const passport = require("passport");
-const ExtractJwt = passportJWT.ExtractJwt;
-const JwtStrategy = passportJWT.Strategy;
-
-
-// const passportJWT = require("passport-jwt");
-// const JwtStrategy = require('passport-jwt').Strategy;
-// const ExtractJwt = require('passport-jwt').ExtractJwt;
-// const passportAuth = require('./passport');
-
-
-
 
 app.use(cors());
-
 app.use(
     bodyParser.urlencoded({
         extended: true
     })
 )
-
 app.use(bodyParser.json())
-
 
 let  imgData = [];
 let iPhonesDB = [];
 let Users =[];
 
-// app.post('/checkToken',passport.authenticate('jwt', {session: false}),(req,res)=>{
-//     console.log('JWT TOKEN!');
-//
-
-
-    const secretOfKey = '-----BEGIN CERTIFICATE-----\n' +
-        'MIIDDTCCAfWgAwIBAgIJI2W4WWI+fqlZMA0GCSqGSIb3DQEBCwUAMCQxIjAgBgNV\n' +
-        'BAMTGWRldi11d2xsMzN4Yi5ldS5hdXRoMC5jb20wHhcNMjAwNzIwMTk1NjQ2WhcN\n' +
-        'MzQwMzI5MTk1NjQ2WjAkMSIwIAYDVQQDExlkZXYtdXdsbDMzeGIuZXUuYXV0aDAu\n' +
-        'Y29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAzO0RcUTK1FpWoDw9\n' +
-        'yodZqVVAx8j8oUTptgiqokxtpKb5YfHbI2wtlDT74UbYj6N/N4Dn4Ca8OQbo9sae\n' +
-        'vFmRTDzeOiem24CLuikF6viKzFsbhShKODa7rkYiq3sqNxT9GS8m6uGH+3Ggf+8D\n' +
-        'hEFPrM/sy855yFWm8Y4+zg0W4K06TPOyWohgbgYvKyRss6XEtvH2fWzmCBRQMGC/\n' +
-        'O24nEhPtyC6YcHkL09Tg/03fiL1qHCODdwtxAjkFdRu3LUzOCVu3meNlQjQEzxU+\n' +
-        'p9A0suK/kP7D8svpvgEE5HEFqXBPujX96eiB0jzVXQr8m6qICLKhJkM3HNNELTh6\n' +
-        'svdolQIDAQABo0IwQDAPBgNVHRMBAf8EBTADAQH/MB0GA1UdDgQWBBQ0ARQtsQu2\n' +
-        '3W6oW4pKFGlI1Dj8MDAOBgNVHQ8BAf8EBAMCAoQwDQYJKoZIhvcNAQELBQADggEB\n' +
-        'ABED/Mr0ZBgMBB8zcdKt/nVu4csu7rtDCt9QF5NTmx+rRt7/EpCOm3x7R2oVYISD\n' +
-        'r7RcT8f6T2p/azZnpNCDDIDkjWr4Ep//qju95OJQaIoivrZwX2fLuGG2v72G4yio\n' +
-        'AcPka4oigbFgOYa6s4u6vTBl3IptVW9Ocm4m4dXCz576kdWuKJoN7MK+Q4DnGY2e\n' +
-        '62Gtx32yKiC0CgErEZrttPiA6+hXW93ufwwC3llFlBhHz2g0D0z3ADLtmOedFu3R\n' +
-        'Jha7ptxyHFN5r3kYKUKKxvXf/CQ0/zm0/ygwKbvKdQLJwNuCh0kXMcraOducK/T0\n' +
-        '0BlrL37n/yuGc6hgVlAIZzM=\n' +
-        '-----END CERTIFICATE-----';
-
-//
-//     const options = {
-//         jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken('authorization'),
-//         secretOrKey: secretOfKey,
-//         algorithm:['RS256'],
-//     }
-//     passport.use(new JwtStrategy(options, function(jwt_payload, done) {
-//         Users.forEach((item)=>{
-//            if(item.idAuth0 === jwt_payload.sub){
-//                console.log(item);
-//            }
-//         });
-//     }));
-// });
-
-
-const jwtOptions = {}
-jwtOptions.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
-jwtOptions.secretOrKey = secretOfKey;
-
-const strategy = new JwtStrategy(jwtOptions, function(jwt_payload, next) {
-    console.log('payload received', jwt_payload);
-    next(null, {id: 'testId'})
-});
-
 passport.use(strategy);
 
-
-const mysql = require("mysql2");
 const connection = mysql.createConnection({
     host: "localhost",
     user: "bond",
     database: "PRODUCTS_NEW",
     password: "pass"
 });
-
 const auth0 = new AuthenticationClient({
     domain: 'dev-uwll33xb.eu.auth0.com',
     clientId: 'j5ou2Xj09ajlhSZLM57f68nqPBj9RN7G',
     clientSecret: 'T9SNiX6na8Sshg6qeFQVXjzsz5GA5hx-AgWsLyD05TOXjYwzyDsr9M-htlStDQ4H',
     scope: 'read:users update:users',
 });
-
-
 
 app.post('/singUp',(req,res)=>{
     console.log("Name: "+ req.body.name + " email: "  + req.body.email + " pass: " + req.body.password);
@@ -165,9 +93,9 @@ app.post('/singUp',(req,res)=>{
                     })
                 }
 
-                if(idNameOfUser !== undefined && idEmail !== undefined  && idAvatarPhoto !== undefined){
-                    const fieldUser = [idNameOfUser,idEmail,idAvatarPhoto]
-                    const sql = "INSERT INTO users(idnameOfUser,idemail,idavatarPhoto) VALUES(?,?,?)"
+                if(idNameOfUser !== undefined && idEmail !== undefined  && idAvatarPhoto !== undefined && userData._id !== undefined){
+                    const fieldUser = [idNameOfUser,idEmail,idAvatarPhoto,userData._id]
+                    const sql = "INSERT INTO users(idnameOfUser,idemail,idavatarPhoto,subOfAuth0) VALUES(?,?,?,?)"
                     connection.query(sql,fieldUser,function (err,result) {
                         if(err) console.log(err);
                         else console.log("Users Данные добавлены");
@@ -175,7 +103,6 @@ app.post('/singUp',(req,res)=>{
                 }
             }
         }
-        console.log("UserData: " + userData);
     });
 });
 connection.query("SELECT idusers, name,email, avatarPhotoUser, subOfAuth0 AS idAuth\n" +
@@ -215,7 +142,8 @@ app.post('/authorize',(req,res)=>{
             console.log(err);
         }
         else{
-            console.log(userData);
+            console.log('user data:' + userData);
+            console.log(userData.id_token);
             for(let user of Users){
                 if(req.body.email === user.email){
                     return res.status(200).json({
@@ -229,8 +157,6 @@ app.post('/authorize',(req,res)=>{
 
 app.use(passport.initialize());
 app.use(passport.session());
-
-
 
 connection.connect(function(err){
     if (err) {
@@ -318,7 +244,6 @@ app.post('/addToCart',passport.authenticate('jwt', { session: false }), (req, re
             });
         }
     }
-
 });
 
 connection.query("SELECT name, price,\n" +
