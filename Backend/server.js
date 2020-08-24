@@ -6,6 +6,7 @@ const AuthenticationClient = require('auth0').AuthenticationClient;
 const app = express();
 const strategy = require('./passport').strategy;
 const passport = require("passport");
+const dataBD = require('./connectionBD');
 
 app.use(cors());
 app.use(
@@ -33,6 +34,7 @@ const auth0 = new AuthenticationClient({
     clientSecret: 'T9SNiX6na8Sshg6qeFQVXjzsz5GA5hx-AgWsLyD05TOXjYwzyDsr9M-htlStDQ4H',
     scope: 'read:users update:users',
 });
+
 
 app.post('/singUp',(req,res)=>{
     console.log("Name: "+ req.body.name + " email: "  + req.body.email + " pass: " + req.body.password);
@@ -279,58 +281,11 @@ app.get('/mac',function(request,response){
     response.send(imgData);
 });
 
-connection.query("SELECT name, price,\n" +
-    "kindOfProduct, screen, processor, RAM, InternalMemory, OperationSystem, remainder, BasicCamera, FrontCamera,   FirstPhoto, SecondPhoto, ThirdPhoto, color\n" +
-    "FROM products\n" +
-    "INNER JOIN prices\n" +
-    "\tUSING(idPrice)\n" +
-    "INNER JOIN characters\n" +
-    "\tUSING(idcharacters)\n" +
-    "INNER JOIN photo\n" +
-    "\tUSING(idProduct)\n" +
-    "INNER JOIN colorOfPhoto\n" +
-    "\tUSING(idColorOfPhoto)\n" +
-    "WHERE kindOfProduct = 'IPHONE'",
-    function(err, results) {
-        function onlyUnique(value, index, arr) {
-            return arr.map(function(e) { return e.name; }).indexOf(value.name) === index;
-        }
-        iPhonesDB = results.filter(onlyUnique).map((p,index)=>{
-            return {
-                id: index,
-                name: p.name, price: p.price,
-                character: {
-                    screen: p.screen, processor: p.processor,
-                    RAM: p.RAM, internalMemory: p.InternalMemory,
-                    operatingSystem: p.OperationSystem, remainder: p.remainder,
-                    camera:{
-                        basicCamera: p.BasicCamera,
-                        frontCamera: p.FrontCamera,
-                    },
-                },
-                stateColorIphone7: p.FirstPhoto,
-                mainColor: p.color,
-                status: true,
-                photo:[],
-            };
-        })
-        iPhonesDB.forEach(function (item,index) {
-            item.photo = results.filter((r)=>{return item.name === r.name}).map((p)=>{
-                    return{
-                        color: p.color,
-                        imgSrc:[
-                            {src:p.FirstPhoto},
-                            {src:p.SecondPhoto},
-                            {src:p.ThirdPhoto},
-                        ],
-                    }
-            })
-        })
-        console.log("IPhones was got!!!");
-    });
-
-app.get('/iPhone',function(request,response){
-    response.send(iPhonesDB);
+app.get('/iPhone', async function(request,response){
+    const arr = await dataBD.openIphone();
+    // console.log("arra:" + JSON.stringify(arr));
+    response.send(arr);
+    console.log('iPhones Opens!!!')
 });
 
 app.listen(3001);

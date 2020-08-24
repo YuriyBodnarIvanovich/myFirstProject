@@ -12,7 +12,19 @@ import UserMenu from "../Menu/UserField/UserMenu/UserMenu";
 const src_video = 'https://ak.picdn.net/shutterstock/videos/1042417903/preview/stock-footage-minsk-belarus-dec-close-up-woman-s-hands-keeping-and-unpacking-new-apple-iphone-pro.webm';
 
 const Iphone = ()=>{
-
+    useEffect(() => {
+        axios.get('http://localhost:3001/iPhone').then((response) => {
+            let resData = response.data;
+            console.log(resData);
+            dispatch({type: 'CHANGE_ARRAY', array: resData});
+        })
+            .then(function (response) {
+                console.log(response);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    },[]);
     const dispatch = useDispatch();
     const data = useSelector(state=>state.IphonePage);
     const dataApple = useSelector(state=>state.ApplePage);
@@ -74,11 +86,6 @@ const Iphone = ()=>{
     }
 
     function download() {
-            axios.get('http://localhost:3001/iPhone').then((response) => {
-                let resData = response.data;
-                console.log(resData);
-                dispatch({type:'CHANGE_ARRAY',array:resData});
-            });
         return(
             <h1 style={{color:'#fff'}}>Waiting download</h1>
         )
