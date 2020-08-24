@@ -13,12 +13,8 @@ app.use(
     bodyParser.urlencoded({
         extended: true
     })
-)
-app.use(bodyParser.json())
-
-let  imgData = [];
-let iPhonesDB = [];
-let Users =[];
+);
+app.use(bodyParser.json());
 
 passport.use(strategy);
 
@@ -35,9 +31,7 @@ const auth0 = new AuthenticationClient({
     scope: 'read:users update:users',
 });
 
-
 app.post('/singUp',(req,res)=>{
-    console.log("Name: "+ req.body.name + " email: "  + req.body.email + " pass: " + req.body.password);
     const data = {
         username: req.body.name,
         email: req.body.email,
@@ -107,43 +101,20 @@ app.post('/singUp',(req,res)=>{
         }
     });
 });
-connection.query("SELECT idusers, name,email, avatarPhotoUser, subOfAuth0 AS idAuth\n" +
-    "    FROM users\n" +
-    "    INNER JOIN nameOfUser\n" +
-    "    USING(idnameOfUser)\n" +
-    "    INNER JOIN email\n" +
-    "    USING(idemail)\n" +
-    "    INNER JOIN(avatarPhoto)\n" +
-    "    USING(idavatarPhoto)",function (err,result) {
-    function onlyUnique(value, index, arr) {
-        return arr.map(function(e) { return e.name; }).indexOf(value.name) === index;
-    }
-    Users = result.filter(onlyUnique).map((element,index)=>{
-        return{
-            idUser: element.idusers,
-            idAuth0:element.idAuth,
-            name: element.name,
-            email: element.email,
-            mainPhoto: element.avatarPhotoUser,
-            CartList:[]
-        }
-    });
-    console.log("Users Open!!!")
-    console.log(Users)
-});
+
 app.post('/authorize',(req,res)=>{
-    console.log("Name: "+ req.body.name + " email: "  + req.body.email + " pass: " + req.body.password);
     const data = {
         username: req.body.email,
         password: req.body.password,
         realm: 'Username-Password-Authentication', // Optional field.
     };
 
-    auth0.oauth.passwordGrant(data, function (err, userData) {
+    auth0.oauth.passwordGrant(data,async function (err, userData) {
         if (err) {
             console.log(err);
         }
         else{
+            const Users = await dataBD.openUsers();
             console.log('user data:' + userData);
             console.log(userData.id_token);
             for(let user of Users){
@@ -167,32 +138,6 @@ connection.connect(function(err){
     else{
         console.log("Подключение к серверу MySQL успешно установлено");
     }
-});
-
-connection.query("SELECT idcart, products.name AS ProductName,  prices.Price AS Price,  colorOfPhoto.color AS color, idusers\n" +
-        "FROM cart\n" +
-        "INNER JOIN products\n" +
-        "\tUSING(idProduct)\n" +
-        "INNER JOIN colorOfPhoto\n" +
-        "\tUSING(idColorOfPhoto)\n" +
-        "INNER JOIN prices\n" +
-        "\tON products.idPrice = prices.idPrice",function(err,resultCart) {
-    Users.forEach(function (item, index) {
-        item.CartList = resultCart.filter((element) =>
-        {return item.idUser === element.idusers}).map((p) => {
-            return {
-                name: p.ProductName,
-                price: p.Price,
-                color: p.color
-            };
-        });
-    });
-});
-
-
-app.get('/users',function (request,response) {
-    console.log('Users open!');
-    response.send(Users);
 });
 
 app.post('/addToCart',passport.authenticate('jwt', { session: false }), (req, res) => {
@@ -248,44 +193,21 @@ app.post('/addToCart',passport.authenticate('jwt', { session: false }), (req, re
     }
 });
 
-connection.query("SELECT name, price,\n" +
-    "kindOfProduct, screen, processor, RAM, remainder, SSD, videoCard, FirstPhoto, SecondPhoto, ThirdPhoto\n" +
-    "FROM products\n" +
-    "INNER JOIN prices\n" +
-    "\tUSING(idPrice)\n" +
-    "INNER JOIN characters\n" +
-    "\tUSING(idcharacters)\n" +
-    "INNER JOIN photo\n" +
-    "\tUSING(idProduct)\n" +
-    "WHERE kindOfProduct = 'MAC'",function (err,result) {
-
-    imgData = result.filter((p)=>{return p.kindOfProduct === 'MAC'}).map((p,index)=>{
-        return{
-            id: index, name:p.name, price: p.price,
-            photo:[
-                {src:p.FirstPhoto},
-                {src:p.SecondPhoto},
-                {src:p.ThirdPhoto},
-            ],
-            characters:{
-                screen: p.screen, processor:p.processor,
-                RAM: p.RAM, SSD: p.SSD, videoCard: p.videoCard,
-                remainder:p.remainder
-            },
-        }
-    })
-    console.log("Mac Book was got!!!")
-})
-
-app.get('/mac',function(request,response){
-    response.send(imgData);
+app.get('/mac',async function(request,response){
+    const arr =  await dataBD.openMac();
+    response.send(arr);
 });
 
 app.get('/iPhone', async function(request,response){
     const arr = await dataBD.openIphone();
-    // console.log("arra:" + JSON.stringify(arr));
     response.send(arr);
     console.log('iPhones Opens!!!')
+});
+
+app.get('/users',async function (request,response) {
+    const arr = await dataBD.openUsers();
+    // console.log(arr);
+    response.send(arr);
 });
 
 app.listen(3001);
