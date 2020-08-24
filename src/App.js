@@ -6,8 +6,6 @@ import Admin from "./components/Admin/Admin";
 import Mac from "./components/Mac/Mac";
 import Iphone from "./components/IPhone/Iphone";
 import Cart from "./components/Cart/Cart";
-import axios from "axios";
-import {useDispatch} from "react-redux";
 import Apple from "./components/Apple/Apple";
 import Profile from "./components/Profile/Profile";
 

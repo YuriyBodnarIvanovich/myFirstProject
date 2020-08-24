@@ -51,7 +51,7 @@ const Apple = () =>{
                                     {topProgramArray}
                                 </div>
                             </div>
-                                <SocialButton/>
+                                {/*<SocialButton/>*/}
                              {data.showInputBox ? <Input data={data} dispatch={dispatch}/> : ''}
                         </div>
                     </div>

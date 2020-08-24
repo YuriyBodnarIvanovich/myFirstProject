@@ -157,7 +157,6 @@ app.post('/addToCart',passport.authenticate('jwt', { session: false }), (req, re
         "FROM products\n" +
         "WHERE name = '"+ req.body.name +"'",function (err, result) {
         addData( result[0].idProduct,'idProduct');
-
     });
 
     connection.query("SELECT idColorOfPhoto\n" +
@@ -169,7 +168,6 @@ app.post('/addToCart',passport.authenticate('jwt', { session: false }), (req, re
     connection.query("SELECT COUNT(*) AS Number \n" +
         "FROM cart",function (err,result) {
         addData(result[0].Number,'idCart');
-
     });
     res.json({message: "Success!"});
     function addData(data,kindData) {
