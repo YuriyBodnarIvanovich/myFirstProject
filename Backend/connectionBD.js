@@ -92,22 +92,20 @@ async function openMac(){
     return macArray
 }
 
-async function openUsers(){
-    let usersArr = [];
+async function openUsers(idAuth){
+    let user = [];
     const promisePool = pool.promise();
     const result = await promisePool.query("SELECT idusers, name,email, avatarPhotoUser, subOfAuth0 AS idAuth\n" +
-        "    FROM users\n" +
-        "    INNER JOIN nameOfUser\n" +
-        "    USING(idnameOfUser)\n" +
-        "    INNER JOIN email\n" +
-        "    USING(idemail)\n" +
-        "    INNER JOIN(avatarPhoto)\n" +
-        "    USING(idavatarPhoto)");
+        "        FROM users\n" +
+        "        INNER JOIN nameOfUser\n" +
+        "        USING(idnameOfUser)\n" +
+        "        INNER JOIN email\n" +
+        "        USING(idemail)\n" +
+        "        INNER JOIN(avatarPhoto)\n" +
+        "        USING(idavatarPhoto)\n" +
+        "        WHERE email ='" + idAuth + "'");
 
-    function onlyUnique(value, index, arr) {
-        return arr.map(function(e) { return e.name; }).indexOf(value.name) === index;
-    }
-    usersArr = result[0].filter(onlyUnique).map((element,index)=>{
+    user =  result[0].map((element,index)=>{
         return{
             idUser: element.idusers,
             idAuth0:element.idAuth,
@@ -119,15 +117,16 @@ async function openUsers(){
     });
 
     const resultCart = await promisePool.query("SELECT idcart, products.name AS ProductName,  prices.Price AS Price,  colorOfPhoto.color AS color, idusers\n" +
-        "FROM cart\n" +
-        "INNER JOIN products\n" +
-        "\tUSING(idProduct)\n" +
-        "INNER JOIN colorOfPhoto\n" +
-        "\tUSING(idColorOfPhoto)\n" +
-        "INNER JOIN prices\n" +
-        "\tON products.idPrice = prices.idPrice");
+        "        FROM cart\n" +
+        "        INNER JOIN products\n" +
+        "        USING(idProduct)\n" +
+        "        INNER JOIN colorOfPhoto\n" +
+        "        USING(idColorOfPhoto)\n" +
+        "        INNER JOIN prices\n" +
+        "        ON products.idPrice = prices.idPrice\n" +
+        "        WHERE idusers ='" + user[0].idUser + "'");
 
-    usersArr.forEach(function (item, index) {
+    user.forEach(function (item, index) {
         item.CartList = resultCart[0].filter((element) =>
         {return item.idUser === element.idusers}).map((p) => {
             return {
@@ -137,9 +136,9 @@ async function openUsers(){
             };
         });
     });
-
-    return usersArr
+    return user
 }
+
 module.exports.openIphone = openIphone;
 module.exports.openMac = openMac;
 module.exports.openUsers = openUsers;

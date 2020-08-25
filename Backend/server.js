@@ -108,19 +108,18 @@ app.post('/authorize',(req,res)=>{
         password: req.body.password,
         realm: 'Username-Password-Authentication', // Optional field.
     };
-
     auth0.oauth.passwordGrant(data,async function (err, userData) {
         if (err) {
             console.log(err);
         }
         else{
-            const Users = await dataBD.openUsers();
-            console.log('user data:' + userData);
-            console.log(userData.id_token);
+            const Users = await dataBD.openUsers(req.body.email);
+            console.log('UserData: ' + JSON.stringify(Users));
             for(let user of Users){
                 if(req.body.email === user.email){
                     return res.status(200).json({
-                        token: userData
+                        token: userData,
+                        Users: Users
                     });
                 }
             }
@@ -200,12 +199,6 @@ app.get('/iPhone', async function(request,response){
     const arr = await dataBD.openIphone();
     response.send(arr);
     console.log('iPhones Opens!!!')
-});
-
-app.get('/users',async function (request,response) {
-    const arr = await dataBD.openUsers();
-    // console.log(arr);
-    response.send(arr);
 });
 
 app.listen(3001);

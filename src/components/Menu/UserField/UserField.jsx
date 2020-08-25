@@ -25,8 +25,8 @@ const UserField = () =>{
         <div className={userFieldStyle.fieldStyle}>
             {data.userStatus ?
                 <div className={userFieldStyle.row}>
-                    <b onClick={clickUser}>{data.Users[data.indexOfUsers].name}</b>
-                    <img src={data.Users[data.indexOfUsers].mainPhoto} alt={'avatar'}/>
+                    <b onClick={clickUser}>{data.Users[0].name}</b>
+                    <img src={data.Users[0].mainPhoto} alt={'avatar'}/>
                 </div>:
                 <div>
                     <button onClick={SingInOpen}> Sing in </button>
