@@ -7,30 +7,29 @@ import UserField from "./UserField/UserField";
 const Menu = () =>{
     const data = useSelector(state=> state.ApplePage);
     return(
-        <div className={MenuStyle.menu}>
-            <div className={MenuStyle.forItems}>
-                <div className={MenuStyle.item}>
-                    <NavLink to='/Apple' activeClassName={MenuStyle.active}>
-                        <img className={MenuStyle.logo} src={"http://pngimg.com/uploads/apple_logo/apple_logo_PNG19692.png"}
-                             alt={'apple'}/>
-                    </NavLink>
+        <div className={MenuStyle.main}>
+            <div className={MenuStyle.menu}>
+                <div className={MenuStyle.logo}>
+                    <div>
+                        <img src={'https://image.flaticon.com/icons/svg/37/37150.svg'} alt={'apple'}/>
+                    </div>
                 </div>
-                <div className={MenuStyle.item}>
-                    <NavLink to='/Mac' activeClassName={MenuStyle.active}>Mac</NavLink>
+                <div className={MenuStyle.nameCompany}>
+                    <p>Your apple</p>
                 </div>
-                <div className={MenuStyle.item}>
-                    <NavLink to='/IPhone' activeClassName={MenuStyle.active}>IPhone</NavLink>
+                <div className={MenuStyle.items}>
+                    <div>
+                        <img src={'https://image.flaticon.com/icons/svg/149/149309.svg'} alt={''}/>
+                    </div>
+                    <div>
+                        <img src={'https://image.flaticon.com/icons/svg/848/848043.svg'} alt={''}/>
+                    </div>
+                    <div>
+                        <img src={'https://image.flaticon.com/icons/svg/833/833314.svg'} alt={''}/>
+                    </div>
                 </div>
-                <div className={MenuStyle.item} >
-                    {data.adminStatus ?  <NavLink to='/Admin' activeClassName={MenuStyle.active}>Admin</NavLink> : ''}
-                </div>
-            </div>
-
-            <div className={MenuStyle.itemUserField}>
-                <UserField />
             </div>
         </div>
     );
-
 }
 export default Menu;

@@ -1,132 +1,46 @@
+.main{
+    display: grid;
+    grid-template-columns: 0.8fr;
+    justify-content: center;
+    grid-gap: 20px;
+}
 .menu{
     width: 100%;
-    height: 50px;
-    color: azure;
-    background-color: black;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    /*padding-left: 700px;*/
-    /*padding-right: 100px;*/
-    padding-top: 10px;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 5;
-}
-.forItems{
-    width: 400px;
-    display: flex;
-    flex-direction: row;
-    margin-left: 20%;
-}
-.itemUserField{
-    right: 0;
-    width: 200px;
-}
-.item a{
-    font-size: 20px;
-    color: azure;
-    text-decoration: none;
-    margin-right: 30px;
-}
-.item a.active{
-    font-size: 22px;
-    color: cornsilk;
-    text-decoration: none;
+    height: 120px;
+    display: grid;
+    grid-template-columns: 1fr 4fr 1fr;
+    grid-gap: 20px;
+    border-bottom-width: 1px; /* Толщина линии внизу */
+    border-bottom-style: solid; /* Стиль линии внизу */
+    border-bottom-color: black; /* Цвет линии внизу */
+
 }
 .logo{
-    width: 30px;
-    height: 30px;
-    margin-right: 50px;
+    display: grid;
+    justify-content: center;
+}
+.logo img{
+    margin-top: 30px;
+    width: 50px;
 }
 
-@media only screen and (min-width : 1800px) {
-    .forItems{
-        width: 400px;
-        display: flex;
-        flex-direction: row;
-        margin-left: 37%;
-    }
-    .itemUserField{
-        margin-left: 400px;
-        width: 200px;
-    }
+.nameCompany{
+    display: grid;
+    justify-content: center;
 }
-@media only screen and (max-width : 1800px){
-    .forItems{
-        width: 400px;
-        display: flex;
-        flex-direction: row;
-        margin-left: 33%;
-    }
-    .itemUserField{
-        margin-left: 14%;
-        width: 200px;
-    }
+.nameCompany p{
+    margin-top: 30px;
+    font-size: 30px;
+    font-family: 'Montserrat', sans-serif;
 }
-@media only screen and (max-width : 1200px){
-    .forItems{
-        width: 250px;
-        display: flex;
-        flex-direction: row;
-        margin-left: 22%;
-    }
-    .itemUserField{
-        margin-left: 8%;
-        width: 200px;
-    }
+.items{
+    margin-top: 30px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
 }
-@media only screen and (max-width : 922px){
-    .forItems{
-        width: 250px;
-        display: flex;
-        flex-direction: row;
-        margin-left: 22%;
-    }
-    .itemUserField{
-        margin-left: 8%;
-        width: 200px;
-    }
+.items img{
+    width: 30px;
 }
-@media only screen and (max-width : 768px){
-    .forItems{
-        width: 250px;
-        display: flex;
-        flex-direction: row;
-        margin-left: 30px;
-    }
-    .itemUserField{
-        margin-left: 8%;
-        width: 200px;
-    }
-    .item a{
-        font-size: 20px;
-        color: azure;
-        text-decoration: none;
-        margin-right: 15px;
-    }
-}
-@media only screen and (max-width : 576px){
-    .forItems{
-        width: 170px;
-        display: flex;
-        flex-direction: row;
-        margin-left: 10px;
-    }
-    .itemUserField{
-        margin-left: 8%;
-        width: 200px;
-    }
-    .item a{
-        font-size: 20px;
-        color: azure;
-        text-decoration: none;
-        margin-right: 5px;
-    }
-    .logo{
-        width: 30px;
-        height: 30px;
-        margin-right: 15px;
-    }
+.items img:hover{
+    width: 40px;
 }
