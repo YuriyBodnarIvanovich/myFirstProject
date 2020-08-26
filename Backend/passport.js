@@ -1,6 +1,7 @@
 const passportJWT = require("passport-jwt");
 const ExtractJwt = passportJWT.ExtractJwt;
 const JwtStrategy = passportJWT.Strategy;
+const dataBD = require('./connectionBD');
 
 const secretOfKey = '-----BEGIN CERTIFICATE-----\n' +
     'MIIDDTCCAfWgAwIBAgIJI2W4WWI+fqlZMA0GCSqGSIb3DQEBCwUAMCQxIjAgBgNV\n' +
@@ -25,9 +26,14 @@ const jwtOptions = {}
 jwtOptions.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
 jwtOptions.secretOrKey = secretOfKey;
 
-const strategy = new JwtStrategy(jwtOptions, function(jwt_payload, next) {
+const strategy = new JwtStrategy(jwtOptions, async function(jwt_payload, next) {
     console.log('payload received', jwt_payload);
-    next(null, {id: 'testId'})
+    const arr =  await dataBD.openUsers(jwt_payload.email);
+    if(arr.length > 0){
+        next(null, {userData:arr[0]});
+    } else {
+      next(null,false);
+    }
 });
 
 module.exports.strategy = strategy;

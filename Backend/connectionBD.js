@@ -138,7 +138,6 @@ async function openUsers(idAuth){
     });
     return user
 }
-
 module.exports.openIphone = openIphone;
 module.exports.openMac = openMac;
 module.exports.openUsers = openUsers;

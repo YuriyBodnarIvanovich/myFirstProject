@@ -144,11 +144,12 @@ app.post('/addToCart',passport.authenticate('jwt', { session: false }), (req, re
     let idProduct;
     let idColor;
     let idCart;
+
    connection.query("SELECT idusers\n" +
        "FROM users\n" +
        "INNER join email\n" +
        "\tUSING(idemail)\n" +
-       "WHERE email = '"+req.body.userEmail+"'",function (err,result) {
+       "WHERE email = '"+req.user.userData.email +"'",function (err,result) {
        addData(result[0].idusers,'idUser');
    });
 

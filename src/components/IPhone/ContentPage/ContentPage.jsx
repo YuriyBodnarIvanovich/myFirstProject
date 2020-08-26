@@ -23,7 +23,6 @@ const ContentPage = (props) =>{
             name:props.data.iPhones[props.data.indexOfMainArray].name,
             color:props.data.iPhones[props.data.indexOfMainArray].mainColor,
             price:props.data.iPhones[props.data.indexOfMainArray].price,
-            userEmail:dataApple.Users[dataApple.indexOfUsers].email,
         }, {headers: {"Authorization" : `Bearer ${localStorage.getItem('token')}`}})
             .then(function (response) {
                 console.log(response);
