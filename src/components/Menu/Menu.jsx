@@ -4,6 +4,7 @@ import {NavLink} from 'react-router-dom';
 import {useSelector} from "react-redux";
 import UserField from "./UserField/UserField";
 
+
 const Menu = () =>{
     const data = useSelector(state=> state.ApplePage);
     return(
@@ -11,7 +12,10 @@ const Menu = () =>{
             <div className={MenuStyle.menu}>
                 <div className={MenuStyle.logo}>
                     <div>
-                        <img src={'https://image.flaticon.com/icons/svg/37/37150.svg'} alt={'apple'}/>
+                        <NavLink to='/Apple' activeClassName={MenuStyle.active}>
+                            <img src={'https://image.flaticon.com/icons/svg/37/37150.svg'} alt={'apple'}/>
+                        </NavLink>
+
                     </div>
                 </div>
                 <div className={MenuStyle.nameCompany}>

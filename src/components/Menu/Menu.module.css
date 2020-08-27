@@ -22,6 +22,7 @@
 .logo img{
     margin-top: 30px;
     width: 50px;
+    cursor:pointer;
 }
 
 .nameCompany{
@@ -40,6 +41,7 @@
 }
 .items img{
     width: 30px;
+    cursor:pointer;
 }
 .items img:hover{
     width: 40px;

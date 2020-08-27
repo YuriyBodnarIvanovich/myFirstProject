@@ -5,6 +5,7 @@ import Input from "./Input/Input";
 import {useDispatch, useSelector} from "react-redux";
 import UserMenu from "../Menu/UserField/UserMenu/UserMenu";
 import MenuStyle from "../Menu/Menu.module.css";
+import {NavLink} from 'react-router-dom';
 
 const Apple = () =>{
 
@@ -17,15 +18,19 @@ const Apple = () =>{
                                                                       secondName={p.secondName}
                                                                       hrefOfCiteSecond={p.hrefOfCiteSecond}
                                                                       nomination={p.nomination}/>);
+
+    function showList(){
+        dispatch({type:'OPEN_MACBOOK',status:false});
+    }
     return(
         <div>
             <div className={AppleStyle.content}>
                 <div className={AppleStyle.items}>
                     <div className={AppleStyle.itemIphone}>
-                        <p>Iphone</p>
+                        <NavLink to='/IPhone' activeClassName={MenuStyle.active}>Iphone</NavLink>
                     </div>
                     <div className={AppleStyle.itemsMac}>
-                        <p>Mac</p>
+                        <NavLink to='/Mac' activeClassName={MenuStyle.active} onClick={showList}>Mac</NavLink>
                     </div>
                 </div>
                 <div>
@@ -50,20 +55,6 @@ const Apple = () =>{
                         <div className={AppleStyle.photo}>
                             <img src={'https://ichip.ru/blobimgs/uploads/2019/09/apple_keynote-event_tim-cook_091019_big.jpg.large_.jpg'} alt={''}/>
                         </div>
-                    </div>
-                </div>
-            </div>
-            <div className={AppleStyle.end}>
-                <div className={MenuStyle.nameCompany}>
-                    <p>Your apple</p>
-                 </div>
-                <div className={AppleStyle.AllForces}>
-                    <div className={AppleStyle.forces}>
-                        <b>Privacy Policy</b>
-                        <b>Terms of use</b>
-                        <b>Sales and Refund</b>
-                        <b>Legal</b>
-                        <b>Site Map</b>
                     </div>
                 </div>
             </div>

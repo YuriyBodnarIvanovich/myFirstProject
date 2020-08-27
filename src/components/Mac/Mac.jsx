@@ -1,8 +1,9 @@
 import React, {useEffect} from 'react';
 import MacStyle from './Mac.module.css';
-import Content from "./Content/Content";
 import axios from 'axios';
 import {useDispatch, useSelector} from "react-redux";
+import MacItems from "./MacItems/MacItems";
+import MacPage from "./MacPage/MacPage";
 
 const Mac = () =>{
 
@@ -11,19 +12,31 @@ const Mac = () =>{
             let resData = response.data;
             dispatch({type:'PUT_ARRAY',newArray:resData});
         });
-    }, [])
-    const mainData = useSelector(state=>state.macPage);
+    }, []);
+    const data = useSelector(state=>state.macPage);
     const dispatch = useDispatch();
-    
+    const catalog =  data.imgData.map((element)=><MacItems  number={element.id}
+                              name={element.name}
+                              price={element.price}
+                              photo={element.photo}
+                              characters={element.characters}
+                              dispatch={dispatch}
+                              data={data}/>)
+
     const dataApple = useSelector(state =>state.ApplePage);
     return(
-        <div>
-            <div className={MacStyle.intro}>
-                <div className={MacStyle.video}>
-                    <video className={MacStyle.video_media} src={"https://ak0.picdn.net/shutterstock/videos/1030780100/preview/stock-footage-a-laptop-keyboard-that-glows-in-the-dark-business-technology-image-colorful-light-illumination.webm"} autoPlay muted loop> </video>
+        <div className={MacStyle.content}>
+            {data.macbookOpen ?
+                <MacPage data={data} dispatch={dispatch}/>
+                :
+                <div >
+                    <div className={MacStyle.forItem}>
+                        <div className={MacStyle.items}>
+                            {catalog}
+                        </div>
+                    </div>
                 </div>
-                <Content data={mainData} dispatch={dispatch} dataApple={dataApple}/>
-            </div>
+            }
         </div>
     );
 }

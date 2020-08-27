@@ -8,6 +8,7 @@ import Iphone from "./components/IPhone/Iphone";
 import Cart from "./components/Cart/Cart";
 import Apple from "./components/Apple/Apple";
 import Profile from "./components/Profile/Profile";
+import Force from "./components/Force/Force";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
                     <Route path='/Profile'
                            render={ () => <Profile/>} />
                 </div>
+            <Force/>
             </div>
       </BrowserRouter>
   );

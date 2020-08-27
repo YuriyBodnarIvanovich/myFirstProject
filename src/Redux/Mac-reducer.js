@@ -4,10 +4,15 @@ const CHANGE_STATE_OF_CONTENT = 'CHANGE_STATE_OF_CONTENT';
 const PUT_ARRAY = 'PUT_ARRAY';
 const CHANGE_ID_OF_ITEM_SHOW = 'CHANGE_ID_OF_ITEM_SHOW';
 const CHANGE_STATUS_OF_ITEM_SHOW = 'CHANGE_STATUS_OF_ITEM_SHOW';
-const CHANGE_STATUS_OF_MODAL_PHOTO = 'CHANGE_STATUS_OF_MODAL_PHOTO';
-const CHANGE_INDEX_OF_MODAL_PHOTO = 'CHANGE_INDEX_OF_MODAL_PHOTO';
+const OPEN_MACBOOK = 'OPEN_MACBOOK';
+const CHANGE_STATUS_DESCRIPTION = 'CHANGE_STATUS_DESCRIPTION';
+const CHANGE_INDEX_OF_MAIN_PHOTO = 'CHANGE_INDEX_OF_MAIN_PHOTO';
 
 let initialState = {
+    description:'Ноутбуки MacBook, Air и Pro\n' +
+        '                            MacBook – это один из представителей ноутбуков Apple. Впервые был выпущен в 2006 году в корпусе из черного и белого поликарбоната. Позже модели данной линейки стали выпускать в алюминиевых корпусах, после чего продажу предыдущей версии в черном цвете полностью прекратили.\n' +
+        '                            Такой ноутбук уже тогда имел глянцевый экран, не механическую защелку и слегка утопленную клавиатуру. К 2010 году характеристика MacBook выглядела примерно так: процессор Core 2 Duo, видеокарта GeForce 320M, жидкокристаллический тринадцатидюймовый экран с разрешением 1280х800, Wi-Fi и Bluetooth, аналоговые и оптические аудиовходы и аудиовыходы.',
+
     imgData: [],
     min: 0,
     max: 3,
@@ -15,8 +20,11 @@ let initialState = {
 
     itemsStatusShow: false,
     idItemsShow: 0,
-    statusOfModalWindow: false,
-    indexOfModalPhoto: 0,
+
+    macbookOpen: false,
+    descriptionStatus: true,
+
+    indexOfMainPhoto: 0
 
 };
 
@@ -58,16 +66,22 @@ const macReducer = (state=initialState,action) =>{
                 itemsStatusShow: action.status
             }
         }
-        case CHANGE_STATUS_OF_MODAL_PHOTO:{
-            return{
+        case OPEN_MACBOOK:{
+            return {
                 ...state,
-                statusOfModalWindow: action.status
+                macbookOpen: action.status
             }
         }
-        case CHANGE_INDEX_OF_MODAL_PHOTO:{
+        case CHANGE_STATUS_DESCRIPTION:{
             return{
                 ...state,
-                indexOfModalPhoto: action.newIndex
+                descriptionStatus:action.status
+            }
+        }
+        case CHANGE_INDEX_OF_MAIN_PHOTO:{
+            return {
+                ...state,
+                indexOfMainPhoto: action.index
             }
         }
         default:
