@@ -1,23 +1,14 @@
 import React, {useEffect} from "react";
 import AppleStyle from './Apple.module.css';
-import TopProgram from "./TopProgram/TopProgram";
-import Input from "./Input/Input";
 import {useDispatch, useSelector} from "react-redux";
-import UserMenu from "../Menu/UserField/UserMenu/UserMenu";
 import MenuStyle from "../Menu/Menu.module.css";
 import {NavLink} from 'react-router-dom';
+import Slide from "./Slide/Slide";
 
 const Apple = () =>{
 
     const data = useSelector(state => state.ApplePage);
     const dispatch = useDispatch();
-
-    let topProgramArray = data.topPrograms.map((p)=><TopProgram imgSrc={p.imgSrc}
-                                                                      nameProgram={p.nameProgram}
-                                                                      hrefOfCite={p.hrefOfCite}
-                                                                      secondName={p.secondName}
-                                                                      hrefOfCiteSecond={p.hrefOfCiteSecond}
-                                                                      nomination={p.nomination}/>);
 
     function showList(){
         dispatch({type:'OPEN_MACBOOK',status:false});
@@ -33,7 +24,10 @@ const Apple = () =>{
                         <NavLink to='/Mac' activeClassName={MenuStyle.active} onClick={showList}>Mac</NavLink>
                     </div>
                 </div>
-                <div>
+                <div className={AppleStyle.containerSlides}>
+                    <Slide data={data} dispatch={dispatch}/>
+                </div>
+                <div className={AppleStyle.containerForadditional_Information}>
                     <div className={AppleStyle.additional_Information}>
                         <div className={AppleStyle.photo}>
                             <img src={'https://ichip.ru/images/cache/2019/9/11/fit_739_519_false_crop_816_573_0_0_q90_339382_f8932e2842.jpeg'} alt={''}/>
