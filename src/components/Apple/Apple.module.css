@@ -5,6 +5,11 @@
     grid-gap: 30px;
 }
 
+.itemContainer{
+    display: grid;
+    grid-template-columns: 0.8fr;
+    justify-content: center;
+}
 .items{
     display: grid;
     grid-template-columns: 0.1fr 0.1fr;
@@ -106,12 +111,20 @@
 }
 .containerSlides{
     /*height: 400px;*/
-    margin-bottom: 30px;
+    /*margin-bottom: 30px;*/
     margin-top: 50px;
 }
 
 .containerForadditional_Information{
     margin-top: 30px;
+}
+.photo_bottom{
+    width: 100%;
+    /*display: grid;*/
+    /*grid-template-columns: 1fr;*/
+}
+.photo_bottom img{
+    width: 100%;
 }
 
 

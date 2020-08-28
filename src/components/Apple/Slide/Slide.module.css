@@ -3,17 +3,48 @@
     height: 400px;
     max-height: 400px;
     display: grid;
-    grid-template-columns: 0.4fr 10fr 0.4fr;
+    grid-template-columns: 0.4fr 4fr 0.4fr;
     margin-bottom: 30px;
-    padding-left: 50px;
-    padding-right: 20px;
+    /*padding-left: 50px;*/
+    /*padding-right: 20px;*/
 }
 .text_in_slide{
     height: 200px;
     margin-top: 10px;
     display: grid;
-    grid-template-columns: 0.1fr;
+    grid-template-columns: 0.9fr 0.3fr;
     justify-content: end;
+}
+
+.number_of_slide{
+    width: 100%;
+    height: 100px;
+    border-bottom-color: white;
+    color: white;
+    margin-top: 270px;
+    display: flex;
+    flex-direction: row;
+}
+.container_of_number_slide{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 0.1fr;
+    justify-content: center;
+    padding-left: 90px;
+}
+.stick{
+    width: 20px;
+    border-bottom-width: 2px; /* Толщина линии внизу */
+    border-bottom-style: solid; /* Стиль линии внизу */
+    border-bottom-color: white; /* Цвет линии внизу */
+    margin-right: 10px;
+}
+.stickActive{
+    width: 25px;
+    border-bottom-width: 2px; /* Толщина линии внизу */
+    border-bottom-style: solid; /* Стиль линии внизу */
+    border-bottom-color: red; /* Цвет линии внизу */
+    margin-right: 10px;
 }
 .right {
     border: solid #ffffff;
@@ -30,6 +61,11 @@
     border-width: 0 7px 7px 0;
 }
 
+.left_margin{
+    display: grid;
+    grid-template-columns: 0.1fr;
+    justify-content: center;
+}
 .left {
     border: solid #ffffff;
     border-width: 0 5px 5px 0;
@@ -39,6 +75,7 @@
     transform: rotate(135deg);
     -webkit-transform: rotate(135deg);
     cursor: pointer;
+    margin-left: 40px;
 }
 .left:hover{
     border: solid #ffffff;

@@ -1,5 +1,6 @@
 import React from "react";
 import SlideStyle from './Slide.module.css';
+import SlickOfSlide from "./StickOfSlide/StickOfSlide";
 
 const Slide = (props) =>{
 
@@ -16,6 +17,12 @@ const Slide = (props) =>{
         }
     }
 
+    const  stickOfSlide = props.data.slideData.map((r,index)=>{
+       return(
+           <SlickOfSlide index={index} data={props.data}/>
+       )
+    });
+
     return(
         <div className={SlideStyle.slide}
              style={{backgroundImage: ` url('${props.data.slideData[props.data.indexOfSlide].photo}')`,
@@ -24,6 +31,11 @@ const Slide = (props) =>{
                 <i className={SlideStyle.left} onClick={changeSlideLeft}> </i>
             </div>
             <div className={SlideStyle.text_in_slide}>
+                <div className={SlideStyle.container_of_number_slide}>
+                    <div className={SlideStyle.number_of_slide}>
+                        {stickOfSlide}
+                    </div>
+                </div>
                 <a href={"https://jabko.ua/"} target={"_blank"} className={SlideStyle.btn}>
                     {props.data.slideData[props.data.indexOfSlide].textOfButton}
                 </a>
