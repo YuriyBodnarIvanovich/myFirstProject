@@ -1,139 +1,38 @@
-.showPhone{
-    width: 700px;
-    height:550px;
-    background-color: white;
-    border-radius: 30px;
-    z-index: 3;
-    padding: 50px;
-    display: flex;
-    flex-direction: column;
+.content{
+    display: grid;
+    grid-template-columns: 0.8fr;
+    justify-content: center;
+    grid-gap: 100px;
+    margin-bottom: 200px;
 }
-.main_photo{
-    width: 330px;
-    height: 400px;
+.contentItems{
+    display: grid;
+    margin-left: 50px;
+    grid-template-columns: 0.3fr 0.3fr 0.3fr 0.3fr;
+    grid-gap: 20px;
+    justify-content: center;
 }
-.AdditionalInformation{
-    color: #050505;
-    font-size: 20px;
-    padding-left: 55px;
+@media only screen and (max-width: 1200px) {
+    .contentItems{
+        display: grid;
+        grid-template-columns: 0.4fr 0.4fr 0.4fr;
+        grid-gap: 50px;
+        justify-content: center;
+    }
 }
-.price{
-    color: green;
+@media only screen and (max-width: 923px) {
+    .contentItems{
+        display: grid;
+        grid-template-columns: 0.5fr 0.5fr;
+        grid-gap: 100px;
+        justify-content: center;
+    }
 }
-.contentPrice{
-    font-size: 25px;
-    margin-top: 20px;
-}
-.characterStyle{
-    color: #050505;
-    padding: 50px;
-    width: 500px;
-    height: 200px;
-    z-index: 2;
-    position: relative;
-}
-.row{
-    display: flex;
-    flex-direction: row;
-}
-.colorButtonColder{
-    width: 40px;
-    height: 40px;
-    /*background-color: #F7AF47;*/
-    border-radius: 25px;
-    border: none;
-    margin: 8px;
-}
-.colorButtonBlack{
-    width: 40px;
-    height: 40px;
-    /*background-color: black;*/
-    border-radius: 25px;
-    border: none;
-    margin: 8px;
-}
-.colorButtonRose{
-    width: 40px;
-    height: 40px;
-    /*background-color: pink;*/
-    border-radius: 25px;
-    border: none;
-    margin: 8px;
-}
-
-
-.buttonCheck{
-    width: 100px;
-    height: 30px;
-    border-color: white;
-    border-radius: 30px;
-    background-color: black;
-    color: white;
-
-}
-.buttonCheck:hover{
-    color: #050505;
-    background-color: white;
-    border-color: black;
-}
-.Items{
-    width: 100px;
-    margin: 10px;
-    display: block;
-    color: #191616;
-}
-
-.containerForItems{
-    display: flex;
-    flex-direction: column;
-}
-
-.Up{
-    position: absolute;
-    width: 100px;
-    height: 50px;
-    margin-left: 450px;
-    transition-duration: 0.4s;
-    background-color: white;
-    color: black;
-    font-size: 28px;
-    border: 2px solid black;
-    border-radius: 30px;
-}
-.Up:hover {
-    background-color: black; /* Green */
-    color: white;
-    border: 2px solid white;
-}
-.Dawn{
-    position: absolute;
-
-    width: 100px;
-    height: 50px;
-
-    margin-left: 450px;
-    margin-top: 570px;
-    transition-duration: 0.4s;
-    background-color: white;
-    color: black;
-    font-size: 28px;
-    border: 2px solid black;
-    border-radius: 30px;
-}
-.Dawn:hover {
-    background-color: black; /* Green */
-    color: white;
-    border: 2px solid white;
-}
-.forItems{
-    margin-top: 50px;
-}
-.row{
-    display: flex;
-    flex-direction: row;
-}
-.buttonLast{
-    margin-top: 200px;
-    width: 75px;
-    height: 35px;
+@media only screen and (max-width: 615px) {
+    .contentItems{
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-gap: 30px;
+        justify-content: center;
+    }
 }

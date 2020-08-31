@@ -5,8 +5,7 @@
     display: grid;
     grid-template-columns: 0.4fr 4fr 0.4fr;
     margin-bottom: 30px;
-    /*padding-left: 50px;*/
-    /*padding-right: 20px;*/
+    border-radius: 10px;
 }
 .text_in_slide{
     height: 200px;

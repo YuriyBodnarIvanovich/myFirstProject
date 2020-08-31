@@ -14,6 +14,12 @@ const CHANGE_INDEX_OF_PHOTO = 'CHANGE_INDEX_OF_PHOTO';
 const CHANGE_INDEX_OF_COLOR = 'CHANGE_INDEX_OF_COLOR';
 const CHANGE_STATUS_OF_OPTION_BUTTON_IPHONE = 'CHANGE_STATUS_OF_OPTION_BUTTON_IPHONE';
 
+const OPEN_IPHONE = 'OPEN_IPHONE';
+const INDEX_OF_IPHONE = 'INDEX_OF_IPHONE';
+const DESCRIPTION_STATUS = 'DESCRIPTION_STATUS';
+const CHANGE_NUMBER_OF_PHOTO = 'CHANGE_NUMBER_OF_PHOTO';
+
+
 let initialDate ={
     iPhones: [],
     indexOfMainArray: 0,
@@ -26,6 +32,14 @@ let initialDate ={
     numberClickDown: 3,
     adminIndex: 0,
     statusOfOptionButton: false,
+
+    openIphoneStatus: false,
+    descriptionStatus: true,
+    description:'Магазин Your Phone пропонує вашій увазі широкий асортимент оригінальної техніки Apple та аксесуарів для неї за вигідною ціною. На всі пристрої надається гарантія виробника та від магазину Your Phone.',
+    numberOfPhoto:0
+
+
+
 }
 
 const IphoneReducer = (state=initialDate,action) =>{
@@ -109,6 +123,30 @@ const IphoneReducer = (state=initialDate,action) =>{
             return{
                 ...state,
                 statusOfOptionButton: action.upStatus
+            }
+        }
+        case OPEN_IPHONE:{
+            return {
+                ...state,
+                openIphoneStatus:action.status
+            }
+        }
+        case INDEX_OF_IPHONE:{
+            return {
+                ...state,
+                INDEX_OF_IPHONE:action.index
+            }
+        }
+        case DESCRIPTION_STATUS:{
+            return{
+                ...state,
+                descriptionStatus:action.status
+            }
+        }
+        case CHANGE_NUMBER_OF_PHOTO:{
+            return{
+                ...state,
+                numberOfPhoto:action.number
             }
         }
     }

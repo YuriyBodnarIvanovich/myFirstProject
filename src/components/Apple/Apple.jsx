@@ -1,9 +1,9 @@
 import React, {useEffect} from "react";
 import AppleStyle from './Apple.module.css';
 import {useDispatch, useSelector} from "react-redux";
-import MenuStyle from "../Menu/Menu.module.css";
 import {NavLink} from 'react-router-dom';
 import Slide from "./Slide/Slide";
+import SocialButton from "./social networks/SocialButton";
 
 const Apple = () =>{
 
@@ -18,10 +18,10 @@ const Apple = () =>{
             <div className={AppleStyle.content}>
                 <div className={AppleStyle.items}>
                     <div className={AppleStyle.itemIphone}>
-                        <NavLink to='/IPhone' activeClassName={MenuStyle.active}>Iphone</NavLink>
+                        <NavLink to='/IPhone' >Iphone</NavLink>
                     </div>
                     <div className={AppleStyle.itemsMac}>
-                        <NavLink to='/Mac' activeClassName={MenuStyle.active} onClick={showList}>Mac</NavLink>
+                        <NavLink to='/Mac'  onClick={showList}>Mac</NavLink>
                     </div>
                 </div>
                 <div className={AppleStyle.containerSlides}>
@@ -51,6 +51,7 @@ const Apple = () =>{
                         </div>
                     </div>
                 </div>
+                <SocialButton />
             </div>
         </div>
     );
