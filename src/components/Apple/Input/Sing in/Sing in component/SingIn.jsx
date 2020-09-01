@@ -42,4 +42,4 @@ const SingIn = (props) =>{
     )
 }
 
-export default SingIn;
+// export default SingIn;

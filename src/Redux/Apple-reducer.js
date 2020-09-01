@@ -13,6 +13,10 @@ const CHANGE_FIELD_OF_NEW_USER = 'CHANGE_FIELD_OF_NEW_USER';
 const CHANGE_INDEX_OF_USER = 'CHANGE_INDEX_OF_USER';
 const CHANGE_INDEX_OF_SLIDE = 'CHANGE_INDEX_OF_SLIDE';
 
+const SHOW_INPUT_BOX = 'SHOW_INPUT_BOX';
+const SHOW_SING_UP = 'SHOW_SING_UP';
+const SHOW_SING_IN = 'SHOW_SING_IN';
+
 const Date = {
     slideData:[
         {
@@ -69,7 +73,9 @@ const Date = {
 
     indexOfSlide: 0,
 
-
+    ShowBox: true,//SingIn or SingUp
+    ShowSingIn: false,
+    ShowSingUp: true
 
 };
 
@@ -160,6 +166,24 @@ const AppleReducer = (state = Date,action) =>{
             return{
                 ...state,
                 indexOfSlide: action.index
+            }
+        }
+        case SHOW_INPUT_BOX:{
+            return {
+                ...state,
+                ShowBox: action.status
+            }
+        }
+        case SHOW_SING_UP:{
+            return {
+                ...state,
+                ShowSingUp: action.status
+            }
+        }
+        case SHOW_SING_IN:{
+            return {
+                ...state,
+                ShowSingIn: action.status
             }
         }
     }
