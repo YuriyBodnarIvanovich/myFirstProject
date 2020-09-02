@@ -7,7 +7,6 @@ import Mac from "./components/Mac/Mac";
 import Iphone from "./components/IPhone/Iphone";
 import Cart from "./components/Cart/Cart";
 import Apple from "./components/Apple/Apple";
-import Profile from "./components/Profile/Profile";
 import Force from "./components/Force/Force";
 import AuthBox from "./components/Authorization/AuthBox";
 import {useSelector} from "react-redux";
@@ -30,8 +29,6 @@ function App() {
                                render={ () => <Cart />} />
                         <Route path='/Admin'
                                render={ () => <Admin/>} />
-                        <Route path='/Profile'
-                               render={ () => <Profile/>} />
                     </div>
                 <Force/>
                 </div>

@@ -3,7 +3,6 @@ import ButtonColor from "../Button/ButtonChangeColor";
 import {useSelector} from "react-redux";
 import axios from "axios";
 import ContentPageStyle from './ContentPage.module.css';
-import MacPageStyle from "../../Mac/MacPage/MacPage.module.css";
 
 const ContentPage = (props) =>{
     const dataApple = useSelector(state=>state.ApplePage);

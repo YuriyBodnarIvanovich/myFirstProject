@@ -29,6 +29,13 @@
     display: grid;
     justify-content: center;
 }
+.nameCompany a{
+    text-decoration: none;
+    color: black;
+}
+.nameCompany p:hover{
+    font-size: 32px;
+}
 .nameCompany p{
     margin-top: 30px;
     font-size: 30px;

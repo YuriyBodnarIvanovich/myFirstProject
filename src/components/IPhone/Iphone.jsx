@@ -1,13 +1,9 @@
 import React, {useEffect} from 'react';
 import IphoneStyle from './Iphone.module.css';
-import AppleStyle from "../Apple/Apple.module.css";
 import IphoneItems from './IphoneItems/iPhoneItems';
 import {useDispatch, useSelector} from "react-redux";
 import ContentPage from "./ContentPage/ContentPage";
 import axios from "axios";
-import Input from "../Apple/Input/Input";
-import UserMenu from "../Menu/UserField/UserMenu/UserMenu";
-const src_video = 'https://ak.picdn.net/shutterstock/videos/1042417903/preview/stock-footage-minsk-belarus-dec-close-up-woman-s-hands-keeping-and-unpacking-new-apple-iphone-pro.webm';
 
 const Iphone = ()=>{
     useEffect(() => {

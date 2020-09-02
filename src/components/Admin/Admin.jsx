@@ -3,7 +3,6 @@ import AdminStyle from './Admin.module.css';
 import {useDispatch, useSelector} from "react-redux";
 import ButtonColor from "../IPhone/Button/ButtonChangeColor";
 import axios from "axios";
-import ButtonParameter from "../IPhone/Button/ButtonParameter";
 
 const Admin = () =>{
     const dataAdmin = useSelector(state=>state.AdminPage);
@@ -205,9 +204,6 @@ const Admin = () =>{
                                     </div>
                                     <br/>
                                     <h3>{'Price:  ' + dataIPhones.iPhones[dataIPhones.adminIndex].price}</h3>
-                                    <div>
-                                        <ButtonParameter data={dataIPhones} dispatch={dispatch} word={'Admin'} from={dataIPhones.adminIndex}/>
-                                    </div>
                                 </div>
                             </div>
 

@@ -16,25 +16,31 @@ const Menu = () =>{
             <div className={MenuStyle.menu}>
                 <div className={MenuStyle.logo}>
                     <div>
-                        <NavLink to='/Apple' activeClassName={MenuStyle.active}>
-                            <img src={'https://image.flaticon.com/icons/svg/37/37150.svg'} alt={'apple'}/>
-                        </NavLink>
-
+                        <img src={'https://image.flaticon.com/icons/svg/37/37150.svg'} alt={'apple'}/>
                     </div>
                 </div>
                 <div className={MenuStyle.nameCompany}>
-                    <p>Your apple</p>
+                    <NavLink to='/Apple'>
+                        <p>Your apple</p>
+                    </NavLink>
                 </div>
                 <div className={MenuStyle.items}>
                     <div>
                         <img src={'https://image.flaticon.com/icons/svg/149/149309.svg'} alt={''}/>
                     </div>
                     <div>
-                        <img src={'https://image.flaticon.com/icons/svg/848/848043.svg'} alt={''}
-                        onClick={openSingBox}/>
+                        {data.userStatus ? <img src={'https://image.flaticon.com/icons/svg/848/848043.svg'} alt={''}/>
+                            :
+                            <img src={'https://image.flaticon.com/icons/svg/848/848043.svg'} alt={''}
+                                                               onClick={openSingBox}/>
+                        }
                     </div>
                     <div>
-                        <img src={'https://image.flaticon.com/icons/svg/833/833314.svg'} alt={''}/>
+                        {data.userStatus ? <img src={'https://image.flaticon.com/icons/svg/833/833314.svg'} alt={''}/>
+                            :
+                            <img src={'https://image.flaticon.com/icons/svg/833/833314.svg'} alt={''}
+                                 onClick={openSingBox}/>
+                        }
                     </div>
                 </div>
             </div>

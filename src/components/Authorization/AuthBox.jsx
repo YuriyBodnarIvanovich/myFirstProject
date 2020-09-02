@@ -12,7 +12,6 @@ const AuthBox = () => {
             {
                 data.ShowSingUp ? <SingUp/> : <SingIn/>
             }
-
         </div>
     )
 }

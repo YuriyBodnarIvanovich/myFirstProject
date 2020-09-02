@@ -32,6 +32,7 @@ const auth0 = new AuthenticationClient({
 });
 
 app.post('/singUp',(req,res)=>{
+    console.log(req.body.name + " " + req.body.email + ' ' + req.body.password);
     const data = {
         username: req.body.name,
         email: req.body.email,
@@ -95,6 +96,9 @@ app.post('/singUp',(req,res)=>{
                     connection.query(sql,fieldUser,function (err,result) {
                         if(err) console.log(err);
                         else console.log("Users Данные добавлены");
+                        return res.status(200).json({
+                            message: 'Good'
+                        });
                     })
                 }
             }
