@@ -62,7 +62,7 @@
     border-bottom-style: outset;
     border-bottom-width: 1px;
 
-    font-family: Poppins-Regular, serif;
+    font-family: 'Montserrat', serif;
     font-size: 28px;
     color: #555555;
     line-height: 1.2;
@@ -78,7 +78,7 @@
 }
 
 .inputField p{
-    font-family: C059, cursive;
+    font-family: 'Montserrat', serif;
     font-size: 30px;
 }
 

@@ -1,6 +1,7 @@
-import React from "react";
+import React, {useEffect} from "react";
 import SlideStyle from './Slide.module.css';
 import SlickOfSlide from "./StickOfSlide/StickOfSlide";
+import useInterval from "@restart/hooks/cjs/useInterval";
 
 const Slide = (props) =>{
 
@@ -22,6 +23,20 @@ const Slide = (props) =>{
            <SlickOfSlide index={index} data={props.data}/>
        )
     });
+
+    function chengPhotoOfSlide(){
+
+        if(props.data.slideData.length -1 <= props.data.indexOfSlide){
+            props.dispatch({type:'CHANGE_INDEX_OF_SLIDE',index:0})
+        }else{
+            props.dispatch({type:'CHANGE_INDEX_OF_SLIDE',index:props.data.indexOfSlide + 1});
+        }
+    }
+
+
+    useInterval(() => {
+        chengPhotoOfSlide()
+    }, 3000);
 
     return(
         <div className={SlideStyle.slide}

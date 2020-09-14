@@ -17,11 +17,11 @@
 }
 .logo{
     display: grid;
-    justify-content: center;
+    justify-content: left;
 }
 .logo img{
-    margin-top: 30px;
-    width: 50px;
+    margin-top: 40px;
+    width: 30px;
     cursor:pointer;
 }
 
@@ -39,12 +39,13 @@
 .nameCompany p{
     margin-top: 30px;
     font-size: 30px;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Montserrat', serif;
 }
 .items{
     margin-top: 30px;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 0.4fr;
+    justify-content: end;
 }
 .items img{
     width: 30px;

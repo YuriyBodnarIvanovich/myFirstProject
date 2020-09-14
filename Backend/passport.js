@@ -22,6 +22,7 @@ const secretOfKey = '-----BEGIN CERTIFICATE-----\n' +
     'Jha7ptxyHFN5r3kYKUKKxvXf/CQ0/zm0/ygwKbvKdQLJwNuCh0kXMcraOducK/T0\n' +
     '0BlrL37n/yuGc6hgVlAIZzM=\n' +
     '-----END CERTIFICATE-----';
+
 const jwtOptions = {}
 jwtOptions.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
 jwtOptions.secretOrKey = secretOfKey;

@@ -9,7 +9,8 @@ const SHOW_SING_IN = 'SHOW_SING_IN';
 
 const FILL_USER_NAME = 'FILL_USER_NAME';
 const FILL_EMAIL = 'FILL_EMAIL';
-const FILL_PASSWORD = 'FILL_PASSWORD'
+const FILL_PASSWORD = 'FILL_PASSWORD';
+const Show_Left_Menu = 'Show_Left_Menu';
 
 const Date = {
     slideData:[
@@ -43,7 +44,9 @@ const Date = {
     userName:'',
     email:'',
     password:'',
-    userStatus:false
+    userStatus:false,
+
+    showLeftMenu: false
 
 
 
@@ -109,6 +112,12 @@ const AppleReducer = (state = Date,action) =>{
             return {
                 ...state,
                 password:action.password
+            }
+        }
+        case Show_Left_Menu:{
+            return {
+                ...state,
+                showLeftMenu: action.status
             }
         }
     }

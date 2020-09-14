@@ -9,13 +9,32 @@ import Cart from "./components/Cart/Cart";
 import Apple from "./components/Apple/Apple";
 import Force from "./components/Force/Force";
 import AuthBox from "./components/Authorization/AuthBox";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
+import LeftMenu from "./components/LeftMenu/LeftMenu";
 
 function App() {
         const data = useSelector(state=>state.ApplePage);
+        const dispatch = useDispatch();
         return (
           <BrowserRouter>
                 <div className="main">
+                    {
+                        data.showLeftMenu
+                            ?
+                            <div>
+                                <LeftMenu/>
+                                <div className={"hideContent"} onClick={()=>dispatch({type:'Show_Left_Menu',status:false})}>
+
+                                </div>
+                            </div>
+
+
+                            :
+                                <div style={{display:'none'}}>
+
+                                </div>
+                    }
+
                     <Menu />
                     {data.ShowBox ? <AuthBox/> : <div> </div>}
                     <div className={"page"}>

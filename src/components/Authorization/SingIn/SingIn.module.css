@@ -6,6 +6,9 @@
     border-radius: 20px;
     margin-top: 100px;
 }
+.container p{
+    font-family: 'Montserrat', serif;
+}
 .logo{
     background-image: url('https://images.wallpaperscraft.ru/image/klaviatura_telefon_rabochij_stol_179668_1366x768.jpg');
     width: 100%;
@@ -14,6 +17,7 @@
     border-radius: 20px 20px 0 0;
     display: grid;
     grid-template-columns: 1fr 0.5fr;
+    font-family: 'Montserrat', serif;
 }
 .logoText{
     display: grid;
@@ -43,7 +47,9 @@
     grid-template-columns: 0.8fr;
     justify-content: center;
     margin-top: 50px;
+
 }
+
 .containerInput{
     display: grid;
     grid-template-columns: 0.2fr 0.8fr;
@@ -61,7 +67,7 @@
     border-bottom-style: outset;
     border-bottom-width: 1px;
 
-    font-family: Poppins-Regular, serif;
+    font-family: 'Montserrat', serif;
     font-size: 28px;
     color: #555555;
     line-height: 1.2;
@@ -79,7 +85,7 @@
 
 
 .inputField p{
-    font-family: C059, cursive;
+    font-family: 'Montserrat', serif;
     font-size: 30px;
 }
 
@@ -102,6 +108,10 @@
     display: grid;
     grid-template-columns: 0.3fr;
     justify-content: center;
+
+}
+.forSingUpButton button{
+    font-family: 'Montserrat', serif;
 }
 
 .showSingInContainer{

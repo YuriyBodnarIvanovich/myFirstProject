@@ -16,7 +16,8 @@ const Menu = () =>{
             <div className={MenuStyle.menu}>
                 <div className={MenuStyle.logo}>
                     <div>
-                        <img src={'https://image.flaticon.com/icons/svg/37/37150.svg'} alt={'apple'}/>
+                        <img onClick={()=>dispatch({type:'Show_Left_Menu',status:true})}
+                             src={'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABmJLR0QA/wD/AP+gvaeTAAAAOUlEQVRoge3XMQEAIAwDwYB/zyCiQ4beKciPSWC3k+S1R0zc9oApAQAAsJdH1iYAAAD28sjaBABdHy9wAxMK014vAAAAAElFTkSuQmCC'} alt={'apple'}/>
                     </div>
                 </div>
                 <div className={MenuStyle.nameCompany}>
