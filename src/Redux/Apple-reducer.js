@@ -11,6 +11,9 @@ const FILL_USER_NAME = 'FILL_USER_NAME';
 const FILL_EMAIL = 'FILL_EMAIL';
 const FILL_PASSWORD = 'FILL_PASSWORD';
 const Show_Left_Menu = 'Show_Left_Menu';
+const SHOW_RIGHT_CART = 'SHOW_RIGHT_CART';
+const SHOW_MENU_BLOCK = 'SHOW_MENU_BLOCK';
+
 
 const Date = {
     slideData:[
@@ -37,7 +40,7 @@ const Date = {
 
     indexOfSlide: 0,
 
-    ShowBox: false,//SingIn or SingUp
+    ShowBox: false,
     ShowSingIn: false,
     ShowSingUp: true,
 
@@ -46,7 +49,9 @@ const Date = {
     password:'',
     userStatus:false,
 
-    showLeftMenu: false
+    showLeftMenu: false,
+    showRightCart: false,
+    showMenuBlock:false,
 
 
 
@@ -61,9 +66,10 @@ const AppleReducer = (state = Date,action) =>{
             }
         }
         case CHANGE_ARRAY_OF_USERS:{
+            console.log(action.array);
             return{
                 ...state,
-                Users: action.newArray
+                Users: action.array
             }
         }
         case CHANGE_INDEX_OF_USER:{
@@ -118,6 +124,18 @@ const AppleReducer = (state = Date,action) =>{
             return {
                 ...state,
                 showLeftMenu: action.status
+            }
+        }
+        case SHOW_MENU_BLOCK:{
+            return {
+                ...state,
+                showMenuBlock: action.status
+            }
+        }
+        case SHOW_RIGHT_CART:{
+            return {
+                ...state,
+                showRightCart: action.status
             }
         }
     }

@@ -55,6 +55,7 @@ async function openIphone(){
             }
         })
     })
+    console.log(iPhoneArr);
 
     return iPhoneArr
 }

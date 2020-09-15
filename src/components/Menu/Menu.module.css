@@ -44,13 +44,41 @@
 .items{
     margin-top: 30px;
     display: grid;
-    grid-template-columns: 1fr 1fr 0.4fr;
+    grid-template-columns: 1fr 2fr 0.4fr;
     justify-content: end;
 }
 .items img{
     width: 30px;
     cursor:pointer;
 }
-.items img:hover{
-    width: 40px;
+
+.forAccountItemContainer{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 0.6fr;
+    justify-content: center;
+}
+.forAccountItem{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 0.7fr;
+    justify-content: center;
+}
+
+.menuBlock{
+    margin-top: 10px;
+    position: absolute;
+    width: 79px;
+    height: 48px;
+    background-color: white;
+    z-index: 1;
+    border: 1px solid black;
+    box-sizing: border-box;
+    padding-left: 22px;
+}
+.menuBlock p{
+    font-family: 'Montserrat', serif;
+}
+.menuBlock p:hover{
+    cursor: pointer;
 }

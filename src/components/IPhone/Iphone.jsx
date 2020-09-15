@@ -22,7 +22,8 @@ const Iphone = ()=>{
     const dispatch = useDispatch();
     const data = useSelector(state=>state.IphonePage);
     const dataApple = useSelector(state=>state.ApplePage);
-    const dataCart = useSelector(state=>state.CartPage);
+    // const dataCart = useSelector(state=>state.CartPage);
+
     const iPhoneItems = data.iPhones.map((element)=><IphoneItems
             name={element.name}
             stateColorIphone7={element.stateColorIphone7}

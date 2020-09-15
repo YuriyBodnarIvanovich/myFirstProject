@@ -106,6 +106,12 @@ app.post('/singUp',(req,res)=>{
     });
 });
 
+app.post('/checkJWT',passport.authenticate('jwt', { session: false }), async (req,res)=>{
+    const Users = await dataBD.openUsers(req.user.userData.email);
+    console.log('UserData: ' + JSON.stringify(Users));
+    res.json({message: "Success!",userData:Users});
+});
+
 app.post('/authorize',(req,res)=>{
     const data = {
         username: req.body.email,
@@ -148,7 +154,6 @@ app.post('/addToCart',passport.authenticate('jwt', { session: false }), (req, re
     let idProduct;
     let idColor;
     let idCart;
-
    connection.query("SELECT idusers\n" +
        "FROM users\n" +
        "INNER join email\n" +
@@ -185,6 +190,7 @@ app.post('/addToCart',passport.authenticate('jwt', { session: false }), (req, re
             idCart = data + 1;
         }
         if(idUser !==undefined && idProduct !==undefined && idColor !==undefined && idCart !==undefined){
+            console.log('idUser ' + idUser +  'idProduct ' + idProduct + 'idColor ' + idColor + 'idCart' + idCart );
             const fieldCart = [idCart,idProduct,idColor,idUser]
             const sql = "INSERT INTO cart( idcart, idProduct, idColorOfPhoto, idusers) VALUES(?,?,?,?)"
             connection.query( sql,fieldCart,function (err,result) {

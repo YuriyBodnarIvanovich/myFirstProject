@@ -2,14 +2,20 @@ import React from "react";
 import MenuStyle from './Menu.module.css';
 import {NavLink} from 'react-router-dom';
 import {useDispatch, useSelector} from "react-redux";
-import UserField from "./UserField/UserField";
-
 
 const Menu = () =>{
     const data = useSelector(state=> state.ApplePage);
     const dispatch = useDispatch();
     function openSingBox(){
         dispatch({type:'SHOW_INPUT_BOX',status:true});
+    }
+
+    function exit(){
+        dispatch({type:'SHOW_MENU_BLOCK',status:false});
+        dispatch({type:'CHANGE_STATUS_OF_USER',userStatus:false});
+        dispatch({type:'CHANGE_ARRAY_OF_USERS',array:[]});
+        localStorage.removeItem('token');
+
     }
     return(
         <div className={MenuStyle.main}>
@@ -29,15 +35,32 @@ const Menu = () =>{
                     <div>
                         <img src={'https://image.flaticon.com/icons/svg/149/149309.svg'} alt={''}/>
                     </div>
-                    <div>
-                        {data.userStatus ? <img src={'https://image.flaticon.com/icons/svg/848/848043.svg'} alt={''}/>
+                    <div className={MenuStyle.forAccountItemContainer}>
+                        {data.userStatus ?
+                            <div style={{width:'100%'}}>
+                                <div className={MenuStyle.forAccountItem}>
+                                    <img src={'https://image.flaticon.com/icons/svg/848/848043.svg'} alt={''}
+                                         onClick={()=>dispatch({type:'SHOW_MENU_BLOCK',status: !data.showMenuBlock})}
+                                    />
+                                </div>
+                                {
+                                    data.showMenuBlock
+                                        ?
+                                    <div className={MenuStyle.menuBlock}>
+                                        <p onClick={exit}>Exit</p>
+                                    </div>
+                                    :
+                                    <div style={{display:'none'}}> </div>
+                                }
+                            </div>
                             :
                             <img src={'https://image.flaticon.com/icons/svg/848/848043.svg'} alt={''}
                                                                onClick={openSingBox}/>
                         }
                     </div>
                     <div>
-                        {data.userStatus ? <img src={'https://image.flaticon.com/icons/svg/833/833314.svg'} alt={''}/>
+                        {data.userStatus ? <img src={'https://image.flaticon.com/icons/svg/833/833314.svg'} alt={''}
+                            onClick={()=>dispatch({type:'SHOW_RIGHT_CART',status:true})}/>
                             :
                             <img src={'https://image.flaticon.com/icons/svg/833/833314.svg'} alt={''}
                                  onClick={openSingBox}/>

@@ -4,6 +4,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {NavLink} from 'react-router-dom';
 import Slide from "./Slide/Slide";
 import SocialButton from "./social networks/SocialButton";
+import axios from "axios";
 
 const Apple = () =>{
 
@@ -12,6 +13,16 @@ const Apple = () =>{
 
     function showList(){
         dispatch({type:'OPEN_MACBOOK',status:false});
+    }
+    function checkJWT(){
+        axios.post('http://localhost:3001/checkJWT', {
+        }, {headers: {"Authorization" : `Bearer ${localStorage.getItem('token')}`}})
+            .then(function (response) {
+                console.log(response);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
     }
     return(
         <div>

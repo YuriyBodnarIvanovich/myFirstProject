@@ -1,6 +1,6 @@
 import React from "react";
 import ButtonColor from "../Button/ButtonChangeColor";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import axios from "axios";
 import ContentPageStyle from './ContentPage.module.css';
 
@@ -11,17 +11,17 @@ const ContentPage = (props) =>{
         <ButtonColor color={element.color} id={index} data={props.data} dispatch={props.dispatch} way='iPhone'/>);
 
     function addToCart() {
-        let Users = JSON.parse(JSON.stringify(dataApple.Users));
-        let newItem = JSON.parse(JSON.stringify(dataApple.newItemsOfCart));
-        newItem[0].name = props.data.iPhones[props.data.indexOfMainArray].name;
-        newItem[0].color = props.data.iPhones[props.data.indexOfMainArray].mainColor;
-        newItem[0].price = props.data.iPhones[props.data.indexOfMainArray].price;
-        Users[dataApple.indexOfUsers].CartList.push(newItem[0]);
-        props.dispatch({type:'CHANGE_ARRAY_OF_USERS',newArray:Users});
+        // let Users = JSON.parse(JSON.stringify(dataApple.Users));
+        // let newItem = JSON.parse(JSON.stringify(dataApple.newItemsOfCart));
+        // newItem[0].name = props.data.iPhones[props.data.indexOfMainArray].name;
+        // newItem[0].color = props.data.iPhones[props.data.indexOfMainArray].mainColor;
+        // newItem[0].price = props.data.iPhones[props.data.indexOfMainArray].price;
+        // Users[dataApple.indexOfUsers].CartList.push(newItem[0]);
+        // props.dispatch({type:'CHANGE_ARRAY_OF_USERS',newArray:Users});
 
         axios.post('http://localhost:3001/addToCart', {
             name:props.data.iPhones[props.data.indexOfMainArray].name,
-            color:props.data.iPhones[props.data.indexOfMainArray].mainColor,
+            color:props.data.iPhones[props.data.indexOfMainArray].photo[props.data.indexOfColor].color,
             price:props.data.iPhones[props.data.indexOfMainArray].price,
         }, {headers: {"Authorization" : `Bearer ${localStorage.getItem('token')}`}})
             .then(function (response) {
@@ -75,7 +75,12 @@ const ContentPage = (props) =>{
                         </ul>
                     </div>
                     <div>
-                        <button className={ContentPageStyle.addToCart}>Add to Cart</button>
+                        {dataApple.userStatus ?
+                            <button className={ContentPageStyle.addToCart} onClick={addToCart}>Add to Cart</button>
+                            :
+                            <button className={ContentPageStyle.addToCart} onClick={()=>alert('Увійдіть будь ласка!')}>Add to Cart</button>
+                        }
+
                     </div>
                     <div>
                         <div className={ContentPageStyle.checkDescription}>
