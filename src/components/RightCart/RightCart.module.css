@@ -62,6 +62,13 @@
 }
 
 .scroll{
-    overflow-y:scroll;
+    overflow-y:auto;
     overflow-x: hidden;
+}
+
+
+.color{
+    width: 30px;
+    height: 30px;
+    border-radius: 10px;
 }

@@ -13,6 +13,9 @@ const FILL_PASSWORD = 'FILL_PASSWORD';
 const Show_Left_Menu = 'Show_Left_Menu';
 const SHOW_RIGHT_CART = 'SHOW_RIGHT_CART';
 const SHOW_MENU_BLOCK = 'SHOW_MENU_BLOCK';
+const STATUS_OF_ROLE_ADMIN = 'STATUS_OF_ROLE_ADMIN';
+const STATUS_OF_ROLE_USER = 'STATUS_OF_ROLE_USER';
+const STATUS_OF_ADMIN_PAGE = 'STATUS_OF_ADMIN_PAGE';
 
 
 const Date = {
@@ -52,6 +55,11 @@ const Date = {
     showLeftMenu: false,
     showRightCart: false,
     showMenuBlock:false,
+
+    roleOfAdmin:false,
+    roleOfUser:false,
+
+    openAdminPage: false
 
 
 
@@ -138,6 +146,25 @@ const AppleReducer = (state = Date,action) =>{
                 showRightCart: action.status
             }
         }
+        case STATUS_OF_ROLE_ADMIN:{
+            return {
+                ...state,
+                roleOfAdmin: action.status
+            }
+        }
+        case STATUS_OF_ROLE_USER:{
+            return {
+                ...state,
+                roleOfUser: action.status
+            }
+        }
+        case STATUS_OF_ADMIN_PAGE:{
+            return{
+                ...state,
+                openAdminPage: action.status
+            }
+        }
+
     }
     return state;
 }

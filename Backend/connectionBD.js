@@ -113,7 +113,8 @@ async function openUsers(idAuth){
             name: element.name,
             email: element.email,
             mainPhoto: element.avatarPhotoUser,
-            CartList:[]
+            CartList:[],
+            Roles:[]
         }
     });
 
@@ -137,8 +138,24 @@ async function openUsers(idAuth){
             };
         });
     });
+
+    const resultRoles = await promisePool.query("SELECT name, nameOfRole, subOfAuth0\n" +
+        "FROM RolesOfUsers\n" +
+        "INNER JOIN users\n" +
+        "\tON RolesOfUsers.idUser = users.idusers\n" +
+        "INNER JOIN nameOfUser\n" +
+        "\tUSING(idnameOfUser);");
+    user.forEach(function (item,index){
+        item.Roles = resultRoles[0].filter((element)=>{return item.idAuth0 === element.subOfAuth0}).map((p)=>{
+            return{
+                role: p.nameOfRole
+            }
+        });
+    });
+
     return user
 }
+
 module.exports.openIphone = openIphone;
 module.exports.openMac = openMac;
 module.exports.openUsers = openUsers;

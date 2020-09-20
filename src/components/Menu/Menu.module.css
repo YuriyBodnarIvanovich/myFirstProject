@@ -26,7 +26,9 @@
 }
 
 .nameCompany{
+    /*width: 100%;*/
     display: grid;
+    /*grid-template-columns: 0.4fr;*/
     justify-content: center;
 }
 .nameCompany a{
@@ -80,5 +82,27 @@
     font-family: 'Montserrat', serif;
 }
 .menuBlock p:hover{
+    cursor: pointer;
+}
+
+.menuBlockAdmin{
+    margin-top: 10px;
+    position: absolute;
+    width: 90px;
+    height: 79px;
+    background-color: white;
+    z-index: 1;
+    border: 1px solid black;
+    box-sizing: border-box;
+    padding-left: 22px;
+}
+.menuBlockAdmin p{
+    font-family: 'Montserrat', serif;
+}
+.menuBlockAdmin a{
+    text-decoration: none;
+    color: black;
+}
+.menuBlockAdmin p:hover{
     cursor: pointer;
 }

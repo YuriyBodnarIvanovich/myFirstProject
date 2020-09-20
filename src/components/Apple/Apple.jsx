@@ -14,16 +14,6 @@ const Apple = () =>{
     function showList(){
         dispatch({type:'OPEN_MACBOOK',status:false});
     }
-    function checkJWT(){
-        axios.post('http://localhost:3001/checkJWT', {
-        }, {headers: {"Authorization" : `Bearer ${localStorage.getItem('token')}`}})
-            .then(function (response) {
-                console.log(response);
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
-    }
     return(
         <div>
             <div className={AppleStyle.content}>

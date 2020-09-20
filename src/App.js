@@ -5,7 +5,6 @@ import {BrowserRouter,Route} from 'react-router-dom';
 import Admin from "./components/Admin/Admin";
 import Mac from "./components/Mac/Mac";
 import Iphone from "./components/IPhone/Iphone";
-import Cart from "./components/Cart/Cart";
 import Apple from "./components/Apple/Apple";
 import Force from "./components/Force/Force";
 import AuthBox from "./components/Authorization/AuthBox";
@@ -17,7 +16,14 @@ import RightCart from "./components/RightCart/RightCart";
 function App() {
         const data = useSelector(state=>state.ApplePage);
         const dispatch = useDispatch();
-
+        function statusOfRoles(resUser){
+            for(let  i = 0; i < resUser[0].Roles.length; i++){
+                if(resUser[0].Roles[i].role === 'admin'){
+                    console.log('Admin Status!!')
+                    dispatch({type:'STATUS_OF_ROLE_ADMIN',status:true});
+                }
+            }
+        }
         function checkJWT(){
             axios.post('http://localhost:3001/checkJWT', {
             }, {headers: {"Authorization" : `Bearer ${localStorage.getItem('token')}`}})
@@ -26,6 +32,7 @@ function App() {
                     let resUser = JSON.parse(JSON.stringify(response.data.userData));
                     dispatch({type:'CHANGE_ARRAY_OF_USERS',array:resUser});
                     dispatch({type:'CHANGE_STATUS_OF_USER',userStatus:true});
+                    statusOfRoles(resUser);
                 })
                 .catch(function (error) {
                     console.log(error);
@@ -61,10 +68,14 @@ function App() {
                                render={ () => <Apple />} />
                         <Route path='/IPhone'
                                render={ () =><Iphone />} />
-                        <Route path='/Cart'
-                               render={ () => <Cart />} />
-                        <Route path='/Admin'
-                               render={ () => <Admin/>} />
+                        {
+                            data.openAdminPage ?
+                                <Route path='/Admin'
+                                       render={ () => <Admin/>} />
+                                       :
+                                <div> </div>
+                        }
+
                     </div>
                     {
                         data.showRightCart ?

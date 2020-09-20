@@ -15,7 +15,9 @@ const Menu = () =>{
         dispatch({type:'CHANGE_STATUS_OF_USER',userStatus:false});
         dispatch({type:'CHANGE_ARRAY_OF_USERS',array:[]});
         localStorage.removeItem('token');
-
+    }
+    function openAdminPage(){
+        dispatch({type:'STATUS_OF_ADMIN_PAGE',status:true});
     }
     return(
         <div className={MenuStyle.main}>
@@ -46,9 +48,24 @@ const Menu = () =>{
                                 {
                                     data.showMenuBlock
                                         ?
-                                    <div className={MenuStyle.menuBlock}>
-                                        <p onClick={exit}>Exit</p>
-                                    </div>
+                                        <div>
+                                            {
+                                                data.roleOfAdmin ?
+                                                    <div className={MenuStyle.menuBlockAdmin}>
+                                                        {data.roleOfAdmin ?
+                                                            <NavLink to='/Admin'>
+                                                                <p onClick={openAdminPage}>Admin</p>
+                                                            </NavLink>
+                                                            : ''}
+                                                        <p onClick={exit}>Exit</p>
+                                                    </div>
+                                                    :
+                                                    <div className={MenuStyle.menuBlock}>
+                                                        <p onClick={exit}>Exit</p>
+                                                    </div>
+                                            }
+                                        </div>
+
                                     :
                                     <div style={{display:'none'}}> </div>
                                 }

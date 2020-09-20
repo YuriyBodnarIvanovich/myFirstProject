@@ -106,11 +106,7 @@ app.post('/singUp',(req,res)=>{
     });
 });
 
-app.post('/checkJWT',passport.authenticate('jwt', { session: false }), async (req,res)=>{
-    const Users = await dataBD.openUsers(req.user.userData.email);
-    console.log('UserData: ' + JSON.stringify(Users));
-    res.json({message: "Success!",userData:Users});
-});
+
 
 app.post('/authorize',(req,res)=>{
     const data = {
@@ -119,6 +115,7 @@ app.post('/authorize',(req,res)=>{
         realm: 'Username-Password-Authentication', // Optional field.
     };
     auth0.oauth.passwordGrant(data,async function (err, userData) {
+
         if (err) {
             console.log(err);
         }
@@ -127,6 +124,7 @@ app.post('/authorize',(req,res)=>{
             console.log('UserData: ' + JSON.stringify(Users));
             for(let user of Users){
                 if(req.body.email === user.email){
+                    console.log('UserData: ' + JSON.stringify(Users));
                     return res.status(200).json({
                         token: userData,
                         Users: Users
@@ -135,6 +133,12 @@ app.post('/authorize',(req,res)=>{
             }
         }
     });
+});
+
+app.post('/checkJWT',passport.authenticate('jwt', { session: false }), async (req,res)=>{
+    const Users = await dataBD.openUsers(req.user.userData.email);
+    console.log('UserData: ' + JSON.stringify(Users));
+    res.json({message: "Success!",userData:Users});
 });
 
 app.use(passport.initialize());

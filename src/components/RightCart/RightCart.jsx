@@ -2,7 +2,6 @@ import React from "react";
 import CartStyle from './RightCart.module.css';
 import {useSelector} from "react-redux";
 import TableOfCart from "./Table/TableOfCart";
-import Table from "../Cart/Table/Table";
 
 const RightCart  = () =>{
     const dataUser = useSelector(state=>state.ApplePage);
