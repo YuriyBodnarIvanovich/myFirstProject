@@ -1,14 +1,15 @@
 import React from "react";
-import ButtonColor from "../Button/ButtonChangeColor";
+import ButtonChangeColor from "../Button/ButtonChangeColor";
 import {useDispatch, useSelector} from "react-redux";
 import axios from "axios";
 import ContentPageStyle from './ContentPage.module.css';
+import ImgContent from "../ImgContent/ImgContent";
 
 const ContentPage = (props) =>{
     const dataApple = useSelector(state=>state.ApplePage);
 
     const colorArray = props.data.iPhones[props.data.indexOfMainArray].photo.map((element,index)=>
-        <ButtonColor color={element.color} id={index} data={props.data} dispatch={props.dispatch} way='iPhone'/>);
+        <ButtonChangeColor color={element.color} id={index} data={props.data} dispatch={props.dispatch} way='iPhone'/>);
 
     function addToCart() {
         // let Users = JSON.parse(JSON.stringify(dataApple.Users));
@@ -33,8 +34,6 @@ const ContentPage = (props) =>{
 
     }
 
-
-
     function showDescription(){
         props.dispatch({type:'DESCRIPTION_STATUS',status:true});
     }
@@ -45,9 +44,7 @@ const ContentPage = (props) =>{
         props.dispatch({type:'OPEN_IPHONE',status:false});
     }
 
-    function changeMainPhoto(number){
-        props.dispatch({type:'CHANGE_NUMBER_OF_PHOTO',number:number})
-    }
+
     return(
         <div>
             <div className={ContentPageStyle.content}>
@@ -99,22 +96,7 @@ const ContentPage = (props) =>{
                         }
                     </div>
                 </div>
-                <div className={ContentPageStyle.photo}>
-                    <div className={ContentPageStyle.mainPhoto}>
-                        <img src={props.data.iPhones[props.data.indexOfMainArray].photo[props.data.indexOfColor].imgSrc[props.data.numberOfPhoto].src} alt={''}/>
-                    </div>
-                    <div className={ContentPageStyle.catalogPhotoOver}>
-                        <div className={ContentPageStyle.catalogPhoto}>
-                            <img src={props.data.iPhones[props.data.indexOfMainArray].photo[props.data.indexOfColor].imgSrc[0].src}
-                                 onClick={()=>changeMainPhoto(0)} alt={''}/>
-                            <img src={props.data.iPhones[props.data.indexOfMainArray].photo[props.data.indexOfColor].imgSrc[1].src}
-                                 onClick={()=>changeMainPhoto(1)} alt={''}/>
-                            <img src={props.data.iPhones[props.data.indexOfMainArray].photo[props.data.indexOfColor].imgSrc[2].src}
-                                 onClick={()=>changeMainPhoto(2)} alt={''}/>
-                        </div>
-                    </div>
-
-                </div>
+                <ImgContent data={props.data} dispatch={props.dispatch}/>
             </div>
             <button className={ContentPageStyle.btn} onClick={showList}>last</button>
         </div>

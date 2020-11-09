@@ -1,24 +1,9 @@
-const mysql = require("mysql2");
-
-const pool = mysql.createPool({host:'localhost', user: 'bond', database: 'PRODUCTS_NEW', password:'pass'});
+const connectionBD = require("./connectionToHost");
 
 async function openIphone(){
 
     let iPhoneArr = [];
-    const promisePool = pool.promise();
-    const result  =  await promisePool.query("SELECT name, price,\n" +
-        "kindOfProduct, screen, processor, RAM, InternalMemory, OperationSystem, remainder, " +
-        "BasicCamera, FrontCamera,   FirstPhoto, SecondPhoto, ThirdPhoto, color\n" +
-        "FROM products\n" +
-        "INNER JOIN prices\n" +
-        "\tUSING(idPrice)\n" +
-        "INNER JOIN characters\n" +
-        "\tUSING(idcharacters)\n" +
-        "INNER JOIN photo\n" +
-        "\tUSING(idProduct)\n" +
-        "INNER JOIN colorOfPhoto\n" +
-        "\tUSING(idColorOfPhoto)\n" +
-        "WHERE kindOfProduct = 'IPHONE'");
+    const result  =  await connectionBD.promisePool.query("SELECT name, price, kindOfProduct, screen, processor, RAM, InternalMemory, OperationSystem, remainder, BasicCamera, FrontCamera, FirstPhoto, SecondPhoto, ThirdPhoto, color FROM products INNER JOIN prices USING(idPrice) INNER JOIN characters USING(idcharacters) INNER JOIN photo USING(idProduct) INNER JOIN colorOfPhoto USING(idColorOfPhoto) WHERE kindOfProduct = 'IPHONE'");
 
     function onlyUnique(value, index, arr) {
         return arr.map(function(e) { return e.name; }).indexOf(value.name) === index;
@@ -61,10 +46,8 @@ async function openIphone(){
 }
 
 async function openMac(){
-
     let macArray = [];
-    const promisePool = pool.promise();
-    const result = await promisePool.query("SELECT name, price,\n" +
+    const result = await connectionBD.promisePool.query("SELECT name, price,\n" +
         "kindOfProduct, screen, processor, RAM, remainder, SSD, videoCard, FirstPhoto, SecondPhoto, ThirdPhoto\n" +
         "FROM products\n" +
         "INNER JOIN prices\n" +
@@ -90,13 +73,14 @@ async function openMac(){
             },
         }
     })
+    console.log('Mac Open!!!')
+
     return macArray
 }
 
 async function openUsers(idAuth){
     let user = [];
-    const promisePool = pool.promise();
-    const result = await promisePool.query("SELECT idusers, name,email, avatarPhotoUser, subOfAuth0 AS idAuth\n" +
+    const result = await connectionBD.promisePool.query("SELECT idusers, name,email, avatarPhotoUser, subOfAuth0 AS idAuth\n" +
         "        FROM users\n" +
         "        INNER JOIN nameOfUser\n" +
         "        USING(idnameOfUser)\n" +
@@ -118,7 +102,7 @@ async function openUsers(idAuth){
         }
     });
 
-    const resultCart = await promisePool.query("SELECT idcart, products.name AS ProductName,  prices.Price AS Price,  colorOfPhoto.color AS color, idusers\n" +
+    const resultCart = await connectionBD.promisePool.query("SELECT idcart, products.name AS ProductName,  prices.Price AS Price,  colorOfPhoto.color AS color, idusers\n" +
         "        FROM cart\n" +
         "        INNER JOIN products\n" +
         "        USING(idProduct)\n" +
@@ -139,7 +123,7 @@ async function openUsers(idAuth){
         });
     });
 
-    const resultRoles = await promisePool.query("SELECT name, nameOfRole, subOfAuth0\n" +
+    const resultRoles = await connectionBD.promisePool.query("SELECT name, nameOfRole, subOfAuth0\n" +
         "FROM RolesOfUsers\n" +
         "INNER JOIN users\n" +
         "\tON RolesOfUsers.idUser = users.idusers\n" +

@@ -1,7 +1,7 @@
 import React from "react";
 import ButtonColorStyle from './ButtonChangeColor.module.css'
 
-const ButtonColor = (props) =>{
+const ButtonChangeColor = (props) =>{
     function changeColor() {
         const catalog = JSON.parse(JSON.stringify(props.data.iPhones));
         // if(props.way === 'iPhone'){
@@ -24,4 +24,4 @@ const ButtonColor = (props) =>{
         </div>
     )
 }
-export default ButtonColor;
+export default ButtonChangeColor;

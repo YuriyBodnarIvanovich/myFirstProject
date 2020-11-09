@@ -38,7 +38,6 @@ const Date = {
         }
     ],
     Users:[],
-
     indexOfUsers: 0,
 
     indexOfSlide: 0,
@@ -59,7 +58,7 @@ const Date = {
     roleOfAdmin:false,
     roleOfUser:false,
 
-    openAdminPage: false
+    openAdminPage: true
 
 
 

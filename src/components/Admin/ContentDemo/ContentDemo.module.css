@@ -1,0 +1,95 @@
+.container{
+    width: 100%;
+    height: 800px;
+    border-style: solid;
+    border-color: black;
+    border-width: 1px;
+    border-radius: 5px;
+    margin-top: 50px;
+    display: grid;
+    grid-template-columns: 0.5fr 0.5fr;
+    padding: 20px;
+    box-sizing: border-box;
+}
+.content{
+    width: 100%;
+}
+
+
+.imgContent{
+    width: 100%;
+}
+
+.photoContainer{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 0.8fr;
+    justify-content: center;
+}
+
+.mainPhoto{
+    height: 370px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 0.5fr;
+    justify-content: center;
+    align-items: center;
+    padding-right: 30px;
+}
+.mainPhoto img{
+    min-height: 300px;
+    max-height: 350px;
+    max-width: 250px;
+    min-width: 200px;
+}
+.listOfPhoto{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 10px;
+}
+
+.demoContainer{
+    width: 100%;
+    margin: 5px;
+    height: 120px;
+    /*background-color: red;*/
+}
+
+.charactersTitle{
+    font-size: 20px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+}
+.forColors{
+    display: flex;
+    flex-direction: row;
+    margin-top: 20px;
+}
+
+
+.catalogPhoto{
+    width: 100%;
+    height: 400px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 10px;
+    padding: 10px;
+    /*margin-bottom: 30px;*/
+    justify-content: center;
+
+}
+.catalogPhoto img{
+    width: 120px;
+    height: 180px;
+    /*width: 170px;*/
+    cursor:pointer;
+    align-items: center;
+
+}
+.catalogPhoto img:hover{
+    width: 130px;
+    height: 190px;
+    cursor:pointer;
+}
+
+

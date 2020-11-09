@@ -18,7 +18,6 @@ const SingIn = ()=>{
                 localStorage.setItem('token', response.data.token.id_token);
                 dispatch({type:'SHOW_INPUT_BOX',status:false});
                 dispatch({type:'CHANGE_STATUS_OF_USER',userStatus:true});
-
             })
             .catch(function (error) {
                 console.log(error);

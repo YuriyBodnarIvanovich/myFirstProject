@@ -2,52 +2,41 @@ const CHANGE_STATUS_OF_SHOW_OPTION = 'CHANGE_STATUS_OF_SHOW_OPTION';
 const CHANGE_INDEX_OF_COLOR = 'CHANGE_INDEX_OF_COLOR';
 const CHANGE_STATUS_OF_OPTION_BUTTON_ADMIN = 'CHANGE_STATUS_OF_OPTION_BUTTON_ADMIN';
 const CHANGE_INDEX_OF_OPTION = 'CHANGE_INDEX_OF_OPTION';
-
+const CHANGE_STATUS_OF_ITEMS_COLOR  = 'CHANGE_STATUS_OF_ITEMS_COLOR';
+const ADD_ELEMENT_TO_COLOR_ARRAY = 'ADD_ELEMENT_TO_COLOR_ARRAY';
+const FILL_VALUE_OF_COLOR = 'FILL_VALUE_OF_COLOR';
+const SHOW_OPTIONS = 'SHOW_OPTIONS';
+const INPUT_DATA_TO_ELEMENT = 'INPUT_DATA_TO_ELEMENT';
+const SHOW_NAME = 'SHOW_NAME';
+const CHANGE_NUMBER_OF_COLOR = 'CHANGE_NUMBER_OF_COLOR';
+const CHANGE_ACTIVE_COLOR = 'CHANGE_ACTIVE_COLOR';
 let initialData ={
     newElement: [
         {
-            name: '', price:0,
-            startPrice:0,//the some price but not change
-            startPriceRAM:0,
-            startPriceInternalMemory: 0,
-            startPriceBasicCamera: 0,
-            startPriceInternalFrontCamera: 0,
+            name: '', price: 0,
             character: {
-                screen: '',processor:'',
-                RAM:'',internalMemory:'',
-                operatingSystem:'',remainder:'',
+                screen:'', processor: '',
+                RAM: '', internalMemory: '',
+                operatingSystem: '', remainder: '',
+                SSD:'', videoCard:'', WorkingTime:'',
+                Bluetooth:'',Notifications:'', OperationSystem:'',
+                KindOfProduct:'',
                 camera:{
-                    basicCamera:'',
-                    frontCamera:''
+                    basicCamera: '',
+                    frontCamera: '',
                 },
             },
+            stateColorIphone7: '',
+            mainColor: '',
+            status: true,
             photo:[
                 {
-                    color:'',
+                    color:'#000',
                     imgSrc:[
-                        {src:''},
-                        {src:''},
                         {src:''},
                     ],
                 },
             ],
-            stateColorIphone7:'',
-            buttonOption:[
-                {
-                    RAM: {value:'',price:0},
-                    internalMemory:{value:'',price:0},
-                    basicCamera:{value:'',price:0},
-                    frontCamera:{value:'',price:0},
-                },
-            ],
-            buttonNormalPrimeStatus: true,
-            buttonCameraPrimeStatus: true,
-            buttonMemoryNormalStatus:true,
-            buttonMemoryPrimeStatus:true,
-            buttonRAM_NormalStatus:true,
-            buttonRAM_PrimeStatus:true,
-            mainColor: '',
-            status: true,
 
         },
     ],
@@ -56,22 +45,118 @@ let initialData ={
             color:'',
             imgSrc:[
                 {src:''},
-                {src:''},
-                {src:''},
             ],
         },
     ],
-    buttonOption:[// new element for options
+
+    adminColorContainer:[
         {
-            RAM: {value:' ',price:0},
-            internalMemory:{value:' ',price:0},
-            basicCamera:{value:' ',price:0},
-            frontCamera:{value:' ',price:0},
+            index:0,
+            status: false,
+            color: '',
+            photo:[
+                {
+                    value:'',
+                    status:false
+                },
+            ]
         },
     ],
+    numberOfColor:0,
+    newItemOfColorContainer:{
+        index:0,
+        status: false,
+        color: '',
+        photo:[
+            {
+                value:'',
+                status:false
+            }
+        ]
+    },
+
+    statusOfNewItemsOfColor: false,
+    valueOfColorFiled: '',
+    optionsContainerField:[
+        {
+            name:'Screen',
+            parentsField:'',
+            kindOfOfOptions:'screen',
+        },
+        {
+            name:'Processor',
+            parentsField:'',
+            kindOfOfOptions:'processor',
+        },
+        {
+            name:'Front Camera',
+            parentsField:'camera',
+            kindOfOfOptions:'frontCamera',
+        },
+        {
+            name:'Basic Camera',
+            parentsField:'camera',
+            kindOfOfOptions:'basicCamera',
+        },
+        {
+            name:'Internal Memory',
+            parentsField:'',
+            kindOfOfOptions:'internalMemory',
+        },
+        {
+            name:'RAM',
+            parentsField:'',
+            kindOfOfOptions:'RAM',
+        },
+        {
+            name:'Remainder',
+            parentsField:'',
+            kindOfOfOptions:'remainder',
+        },
+        {
+            name:'SSD',
+            parentsField:'',
+            kindOfOfOptions:'SSD',
+        },
+        {
+            name:'VideoCard',
+            value:'',
+            parentsField:'',
+            kindOfOfOptions:'videoCard',
+        },
+        {
+            name:'Working Time',
+            parentsField:'',
+            kindOfOfOptions:'WorkingTime',
+        },
+        {
+            name:'Bluetooth',
+            parentsField:'',
+            kindOfOfOptions:'Bluetooth',
+        },
+        {
+            name:'Notifications',
+            parentsField:'',
+            kindOfOfOptions:'Notifications',
+        },
+        {
+            name:'Operation System',
+            parentsField:'',
+            kindOfOfOptions:'OperationSystem',
+        },
+        {
+            name:'Kind Of Product',
+            parentsField:'',
+            kindOfOfOptions:'KindOfProduct',
+        },
+    ],
+
+    showCatalogOfOptions: false,
     showOption: true,
     indexOfOption: 0,
-    indexOfColor: 0
+    indexOfColor: 0,
+    showName: false,
+    colorActive: 0,
 }
 
 const AdminReducer = (state = initialData,action) =>{
@@ -98,6 +183,54 @@ const AdminReducer = (state = initialData,action) =>{
             return {
                 ...state,
                 indexOfOption: action.newIndex
+            }
+        }
+        case CHANGE_STATUS_OF_ITEMS_COLOR:{
+            return {
+                ...state,
+                statusOfNewItemsOfColor: action.status
+            }
+        }
+        case ADD_ELEMENT_TO_COLOR_ARRAY:{
+            return {
+                ...state,
+                adminColorContainer: action.array
+            }
+        }
+        case FILL_VALUE_OF_COLOR:{
+            return {
+                ...state,
+                valueOfColorFiled: action.value
+            }
+        }
+        case SHOW_OPTIONS:{
+            return {
+                ...state,
+                showCatalogOfOptions: action.status
+            }
+        }
+        case INPUT_DATA_TO_ELEMENT:{
+            return {
+                ...state,
+                newElement: action.newData
+            }
+        }
+        case SHOW_NAME:{
+            return {
+                ...state,
+                showName: action.status
+            }
+        }
+        case CHANGE_NUMBER_OF_COLOR:{
+            return {
+                ...state,
+                numberOfColor: action.value
+            }
+        }
+        case CHANGE_ACTIVE_COLOR:{
+            return {
+                ...state,
+                colorActive:action.newValue
             }
         }
     }

@@ -1,0 +1,30 @@
+.inputContainer{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 0.8fr 0.2fr;
+}
+
+.inputContainer button{
+    width: 40px;
+    height: 40px;
+    background-color: #5B5A5A;
+    cursor: pointer;
+    border:none;
+    font-size: 20px;
+    font-family: 'Montserrat', serif;
+    border-radius: 5px;
+    color: white;
+    margin-top: 10px;
+    margin-left: 5px;
+}
+.inputContainer button:hover{
+    width: 40px;
+    height: 40px;
+    background-color: white;
+    color: black;
+    cursor: pointer;
+    border:none;
+    /*color: #5B5A5A;*/
+}
+
+.inputContainer button:active, .buttonInputOptions:focus { outline: none; }
