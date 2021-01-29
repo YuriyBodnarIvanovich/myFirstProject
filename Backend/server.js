@@ -141,7 +141,125 @@ app.use(passport.session());
 
 
 app.post('/AddItemToBD', async function (request,response){
-    console.log(request.body.item);
+    const charactersFields =    [request.body.item.character.screen,request.body.item.character.processor,
+                                request.body.item.character.RAM,request.body.item.character.internalMemory,
+                                request.body.item.character.remainder,request.body.item.character.SSD,
+                                request.body.item.character.videoCard,request.body.item.character.WorkingTime,
+                                request.body.item.character.Bluetooth,request.body.item.character.Notifications,
+                                request.body.item.character.OperationSystem, request.body.item.character.camera.basicCamera,
+                                request.body.item.character.camera.frontCamera];
+
+    const dataOfCharacters = "INSERT INTO characters(screen,processor,RAM,InternalMemory,remainder,SSD," +
+            " videoCard,WorkingTime,Bluetooth,Notifications,OperationSystem,BasicCamera,FrontCamera) " +
+            " VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)";
+    connectionBD.promisePool.query( dataOfCharacters,charactersFields,function (err,result) {
+        if(err){
+            console.log(err);
+        }
+    });
+
+
+    const priceProductSql = "INSERT INTO prices(Price) VALUES("+ request.body.item.price +")";
+    connectionBD.promisePool.query(priceProductSql,function (err,result){
+        if(err) console.log(err);
+        else console.log("price done");
+    });
+
+    let idCharacters;
+    let idPrice;
+    const idPriceSQL = "SELECT idPrice FROM prices  \n" +
+        "ORDER BY idPrice DESC  \n" +
+        "LIMIT 1;";
+    const idCharactersSql = "SELECT idcharacters FROM characters  \n" +
+        "ORDER BY idcharacters DESC  \n" +
+        "LIMIT 1;";
+    connectionBD.promisePool.query(idCharactersSql,function (err,result){
+        if(err){
+            console.log(err);
+        }else {
+            console.log(result[0].idcharacters);
+        }
+    });
+
+    connectionBD.promisePool.query(idCharactersSql,function (err,result){
+        if(err) console.log(err);
+        else{
+            addData(result[0].idcharacters,'idCharacters');
+            console.log(result);
+            console.log(result[0]);
+        }
+    });
+
+    connectionBD.promisePool.query(idPriceSQL,function (err,result){
+        if(err) console.log(err);
+        else addData(result[0].idPrice,'idPrice');
+    });
+
+    const addData = (data,kindOfData) =>{
+        if(kindOfData==='idCharacters'){
+            idCharacters = data;
+        }else if(kindOfData==='idPrice') {
+            idPrice = data;
+        }
+        if(idCharacters !==undefined && idPrice !==undefined){
+            console.log('idCharacters ' + idCharacters +  'idPrice ' + idPrice );
+            const fieldCart = [idCharacters,idPrice,request.body.item.name];
+            const sql = "INSERT INTO products(idCharacters,idPrice,name) VALUES(?,?,?)"
+            connectionBD.promisePool.query( sql,fieldCart,function (err,result) {
+                if(err) console.log(err);
+                else console.log("Products add done!");
+            });
+        }
+    };
+
+    const elementOfColors = request.body.item.photo.filter((item)=>{
+        return item.color !=='';
+    }).map((item)=>{
+        return item.color;
+    })
+
+    const colorAddSql = "INSERT INTO colorOfPhoto(color) VALUES(?)";
+    elementOfColors.map((item)=>{
+        connectionBD.promisePool.query(colorAddSql,item,function (err,result){
+            if(err) console.log(err);
+            else console.log(result);
+        });
+    });
+    console.log("Colors" + elementOfColors.length + ",  " + elementOfColors);
+
+    //////!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    let idColors = [];
+
+    const getIdColorsSql = "SELECT idColorOfPhoto FROM colorOfPhoto  \n" +
+        "ORDER BY idColorOfPhoto DESC  \n" +
+        "LIMIT "+ elementOfColors.length +";"
+
+    connectionBD.promisePool.query(getIdColorsSql,function (err,result){
+        console.log("Colors:");
+        console.log(result);
+    });
+    //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+
+    const elementsOfPhoto = request.body.item.photo.map((item)=>{
+        return item.imgSrc.filter((item)=>{
+            return item.src !=='';
+        }).map((itemSrs)=>{
+            return itemSrs.src;
+        });
+    });
+    elementsOfPhoto.splice(-1,1);
+    console.log("Photos: ");
+    console.log(elementsOfPhoto);
+
+
+    const photoAddSql = "INSERT INTO photo(FirstPhoto, SecondPhoto, ThirdPhoto, idProduct, idColorOfPhoto) " +
+        "VALUES(?,?,?,?,?,)";
+    elementsOfPhoto.map((item)=>{
+        // connectionBD.promisePool.query()
+    });
+
+
 });
 
 app.post('/addToCart',passport.authenticate('jwt', { session: false }), (req, res) => {
@@ -198,6 +316,7 @@ app.post('/addToCart',passport.authenticate('jwt', { session: false }), (req, re
 
 app.get('/mac',async function(request,response){
     const arr =  await dataBD.openMac();
+    console.log("Mac object!")
     console.log(arr);
     response.send(arr);
 });

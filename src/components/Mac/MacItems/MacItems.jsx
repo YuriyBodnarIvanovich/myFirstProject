@@ -3,21 +3,22 @@ import MacItemsStyle from './MacItem.module.css';
 
 const ItemMac = (props) =>{
 
-    const [srcMainPhoto, setCount] = useState(props.photo[0].src);
+    const [srcMainPhoto, setCount] = useState(props.photo[0]);
 
     function show() {
         props.dispatch({type:'CHANGE_ID_OF_ITEM_SHOW',newId:props.number});
         props.dispatch({type:'CHANGE_STATUS_OF_ITEM_SHOW',status:true});
     }
     function changeImage(){
-        setCount(props.photo[2].src)
+        setCount(props.photo[props.photo.length-1])
     }
     function changeImageAgain(){
-        setCount(props.photo[0].src)
+        setCount(props.photo[0])
     }
     function openModalWindow(){
-        props.dispatch({type:'OPEN_MACBOOK',status:true});
         props.dispatch({type:'CHANGE_ID_OF_ITEM_SHOW',newId:props.number});
+        props.dispatch({type:'OPEN_MACBOOK',status:true});
+
     }
     return(
         <div>

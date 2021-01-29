@@ -16,8 +16,7 @@ let initialData ={
             name: '', price: 0,
             character: {
                 screen:'', processor: '',
-                RAM: '', internalMemory: '',
-                operatingSystem: '', remainder: '',
+                RAM: '', internalMemory: '', remainder: '',
                 SSD:'', videoCard:'', WorkingTime:'',
                 Bluetooth:'',Notifications:'', OperationSystem:'',
                 KindOfProduct:'',
@@ -37,7 +36,6 @@ let initialData ={
                     ],
                 },
             ],
-
         },
     ],
     photo:[//new element for color array in element of array iphone

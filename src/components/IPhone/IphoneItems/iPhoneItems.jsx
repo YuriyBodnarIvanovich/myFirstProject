@@ -6,13 +6,13 @@ const IphoneItems = (props) =>{
     //     props.dispatch({type:'CHANGE_MAIN_INDEX',index: number});
     // }
 
-    const [srcMainPhoto, setCount] = useState(props.stateColorIphone7);
+    const [srcMainPhoto, setCount] = useState(props.data.iPhones[props.index].photo[0].imgSrc[0]);
 
     function changeImage(){
-        setCount(props.data.iPhones[props.index].photo[0].imgSrc[1].src)
+        setCount(props.data.iPhones[props.index].photo[0].imgSrc[1])
     }
     function changeImageAgain(){
-        setCount(props.data.iPhones[props.index].photo[0].imgSrc[0].src)
+        setCount(props.data.iPhones[props.index].photo[0].imgSrc[0])
     }
     function openItem(){
         props.dispatch({type:'OPEN_IPHONE',status:true});

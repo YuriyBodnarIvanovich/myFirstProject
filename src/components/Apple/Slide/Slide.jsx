@@ -33,7 +33,6 @@ const Slide = (props) =>{
         }
     }
 
-
     useInterval(() => {
         chengPhotoOfSlide()
     }, 3000);

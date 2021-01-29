@@ -25,10 +25,6 @@ const Date = {
             textOfButton:'Open'
         },
         {
-            photo:'https://jabko.ua/image/cachewebp/cataloge-2/slider/pc/321-max-400.webp',
-            textOfButton:'Open'
-        },
-        {
             photo:'https://jabko.ua/image/cachewebp/cataloge-2/slider/pc/%D1%81%D0%B0%D0%B9%D1%82%201-4_%D0%9C%D0%BE%D0%BD%D1%82%D0%B0%D0%B6%D0%BD%D0%B0%20%D0%BE%D0%B1%D0%BB%D0%B0%D1%81%D1%82%D1%8C%201-max-400.webp',
             textOfButton:'Open'
         },
@@ -39,7 +35,6 @@ const Date = {
     ],
     Users:[],
     indexOfUsers: 0,
-
     indexOfSlide: 0,
 
     ShowBox: false,

@@ -1,5 +1,5 @@
 const mysql = require("mysql2");
-const pool = mysql.createPool({host:'youriphone.zzz.com.ua', user: 'YuriiBond',  password:'greedisGood20', database: 'y_bond'});
+const pool = mysql.createPool({host:'youriphone.zzz.com.ua', user: 'catalogIPhone',  password:'greEdisGood2', database: 'y_bond'});
 const promisePool = pool.promise();
 const createBD = require('./createBD');
 const connectionBD = require("./connectionToHost");

@@ -3,15 +3,20 @@ const connectionBD = require("./connectionToHost");
 async function openIphone(){
 
     let iPhoneArr = [];
-    const result  =  await connectionBD.promisePool.query("SELECT name, price, kindOfProduct, screen, processor, RAM, InternalMemory, OperationSystem, remainder, BasicCamera, FrontCamera, FirstPhoto, SecondPhoto, ThirdPhoto, color FROM products INNER JOIN prices USING(idPrice) INNER JOIN characters USING(idcharacters) INNER JOIN photo USING(idProduct) INNER JOIN colorOfPhoto USING(idColorOfPhoto) WHERE kindOfProduct = 'IPHONE'");
+    const result  =  await connectionBD.promisePool.query("SELECT idProduct, name, price, kindOfProduct, screen, processor, RAM, InternalMemory, OperationSystem, remainder, BasicCamera, FrontCamera\n" +
+        "\tFROM products \n" +
+        "\t\tINNER JOIN prices \n" +
+        "        \tUSING(idPrice) \n" +
+        "        INNER JOIN characters \n" +
+        "\t        USING(idcharacters) \n" +
+        "WHERE kindOfProduct = 'IPHONE'");
 
     function onlyUnique(value, index, arr) {
         return arr.map(function(e) { return e.name; }).indexOf(value.name) === index;
     }
-
     iPhoneArr =  result[0].filter(onlyUnique).map((p,index)=>{
         return {
-            id: index,
+            id: p.idProduct,
             name: p.name, price: p.price,
             character: {
                 screen: p.screen, processor: p.processor,
@@ -22,57 +27,87 @@ async function openIphone(){
                     frontCamera: p.FrontCamera,
                 },
             },
-            stateColorIphone7: p.FirstPhoto,
-            mainColor: p.color,
             status: true,
             photo:[],
         };
-    })
+    });
+    const resultOfColor = await connectionBD.promisePool.query("SELECT idProduct, color FROM colorOfPhoto " +
+        "INNER JOIN photo USING(idColorOfPhoto) GROUP BY idProduct, color\n");
+    console.log(resultOfColor[0])
+
     iPhoneArr.forEach(function (item,index) {
-        item.photo =   result[0].filter((r)=>{return item.name === r.name}).map((p)=>{
+        item.photo =   resultOfColor[0].filter(el=>el.idProduct === item.id).map((result)=>{
             return{
-                color: p.color,
-                imgSrc:[
-                    {src:p.FirstPhoto},
-                    {src:p.SecondPhoto},
-                    {src:p.ThirdPhoto},
-                ],
+                color: result.color,
+                imgSrc:[],
             }
         })
-    })
+    });
     console.log(iPhoneArr);
 
+    const resultOfPhoto = await connectionBD.promisePool.query("SELECT idProduct, color, srcOfPhoto\n" +
+        "        FROM photo\n" +
+        "        INNER JOIN colorOfPhoto\n" +
+        "          USING(idColorOfPhoto)\n" +
+        "        INNER JOIN catalogOfPhoto\n" +
+        "          USING(idSrcOfPhoto)\n" +
+        "ORDER BY idProduct" );
+
+    console.log(resultOfPhoto[0]);
+
+    iPhoneArr.forEach(function (item,index) {
+        item.photo.map((itemPhoto)=>{
+            resultOfPhoto[0].map((result)=>{
+                if(item.id === result.idProduct){
+                    if(itemPhoto.color === result.color){
+                        itemPhoto.imgSrc.push(result.srcOfPhoto);
+                    }
+                }
+            });
+        })
+
+    });
+    console.log(iPhoneArr);
     return iPhoneArr
 }
 
 async function openMac(){
     let macArray = [];
-    const result = await connectionBD.promisePool.query("SELECT name, price,\n" +
-        "kindOfProduct, screen, processor, RAM, remainder, SSD, videoCard, FirstPhoto, SecondPhoto, ThirdPhoto\n" +
+    const result = await connectionBD.promisePool.query("SELECT idProduct, name, price, kindOfProduct, screen, processor, RAM, remainder, SSD, videoCard\n" +
         "FROM products\n" +
-        "INNER JOIN prices\n" +
-        "\tUSING(idPrice)\n" +
-        "INNER JOIN characters\n" +
-        "\tUSING(idcharacters)\n" +
-        "INNER JOIN photo\n" +
-        "\tUSING(idProduct)\n" +
+        "     INNER JOIN prices\n" +
+        "        USING(idPrice)\n" +
+        "     INNER JOIN characters\n" +
+        "        USING(idcharacters)\n" +
         "WHERE kindOfProduct = 'MAC'");
 
     macArray = result[0].filter((p)=>{return p.kindOfProduct === 'MAC'}).map((p,index)=>{
         return{
-            id: index, name:p.name, price: p.price,
-            photo:[
-                {src:p.FirstPhoto},
-                {src:p.SecondPhoto},
-                {src:p.ThirdPhoto},
-            ],
+            id: p.idProduct, name:p.name, price: p.price,
+            photo:[],
             characters:{
                 screen: p.screen, processor:p.processor,
                 RAM: p.RAM, SSD: p.SSD, videoCard: p.videoCard,
                 remainder:p.remainder
             },
         }
-    })
+    });
+
+    const resultOfPhoto = await connectionBD.promisePool.query("SELECT idProduct, srcOfPhoto\n" +
+        "FROM photo\n" +
+        "INNER JOIN catalogOfPhoto\n" +
+        "\tUSING(idSrcOfPhoto)\n");
+
+
+    macArray.map((macItem,indexOfMac)=>{
+
+           resultOfPhoto[0].map((itemOfMacBDPhoto)=>{
+                if(macItem.id === itemOfMacBDPhoto.idProduct){
+                    console.log("good")
+                    macItem.photo.push(itemOfMacBDPhoto.srcOfPhoto);
+                }
+           });
+    });
     console.log('Mac Open!!!')
 
     return macArray

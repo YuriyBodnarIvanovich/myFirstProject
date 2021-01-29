@@ -59,15 +59,15 @@ const MacPage = (props) =>{
                 </div>
                 <div className={MacPageStyle.photo}>
                     <div className={MacPageStyle.mainPhoto}>
-                        <img src={props.data.imgData[props.data.idItemsShow].photo[props.data.indexOfMainPhoto].src} alt={''}/>
+                        <img src={props.data.imgData[props.data.idItemsShow].photo[props.data.indexOfMainPhoto]} alt={''}/>
                     </div>
                     <div className={MacPageStyle.catalogPhotoOver}>
                         <div className={MacPageStyle.catalogPhoto}>
-                            <img src={props.data.imgData[props.data.idItemsShow].photo[0].src} alt={''}
+                            <img src={props.data.imgData[props.data.idItemsShow].photo[0]} alt={''}
                                  onClick={()=>{changeIndexOfMainPhoto(0)}}/>
-                            <img src={props.data.imgData[props.data.idItemsShow].photo[1].src} alt={''}
+                            <img src={props.data.imgData[props.data.idItemsShow].photo[1]} alt={''}
                                  onClick={()=>{changeIndexOfMainPhoto(1)}}/>
-                            <img src={props.data.imgData[props.data.idItemsShow].photo[2].src} alt={''}
+                            <img src={props.data.imgData[props.data.idItemsShow].photo[2]} alt={''}
                                  onClick={()=>{changeIndexOfMainPhoto(2)}}/>
                         </div>
                     </div>

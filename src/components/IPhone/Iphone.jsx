@@ -8,7 +8,8 @@ import axios from "axios";
 const Iphone = ()=>{
     useEffect(() => {
         axios.get('http://localhost:3001/iPhone').then((response) => {
-            let resData = response.data;
+            let resData = JSON.parse(JSON.stringify(response.data));
+            console.log("Iphone!");
             console.log(resData);
             dispatch({type: 'CHANGE_ARRAY', array: resData});
         })

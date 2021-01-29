@@ -10,12 +10,14 @@ const Mac = () =>{
     useEffect(() => {
         axios.get('http://localhost:3001/mac').then((response) => {
             let resData = response.data;
+            console.log("Mac page");
+            console.log(resData);
             dispatch({type:'PUT_ARRAY',newArray:resData});
         });
     }, []);
     const data = useSelector(state=>state.macPage);
     const dispatch = useDispatch();
-    const catalog =  data.imgData.map((element)=><MacItems  number={element.id}
+    const catalog =  data.imgData.map((element,index)=><MacItems  number={index}
                               name={element.name}
                               price={element.price}
                               photo={element.photo}
@@ -24,6 +26,7 @@ const Mac = () =>{
                               data={data}/>)
 
     const dataApple = useSelector(state =>state.ApplePage);
+    console.log("amount: " + catalog.length)
     return(
         <div className={MacStyle.content}>
             {data.macbookOpen ?
