@@ -3,6 +3,7 @@ import MenuStyle from './Menu.module.css';
 import {NavLink} from 'react-router-dom';
 import {useDispatch, useSelector} from "react-redux";
 
+
 const Menu = () =>{
     const data = useSelector(state=> state.ApplePage);
     const dispatch = useDispatch();
@@ -20,68 +21,32 @@ const Menu = () =>{
         dispatch({type:'STATUS_OF_ADMIN_PAGE',status:true});
     }
     return(
-        <div className={MenuStyle.main}>
-            <div className={MenuStyle.menu}>
+        <div className={MenuStyle.main_Container}>
+            <div className={MenuStyle.main}>
                 <div className={MenuStyle.logo}>
-                    <div>
-                        <img onClick={()=>dispatch({type:'Show_Left_Menu',status:true})}
-                             src={'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABmJLR0QA/wD/AP+gvaeTAAAAOUlEQVRoge3XMQEAIAwDwYB/zyCiQ4beKciPSWC3k+S1R0zc9oApAQAAsJdH1iYAAAD28sjaBABdHy9wAxMK014vAAAAAElFTkSuQmCC'} alt={'apple'}/>
-                    </div>
+                    <img src={'http://134976.lp.tobiz.net/img/400x0/e82506fcf71d9af9f785610ca969d08e.png'}/>
                 </div>
-                <div className={MenuStyle.nameCompany}>
-                    <NavLink to='/Apple'>
-                        <p>Your apple</p>
-                    </NavLink>
+                <div className={MenuStyle.menu_logo}>
+                    <img src="https://img.icons8.com/ios-filled/64/000000/menu--v1.png"/>
                 </div>
-                <div className={MenuStyle.items}>
-                    <div>
-                        <img src={'https://image.flaticon.com/icons/svg/149/149309.svg'} alt={''}/>
+                <div className={MenuStyle.add_information_container}>
+                    <div className={MenuStyle.add_information}>
+                        <p>Main Page</p>
+                        <p>·</p>
+                        <p>Goods</p>
+                        <p>·</p>
+                        <p>Reviews</p>
+                        <p>·</p>
+                        <p>Payment and delivery</p>
+                        <p>·</p>
+                        <p>Contacts</p>
                     </div>
-                    <div className={MenuStyle.forAccountItemContainer}>
-                        {data.userStatus ?
-                            <div style={{width:'100%'}}>
-                                <div className={MenuStyle.forAccountItem}>
-                                    <img src={'https://image.flaticon.com/icons/svg/848/848043.svg'} alt={''}
-                                         onClick={()=>dispatch({type:'SHOW_MENU_BLOCK',status: !data.showMenuBlock})}
-                                    />
-                                </div>
-                                {
-                                    data.showMenuBlock
-                                        ?
-                                        <div>
-                                            {
-                                                data.roleOfAdmin ?
-                                                    <div className={MenuStyle.menuBlockAdmin}>
-                                                        {data.roleOfAdmin ?
-                                                            <NavLink to='/Admin'>
-                                                                <p onClick={openAdminPage}>Admin</p>
-                                                            </NavLink>
-                                                            : ''}
-                                                        <p onClick={exit}>Exit</p>
-                                                    </div>
-                                                    :
-                                                    <div className={MenuStyle.menuBlock}>
-                                                        <p onClick={exit}>Exit</p>
-                                                    </div>
-                                            }
-                                        </div>
-
-                                    :
-                                    <div style={{display:'none'}}> </div>
-                                }
-                            </div>
-                            :
-                            <img src={'https://image.flaticon.com/icons/svg/848/848043.svg'} alt={''}
-                                                               onClick={openSingBox}/>
-                        }
-                    </div>
-                    <div>
-                        {data.userStatus ? <img src={'https://image.flaticon.com/icons/svg/833/833314.svg'} alt={''}
-                            onClick={()=>dispatch({type:'SHOW_RIGHT_CART',status:true})}/>
-                            :
-                            <img src={'https://image.flaticon.com/icons/svg/833/833314.svg'} alt={''}
-                                 onClick={openSingBox}/>
-                        }
+                    <div className={MenuStyle.number_of_phone_container}>
+                       <div className={MenuStyle.number_of_phone}>
+                           <img src="https://img.icons8.com/android/24/000000/phone.png"/>
+                           <p>+38 099 999 9999</p>
+                           <button>manager</button>
+                       </div>
                     </div>
                 </div>
             </div>

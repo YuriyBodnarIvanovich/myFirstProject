@@ -1,0 +1,729 @@
+@media only screen and (min-width: 1200px) {
+    .container{
+        width: 100%;
+        height: 1130px;
+        background-image: url("https://images.wallpaperscraft.ru/image/dereviannyj_poverhnost_doski_162911_1920x1080.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        box-sizing: border-box;
+    }
+
+    .container_two{
+        width: 100%;
+        height: 1130px;
+        background-color: rgba(255,255,255,0.9);
+        display: flex;
+        justify-content: center;
+        padding-top: 20px;
+        box-sizing: border-box;
+
+    }
+
+    .main{
+        width: 1000px;
+        text-align: center;
+    }
+
+    .title_main{
+        width: 100%;
+        height: 1px;
+        text-align: center;
+    }
+
+    .plain_container{
+        width: 100%;
+        height: 950px;
+        background-color: white;
+        border-radius: 10px;
+        margin-top: 40px;
+        padding-left: 10px;
+        box-sizing: border-box;
+    }
+    .title_in_plain{
+        width: 100%;
+        height: 10px;
+        display: grid;
+        text-align: center;
+    }
+    .title_in_plain p{
+        font-family: 'Roboto',sans-serif;
+        color: #333;
+        word-break: break-word;
+    }
+
+    .catalog_container{
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr;
+        justify-content: center;
+    }
+
+    .catalog{
+        width: 100%;
+        display: flex;
+        flex-flow: column wrap;
+        align-content: space-between;
+        height: 920px;
+        counter-reset: items;
+        margin-top: 50px;
+        box-sizing: border-box;
+    }
+    .item{
+        width: 230px;
+        position: relative;
+        /*margin-right: 20px;*/
+        text-align: left;
+
+    }
+
+    .item img{
+        width: 220px;
+    }
+    .item b{
+        font-size: 16px;
+    }
+
+    .item p{
+        font-family: 'Roboto',sans-serif;
+        color: #333;
+        word-break: break-word;
+        font-size: 14px;
+    }
+    .item:nth-of-type(4n+1) { order: 1; }
+    .item:nth-of-type(4n+2) { order: 2; }
+    .item:nth-of-type(4n+3) { order: 3; }
+    .item:nth-of-type(4n)   { order: 4; }
+
+
+}
+
+@media only screen and (min-width: 1010px) and (max-width: 1199px) {
+
+    .container{
+        width: 100%;
+        height: 1130px;
+        background-image: url("https://images.wallpaperscraft.ru/image/dereviannyj_poverhnost_doski_162911_1920x1080.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        box-sizing: border-box;
+    }
+
+    .container_two{
+        width: 100%;
+        height: 1130px;
+        background-color: rgba(255,255,255,0.9);
+        display: flex;
+        justify-content: center;
+        padding-top: 20px;
+        box-sizing: border-box;
+
+    }
+
+    .main{
+        width: 1000px;
+        text-align: center;
+    }
+
+    .title_main{
+        width: 100%;
+        height: 1px;
+        text-align: center;
+    }
+
+    .plain_container{
+        width: 100%;
+        height: 950px;
+        background-color: white;
+        border-radius: 10px;
+        margin-top: 40px;
+        padding-left: 10px;
+        box-sizing: border-box;
+    }
+    .title_in_plain{
+        width: 100%;
+        height: 10px;
+        display: grid;
+        text-align: center;
+    }
+    .title_in_plain p{
+        font-family: 'Roboto',sans-serif;
+        color: #333;
+        word-break: break-word;
+    }
+
+    .catalog_container{
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr;
+        justify-content: center;
+    }
+
+    .catalog{
+        width: 100%;
+        display: flex;
+        flex-flow: column wrap;
+        align-content: space-between;
+        height: 920px;
+        counter-reset: items;
+        margin-top: 50px;
+        box-sizing: border-box;
+    }
+    .item{
+        width: 230px;
+        position: relative;
+        /*margin-right: 20px;*/
+        text-align: left;
+
+    }
+
+    .item img{
+        width: 220px;
+    }
+    .item b{
+        font-size: 16px;
+    }
+
+    .item p{
+        font-family: 'Roboto',sans-serif;
+        color: #333;
+        word-break: break-word;
+        font-size: 14px;
+    }
+    .item:nth-of-type(4n+1) { order: 1; }
+    .item:nth-of-type(4n+2) { order: 2; }
+    .item:nth-of-type(4n+3) { order: 3; }
+    .item:nth-of-type(4n)   { order: 4; }
+
+
+}
+@media only screen and (min-width: 810px) and (max-width: 1009px) {
+
+    .container{
+        width: 100%;
+        height: 2100px;
+        background-image: url("https://images.wallpaperscraft.ru/image/dereviannyj_poverhnost_doski_162911_1920x1080.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        box-sizing: border-box;
+    }
+
+    .container_two{
+        width: 100%;
+        height: 2100px;
+        background-color: rgba(255,255,255,0.9);
+        display: flex;
+        justify-content: center;
+        padding-top: 20px;
+        box-sizing: border-box;
+
+    }
+
+    .main{
+        width: 800px;
+        text-align: center;
+    }
+
+    .title_main{
+        width: 100%;
+        height: 1px;
+        text-align: center;
+    }
+
+    .plain_container{
+        width: 100%;
+        height: 2000px;
+        background-color: white;
+        border-radius: 10px;
+        margin-top: 40px;
+        padding-left: 20px;
+        box-sizing: border-box;
+    }
+    .title_in_plain{
+        width: 100%;
+        height: 10px;
+        display: grid;
+        text-align: center;
+    }
+    .title_in_plain p{
+        font-family: 'Roboto',sans-serif;
+        color: #333;
+        word-break: break-word;
+    }
+
+    .catalog_container{
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr;
+        justify-content: center;
+    }
+
+    .catalog{
+        width: 100%;
+        display: grid;
+        grid-template-columns: 0.3fr 0.3fr;
+        grid-gap: 30px;
+        /*flex-flow: column wrap;*/
+        /*align-content: space-between;*/
+        justify-content: center;
+        height: 920px;
+        counter-reset: items;
+        margin-top: 50px;
+        box-sizing: border-box;
+    }
+    .item{
+        width: 250px;
+        position: relative;
+        margin-right: 10px;
+        text-align: left;
+
+    }
+
+    .item img{
+        width: 250px;
+    }
+    .item b{
+        font-size: 16px;
+    }
+
+    .item p{
+        font-family: 'Roboto',sans-serif;
+        color: #333;
+        word-break: break-word;
+        font-size: 14px;
+    }
+    .item:nth-of-type(2n) { order: 1; }
+    .item:nth-of-type(2n) { order: 2; }
+    .item:nth-of-type(2n) { order: 3; }
+    .item:nth-of-type(2n) { order: 4; }
+
+
+}
+@media only screen and (min-width: 600px) and (max-width: 809px) {
+    .container{
+        width: 100%;
+        height: 2100px;
+        background-image: url("https://images.wallpaperscraft.ru/image/dereviannyj_poverhnost_doski_162911_1920x1080.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        box-sizing: border-box;
+    }
+
+    .container_two{
+        width: 100%;
+        height: 2100px;
+        background-color: rgba(255,255,255,0.9);
+        display: flex;
+        justify-content: center;
+        padding-top: 20px;
+        box-sizing: border-box;
+
+    }
+
+    .main{
+        width: 600px;
+        text-align: center;
+    }
+
+    .title_main{
+        width: 100%;
+        height: 1px;
+        text-align: center;
+    }
+
+    .plain_container{
+        width: 100%;
+        height: 2000px;
+        background-color: white;
+        border-radius: 10px;
+        margin-top: 40px;
+        padding-left: 20px;
+        box-sizing: border-box;
+    }
+    .title_in_plain{
+        width: 100%;
+        height: 10px;
+        display: grid;
+        text-align: center;
+    }
+    .title_in_plain p{
+        font-family: 'Roboto',sans-serif;
+        font-size: 14px;
+        color: #333;
+        word-break: break-word;
+    }
+
+    .catalog_container{
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr;
+        justify-content: center;
+    }
+
+    .catalog{
+        width: 100%;
+        display: grid;
+        grid-template-columns: 0.3fr 0.3fr;
+        grid-gap: 30px;
+        /*flex-flow: column wrap;*/
+        /*align-content: space-between;*/
+        justify-content: center;
+        height: 920px;
+        counter-reset: items;
+        margin-top: 50px;
+        box-sizing: border-box;
+    }
+    .item{
+        width: 250px;
+        position: relative;
+        margin-right: 10px;
+        text-align: left;
+
+    }
+
+    .item img{
+        width: 250px;
+    }
+    .item b{
+        font-size: 16px;
+    }
+
+    .item p{
+        font-family: 'Roboto',sans-serif;
+        color: #333;
+        word-break: break-word;
+        font-size: 14px;
+    }
+    .item:nth-of-type(2n) { order: 1; }
+    .item:nth-of-type(2n) { order: 2; }
+    .item:nth-of-type(2n) { order: 3; }
+    .item:nth-of-type(2n) { order: 4; }
+
+}
+@media only screen and (min-width: 438px) and (max-width: 599px) {
+
+    .container{
+        width: 100%;
+        height: 2100px;
+        /*margin-top: 100px;*/
+        background-image: url("https://images.wallpaperscraft.ru/image/dereviannyj_poverhnost_doski_162911_1920x1080.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        box-sizing: border-box;
+    }
+
+    .container_two{
+        width: 100%;
+        height: 2100px;
+        background-color: rgba(255,255,255,0.9);
+        display: flex;
+        justify-content: center;
+        padding-top: 20px;
+        box-sizing: border-box;
+
+    }
+
+    .main{
+        width: 400px;
+        text-align: center;
+    }
+
+    .title_main{
+        width: 100%;
+        height: 1px;
+        text-align: center;
+    }
+
+    .plain_container{
+        width: 100%;
+        height: 2000px;
+        background-color: white;
+        border-radius: 10px;
+        margin-top: 40px;
+        padding-left: 20px;
+        box-sizing: border-box;
+    }
+    .title_in_plain{
+        width: 100%;
+        height: 10px;
+        display: grid;
+        text-align: center;
+    }
+    .title_in_plain p{
+        font-family: 'Roboto',sans-serif;
+        font-size: 14px;
+        color: #333;
+        word-break: break-word;
+    }
+
+    .catalog_container{
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr;
+        justify-content: center;
+    }
+
+    .catalog{
+        width: 100%;
+        display: grid;
+        grid-template-columns: 0.3fr 0.3fr;
+        grid-gap: 5px;
+        /*flex-flow: column wrap;*/
+        /*align-content: space-between;*/
+        justify-content: center;
+        height: 920px;
+        counter-reset: items;
+        margin-top: 50px;
+        box-sizing: border-box;
+    }
+    .item{
+        width: 180px;
+        position: relative;
+        margin-right: 10px;
+        text-align: left;
+
+    }
+
+    .item img{
+        width: 180px;
+    }
+    .item b{
+        font-size: 16px;
+    }
+
+    .item p{
+        font-family: 'Roboto',sans-serif;
+        color: #333;
+        word-break: break-word;
+        font-size: 14px;
+    }
+    .item:nth-of-type(2n) { order: 1; }
+    .item:nth-of-type(2n) { order: 2; }
+    .item:nth-of-type(2n) { order: 3; }
+    .item:nth-of-type(2n) { order: 4; }
+
+
+}
+@media only screen and (min-width: 328px) and (max-width: 437px) {
+
+    .container{
+        width: 100%;
+        height: 3500px;
+        /*margin-top: 100px;*/
+        background-image: url("https://images.wallpaperscraft.ru/image/dereviannyj_poverhnost_doski_162911_1920x1080.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        box-sizing: border-box;
+    }
+
+    .container_two{
+        width: 100%;
+        height: 3500px;
+        background-color: rgba(255,255,255,0.9);
+        display: flex;
+        justify-content: center;
+        padding-top: 20px;
+        box-sizing: border-box;
+
+    }
+
+    .main{
+        width: 300px;
+        text-align: center;
+    }
+
+    .title_main{
+        width: 100%;
+        height: 1px;
+        text-align: center;
+    }
+
+    .plain_container{
+        width: 100%;
+        height: 3400px;
+        background-color: white;
+        border-radius: 10px;
+        margin-top: 40px;
+        padding-left: 20px;
+        box-sizing: border-box;
+    }
+    .title_in_plain{
+        width: 100%;
+        height: 10px;
+        display: grid;
+        text-align: center;
+    }
+    .title_in_plain p{
+        font-family: 'Roboto',sans-serif;
+        font-size: 14px;
+        color: #333;
+        word-break: break-word;
+    }
+
+    .catalog_container{
+        width: 100%;
+        display: grid;
+        grid-template-columns: 0.8fr;
+        justify-content: center;
+    }
+
+    .catalog{
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-gap: 5px;
+        /*flex-flow: column wrap;*/
+        /*align-content: space-between;*/
+        justify-content: center;
+        height: 920px;
+        counter-reset: items;
+        margin-top: 50px;
+        box-sizing: border-box;
+    }
+    .item{
+        width: 200px;
+        position: relative;
+        margin-right: 10px;
+        text-align: left;
+
+    }
+
+    .item img{
+        width: 200px;
+    }
+    .item b{
+        font-size: 16px;
+    }
+
+    .item p{
+        font-family: 'Roboto',sans-serif;
+        color: #333;
+        word-break: break-word;
+        font-size: 14px;
+    }
+    .item:nth-of-type(2n) { order: 1; }
+    .item:nth-of-type(2n) { order: 2; }
+    .item:nth-of-type(2n) { order: 3; }
+    .item:nth-of-type(2n) { order: 4; }
+
+
+}
+
+@media only screen and (max-width: 327px) {
+
+    .container{
+        width: 100%;
+        height: 3500px;
+        /*margin-top: 100px;*/
+        background-image: url("https://images.wallpaperscraft.ru/image/dereviannyj_poverhnost_doski_162911_1920x1080.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        box-sizing: border-box;
+    }
+
+    .container_two{
+        width: 100%;
+        height: 3500px;
+        background-color: rgba(255,255,255,0.9);
+        display: flex;
+        justify-content: center;
+        padding-top: 20px;
+        box-sizing: border-box;
+
+    }
+
+    .main{
+        width: 240px;
+        text-align: center;
+    }
+
+    .title_main{
+        width: 100%;
+        height: 1px;
+        text-align: center;
+    }
+    .title_main h1{
+        font-size: 20px;
+    }
+
+    .plain_container{
+        width: 100%;
+        height: 3400px;
+        background-color: white;
+        border-radius: 10px;
+        margin-top: 40px;
+        padding-left: 20px;
+        box-sizing: border-box;
+    }
+    .title_in_plain{
+        width: 100%;
+        height: 10px;
+        display: grid;
+        text-align: center;
+    }
+    .title_in_plain p{
+        font-family: 'Roboto',sans-serif;
+        font-size: 12px;
+        color: #333;
+        word-break: break-word;
+    }
+
+    .catalog_container{
+        width: 100%;
+        display: grid;
+        grid-template-columns: 0.8fr;
+        justify-content: center;
+    }
+
+    .catalog{
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-gap: 5px;
+        /*flex-flow: column wrap;*/
+        /*align-content: space-between;*/
+        justify-content: center;
+        height: 920px;
+        counter-reset: items;
+        margin-top: 50px;
+        box-sizing: border-box;
+    }
+    .item{
+        width: 240px;
+        position: relative;
+        margin-right: 10px;
+        text-align: left;
+
+    }
+
+    .item img{
+        width: 230px;
+        margin-top: 10px;
+    }
+    .item b{
+        font-size: 16px;
+    }
+
+    .item p{
+        font-family: 'Roboto',sans-serif;
+        color: #333;
+        word-break: break-word;
+        font-size: 14px;
+    }
+    .item:nth-of-type(2n) { order: 1; }
+    .item:nth-of-type(2n) { order: 2; }
+    .item:nth-of-type(2n) { order: 3; }
+    .item:nth-of-type(2n) { order: 4; }
+
+
+
+}
+
+
+

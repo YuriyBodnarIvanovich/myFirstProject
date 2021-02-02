@@ -1,11 +1,19 @@
 
 .main{
-  display: flex;
-  flex-direction: column;
+  width: 100%;
+  /*display: grid;*/
+  /*grid-template-columns: 0.8fr;*/
+  /*justify-content: center;*/
+  background-image: url('http://134976.lp.tobiz.net/img/1920x0/9d327c29c7a61a0b05fdeabdba0d31e2.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: right;
 }
 .page{
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  /*justify-content: center;*/
+  /*flex-direction: column;*/
   /*background-color: #191616;*/
 }
 

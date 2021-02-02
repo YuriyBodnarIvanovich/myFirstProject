@@ -1,0 +1,873 @@
+@media only screen and (min-width: 1200px) {
+    .container {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        background-color: white;
+        height: 800px;
+    }
+    .main{
+        width: 1200px;
+        height: 800px;
+        background-color: white;
+        box-sizing: border-box;
+        display: grid;
+        grid-template-columns: 0.6fr;
+        justify-content: center;
+        padding-top: 30px;
+    }
+    .second_container {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .first_title {
+        width: 100%;
+        display: flex;
+        /*grid-template-columns: 0.1fr;*/
+        justify-content: center;
+        text-align: center;
+        height: 60px;
+    }
+
+    .first_title h2 {
+        width: 640px;
+        font-size: 32px;
+    }
+
+    .second_title {
+        font-family: Montserrat, sans-serif, sans-serif;
+        font-weight: 300;
+        color: #333;
+        word-break: break-word;
+        display: flex;
+        /*grid-template-columns: 0.4fr;*/
+        justify-content: center;
+        text-align: center;
+    }
+
+    .second_title p {
+        /*width: 450px;*/
+        font-size: 23px;
+    }
+
+
+    .container_for_content {
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 20px;
+    }
+
+    .text_content {
+        /*width: 100%;*/
+        /*display: grid;*/
+        /*grid-template-columns: 0.9fr;*/
+        min-width: 450px;
+    }
+
+    .text_content p {
+        line-height: 1.6;
+        opacity: 0.8;
+        font-family: Montserrat, sans-serif, sans-serif;
+        /*font-weight: 300;*/
+        color: #333;
+        word-break: break-word;
+        font-size: 14px;
+        margin: 0;
+        padding: 0;
+    }
+
+    .price_and_notice {
+
+    }
+
+    .price_and_notice h2 {
+        height: 15px;
+        font-family: Montserrat, sans-serif, sans-serif;
+    }
+
+    .price_and_notice p {
+        margin-top: 10px;
+        font-size: 10px;
+        font-family: Montserrat, sans-serif, sans-serif;
+    }
+
+
+    .button_take_product {
+        margin-top: 10px;
+        font-family: Montserrat, sans-serif, sans-serif;
+        background-color: rgb(234, 64, 47);
+        border-radius: 0.52em;
+        color: rgb(255, 255, 255);
+        width: 200px;
+        height: 30px;
+        font-size: 16px;
+        outline: none;
+        border: none;
+    }
+
+    .button_take_product:hover {
+        cursor: pointer;
+        background-color: black;
+        margin-top: 12px;
+
+
+    }
+
+
+}
+
+@media only screen and (min-width: 1010px) and (max-width: 1199px) {
+
+    .container {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        background-color: white;
+        height: 800px;
+    }
+    .main{
+        width: 1000px;
+        height: 800px;
+        background-color: white;
+        box-sizing: border-box;
+        display: grid;
+        grid-template-columns: 0.6fr;
+        justify-content: center;
+        padding-top: 30px;
+    }
+    .second_container {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .first_title {
+        width: 100%;
+        display: flex;
+        /*grid-template-columns: 0.1fr;*/
+        justify-content: center;
+        text-align: center;
+        height: 60px;
+    }
+
+    .first_title h2 {
+        width: 640px;
+        font-size: 32px;
+    }
+
+    .second_title {
+        font-family: Montserrat, sans-serif, sans-serif;
+        font-weight: 300;
+        color: #333;
+        word-break: break-word;
+        display: flex;
+        /*grid-template-columns: 0.4fr;*/
+        justify-content: center;
+        text-align: center;
+    }
+
+    .second_title p {
+        /*width: 450px;*/
+        font-size: 23px;
+    }
+
+
+    .container_for_content {
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 20px;
+    }
+
+    .text_content {
+        /*width: 100%;*/
+        /*display: grid;*/
+        /*grid-template-columns: 0.9fr;*/
+        min-width: 450px;
+    }
+
+    .text_content p {
+        line-height: 1.6;
+        opacity: 0.8;
+        font-family: Montserrat, sans-serif, sans-serif;
+        /*font-weight: 300;*/
+        color: #333;
+        word-break: break-word;
+        font-size: 14px;
+        margin: 0;
+        padding: 0;
+    }
+
+    .price_and_notice {
+
+    }
+
+    .price_and_notice h2 {
+        height: 15px;
+        font-family: Montserrat, sans-serif, sans-serif;
+    }
+
+    .price_and_notice p {
+        margin-top: 10px;
+        font-size: 10px;
+        font-family: Montserrat, sans-serif, sans-serif;
+    }
+
+
+    .button_take_product {
+        margin-top: 10px;
+        font-family: Montserrat, sans-serif, sans-serif;
+        background-color: rgb(234, 64, 47);
+        border-radius: 0.52em;
+        color: rgb(255, 255, 255);
+        width: 200px;
+        height: 30px;
+        font-size: 16px;
+        outline: none;
+        border: none;
+    }
+
+    .button_take_product:hover {
+        cursor: pointer;
+        background-color: black;
+        margin-top: 12px;
+
+
+    }
+}
+@media only screen and (min-width: 810px) and (max-width: 1009px) {
+
+    .container {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        background-color: white;
+        height: 800px;
+    }
+    .main{
+        width: 800px;
+        height: 800px;
+        background-color: white;
+        box-sizing: border-box;
+        display: grid;
+        grid-template-columns: 0.6fr;
+        justify-content: center;
+        padding-top: 30px;
+    }
+    .second_container {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .first_title {
+        width: 100%;
+        display: flex;
+        /*grid-template-columns: 0.1fr;*/
+        justify-content: center;
+        text-align: center;
+        height: 60px;
+    }
+
+    .first_title h2 {
+        width: 640px;
+        font-size: 32px;
+    }
+
+    .second_title {
+        font-family: Montserrat, sans-serif, sans-serif;
+        font-weight: 300;
+        color: #333;
+        word-break: break-word;
+        display: flex;
+        /*grid-template-columns: 0.4fr;*/
+        justify-content: center;
+        text-align: center;
+    }
+
+    .second_title p {
+        /*width: 450px;*/
+        font-size: 23px;
+    }
+
+
+    .container_for_content {
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 20px;
+    }
+    .container_for_content img{
+        width: 300px;
+    }
+
+    .text_content {
+        /*width: 100%;*/
+        /*display: grid;*/
+        /*grid-template-columns: 0.9fr;*/
+        min-width: 450px;
+    }
+
+    .text_content p {
+        line-height: 1.6;
+        opacity: 0.8;
+        font-family: Montserrat, sans-serif, sans-serif;
+        /*font-weight: 300;*/
+        color: #333;
+        word-break: break-word;
+        font-size: 14px;
+        margin: 0;
+        padding: 0;
+    }
+
+    .price_and_notice {
+
+    }
+
+    .price_and_notice h2 {
+        height: 15px;
+        font-family: Montserrat, sans-serif, sans-serif;
+    }
+
+    .price_and_notice p {
+        margin-top: 10px;
+        font-size: 10px;
+        font-family: Montserrat, sans-serif, sans-serif;
+    }
+
+
+    .button_take_product {
+        margin-top: 10px;
+        font-family: Montserrat, sans-serif, sans-serif;
+        background-color: rgb(234, 64, 47);
+        border-radius: 0.52em;
+        color: rgb(255, 255, 255);
+        width: 200px;
+        height: 30px;
+        font-size: 16px;
+        outline: none;
+        border: none;
+    }
+
+    .button_take_product:hover {
+        cursor: pointer;
+        background-color: black;
+        margin-top: 12px;
+
+
+    }
+}
+@media only screen and (min-width: 600px) and (max-width: 809px) {
+    .container {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        background-color: white;
+        height: 1100px;
+    }
+    .main{
+        width: 600px;
+        height: 1100px;
+        background-color: white;
+        box-sizing: border-box;
+        display: grid;
+        grid-template-columns: 0.6fr;
+        justify-content: center;
+        padding-top: 30px;
+    }
+    .second_container {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .first_title {
+        width: 100%;
+        display: flex;
+        /*grid-template-columns: 0.1fr;*/
+        justify-content: center;
+        text-align: center;
+        height: 60px;
+    }
+
+    .first_title h2 {
+        width: 600px;
+        font-size: 30px;
+    }
+
+    .second_title {
+        font-family: Montserrat, sans-serif, sans-serif;
+        font-weight: 300;
+        color: #333;
+        word-break: break-word;
+        display: flex;
+        /*grid-template-columns: 0.4fr;*/
+        justify-content: center;
+        text-align: center;
+    }
+
+    .second_title p {
+        /*width: 450px;*/
+        font-size: 23px;
+    }
+
+
+    .container_for_content {
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 20px;
+    }
+    .container_for_content img{
+        width: 250px;
+    }
+
+    .text_content {
+        /*width: 100%;*/
+        /*display: grid;*/
+        /*grid-template-columns: 0.9fr;*/
+        min-width: 300px;
+    }
+
+    .text_content p {
+        line-height: 1.6;
+        opacity: 0.8;
+        font-family: Montserrat, sans-serif, sans-serif;
+        /*font-weight: 300;*/
+        color: #333;
+        word-break: break-word;
+        font-size: 14px;
+        margin: 0;
+        padding: 0;
+    }
+
+    .price_and_notice {
+
+    }
+
+    .price_and_notice h2 {
+        height: 15px;
+        font-family: Montserrat, sans-serif, sans-serif;
+    }
+
+    .price_and_notice p {
+        margin-top: 10px;
+        font-size: 10px;
+        font-family: Montserrat, sans-serif, sans-serif;
+    }
+
+
+    .button_take_product {
+        margin-top: 10px;
+        font-family: Montserrat, sans-serif, sans-serif;
+        background-color: rgb(234, 64, 47);
+        border-radius: 0.52em;
+        color: rgb(255, 255, 255);
+        width: 200px;
+        height: 30px;
+        font-size: 16px;
+        outline: none;
+        border: none;
+    }
+
+    .button_take_product:hover {
+        cursor: pointer;
+        background-color: black;
+        margin-top: 12px;
+
+
+    }
+}
+@media only screen and (min-width: 438px) and (max-width: 599px) {
+
+    .container {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        background-color: white;
+        height: 1200px;
+    }
+    .main{
+        width: 400px;
+        height: 1200px;
+        background-color: white;
+        box-sizing: border-box;
+        display: grid;
+        grid-template-columns: 0.6fr;
+        justify-content: center;
+        padding-top: 30px;
+    }
+    .second_container {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .first_title {
+        width: 100%;
+        display: flex;
+        /*grid-template-columns: 0.1fr;*/
+        justify-content: center;
+        text-align: center;
+        height: 60px;
+    }
+
+    .first_title h2 {
+        width: 400px;
+        font-size: 24px;
+    }
+
+    .second_title {
+        font-family: Montserrat, sans-serif, sans-serif;
+        font-weight: 300;
+        color: #333;
+        word-break: break-word;
+        display: flex;
+        /*grid-template-columns: 0.4fr;*/
+        justify-content: center;
+        text-align: center;
+
+    }
+
+    .second_title p {
+        /*width: 450px;*/
+        font-size: 18px;
+        margin-top: 20px;
+    }
+
+
+    .container_for_content {
+        width: 100%;
+        display: grid;
+        grid-template-columns: 0.8fr;
+        justify-content: center;
+        grid-gap: 20px;
+        text-align: center;
+    }
+    .for_img{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .container_for_content img{
+        width: 400px;
+    }
+
+    .text_content {
+        /*width: 100%;*/
+        /*display: grid;*/
+        /*grid-template-columns: 0.9fr;*/
+        min-width: 400px;
+    }
+
+    .text_content p {
+        line-height: 1.6;
+        opacity: 0.8;
+        font-family: Montserrat, sans-serif, sans-serif;
+        /*font-weight: 300;*/
+        color: #333;
+        word-break: break-word;
+        font-size: 14px;
+        margin: 0;
+        padding: 0;
+    }
+
+    .price_and_notice {
+
+    }
+
+    .price_and_notice h2 {
+        height: 15px;
+        font-family: Montserrat, sans-serif, sans-serif;
+    }
+
+    .price_and_notice p {
+        margin-top: 10px;
+        font-size: 10px;
+        font-family: Montserrat, sans-serif, sans-serif;
+    }
+
+
+    .button_take_product {
+        margin-top: 10px;
+        font-family: Montserrat, sans-serif, sans-serif;
+        background-color: rgb(234, 64, 47);
+        border-radius: 0.52em;
+        color: rgb(255, 255, 255);
+        width: 200px;
+        height: 30px;
+        font-size: 16px;
+        outline: none;
+        border: none;
+    }
+
+    .button_take_product:hover {
+        cursor: pointer;
+        background-color: black;
+        margin-top: 12px;
+
+
+    }
+}
+@media only screen and (min-width: 328px) and (max-width: 437px) {
+
+    .container {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        background-color: white;
+        height: 1250px;
+    }
+    .main{
+        width: 300px;
+        height: 1250px;
+        background-color: white;
+        box-sizing: border-box;
+        display: grid;
+        grid-template-columns: 0.6fr;
+        justify-content: center;
+        padding-top: 30px;
+    }
+    .second_container {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .first_title {
+        width: 100%;
+        display: flex;
+        /*grid-template-columns: 0.1fr;*/
+        justify-content: center;
+        text-align: center;
+        height: 60px;
+    }
+
+    .first_title h2 {
+        /*width: 640px;*/
+        font-size: 20px;
+    }
+
+    .second_title {
+        font-family: Montserrat, sans-serif, sans-serif;
+        font-weight: 300;
+        color: #333;
+        word-break: break-word;
+        display: flex;
+        /*grid-template-columns: 0.4fr;*/
+        justify-content: center;
+        text-align: center;
+    }
+
+    .second_title p {
+        /*width: 450px;*/
+        font-size: 16px;
+    }
+
+
+    .container_for_content {
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-gap: 20px;
+    }
+    .container_for_content img{
+        width: 300px;
+    }
+
+    .text_content {
+        /*width: 100%;*/
+        /*display: grid;*/
+        /*grid-template-columns: 0.9fr;*/
+        min-width: 300px;
+        text-align: center;
+    }
+    .for_img{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+    .text_content p {
+        line-height: 1.6;
+        opacity: 0.8;
+        font-family: Montserrat, sans-serif, sans-serif;
+        /*font-weight: 300;*/
+        color: #333;
+        word-break: break-word;
+        font-size: 14px;
+        margin: 0;
+        padding: 0;
+    }
+
+    .price_and_notice {
+
+    }
+
+    .price_and_notice h2 {
+        height: 15px;
+        font-family: Montserrat, sans-serif, sans-serif;
+    }
+
+    .price_and_notice p {
+        margin-top: 10px;
+        font-size: 10px;
+        font-family: Montserrat, sans-serif, sans-serif;
+    }
+
+
+    .button_take_product {
+        margin-top: 10px;
+        font-family: Montserrat, sans-serif, sans-serif;
+        background-color: rgb(234, 64, 47);
+        border-radius: 0.52em;
+        color: rgb(255, 255, 255);
+        width: 200px;
+        height: 30px;
+        font-size: 16px;
+        outline: none;
+        border: none;
+    }
+
+    .button_take_product:hover {
+        cursor: pointer;
+        background-color: black;
+        margin-top: 12px;
+
+
+    }
+}
+
+@media only screen and (max-width: 327px) {
+
+    .container {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        background-color: white;
+        height: 1550px;
+    }
+    .main{
+        width: 100%;
+        height: 1550px;
+        background-color: white;
+        box-sizing: border-box;
+        display: grid;
+        grid-template-columns: 0.6fr;
+        justify-content: center;
+        padding-top: 30px;
+    }
+    .second_container {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .first_title {
+        width: 100%;
+        display: flex;
+        /*grid-template-columns: 0.1fr;*/
+        justify-content: center;
+        text-align: center;
+        height: 60px;
+    }
+
+    .first_title h2 {
+        /*width: 640px;*/
+        font-size: 16px;
+    }
+
+    .second_title {
+        font-family: Montserrat, sans-serif, sans-serif;
+        /*font-weight: 300;*/
+        color: #333;
+        word-break: break-word;
+        display: flex;
+        /*grid-template-columns: 0.4fr;*/
+        justify-content: center;
+        text-align: center;
+    }
+
+    .second_title p {
+        /*width: 450px;*/
+        font-size: 14px;
+    }
+
+
+    .container_for_content {
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-gap: 20px;
+    }
+    .container_for_content img{
+        width: 200px;
+    }
+
+    .for_img{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .text_content {
+        /*width: 100%;*/
+        /*display: grid;*/
+        /*grid-template-columns: 0.9fr;*/
+        /*min-width: 450px;*/
+        text-align: center;
+    }
+
+    .text_content p {
+        line-height: 1.6;
+        opacity: 0.8;
+        font-family: Montserrat, sans-serif, sans-serif;
+        /*font-weight: 300;*/
+        color: #333;
+        word-break: break-word;
+        font-size: 14px;
+        margin: 0;
+        padding: 0;
+    }
+
+    .price_and_notice {
+
+    }
+
+    .price_and_notice h2 {
+        height: 15px;
+        font-family: Montserrat, sans-serif, sans-serif;
+    }
+
+    .price_and_notice p {
+        margin-top: 10px;
+        font-size: 10px;
+        font-family: Montserrat, sans-serif, sans-serif;
+    }
+
+
+    .button_take_product {
+        margin-top: 10px;
+        font-family: Montserrat, sans-serif, sans-serif;
+        background-color: rgb(234, 64, 47);
+        border-radius: 0.52em;
+        color: rgb(255, 255, 255);
+        width: 200px;
+        height: 30px;
+        font-size: 16px;
+        outline: none;
+        border: none;
+    }
+
+    .button_take_product:hover {
+        cursor: pointer;
+        background-color: black;
+        margin-top: 12px;
+
+
+    }
+
+}

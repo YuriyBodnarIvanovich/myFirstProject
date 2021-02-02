@@ -62,19 +62,19 @@ function App() {
                     <Menu />
                     {data.ShowBox ? <AuthBox/> : <div> </div>}
                     <div className={"page"}>
-                        <Route path='/Mac'
-                               render={ () => <Mac />} />
-                        <Route path='/Apple'
+                        {/*<Route path='/Mac'*/}
+                        {/*       render={ () => <Mac />} />*/}
+                        <Route exact path='/'
                                render={ () => <Apple />} />
-                        <Route path='/IPhone'
-                               render={ () =><Iphone />} />
-                        {
-                            data.openAdminPage ?
-                                <Route path='/Admin'
-                                       render={ () => <Admin/>} />
-                                       :
-                                <div> </div>
-                        }
+                        {/*<Route path='/IPhone'*/}
+                        {/*       render={ () =><Iphone />} />*/}
+                        {/*{*/}
+                        {/*    data.openAdminPage ?*/}
+                        {/*        <Route path='/Admin'*/}
+                        {/*               render={ () => <Admin/>} />*/}
+                        {/*               :*/}
+                        {/*        <div> </div>*/}
+                        {/*}*/}
 
                     </div>
                     {
