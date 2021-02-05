@@ -12,6 +12,7 @@ import {useDispatch, useSelector} from "react-redux";
 import LeftMenu from "./components/LeftMenu/LeftMenu";
 import axios from "axios";
 import RightCart from "./components/RightCart/RightCart";
+import CatalogOfGoods from "./components/CatalogOfGoods/CatalogOfGoods";
 
 function App() {
         const data = useSelector(state=>state.ApplePage);
@@ -66,6 +67,8 @@ function App() {
                         {/*       render={ () => <Mac />} />*/}
                         <Route exact path='/'
                                render={ () => <Apple />} />
+                        <Route exact path='/CatalogOfGoods'
+                               render={ () => <CatalogOfGoods />} />
                         {/*<Route path='/IPhone'*/}
                         {/*       render={ () =><Iphone />} />*/}
                         {/*{*/}

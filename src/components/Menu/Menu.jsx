@@ -33,7 +33,9 @@ const Menu = () =>{
                     <div className={MenuStyle.add_information}>
                         <p>Main Page</p>
                         <p>·</p>
-                        <p>Goods</p>
+                        <NavLink to='/CatalogOfGoods'>
+                            <p onClick={openAdminPage}>Goods</p>
+                        </NavLink>
                         <p>·</p>
                         <p>Reviews</p>
                         <p>·</p>

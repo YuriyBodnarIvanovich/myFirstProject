@@ -45,6 +45,7 @@
         flex-direction: row;
     }
 
+
     .add_information p{
         height: 18px;
         margin-left: 10px;
@@ -59,6 +60,13 @@
         border-bottom-width: 1px;
         border-bottom-color: #3A3838;
         border-bottom-style: solid;
+    }
+
+    .add_information a{
+        text-decoration: none; /* Отменяем подчеркивание у ссылки */
+    }
+    .add_information a:hover{
+        text-decoration: none; /* Отменяем подчеркивание у ссылки */
     }
 
     .number_of_phone_container{
