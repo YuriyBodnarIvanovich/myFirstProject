@@ -1,8 +1,12 @@
-import React from "react";
+import React, {useState} from "react";
 import Style from './ItemOfProduct.module.css'
+import {Link} from "@material-ui/core";
+import IphoneModal from "../ModalWindowOfProduct/IPhone/IphoneModal";
 
 
-const ItemOfProduct = (props) =>{
+const ItemOfProductIphone = (props) =>{
+    const [statusOfItem, setStatusOfItem] = useState(false);
+
 
     const CharactersIphoneData = () => {
         return(
@@ -36,10 +40,12 @@ const ItemOfProduct = (props) =>{
                 <p>{props.price + " ₴"}</p>
             </div>
             <div className={Style.for_button}>
-                <button>Show More</button>
+                <button onClick={()=>{setStatusOfItem(true)}}>Show More</button>
             </div>
+            {statusOfItem ? <IphoneModal  setStatusOfItem={setStatusOfItem}
+                CharactersIphoneData={<CharactersIphoneData/>} name={props.name} photoData={props.photoData}/> : null}
         </div>
     )
 }
 
-export default ItemOfProduct;
+export default ItemOfProductIphone;

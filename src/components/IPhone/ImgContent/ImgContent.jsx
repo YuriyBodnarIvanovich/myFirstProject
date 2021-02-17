@@ -1,5 +1,5 @@
-import React from "react";
-import ImgStyle from './ImgContent.module.css';
+import React, {useState} from "react";
+
 import ContentPageStyle from "../ContentPage/ContentPage.module.css";
 
 const ImgContent = (props) =>{

@@ -13,6 +13,7 @@ import LeftMenu from "./components/LeftMenu/LeftMenu";
 import axios from "axios";
 import RightCart from "./components/RightCart/RightCart";
 import CatalogOfGoods from "./components/CatalogOfGoods/CatalogOfGoods";
+import Contact from "./components/Contact/Contact";
 
 function App() {
         const data = useSelector(state=>state.ApplePage);
@@ -69,6 +70,8 @@ function App() {
                                render={ () => <Apple />} />
                         <Route exact path='/CatalogOfGoods'
                                render={ () => <CatalogOfGoods />} />
+                        <Route exact path='/Contact'
+                               render={ () => <Contact />} />
                         {/*<Route path='/IPhone'*/}
                         {/*       render={ () =><Iphone />} />*/}
                         {/*{*/}

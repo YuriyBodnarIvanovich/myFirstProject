@@ -5,13 +5,16 @@ import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import axios from "axios";
 import {useDispatch, useSelector} from "react-redux";
-import ItemOfProduct from "../ItemOfProduct/ItemOfProduct";
+import ItemOfProductIphone from "../ItemOfProductIphone/ItemOfProductIphone";
+import ItemOfMac from "../ItemOfProductionMac/ItemOfMac";
 
 
 const Goods = () =>{
     const dataIphone = useSelector(state =>state.IphonePage);
     const dataMac = useSelector(state =>state.macPage);
     const dispatch = useDispatch();
+
+
 
     useEffect(() => {
         axios.get('http://localhost:3001/iPhone').then((response) => {
@@ -46,15 +49,22 @@ const Goods = () =>{
     }
 
     const [minValue,setMinValue] = useState(0);
-    const [maxValue,setMaxValue] = useState(30000);
+    const [maxValue,setMaxValue] = useState(100000);
 
 
     const catalogOfIphone  = dataIphone.iPhones.filter((item)=> item.price > minValue && item.price < maxValue).map((item)=>{
-        return <ItemOfProduct name={item.name} photo={item.photo[0].imgSrc[0]} character={item.character} price={item.price}/>
+        return <ItemOfProductIphone
+            name={item.name} photo={item.photo[0].imgSrc[0]} character={item.character} price={item.price}
+            photoData={item.photo}/>
     })
 
 
-    const [value, setValue] = useState([0, 20000]);
+    const catalogOfMac  = dataMac.imgData.filter((item)=>item.price > minValue && item.price < maxValue).map((item)=>{
+        return <ItemOfMac name={item.name} photo={item.photo[0]} character={item.characters} price={item.price}/>
+    })
+
+
+    const [value, setValue] = useState([0, 50000]);
 
 
     const useStyles = makeStyles({
@@ -87,6 +97,38 @@ const Goods = () =>{
         setTitle(name);
         setMenu(false);
     }
+
+    const ShowIphone = () =>{
+        return(
+            catalogOfIphone.length !== 0  ?
+                <div className={Style.catalog}>
+                    {titleOfMenu === 'Iphone' ? catalogOfIphone : null}
+                </div>
+                :
+                <ErrorPage/>
+        )
+    }
+
+    const ShowMac = () =>{
+        return(
+            catalogOfIphone.length !== 0  ?
+                <div className={Style.catalog}>
+                    {titleOfMenu === 'Mac' ? catalogOfMac : null}
+                </div>
+                :
+                <ErrorPage/>
+        )
+    }
+
+    const ShowAppleWatch = () =>{
+        return(
+            <div>
+                <h1>Apple Watch</h1>
+            </div>
+        )
+    }
+
+
     return(
         <div className={Style.container}>
           <div className={Style.main}>
@@ -115,7 +157,7 @@ const Goods = () =>{
                         </div>
                         <div className={Style.for_search}>
                             <input/>
-                            <img src="https://img.icons8.com/material-sharp/24/000000/search.png"/>
+                            <img src="https://img.icons8.com/material-sharp/24/000000/search.png" alt={''}/>
                         </div>
                         <div className={Style.for_range_container}>
                             <div>
@@ -127,8 +169,7 @@ const Goods = () =>{
                                     onChange={handleChange}
                                     valueLabelDisplay="auto"
                                     aria-labelledby="range-slider"
-                                    // getAriaValueText={valuetext}
-                                    max={30000}
+                                    max={100000}
                                 />
                             </div>
                         </div>
@@ -136,12 +177,13 @@ const Goods = () =>{
               </div>
               <div className={Style.catalog_container}>
                   {
-                      catalogOfIphone.length !== 0 && titleOfMenu === 'Iphone' ?
-                          <div className={Style.catalog}>
-                              {titleOfMenu === 'Iphone' ? catalogOfIphone : null}
-                          </div>
-                          :
-                         <ErrorPage/>
+                      titleOfMenu === 'Iphone' ? <ShowIphone/> : null
+                  }
+                  {
+                      titleOfMenu === 'Mac' ? <ShowMac/> : null
+                  }
+                  {
+                      titleOfMenu === 'Apple Watch' ? <ShowAppleWatch/> : null
                   }
 
               </div>

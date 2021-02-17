@@ -34,14 +34,16 @@ const Menu = () =>{
                         <p>Main Page</p>
                         <p>·</p>
                         <NavLink to='/CatalogOfGoods'>
-                            <p onClick={openAdminPage}>Goods</p>
+                            <p>Goods</p>
                         </NavLink>
                         <p>·</p>
                         <p>Reviews</p>
                         <p>·</p>
                         <p>Payment and delivery</p>
                         <p>·</p>
-                        <p>Contacts</p>
+                        <NavLink to='/Contact'>
+                            <p>Contacts</p>
+                        </NavLink>
                     </div>
                     <div className={MenuStyle.number_of_phone_container}>
                        <div className={MenuStyle.number_of_phone}>

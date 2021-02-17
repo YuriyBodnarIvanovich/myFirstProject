@@ -9,6 +9,7 @@ const CatalogOfGoods = () =>{
         <div>
             <MainNotice/>
             <Goods/>
+
         </div>
     )
 }
