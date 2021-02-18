@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import Style from './ItemOfProduct.module.css'
 import {Link} from "@material-ui/core";
-import IphoneModal from "../ModalWindowOfProduct/IPhone/IphoneModal";
+import IphoneModal from "./ModalWindowOfProduct/IPhone/IphoneModal";
 
 
 const ItemOfProductIphone = (props) =>{
@@ -43,7 +43,7 @@ const ItemOfProductIphone = (props) =>{
                 <button onClick={()=>{setStatusOfItem(true)}}>Show More</button>
             </div>
             {statusOfItem ? <IphoneModal  setStatusOfItem={setStatusOfItem}
-                CharactersIphoneData={<CharactersIphoneData/>} name={props.name} photoData={props.photoData}/> : null}
+                CharactersIphoneData={<CharactersIphoneData/>} name={props.name} photoData={props.photoData} price={props.price}/> : null}
         </div>
     )
 }

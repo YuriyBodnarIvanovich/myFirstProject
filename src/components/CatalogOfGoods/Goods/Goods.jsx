@@ -60,7 +60,8 @@ const Goods = () =>{
 
 
     const catalogOfMac  = dataMac.imgData.filter((item)=>item.price > minValue && item.price < maxValue).map((item)=>{
-        return <ItemOfMac name={item.name} photo={item.photo[0]} character={item.characters} price={item.price}/>
+        return <ItemOfMac name={item.name} photo={item.photo[0]} character={item.characters} price={item.price}
+                catalogOfPhoto={item.photo}/>
     })
 
 
@@ -90,7 +91,7 @@ const Goods = () =>{
 
     };
 
-    const [titleOfMenu,setTitle] = useState('Iphone');
+    const [titleOfMenu,setTitle] = useState('Mac');
     const [statusOfMenu,setMenu] = useState(false);
 
     function setTitleOfMenu(name){

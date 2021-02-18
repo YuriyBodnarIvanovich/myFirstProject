@@ -27,6 +27,7 @@ const IphoneModal = (props) =>{
                             {colorData}
                         </div>
                         <div>
+                            <p><b>Price:</b> <em>{props.price + " ₴"}</em></p>
                             <h3>Characters:</h3>
                             {props.CharactersIphoneData}
                         </div>

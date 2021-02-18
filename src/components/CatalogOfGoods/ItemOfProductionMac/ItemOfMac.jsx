@@ -1,9 +1,13 @@
-import React from "react";
+import React, {useState} from "react";
 import Style from './ItemOfMac.module.css';
+import ModalProduct_Mac from "./ModalProduct/ModalProduct";
 
 
 
 const ItemOfMac = (props) => {
+
+    const [showItem, setStatusOfItem] = useState(false);
+
 
     const CharactersMacData = () => {
         return(
@@ -34,8 +38,11 @@ const ItemOfMac = (props) => {
                 <p>{props.price + " ₴"}</p>
             </div>
             <div className={Style.for_button}>
-                <button>Show More</button>
+                <button onClick={()=>{setStatusOfItem(true)}}>Show More</button>
             </div>
+            {showItem ?
+                <ModalProduct_Mac CharactersMacData={<CharactersMacData/>} setStatusOfItem={setStatusOfItem}
+                                  name={props.name} photo={props.catalogOfPhoto} price={props.price}/> : null }
         </div>
     )
 }

@@ -1,153 +1,1112 @@
-.container{
-    width: 100%;
-    height: auto;
-    background-color: #F2F2F2;
-    display: flex;
-    /*flex-direction: column;*/
-    justify-content: center;
-}
-.main{
-    width: 1200px;
-    display: flex;
-    flex-direction: column;
-    padding-top: 50px;
-}
-.for_title{
-    width: 100%;
-    text-align: center;
+@media only screen and (min-width: 1200px){
+
+    .container{
+        width: 100%;
+        height: auto;
+        background-color: #F2F2F2;
+        display: flex;
+        /*flex-direction: column;*/
+        justify-content: center;
+    }
+    .main{
+        width: 1200px;
+        display: flex;
+        flex-direction: column;
+        padding-top: 50px;
+    }
+    .for_title{
+        width: 100%;
+        text-align: center;
+    }
+
+
+    .options_container{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+
+    }
+
+    .options{
+        width: 800px;
+        height: 50px;
+        margin-top: 40px;
+        color: rgb(51, 51, 51);
+        background: rgb(230, 230, 230);
+        font-family: Montserrat, sans-serif,sans-serif;
+        color: #333;
+        border-radius: 8px;
+        box-sizing: border-box;
+        padding-left: 20px;
+        padding-right: 20px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .for_title_in_options{
+        width: 200px;
+        box-sizing: border-box;
+        /*padding-left: 30px;*/
+        text-align: center;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+        font-size: 16px;
+        margin-top: 20px;
+    }
+    .for_title_in_options samp:hover{
+        cursor: pointer;
+    }
+
+    .menu_type_of_product{
+        width: 190px;
+        height: 70px;
+        background: rgb(230, 230, 230);
+        z-index: 2;
+        position: relative;
+        margin-top: 10px;
+        box-sizing: border-box;
+        /*padding: 5px;*/
+        font-size: 15px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+    }
+
+    .menu_type_of_product samp{
+        width: 100%;
+        height: 25px;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+        /*margin-top: 5px;*/
+        box-sizing: border-box;
+    }
+
+    .menu_type_of_product samp:hover{
+        cursor: pointer;
+        background-color: rgba(255,255,255,0.5);
+        color: #272626;
+    }
+
+
+    .for_search{
+        width: 300px;
+        height: 40px;
+        display: flex;
+        justify-content: center;
+    }
+    .for_search input{
+        width: 270px;
+        margin-top: 10px;
+        border: none;
+        background: rgb(230, 230, 230);
+        border-bottom-width: 1px;
+        border-bottom-style: solid;
+        outline: none;
+        color: #333;
+    }
+
+    .for_search img{
+        width: 30px;
+        height: 30px;
+        margin-top: 10px;
+    }
+
+
+
+    .for_range_container{
+        width: 200px;
+        margin-left: 50px;
+        text-align: center;
+    }
+
+    .for_range_container p{
+        font-size: 12px;
+        height: 1px;
+    }
+
+
+    .catalog_container{
+        width: 100%;
+        height: auto;
+        /*border-style: solid;*/
+        margin-top: 30px;
+        display: flex;
+        justify-content: center;
+    }
+    .catalog{
+        width: 800px;
+        height: auto;
+        /*border-style: solid;*/
+        display: grid;
+        grid-template-columns: 240fr 240fr 240fr;
+        grid-gap: 30px;
+        justify-content: center;
+    }
+
+    .none_product{
+        width: 100%;
+        height: 650px;
+        text-align: center;
+        padding-top: 200px;
+        box-sizing: border-box;
+    }
 }
 
 
-.options_container{
-    width: 100%;
-    display: flex;
-    justify-content: center;
 
+
+@media only screen and (min-width: 1010px) and (max-width: 1199px) {
+
+    .container{
+        width: 100%;
+        height: auto;
+        background-color: #F2F2F2;
+        display: flex;
+        /*flex-direction: column;*/
+        justify-content: center;
+    }
+    .main{
+        width: 1000px;
+        display: flex;
+        flex-direction: column;
+        padding-top: 50px;
+    }
+    .for_title{
+        width: 100%;
+        text-align: center;
+    }
+
+
+    .options_container{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+
+    }
+
+    .options{
+        width: 800px;
+        height: 50px;
+        margin-top: 40px;
+        color: rgb(51, 51, 51);
+        background: rgb(230, 230, 230);
+        font-family: Montserrat, sans-serif,sans-serif;
+        color: #333;
+        border-radius: 8px;
+        box-sizing: border-box;
+        padding-left: 20px;
+        padding-right: 20px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .for_title_in_options{
+        width: 200px;
+        box-sizing: border-box;
+        /*padding-left: 30px;*/
+        text-align: center;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+        font-size: 16px;
+        margin-top: 20px;
+    }
+    .for_title_in_options samp:hover{
+        cursor: pointer;
+    }
+
+    .menu_type_of_product{
+        width: 190px;
+        height: 70px;
+        background: rgb(230, 230, 230);
+        z-index: 2;
+        position: relative;
+        margin-top: 10px;
+        box-sizing: border-box;
+        /*padding: 5px;*/
+        font-size: 15px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+    }
+
+    .menu_type_of_product samp{
+        width: 100%;
+        height: 25px;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+        /*margin-top: 5px;*/
+        box-sizing: border-box;
+    }
+
+    .menu_type_of_product samp:hover{
+        cursor: pointer;
+        background-color: rgba(255,255,255,0.5);
+        color: #272626;
+    }
+
+
+    .for_search{
+        width: 300px;
+        height: 40px;
+        display: flex;
+        justify-content: center;
+    }
+    .for_search input{
+        width: 270px;
+        margin-top: 10px;
+        border: none;
+        background: rgb(230, 230, 230);
+        border-bottom-width: 1px;
+        border-bottom-style: solid;
+        outline: none;
+        color: #333;
+    }
+
+    .for_search img{
+        width: 30px;
+        height: 30px;
+        margin-top: 10px;
+    }
+
+
+
+    .for_range_container{
+        width: 200px;
+        margin-left: 50px;
+        text-align: center;
+    }
+
+    .for_range_container p{
+        font-size: 12px;
+        height: 1px;
+    }
+
+
+    .catalog_container{
+        width: 100%;
+        height: auto;
+        /*border-style: solid;*/
+        margin-top: 30px;
+        display: flex;
+        justify-content: center;
+    }
+    .catalog{
+        width: 800px;
+        height: auto;
+        /*border-style: solid;*/
+        display: grid;
+        grid-template-columns: 240fr 240fr 240fr;
+        grid-gap: 30px;
+        justify-content: center;
+    }
+
+    .none_product{
+        width: 100%;
+        height: 650px;
+        text-align: center;
+        padding-top: 200px;
+        box-sizing: border-box;
+    }
 }
 
-.options{
-    width: 800px;
-    height: 50px;
-    margin-top: 40px;
-    color: rgb(51, 51, 51);
-    background: rgb(230, 230, 230);
-    font-family: Montserrat, sans-serif,sans-serif;
-    color: #333;
-    border-radius: 8px;
-    box-sizing: border-box;
-    padding-left: 20px;
-    padding-right: 20px;
-    display: flex;
-    justify-content: center;
-}
+@media only screen and (min-width: 810px) and (max-width: 1009px) {
 
-.for_title_in_options{
-    width: 200px;
-    box-sizing: border-box;
-    /*padding-left: 30px;*/
-    text-align: center;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
-    font-size: 16px;
-    margin-top: 20px;
-}
-.for_title_in_options samp:hover{
-    cursor: pointer;
-}
-
-.menu_type_of_product{
-    width: 190px;
-    height: 70px;
-    background: rgb(230, 230, 230);
-    z-index: 2;
-    position: relative;
-    margin-top: 10px;
-    box-sizing: border-box;
-    /*padding: 5px;*/
-    font-size: 15px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-}
-
-.menu_type_of_product samp{
-    width: 100%;
-    height: 25px;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
-    /*margin-top: 5px;*/
-    box-sizing: border-box;
-}
-
-.menu_type_of_product samp:hover{
-    cursor: pointer;
-    background-color: rgba(255,255,255,0.5);
-    color: #272626;
-}
+    .container{
+        width: 100%;
+        height: auto;
+        background-color: #F2F2F2;
+        display: flex;
+        /*flex-direction: column;*/
+        justify-content: center;
+    }
+    .main{
+        width: 800px;
+        display: flex;
+        flex-direction: column;
+        padding-top: 50px;
+    }
+    .for_title{
+        width: 100%;
+        text-align: center;
+    }
 
 
-.for_search{
-    width: 300px;
-    height: 40px;
-    display: flex;
-    justify-content: center;
-}
-.for_search input{
-    width: 270px;
-    margin-top: 10px;
-    border: none;
-    background: rgb(230, 230, 230);
-    border-bottom-width: 1px;
-    border-bottom-style: solid;
-    outline: none;
-    color: #333;
+    .options_container{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+
+    }
+
+    .options{
+        width: 800px;
+        height: 50px;
+        margin-top: 40px;
+        color: rgb(51, 51, 51);
+        background: rgb(230, 230, 230);
+        font-family: Montserrat, sans-serif,sans-serif;
+        color: #333;
+        border-radius: 8px;
+        box-sizing: border-box;
+        padding-left: 20px;
+        padding-right: 20px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .for_title_in_options{
+        width: 200px;
+        box-sizing: border-box;
+        /*padding-left: 30px;*/
+        text-align: center;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+        font-size: 16px;
+        margin-top: 20px;
+    }
+    .for_title_in_options samp:hover{
+        cursor: pointer;
+    }
+
+    .menu_type_of_product{
+        width: 190px;
+        height: 70px;
+        background: rgb(230, 230, 230);
+        z-index: 2;
+        position: relative;
+        margin-top: 10px;
+        box-sizing: border-box;
+        /*padding: 5px;*/
+        font-size: 15px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+    }
+
+    .menu_type_of_product samp{
+        width: 100%;
+        height: 25px;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+        /*margin-top: 5px;*/
+        box-sizing: border-box;
+    }
+
+    .menu_type_of_product samp:hover{
+        cursor: pointer;
+        background-color: rgba(255,255,255,0.5);
+        color: #272626;
+    }
+
+
+    .for_search{
+        width: 300px;
+        height: 40px;
+        display: flex;
+        justify-content: center;
+    }
+    .for_search input{
+        width: 270px;
+        margin-top: 10px;
+        border: none;
+        background: rgb(230, 230, 230);
+        border-bottom-width: 1px;
+        border-bottom-style: solid;
+        outline: none;
+        color: #333;
+    }
+
+    .for_search img{
+        width: 30px;
+        height: 30px;
+        margin-top: 10px;
+    }
+
+
+
+    .for_range_container{
+        width: 200px;
+        margin-left: 50px;
+        text-align: center;
+    }
+
+    .for_range_container p{
+        font-size: 12px;
+        height: 1px;
+    }
+
+
+    .catalog_container{
+        width: 100%;
+        height: auto;
+        /*border-style: solid;*/
+        margin-top: 30px;
+        display: flex;
+        justify-content: center;
+    }
+    .catalog{
+        width: 800px;
+        height: auto;
+        /*border-style: solid;*/
+        display: grid;
+        grid-template-columns: 240fr 240fr 240fr;
+        grid-gap: 20px;
+        justify-content: center;
+    }
+
+    .none_product{
+        width: 100%;
+        height: 650px;
+        text-align: center;
+        padding-top: 200px;
+        box-sizing: border-box;
+    }
 }
 
-.for_search img{
-    width: 30px;
-    height: 30px;
-    margin-top: 10px;
+@media only screen and (min-width: 600px) and (max-width: 809px) {
+
+    .container{
+        width: 100%;
+        height: auto;
+        background-color: #F2F2F2;
+        display: flex;
+        /*flex-direction: column;*/
+        justify-content: center;
+    }
+    .main{
+        width: 600px;
+        display: flex;
+        flex-direction: column;
+        padding-top: 50px;
+    }
+    .for_title{
+        width: 100%;
+        text-align: center;
+    }
+
+
+    .options_container{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+
+    }
+
+    .options{
+        width: 599px;
+        height: 50px;
+        margin-top: 40px;
+        color: rgb(51, 51, 51);
+        background: rgb(230, 230, 230);
+        font-family: Montserrat, sans-serif,sans-serif;
+        color: #333;
+        border-radius: 8px;
+        box-sizing: border-box;
+        padding-left: 20px;
+        padding-right: 20px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .for_title_in_options{
+        width: 200px;
+        box-sizing: border-box;
+        /*padding-left: 30px;*/
+        text-align: center;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+        font-size: 16px;
+        margin-top: 20px;
+
+    }
+    .for_title_in_options samp:hover{
+        cursor: pointer;
+    }
+
+    .menu_type_of_product{
+        width: 120px;
+        height: 70px;
+        background: rgb(230, 230, 230);
+        z-index: 2;
+        position: relative;
+        margin-top: 10px;
+        box-sizing: border-box;
+        /*padding: 5px;*/
+        font-size: 15px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+    }
+
+    .menu_type_of_product samp{
+        width: 100%;
+        height: 25px;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+        /*margin-top: 5px;*/
+        box-sizing: border-box;
+    }
+
+    .menu_type_of_product samp:hover{
+        cursor: pointer;
+        background-color: rgba(255,255,255,0.5);
+        color: #272626;
+    }
+
+
+    .for_search{
+        width: 250px;
+        height: 40px;
+        display: flex;
+        justify-content: center;
+        box-sizing: border-box;
+    }
+    .for_search input{
+        width: 220px;
+        margin-top: 10px;
+        border: none;
+        background: rgb(230, 230, 230);
+        border-bottom-width: 1px;
+        border-bottom-style: solid;
+        outline: none;
+        color: #333;
+    }
+
+    .for_search img{
+        width: 30px;
+        height: 30px;
+        margin-top: 10px;
+    }
+
+
+
+    .for_range_container{
+        width: 200px;
+        margin-left: 50px;
+        text-align: center;
+        box-sizing: border-box;
+    }
+
+    .for_range_container p{
+        font-size: 12px;
+        height: 1px;
+    }
+
+
+    .catalog_container{
+        width: 100%;
+        height: auto;
+        /*border-style: solid;*/
+        margin-top: 30px;
+        display: flex;
+        justify-content: center;
+    }
+    .catalog{
+        width: 600px;
+        height: auto;
+        /*border-style: solid;*/
+        display: grid;
+        grid-template-columns: 290fr 290fr;
+        grid-gap: 20px;
+        justify-content: center;
+    }
+
+    .none_product{
+        width: 100%;
+        height: 650px;
+        text-align: center;
+        padding-top: 200px;
+        box-sizing: border-box;
+    }
 }
 
+@media only screen and (min-width: 438px) and (max-width: 599px) {
+
+    .container{
+        width: 100%;
+        height: auto;
+        background-color: #F2F2F2;
+        display: flex;
+        /*flex-direction: column;*/
+        justify-content: center;
+    }
+    .main{
+        width: 400px;
+        display: flex;
+        flex-direction: column;
+        padding-top: 50px;
+    }
+    .for_title{
+        width: 100%;
+        text-align: center;
+    }
 
 
-.for_range_container{
-    width: 200px;
-    margin-left: 50px;
-    text-align: center;
+    .options_container{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+
+    }
+
+    .options{
+        width: 420px;
+        height: 60px;
+        margin-top: 40px;
+        color: rgb(51, 51, 51);
+        background: rgb(230, 230, 230);
+        font-family: Montserrat, sans-serif,sans-serif;
+        color: #333;
+        border-radius: 8px;
+        box-sizing: border-box;
+        /*padding-left: 20px;*/
+        padding-right: 20px;
+        display: flex;
+        /*grid-template-columns: 1fr 1fr;*/
+        /*flex-direction: column;*/
+        justify-content: center;
+    }
+
+    .for_title_in_options{
+        width: 200px;
+        box-sizing: border-box;
+        /*padding-left: 30px;*/
+        text-align: center;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+        font-size: 14px;
+        margin-top: 20px;
+
+    }
+    .for_title_in_options samp:hover{
+        cursor: pointer;
+    }
+
+    .menu_type_of_product{
+        width: 100px;
+        height: 90px;
+        background: rgb(230, 230, 230);
+        z-index: 2;
+        position: relative;
+        margin-top: 10px;
+        box-sizing: border-box;
+        /*padding: 5px;*/
+        font-size: 12px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+    }
+
+    .menu_type_of_product samp{
+        width: 100%;
+        height: 25px;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+        /*margin-top: 5px;*/
+        box-sizing: border-box;
+    }
+
+    .menu_type_of_product samp:hover{
+        cursor: pointer;
+        background-color: rgba(255,255,255,0.5);
+        color: #272626;
+    }
+
+
+    .for_search{
+        width: 100px;
+        height: 40px;
+        display: flex;
+        justify-content: center;
+        box-sizing: border-box;
+    }
+    .for_search input{
+        width: 100px;
+        margin-top: 10px;
+        border: none;
+        background: rgb(230, 230, 230);
+        border-bottom-width: 1px;
+        border-bottom-style: solid;
+        outline: none;
+        color: #333;
+    }
+
+    .for_search img{
+        width: 20px;
+        height: 20px;
+        margin-top: 18px;
+    }
+
+
+
+    .for_range_container{
+        width: 200px;
+        margin-left: 50px;
+        text-align: center;
+        box-sizing: border-box;
+    }
+
+    .for_range_container p{
+        font-size: 12px;
+        height: 1px;
+    }
+
+
+    .catalog_container{
+        width: 100%;
+        height: auto;
+        /*border-style: solid;*/
+        margin-top: 30px;
+        display: flex;
+        justify-content: center;
+    }
+    .catalog{
+        width: 600px;
+        height: auto;
+        /*border-style: solid;*/
+        display: grid;
+        grid-template-columns: 290fr 290fr;
+        grid-gap: 20px;
+        justify-content: center;
+    }
+
+    .none_product{
+        width: 100%;
+        height: 650px;
+        text-align: center;
+        padding-top: 200px;
+        box-sizing: border-box;
+    }
 }
 
-.for_range_container p{
-    font-size: 12px;
-    height: 1px;
-}
+@media only screen and (min-width: 328px) and (max-width: 437px) {
+
+    .container{
+        width: 100%;
+        height: auto;
+        background-color: #F2F2F2;
+        display: flex;
+        /*flex-direction: column;*/
+        justify-content: center;
+    }
+    .main{
+        width: 300px;
+        display: flex;
+        flex-direction: column;
+        padding-top: 50px;
+    }
+    .for_title{
+        width: 100%;
+        text-align: center;
+    }
 
 
-.catalog_container{
-    width: 100%;
-    height: auto;
-    /*border-style: solid;*/
-    margin-top: 30px;
-    display: flex;
-    justify-content: center;
-}
-.catalog{
-    width: 800px;
-    height: auto;
-    /*border-style: solid;*/
-    display: grid;
-    grid-template-columns: 240fr 240fr 240fr;
-    grid-gap: 30px;
-    justify-content: center;
+    .options_container{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+
+    }
+
+    .options{
+        /*display: none;*/
+        width: 320px;
+        height: 60px;
+        margin-top: 40px;
+        color: rgb(51, 51, 51);
+        background: rgb(230, 230, 230);
+        font-family: Montserrat, sans-serif,sans-serif;
+        color: #333;
+        border-radius: 8px;
+        box-sizing: border-box;
+        /*padding-left: 20px;*/
+        /*padding-right: 20px;*/
+        display: flex;
+        /*grid-template-columns: 1fr 1fr;*/
+        /*flex-direction: column;*/
+        justify-content: center;
+    }
+
+    .for_title_in_options{
+        width: 100px;
+        box-sizing: border-box;
+        /*border-style: solid;*/
+        /*padding-left: 30px;*/
+        text-align: center;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+        font-size: 14px;
+        margin-top: 20px;
+
+    }
+    .for_title_in_options samp:hover{
+        cursor: pointer;
+    }
+
+    .menu_type_of_product{
+        width: 100px;
+        height: 90px;
+        background: rgb(230, 230, 230);
+        z-index: 2;
+        position: relative;
+        margin-top: 10px;
+        box-sizing: border-box;
+        /*padding: 5px;*/
+        font-size: 12px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+    }
+
+    .menu_type_of_product samp{
+        width: 100%;
+        height: 25px;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+        /*margin-top: 5px;*/
+        box-sizing: border-box;
+    }
+
+    .menu_type_of_product samp:hover{
+        cursor: pointer;
+        background-color: rgba(255,255,255,0.5);
+        color: #272626;
+    }
+
+
+    .for_search{
+        display: none;
+        width: 50px;
+        height: 40px;
+        /*display: flex;*/
+        /*justify-content: center;*/
+        /*box-sizing: border-box;*/
+    }
+    .for_search input{
+        width: 100px;
+        margin-top: 10px;
+        border: none;
+        background: rgb(230, 230, 230);
+        border-bottom-width: 1px;
+        border-bottom-style: solid;
+        outline: none;
+        color: #333;
+    }
+
+    .for_search img{
+        width: 20px;
+        height: 20px;
+        margin-top: 18px;
+    }
+
+
+
+    .for_range_container{
+        width: 150px;
+        /*margin-left: 50px;*/
+        text-align: center;
+        box-sizing: border-box;
+        /*border-style: solid;*/
+    }
+
+    .for_range_container p{
+        font-size: 12px;
+        height: 1px;
+    }
+
+
+    .catalog_container{
+        width: 100%;
+        height: auto;
+        /*border-style: solid;*/
+        margin-top: 30px;
+        display: flex;
+        justify-content: center;
+    }
+    .catalog{
+        width: 600px;
+        height: auto;
+        /*border-style: solid;*/
+        display: grid;
+        grid-template-columns: 320fr;
+        grid-gap: 20px;
+        justify-content: center;
+    }
+
+    .none_product{
+        width: 100%;
+        height: 650px;
+        text-align: center;
+        padding-top: 200px;
+        box-sizing: border-box;
+    }
 }
 
-.none_product{
-    width: 100%;
-    height: 650px;
-    text-align: center;
-    padding-top: 200px;
-    box-sizing: border-box;
+@media only screen and (max-width: 327px) {
+
+    .container{
+        width: 100%;
+        height: auto;
+        background-color: #F2F2F2;
+        display: flex;
+        /*flex-direction: column;*/
+        justify-content: center;
+    }
+    .main{
+        width: 100%;
+        max-width: 300px;
+        display: flex;
+        flex-direction: column;
+        padding-top: 50px;
+    }
+    .for_title{
+        width: 100%;
+        text-align: center;
+    }
+
+
+    .options_container{
+        width: 100%;
+        display: flex;
+        /*justify-content: center;*/
+
+    }
+
+    .options{
+        width: 100%;
+        height: 60px;
+        margin-top: 40px;
+        color: rgb(51, 51, 51);
+        background: rgb(230, 230, 230);
+        font-family: Montserrat, sans-serif,sans-serif;
+        color: #333;
+        border-radius: 8px;
+        box-sizing: border-box;
+        /*padding-left: 20px;*/
+        /*padding-right: 20px;*/
+        display: flex;
+        /*grid-template-columns: 1fr 1fr;*/
+        /*flex-direction: column;*/
+        justify-content: center;
+    }
+
+    .for_title_in_options{
+        width: 100px;
+        box-sizing: border-box;
+        /*border-style: solid;*/
+        /*padding-left: 30px;*/
+        text-align: center;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+        font-size: 14px;
+        margin-top: 20px;
+
+    }
+    .for_title_in_options samp:hover{
+        cursor: pointer;
+    }
+
+    .menu_type_of_product{
+        width: 100%;
+        height: 90px;
+        background: rgb(230, 230, 230);
+        z-index: 2;
+        position: relative;
+        margin-top: 10px;
+        box-sizing: border-box;
+        /*padding: 5px;*/
+        font-size: 12px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+        text-align: center;
+
+    }
+
+    .menu_type_of_product samp{
+        width: 100%;
+        height: 25px;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+        /*margin-top: 5px;*/
+        box-sizing: border-box;
+    }
+
+    .menu_type_of_product samp:hover{
+        cursor: pointer;
+        background-color: rgba(255,255,255,0.5);
+        color: #272626;
+    }
+
+
+    .for_search{
+        display: none;
+        width: 100px;
+        height: 40px;
+        /*display: flex;*/
+        /*justify-content: center;*/
+        /*box-sizing: border-box;*/
+    }
+    .for_search input{
+        width: 100px;
+        margin-top: 10px;
+        border: none;
+        background: rgb(230, 230, 230);
+        border-bottom-width: 1px;
+        border-bottom-style: solid;
+        outline: none;
+        color: #333;
+    }
+
+    .for_search img{
+        width: 20px;
+        height: 20px;
+        margin-top: 18px;
+    }
+
+
+
+    .for_range_container{
+        width: 100px;
+        /*margin-left: 50px;*/
+        text-align: center;
+        box-sizing: border-box;
+        /*border-style: solid;*/
+    }
+
+    .for_range_container p{
+        font-size: 12px;
+        height: 1px;
+    }
+
+
+    .catalog_container{
+        width: 100%;
+        height: auto;
+        /*border-style: solid;*/
+        margin-top: 30px;
+        display: flex;
+        justify-content: center;
+    }
+    .catalog{
+        width: 600px;
+        height: auto;
+        /*border-style: solid;*/
+        display: grid;
+        grid-template-columns: 320fr;
+        grid-gap: 20px;
+        justify-content: center;
+    }
+
+    .none_product{
+        width: 100%;
+        height: 650px;
+        text-align: center;
+        padding-top: 200px;
+        box-sizing: border-box;
+    }
 }
+
 
 
 
