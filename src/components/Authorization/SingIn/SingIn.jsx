@@ -3,7 +3,7 @@ import SingInStyle from './SingIn.module.css'
 import {useDispatch, useSelector} from "react-redux";
 import axios from "axios";
 
-const SingIn = ()=>{
+const SingIn = (props)=>{
     const data = useSelector(state=>state.ApplePage);
     const dispatch = useDispatch();
 
@@ -24,42 +24,38 @@ const SingIn = ()=>{
             });
     }
 
-    function close(){
-        dispatch({type:'SHOW_INPUT_BOX',status:false})
-    }
-
-    function openSingUp(){
-        dispatch({type:'SHOW_SING_UP',status:true});
-    }
     return(
         <div className={SingInStyle.container}>
             <div className={SingInStyle.logo}>
-                <div className={SingInStyle.logoText}>
-                    <b>
-                        Authentication
-                    </b>
-                </div>
-                <div className={SingInStyle.Exit}>
-                    <p onClick={close}>X</p>
+                <div className={SingInStyle.logo_background}>
+                    <div className={SingInStyle.exit}>
+                        <img src="https://img.icons8.com/ios/24/000000/close-window.png"
+                             onClick={()=>{props.setStatusOfInputBox(false)}}/>
+                    </div>
+                    <div className={SingInStyle.logoText}>
+                        <p>
+                            Authentication
+                        </p>
+                    </div>
                 </div>
             </div>
             <div className={SingInStyle.inputField}>
                 <div className={SingInStyle.containerInput}>
-                    <p>Email:</p>
                     <input id="email" placeholder={'Email'} type="email" value={data.email}
-                        onChange={event => {dispatch({type:'FILL_EMAIL',email:event.target.value})}}
-                    />
-                    <p>Password:</p>
+                           onChange={(event)=>{
+                               dispatch({type:'FILL_EMAIL',email:event.target.value})
+                           }}/>
                     <input id="password" placeholder={'Password'} type="password" value={data.password}
-                           onChange={event => {dispatch({type:'FILL_PASSWORD',password:event.target.value})}}
-                    />
+                           onChange={(event)=>{
+                               dispatch({type:'FILL_PASSWORD',password:event.target.value})
+                           }}/>
                 </div>
                 <div className={SingInStyle.forSingUpButton}>
-                    <button className={SingInStyle.btn} onClick={check}>Sing IN</button>
+                    <button>Sing In</button>
                 </div>
                 <div className={SingInStyle.showSingInContainer}>
-                    <p onClick={openSingUp}>
-                        Create an account
+                    <p onClick={()=>{props.setStatusOfBox(true)}}>
+                        I already have an account
                     </p>
                 </div>
             </div>

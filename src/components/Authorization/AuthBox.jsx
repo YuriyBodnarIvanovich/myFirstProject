@@ -1,16 +1,21 @@
-import React from "react";
+import React, {useState} from "react";
 import {useSelector} from "react-redux";
 import SingUp from "./SingUp/SingUp";
 import SingIn from "./SingIn/SingIn";
 import AuthBoxStyle from './AuthBox.module.css';
 
-const AuthBox = () => {
-    const data = useSelector(state=> state.ApplePage);
+const AuthBox = (props) => {
+    const [SingUpBox, setStatusOfBox] = useState(true)
 
     return(
         <div className={AuthBoxStyle.container}>
             {
-                data.ShowSingUp ? <SingUp/> : <SingIn/>
+                SingUpBox ?
+                    <SingUp setStatusOfInputBox={props.setStatusOfInputBox} showInputBox={props.showInputBox}
+                            setStatusOfBox={setStatusOfBox}/>
+                :
+                    <SingIn setStatusOfInputBox={props.setStatusOfInputBox} showInputBox={props.showInputBox}
+                            setStatusOfBox={setStatusOfBox}/>
             }
         </div>
     )

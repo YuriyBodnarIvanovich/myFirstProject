@@ -95,6 +95,7 @@
         border-radius: 5px;
         border-width: 1px;
         width: 150px;
+        outline: none;
         /*padding-bottom: 2px;*/
         background-color:rgba(0, 0, 0, 0);
         margin-left: 20px;
@@ -202,6 +203,7 @@
         /*padding-bottom: 2px;*/
         background-color:rgba(0, 0, 0, 0);
         margin-left: 20px;
+        outline: none;
     }
 
     .number_of_phone button:hover{
@@ -306,6 +308,7 @@
         /*padding-bottom: 2px;*/
         background-color:rgba(0, 0, 0, 0);
         margin-left: 20px;
+        outline: none;
     }
 
     .number_of_phone button:hover{
@@ -414,6 +417,7 @@
         padding-bottom: 2px;
         background-color:rgba(0, 0, 0, 0);
         margin-left: 20px;
+        outline: none;
     }
 
     .number_of_phone button:hover{
@@ -526,6 +530,7 @@
         padding-bottom: 2px;
         background-color:rgba(0, 0, 0, 0);
         margin-left: 20px;
+        outline: none;
     }
 
     .number_of_phone button:hover{
@@ -641,6 +646,7 @@
         padding-bottom: 2px;
         background-color:rgba(0, 0, 0, 0);
         margin-left: 20px;
+        outline: none;
     }
 
     .number_of_phone button:hover{
@@ -758,6 +764,7 @@
         padding-bottom: 2px;
         background-color:rgba(0, 0, 0, 0);
         margin-left: 20px;
+        outline: none;
     }
 
     .number_of_phone button:hover{

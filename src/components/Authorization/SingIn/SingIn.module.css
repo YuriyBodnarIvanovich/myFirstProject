@@ -1,125 +1,125 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,500;1,300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital@1&display=swap');
+
 .container{
-    width: 100%;
-    min-width: 400px;
-    height: 600px;
+    width: 400px;
+    height: 400px;
     background-color: white;
-    border-radius: 20px;
-    margin-top: 100px;
+    border-radius: 5px;
+    box-sizing: border-box;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.3), 0 10px 10px rgba(0,0,0,0.4);
 }
-.container p{
-    font-family: 'Montserrat', serif;
-}
+
 .logo{
-    background-image: url('https://images.wallpaperscraft.ru/image/klaviatura_telefon_rabochij_stol_179668_1366x768.jpg');
+    background-image: url('https://www.iphones.ru/wp-content/uploads/2019/04/iOS-stock-15-for-iPhone-X-768x1663.jpg');
+    background-position: center;
     width: 100%;
-    height: 150px;
-    background-position: left, top;
-    border-radius: 20px 20px 0 0;
-    display: grid;
-    grid-template-columns: 1fr 0.5fr;
-    font-family: 'Montserrat', serif;
+    height: 100px;
 }
 .logoText{
-    display: grid;
-    grid-template-columns: 0.1fr;
-    justify-content: end;
+    text-align: center;
 }
-.logo b{
-    color: white;
-    font-size: 40px;
-    margin-top: 50px;
-}
-.Exit{
-    display: grid;
-    grid-template-columns: 0.1fr;
-    justify-content: end;
-    margin-right: 30px;
-}
-.Exit p{
-    color: white;
-    font-size: 30px;
-    cursor: pointer;
 
+.logo_background{
+    width: 100%;
+    height: 100px;
+    background: rgba(255,255,255,0.3);
+}
+
+.logo p{
+    color: black;
+    font-size: 24px;
+}
+.exit{
+    width: 100%;
+    height: 20px;
+    display: grid;
+    grid-template-columns: 0.01fr;
+    justify-content: right;
+    box-sizing: border-box;
+    padding-top: 10px;
+    padding-right: 10px;
+}
+
+.exit img{
+    height: 20px;
+    cursor: pointer;
 }
 .inputField{
     width: 100%;
-    display: grid;
-    grid-template-columns: 0.8fr;
+    display: flex;
+    flex-direction: column;
     justify-content: center;
-    margin-top: 50px;
-
+    align-items: center;
 }
-
 .containerInput{
-    display: grid;
-    grid-template-columns: 0.2fr 0.8fr;
+    display: flex;
+    flex-direction: column;;
+    justify-content: center;
     grid-gap: 10px;
 }
 .inputField input{
-    width: 100%;
-    height: 45px;
+    width: 320px;
+    height: 22px;
     resize: none;
     margin-left: 10px;
     border: none;
     outline: none;
-
-    border-bottom-color: #050505;
-    border-bottom-style: outset;
-    border-bottom-width: 1px;
-
+    box-sizing: border-box;
     font-family: 'Montserrat', serif;
-    font-size: 28px;
-    color: #555555;
+    font-size: 18px;
     line-height: 1.2;
     display: block;
     background: transparent;
     padding: 0 5px;
     margin-top: 25px;
-}
-.inputField input:hover{
     border-bottom-color: #6cb8ea;
     border-bottom-style: outset;
-    border-bottom-width: 3px;
+    border-bottom-width: 2px;
+    color: #115684;
 }
+.inputField input:hover{
 
-
+}
+::placeholder {
+    color: #115684;
+    /*font-size: 1.5em;*/
+}
 
 .inputField p{
     font-family: 'Montserrat', serif;
     font-size: 30px;
 }
 
-.btn {
-    display: inline-block; /* Строчно-блочный элемент */
-    background: #424344; /* Серый цвет фона */
-    color: #fff; /* Белый цвет текста */
-    padding: 0.2rem; /* Поля вокруг текста */
-    text-decoration: none; /* Убираем подчёркивание */
-    font-size: 20px;
-    cursor:pointer;
-    margin-top: 30px;
-}
-.btn:hover {
-    background: #5D5E5E; /* Серый цвет фона */
-    color: #6cb8ea;
-}
 .forSingUpButton{
     width: 100%;
-    display: grid;
-    grid-template-columns: 0.3fr;
+    height: 100px;
+    box-sizing: border-box;
+    display: flex;
     justify-content: center;
-
+    padding-top: 30px;
 }
+
 .forSingUpButton button{
-    font-family: 'Montserrat', serif;
+    width: 200px;
+    height: 36px;
+    font-size: 18px;
+    font-family: 'Open Sans', sans-serif;
+    background-color: #115684;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    color: white;
+}
+.forSingUpButton button:hover{
+    background: #6cb8ea;
+    margin-top: 1px;
+    cursor: pointer;
 }
 
 .showSingInContainer{
     width: 100%;
-    display: grid;
-    grid-template-columns: 0.4fr;
-    justify-content: left;
-    margin-top: 50px;
+    text-align: center;
 }
 
 .showSingInContainer p{
@@ -127,6 +127,273 @@
 }
 
 .showSingInContainer p:hover{
-    color: #6cb8ea;
+    color: #115684;
     cursor: pointer;
+}
+
+@media only screen and (min-width: 328px) and (max-width: 437px) {
+
+    .container{
+        width: 320px;
+        height: 400px;
+        background-color: white;
+        border-radius: 5px;
+        box-sizing: border-box;
+        box-shadow: 0 14px 28px rgba(0,0,0,0.3), 0 10px 10px rgba(0,0,0,0.4);
+    }
+
+    .logo{
+        background-image: url('https://www.iphones.ru/wp-content/uploads/2019/04/iOS-stock-15-for-iPhone-X-768x1663.jpg');
+        background-position: center;
+        width: 100%;
+        height: 100px;
+    }
+    .logoText{
+        text-align: center;
+    }
+
+    .logo_background{
+        width: 100%;
+        height: 100px;
+        background: rgba(255,255,255,0.3);
+    }
+
+    .logo p{
+        color: black;
+        font-size: 24px;
+    }
+    .exit{
+        width: 100%;
+        height: 20px;
+        display: grid;
+        grid-template-columns: 0.01fr;
+        justify-content: right;
+        box-sizing: border-box;
+        padding-top: 10px;
+        padding-right: 10px;
+    }
+
+    .exit img{
+        height: 20px;
+        cursor: pointer;
+    }
+    .inputField{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .containerInput{
+        display: flex;
+        flex-direction: column;;
+        justify-content: center;
+        grid-gap: 10px;
+    }
+    .inputField input{
+        width: 280px;
+        height: 22px;
+        resize: none;
+        margin-left: 10px;
+        border: none;
+        outline: none;
+        box-sizing: border-box;
+        font-family: 'Montserrat', serif;
+        font-size: 16px;
+        line-height: 1.2;
+        display: block;
+        background: transparent;
+        padding: 0 5px;
+        margin-top: 25px;
+        border-bottom-color: #6cb8ea;
+        border-bottom-style: outset;
+        border-bottom-width: 2px;
+        color: #115684;
+    }
+    .inputField input:hover{
+
+    }
+    ::placeholder {
+        color: #115684;
+        /*font-size: 1.5em;*/
+    }
+
+    .inputField p{
+        font-family: 'Montserrat', serif;
+        font-size: 30px;
+    }
+
+    .forSingUpButton{
+        width: 100%;
+        height: 100px;
+        box-sizing: border-box;
+        display: flex;
+        justify-content: center;
+        padding-top: 30px;
+    }
+
+    .forSingUpButton button{
+        width: 200px;
+        height: 36px;
+        font-size: 18px;
+        font-family: 'Open Sans', sans-serif;
+        background-color: #115684;
+        outline: none;
+        border: none;
+        border-radius: 5px;
+        color: white;
+    }
+    .forSingUpButton button:hover{
+        background: #6cb8ea;
+        margin-top: 1px;
+        cursor: pointer;
+    }
+
+    .showSingInContainer{
+        width: 100%;
+        text-align: center;
+    }
+
+    .showSingInContainer p{
+        font-size: 18px;
+    }
+
+    .showSingInContainer p:hover{
+        color: #115684;
+        cursor: pointer;
+    }
+
+}
+
+@media only screen and (max-width: 327px) {
+
+    .container{
+        width: 280px;
+        height: 400px;
+        background-color: white;
+        border-radius: 5px;
+        box-sizing: border-box;
+        box-shadow: 0 14px 28px rgba(0,0,0,0.3), 0 10px 10px rgba(0,0,0,0.4);
+    }
+
+    .logo{
+        background-image: url('https://www.iphones.ru/wp-content/uploads/2019/04/iOS-stock-15-for-iPhone-X-768x1663.jpg');
+        background-position: center;
+        width: 100%;
+        height: 100px;
+    }
+    .logoText{
+        text-align: center;
+    }
+
+    .logo_background{
+        width: 100%;
+        height: 100px;
+        background: rgba(255,255,255,0.3);
+    }
+
+    .logo p{
+        color: black;
+        font-size: 24px;
+    }
+    .exit{
+        width: 100%;
+        height: 20px;
+        display: grid;
+        grid-template-columns: 0.01fr;
+        justify-content: right;
+        box-sizing: border-box;
+        padding-top: 10px;
+        padding-right: 10px;
+    }
+
+    .exit img{
+        height: 20px;
+        cursor: pointer;
+    }
+    .inputField{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .containerInput{
+        display: flex;
+        flex-direction: column;;
+        justify-content: center;
+        grid-gap: 10px;
+    }
+    .inputField input{
+        width: 240px;
+        height: 22px;
+        resize: none;
+        margin-left: 10px;
+        border: none;
+        outline: none;
+        box-sizing: border-box;
+        font-family: 'Montserrat', serif;
+        font-size: 16px;
+        line-height: 1.2;
+        display: block;
+        background: transparent;
+        padding: 0 5px;
+        margin-top: 25px;
+        border-bottom-color: #6cb8ea;
+        border-bottom-style: outset;
+        border-bottom-width: 2px;
+        color: #115684;
+    }
+    .inputField input:hover{
+
+    }
+    ::placeholder {
+        color: #115684;
+    }
+
+    .inputField p{
+        font-family: 'Montserrat', serif;
+        font-size: 30px;
+    }
+
+    .forSingUpButton{
+        width: 100%;
+        height: 100px;
+        box-sizing: border-box;
+        display: flex;
+        justify-content: center;
+        padding-top: 30px;
+    }
+
+    .forSingUpButton button{
+        width: 200px;
+        height: 36px;
+        font-size: 18px;
+        font-family: 'Open Sans', sans-serif;
+        background-color: #115684;
+        outline: none;
+        border: none;
+        border-radius: 5px;
+        color: white;
+    }
+    .forSingUpButton button:hover{
+        background: #6cb8ea;
+        margin-top: 1px;
+        cursor: pointer;
+    }
+
+    .showSingInContainer{
+        width: 100%;
+        text-align: center;
+    }
+
+    .showSingInContainer p{
+        font-size: 16px;
+    }
+
+    .showSingInContainer p:hover{
+        color: #115684;
+        cursor: pointer;
+    }
+
 }

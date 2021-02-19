@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useState,useEffect} from 'react';
 import './App.css';
 import Menu from "./components/Menu/Menu";
 import {BrowserRouter,Route} from 'react-router-dom';
@@ -18,6 +18,9 @@ import Contact from "./components/Contact/Contact";
 function App() {
         const data = useSelector(state=>state.ApplePage);
         const dispatch = useDispatch();
+
+        const [showInputBox, setStatusOfInputBox] = useState(false);
+
         function statusOfRoles(resUser){
             for(let  i = 0; i < resUser[0].Roles.length; i++){
                 if(resUser[0].Roles[i].role === 'admin'){
@@ -61,8 +64,8 @@ function App() {
                         <div style={{display:'none'}}>
                         </div>
                     }
-                    <Menu />
-                    {data.ShowBox ? <AuthBox/> : <div> </div>}
+                    <Menu setStatusOfInputBox={setStatusOfInputBox}/>
+                    {showInputBox ? <AuthBox showInputBox={showInputBox} setStatusOfInputBox={setStatusOfInputBox}/> : null}
                     <div className={"page"}>
                         {/*<Route path='/Mac'*/}
                         {/*       render={ () => <Mac />} />*/}

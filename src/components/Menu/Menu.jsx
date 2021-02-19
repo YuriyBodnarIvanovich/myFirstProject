@@ -4,9 +4,10 @@ import {NavLink} from 'react-router-dom';
 import {useDispatch, useSelector} from "react-redux";
 
 
-const Menu = () =>{
+const Menu = (props) =>{
     const data = useSelector(state=> state.ApplePage);
     const dispatch = useDispatch();
+
     function openSingBox(){
         dispatch({type:'SHOW_INPUT_BOX',status:true});
     }
@@ -31,7 +32,9 @@ const Menu = () =>{
                 </div>
                 <div className={MenuStyle.add_information_container}>
                     <div className={MenuStyle.add_information}>
-                        <p>Main Page</p>
+                        <NavLink to='/'>
+                            <p>Main Page</p>
+                        </NavLink>
                         <p>·</p>
                         <NavLink to='/CatalogOfGoods'>
                             <p>Goods</p>
@@ -49,7 +52,7 @@ const Menu = () =>{
                        <div className={MenuStyle.number_of_phone}>
                            <img src="https://img.icons8.com/android/24/000000/phone.png"/>
                            <p>+38 099 999 9999</p>
-                           <button>manager</button>
+                           <button onClick={()=>{props.setStatusOfInputBox(true)}}>Sing in</button>
                        </div>
                     </div>
                 </div>
