@@ -91,7 +91,7 @@ const Goods = () =>{
 
     };
 
-    const [titleOfMenu,setTitle] = useState('Mac');
+    const [titleOfMenu,setTitle] = useState('Iphone');
     const [statusOfMenu,setMenu] = useState(false);
 
     function setTitleOfMenu(name){

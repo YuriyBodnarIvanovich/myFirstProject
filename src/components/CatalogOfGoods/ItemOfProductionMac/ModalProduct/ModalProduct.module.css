@@ -1,103 +1,807 @@
-.container{
-    width: 100%;
-    height: 100vh;
-    background: rgba(179, 231, 255, 0.3);
-    z-index: 1;
-    /*position: fixed;*/
-    position: fixed;
-    top: 0;
-    left: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;     /*Центрирование по вертикали */
+@media only screen and (min-width: 1200px){
+
+    .container{
+        width: 100%;
+        height: 100vh;
+        background: rgba(179, 231, 255, 0.3);
+        z-index: 1;
+        /*position: fixed;*/
+        position: fixed;
+        top: 0;
+        left: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;     /*Центрирование по вертикали */
+    }
+
+    .container_of_item{
+        width: 960px;
+        height: 600px;
+        background-color: white;
+        border-radius: 5px;
+        box-sizing: border-box;
+        padding: 10px;
+        box-shadow: 0 14px 28px rgba(0,0,0,0.3), 0 10px 10px rgba(0,0,0,0.4);
+
+    }
+
+    .container_of_name_and_exit{
+        width: 100%;
+        height: 50px;
+        box-sizing: border-box;
+    }
+
+    h1{
+        text-align: center;
+        font: 20px 'Oleo Script', Helvetica, sans-serif;
+    }
+    .exit{
+        width: 100%;
+        height: 20px;
+        display: grid;
+        grid-template-columns: 0.01fr;
+        justify-content: right;
+        box-sizing: border-box;
+    }
+
+    .exit img{
+        height: 20px;
+        cursor: pointer;
+    }
+
+    .container_for_content{
+        width: 100%;
+        height: 400px;
+        display: grid;
+        grid-template-columns: 300px 640px;
+        justify-content: center;
+        /*border-style: solid;*/
+        box-sizing: border-box;
+    }
+
+    .left_content{
+        width: 100%;
+        box-sizing: border-box;
+        padding: 20px;
+        height: auto;
+        /*border-style: solid;*/
+    }
+
+    .left_content b{
+        font-size: 18px;
+    }
+    .left_content em{
+        color: green;
+    }
+
+    .container_of_photo{
+        width: 100%;
+        height: 400px;
+        /*border-style: solid;*/
+        box-sizing: border-box;
+    }
+
+    .for_button{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        padding-left: 40px;
+        height: 50px;
+        box-sizing: border-box;
+        margin-top: 30px;
+
+    }
+
+    .for_button button{
+        width: 200px;
+        height: 40px;
+        color: white;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+        font-size: 18px;
+        background-color: rgb(234, 64, 47);
+        border: none;
+        outline: none;
+        border-radius: 5px;
+    }
+    .for_button button:hover{
+        cursor: pointer;
+        /*margin-top: 1px;*/
+        border-radius: 8px;
+        background-color: #3A3838;
+    }
 }
 
-.container_of_item{
-    width: 960px;
-    height: 600px;
-    background-color: white;
-    border-radius: 5px;
-    box-sizing: border-box;
-    padding: 10px;
-    box-shadow: 0 14px 28px rgba(0,0,0,0.3), 0 10px 10px rgba(0,0,0,0.4);
 
+
+
+@media only screen and (min-width: 1010px) and (max-width: 1199px) {
+
+    .container{
+        width: 100%;
+        height: 100vh;
+        background: rgba(179, 231, 255, 0.3);
+        z-index: 1;
+        /*position: fixed;*/
+        position: fixed;
+        top: 0;
+        left: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;     /*Центрирование по вертикали */
+    }
+
+    .container_of_item{
+        width: 960px;
+        height: 600px;
+        background-color: white;
+        border-radius: 5px;
+        box-sizing: border-box;
+        padding: 10px;
+        box-shadow: 0 14px 28px rgba(0,0,0,0.3), 0 10px 10px rgba(0,0,0,0.4);
+
+    }
+
+    .container_of_name_and_exit{
+        width: 100%;
+        height: 50px;
+        box-sizing: border-box;
+    }
+
+    h1{
+        text-align: center;
+        font: 20px 'Oleo Script', Helvetica, sans-serif;
+    }
+    .exit{
+        width: 100%;
+        height: 20px;
+        display: grid;
+        grid-template-columns: 0.01fr;
+        justify-content: right;
+        box-sizing: border-box;
+    }
+
+    .exit img{
+        height: 20px;
+        cursor: pointer;
+    }
+
+    .container_for_content{
+        width: 100%;
+        height: 400px;
+        display: grid;
+        grid-template-columns: 300px 640px;
+        justify-content: center;
+        /*border-style: solid;*/
+        box-sizing: border-box;
+    }
+
+    .left_content{
+        width: 100%;
+        box-sizing: border-box;
+        padding: 20px;
+        height: auto;
+        /*border-style: solid;*/
+    }
+
+    .left_content b{
+        font-size: 18px;
+    }
+    .left_content em{
+        color: green;
+    }
+
+    .container_of_photo{
+        width: 100%;
+        height: 400px;
+        /*border-style: solid;*/
+        box-sizing: border-box;
+    }
+
+    .for_button{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        padding-left: 40px;
+        height: 50px;
+        box-sizing: border-box;
+        margin-top: 30px;
+
+    }
+
+    .for_button button{
+        width: 200px;
+        height: 40px;
+        color: white;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+        font-size: 18px;
+        background-color: rgb(234, 64, 47);
+        border: none;
+        outline: none;
+        border-radius: 5px;
+    }
+    .for_button button:hover{
+        cursor: pointer;
+        /*margin-top: 1px;*/
+        border-radius: 8px;
+        background-color: #3A3838;
+    }
 }
 
-h1{
-    text-align: center;
-    font: 20px 'Oleo Script', Helvetica, sans-serif;
-}
-.exit{
-    width: 100%;
-    height: 20px;
-    display: grid;
-    grid-template-columns: 0.01fr;
-    justify-content: right;
-    box-sizing: border-box;
+@media only screen and (min-width: 810px) and (max-width: 1009px) {
+
+    .container{
+        width: 100%;
+        height: 100vh;
+        background: rgba(179, 231, 255, 0.3);
+        z-index: 1;
+        /*position: fixed;*/
+        position: fixed;
+        top: 0;
+        left: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;     /*Центрирование по вертикали */
+    }
+
+    .container_of_item{
+        width: 800px;
+        height: 600px;
+        background-color: white;
+        border-radius: 5px;
+        box-sizing: border-box;
+        padding: 10px;
+        box-shadow: 0 14px 28px rgba(0,0,0,0.3), 0 10px 10px rgba(0,0,0,0.4);
+
+    }
+
+    .container_of_name_and_exit{
+        width: 100%;
+        height: 50px;
+        box-sizing: border-box;
+    }
+
+    h1{
+        text-align: center;
+        font: 20px 'Oleo Script', Helvetica, sans-serif;
+    }
+    .exit{
+        width: 100%;
+        height: 20px;
+        display: grid;
+        grid-template-columns: 0.01fr;
+        justify-content: right;
+        box-sizing: border-box;
+    }
+
+    .exit img{
+        height: 20px;
+        cursor: pointer;
+    }
+
+    .container_for_content{
+        width: 100%;
+        height: 400px;
+        display: grid;
+        grid-template-columns: 300px 500px;
+        justify-content: center;
+        /*border-style: solid;*/
+        box-sizing: border-box;
+    }
+
+    .left_content{
+        width: 100%;
+        box-sizing: border-box;
+        padding: 20px;
+        height: auto;
+        /*border-style: solid;*/
+    }
+
+    .left_content b{
+        font-size: 18px;
+    }
+    .left_content em{
+        color: green;
+    }
+
+    .container_of_photo{
+        width: 100%;
+        height: 400px;
+        /*border-style: solid;*/
+        box-sizing: border-box;
+    }
+
+    .for_button{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        padding-left: 40px;
+        height: 50px;
+        box-sizing: border-box;
+        margin-top: 30px;
+
+    }
+
+    .for_button button{
+        width: 200px;
+        height: 40px;
+        color: white;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+        font-size: 18px;
+        background-color: rgb(234, 64, 47);
+        border: none;
+        outline: none;
+        border-radius: 5px;
+    }
+    .for_button button:hover{
+        cursor: pointer;
+        /*margin-top: 1px;*/
+        border-radius: 8px;
+        background-color: #3A3838;
+    }
 }
 
-.exit img{
-    height: 20px;
-    cursor: pointer;
+@media only screen and (min-width: 600px) and (max-width: 809px) {
+
+    .container{
+        width: 100%;
+        height: 100vh;
+        background: rgba(179, 231, 255, 0.3);
+        z-index: 1;
+        /*position: fixed;*/
+        position: fixed;
+        top: 0;
+        left: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;     /*Центрирование по вертикали */
+    }
+
+    .container_of_item{
+        width: 600px;
+        height: 90vh;
+        background-color: white;
+        border-radius: 5px;
+        box-sizing: border-box;
+        /*text-align: center;*/
+        /*align-items: center;*/
+        padding: 10px;
+        box-shadow: 0 14px 28px rgba(0,0,0,0.3), 0 10px 10px rgba(0,0,0,0.4);
+
+    }
+
+    .container_of_name_and_exit{
+        width: 100%;
+        height: 100px;
+        box-sizing: border-box;
+    }
+
+    h1{
+        text-align: center;
+        font: 20px 'Oleo Script', Helvetica, sans-serif;
+    }
+    .exit{
+        width: 100%;
+        height: 20px;
+        display: grid;
+        grid-template-columns: 0.01fr;
+        justify-content: right;
+        box-sizing: border-box;
+    }
+
+    .exit img{
+        height: 20px;
+        cursor: pointer;
+    }
+
+    .container_for_content{
+        width: 100%;
+        height: 500px;
+        display: flex;
+        flex-direction: column-reverse;
+        /*justify-content: center;*/
+        /*border-style: solid;*/
+        box-sizing: border-box;
+    }
+
+    .left_content{
+        width: 100%;
+        box-sizing: border-box;
+        padding: 20px;
+        height: auto;
+        /*border-style: solid;*/
+    }
+
+    .left_content b{
+        font-size: 18px;
+    }
+    .left_content em{
+        color: green;
+    }
+
+    .container_of_photo{
+        width: 100%;
+        height: 400px;
+        /*border-style: solid;*/
+        box-sizing: border-box;
+    }
+
+    .for_button{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        /*padding-left: 40px;*/
+        height: 50px;
+        box-sizing: border-box;
+        /*margin-top: 30px;*/
+
+    }
+
+    .for_button button{
+        width: 200px;
+        height: 40px;
+        color: white;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+        font-size: 18px;
+        background-color: rgb(234, 64, 47);
+        border: none;
+        outline: none;
+        border-radius: 5px;
+    }
+    .for_button button:hover{
+        cursor: pointer;
+        /*margin-top: 1px;*/
+        border-radius: 8px;
+        background-color: #3A3838;
+    }
 }
 
-.container_for_content{
-    width: 100%;
-    height: 400px;
-    display: grid;
-    grid-template-columns: 300px 640px;
-    justify-content: center;
-    /*border-style: solid;*/
-    box-sizing: border-box;
+@media only screen and (min-width: 438px) and (max-width: 599px) {
+
+    .container{
+        width: 100%;
+        height: 100vh;
+        background: rgba(179, 231, 255, 0.3);
+        z-index: 1;
+        /*position: fixed;*/
+        position: fixed;
+        top: 0;
+        left: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;     /*Центрирование по вертикали */
+    }
+
+    .container_of_item{
+        width: 420px;
+        height: 90vh;
+        background-color: white;
+        border-radius: 5px;
+        box-sizing: border-box;
+        /*text-align: center;*/
+        /*align-items: center;*/
+        padding: 10px;
+        box-shadow: 0 14px 28px rgba(0,0,0,0.3), 0 10px 10px rgba(0,0,0,0.4);
+
+    }
+
+    .container_of_name_and_exit{
+        width: 100%;
+        height: 100px;
+        box-sizing: border-box;
+    }
+
+    h1{
+        text-align: center;
+        font: 20px 'Oleo Script', Helvetica, sans-serif;
+    }
+    .exit{
+        width: 100%;
+        height: 20px;
+        display: grid;
+        grid-template-columns: 0.01fr;
+        justify-content: right;
+        box-sizing: border-box;
+    }
+
+    .exit img{
+        height: 20px;
+        cursor: pointer;
+    }
+
+    .container_for_content{
+        width: 100%;
+        height: 500px;
+        display: flex;
+        flex-direction: column-reverse;
+        /*justify-content: center;*/
+        /*border-style: solid;*/
+        box-sizing: border-box;
+    }
+
+    .left_content{
+        width: 100%;
+        box-sizing: border-box;
+        padding: 20px;
+        height: auto;
+        /*border-style: solid;*/
+    }
+
+    .left_content b{
+        font-size: 18px;
+    }
+    .left_content em{
+        color: green;
+    }
+
+    .container_of_photo{
+        width: 100%;
+        height: 400px;
+        /*border-style: solid;*/
+        box-sizing: border-box;
+    }
+
+    .for_button{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        /*padding-left: 40px;*/
+        height: 50px;
+        box-sizing: border-box;
+        margin-top: 30px;
+
+    }
+
+    .for_button button{
+        width: 200px;
+        height: 40px;
+        color: white;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+        font-size: 18px;
+        background-color: rgb(234, 64, 47);
+        border: none;
+        outline: none;
+        border-radius: 5px;
+    }
+    .for_button button:hover{
+        cursor: pointer;
+        /*margin-top: 1px;*/
+        border-radius: 8px;
+        background-color: #3A3838;
+    }
 }
 
-.left_content{
-    width: 100%;
-    box-sizing: border-box;
-    padding: 20px;
-    height: auto;
-    /*border-style: solid;*/
+@media only screen and (min-width: 328px) and (max-width: 437px) {
+
+    .container{
+        width: 100%;
+        height: 100vh;
+        background: rgba(179, 231, 255, 0.3);
+        z-index: 1;
+        /*position: fixed;*/
+        position: fixed;
+        top: 0;
+        left: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;     /*Центрирование по вертикали */
+    }
+
+    .container_of_item{
+        width: 320px;
+        height: 90vh;
+        background-color: white;
+        border-radius: 5px;
+        box-sizing: border-box;
+        /*text-align: center;*/
+        /*align-items: center;*/
+        padding: 10px;
+        box-shadow: 0 14px 28px rgba(0,0,0,0.3), 0 10px 10px rgba(0,0,0,0.4);
+
+    }
+
+    .container_of_name_and_exit{
+        width: 100%;
+        height: 100px;
+        box-sizing: border-box;
+    }
+
+    h1{
+        text-align: center;
+        font: 20px 'Oleo Script', Helvetica, sans-serif;
+    }
+    .exit{
+        width: 100%;
+        height: 20px;
+        display: grid;
+        grid-template-columns: 0.01fr;
+        justify-content: right;
+        box-sizing: border-box;
+    }
+
+    .exit img{
+        height: 20px;
+        cursor: pointer;
+    }
+
+    .container_for_content{
+        width: 100%;
+        height: 500px;
+        display: flex;
+        flex-direction: column-reverse;
+        /*justify-content: center;*/
+        /*border-style: solid;*/
+        box-sizing: border-box;
+    }
+
+    .left_content{
+        width: 100%;
+        box-sizing: border-box;
+        /*padding: 20px;*/
+        height: auto;
+        margin-bottom: 30px;
+        /*border-style: solid;*/
+    }
+
+    .left_content b{
+        font-size: 18px;
+    }
+    .left_content em{
+        color: green;
+    }
+
+    .container_of_photo{
+        width: 100%;
+        height: 250px;
+        /*border-style: solid;*/
+        box-sizing: border-box;
+    }
+
+    .for_button{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        /*padding-left: 40px;*/
+        height: 50px;
+        box-sizing: border-box;
+        /*margin-top: 30px;*/
+
+    }
+
+    .for_button button{
+        width: 200px;
+        height: 40px;
+        color: white;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+        font-size: 18px;
+        background-color: rgb(234, 64, 47);
+        border: none;
+        outline: none;
+        border-radius: 5px;
+    }
+    .for_button button:hover{
+        cursor: pointer;
+        /*margin-top: 1px;*/
+        border-radius: 8px;
+        background-color: #3A3838;
+    }
 }
 
-.left_content b{
-    font-size: 18px;
-}
-.left_content em{
-    color: green;
+@media only screen and (max-width: 327px) {
+
+    .container{
+        width: 100%;
+        height: 100vh;
+        background: rgba(179, 231, 255, 0.3);
+        z-index: 1;
+        /*position: fixed;*/
+        position: fixed;
+        top: 0;
+        left: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;     /*Центрирование по вертикали */
+    }
+
+    .container_of_item{
+        width: 250px;
+        height: 90vh;
+        background-color: white;
+        border-radius: 5px;
+        box-sizing: border-box;
+        /*text-align: center;*/
+        /*align-items: center;*/
+        padding: 10px;
+        box-shadow: 0 14px 28px rgba(0,0,0,0.3), 0 10px 10px rgba(0,0,0,0.4);
+
+    }
+
+    .container_of_name_and_exit{
+        width: 100%;
+        height: 50px;
+        box-sizing: border-box;
+    }
+
+    h1{
+        text-align: center;
+        font: 20px 'Oleo Script', Helvetica, sans-serif;
+    }
+    .exit{
+        width: 100%;
+        height: 20px;
+        display: grid;
+        grid-template-columns: 0.01fr;
+        justify-content: right;
+        box-sizing: border-box;
+    }
+
+    .exit img{
+        height: 20px;
+        cursor: pointer;
+    }
+
+    .container_for_content{
+        width: 100%;
+        height: 500px;
+        display: flex;
+        flex-direction: column-reverse;
+        /*justify-content: center;*/
+        /*border-style: solid;*/
+        box-sizing: border-box;
+    }
+
+    .left_content{
+        width: 100%;
+        box-sizing: border-box;
+        /*padding: 20px;*/
+        height: auto;
+        /*border-style: solid;*/
+    }
+
+    .left_content b{
+        font-size: 18px;
+    }
+    .left_content em{
+        color: green;
+    }
+
+    .container_of_photo{
+        width: 100%;
+        height: 250px;
+        /*border-style: solid;*/
+        box-sizing: border-box;
+    }
+
+    .for_button{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        /*padding-left: 40px;*/
+        height: 50px;
+        box-sizing: border-box;
+        /*margin-top: 30px;*/
+
+    }
+
+    .for_button button{
+        width: 200px;
+        height: 40px;
+        color: white;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+        font-size: 18px;
+        background-color: rgb(234, 64, 47);
+        border: none;
+        outline: none;
+        border-radius: 5px;
+    }
+    .for_button button:hover{
+        cursor: pointer;
+        /*margin-top: 1px;*/
+        border-radius: 8px;
+        background-color: #3A3838;
+    }
 }
 
-.container_of_photo{
-    width: 100%;
-    height: 400px;
-    /*border-style: solid;*/
-    box-sizing: border-box;
-}
 
-.for_button{
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    padding-left: 40px;
-    height: 50px;
-    box-sizing: border-box;
-    margin-top: 30px;
 
-}
 
-.for_button button{
-    width: 200px;
-    height: 40px;
-    color: white;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
-    font-size: 18px;
-    background-color: rgb(234, 64, 47);
-    border: none;
-    outline: none;
-    border-radius: 5px;
-}
-.for_button button:hover{
-    cursor: pointer;
-    /*margin-top: 1px;*/
-    border-radius: 8px;
-    background-color: #3A3838;
-}
+

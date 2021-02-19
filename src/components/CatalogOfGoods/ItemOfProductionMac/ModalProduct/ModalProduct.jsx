@@ -6,10 +6,12 @@ const ModalProduct_Mac = (props) =>{
     return(
         <div className={Style.container}>
             <div className={Style.container_of_item}>
-                <div className={Style.exit}>
-                    <img src="https://img.icons8.com/ios/50/000000/cancel.png" onClick={()=>{props.setStatusOfItem(false)}}/>
+                <div className={Style.container_of_name_and_exit}>
+                    <div className={Style.exit}>
+                        <img src="https://img.icons8.com/ios/50/000000/cancel.png" onClick={()=>{props.setStatusOfItem(false)}}/>
+                    </div>
+                    <h1>{props.name}</h1>
                 </div>
-                <h1>{props.name}</h1>
                 <div className={Style.container_for_content}>
                     <div className={Style.left_content}>
                         <p><b>Price:</b> <em>{props.price + " ₴"}</em></p>
