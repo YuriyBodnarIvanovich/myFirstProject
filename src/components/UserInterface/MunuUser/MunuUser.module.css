@@ -1,0 +1,44 @@
+.container{
+    position: relative;
+    /*background-color: #050505;*/
+    width: 148px;
+    height: 100px;
+    margin-left: 20px;
+    margin-top: 5px;
+    z-index: 2;
+    box-sizing: border-box;
+
+    background-color:rgba(0, 0, 0, 0.2);
+    border-style: solid;
+    border-color: #3A3838;
+    border-radius: 5px;
+    border-width: 1px;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.3), 0 10px 10px rgba(0,0,0,0.4);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /*grid-gap: 1px;*/
+}
+
+.container:hover{
+    border-color: red;
+
+}
+
+.container p{
+    width: 100%;
+    height: 20px;
+    cursor: pointer;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-top: 4px;
+    color: white;
+
+
+}
+
+.container p:hover{
+    color: red;
+    background-color:rgba(0, 0, 0, 0.1);
+}

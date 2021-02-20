@@ -2,6 +2,7 @@ import React from "react";
 import MenuStyle from './Menu.module.css';
 import {NavLink} from 'react-router-dom';
 import {useDispatch, useSelector} from "react-redux";
+import UserInterface from "../UserInterface/UserInterface";
 
 
 const Menu = (props) =>{
@@ -52,7 +53,7 @@ const Menu = (props) =>{
                        <div className={MenuStyle.number_of_phone}>
                            <img src="https://img.icons8.com/android/24/000000/phone.png"/>
                            <p>+38 099 999 9999</p>
-                           <button onClick={()=>{props.setStatusOfInputBox(true)}}>Sing in</button>
+                           {data.userStatus ? <UserInterface/> :  <button onClick={()=>{props.setStatusOfInputBox(true)}}>Sing in</button> }
                        </div>
                     </div>
                 </div>

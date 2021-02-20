@@ -1,25 +1,25 @@
-import React from "react";
+import React,{useState} from "react";
 import SingUpStyle from './SingUp.module.css';
 import {useDispatch, useSelector} from "react-redux";
 import axios from "axios";
-import Style from "../../CatalogOfGoods/ItemOfProductIphone/ModalWindowOfProduct/IPhone/IphoneModal.module.css";
 
 const SingUp = (props) =>{
-    const data = useSelector(state=>state.ApplePage);
-    const dispatch = useDispatch();
+
+    const [userName,setUserName] = useState('');
+    const [userEmail,setUserEmail] = useState('');
+    const [userPassword,setUserPassword] = useState('');
 
     function sendData(){
         axios.post('http://localhost:3001/singUp', {
-            name: data.userName,
-            email:data.email,
-            password:data.password,
+            name: userName,
+            email:userEmail,
+            password:userPassword,
         })
             .then(function (response) {
                 console.log(response);
-                dispatch({type:'SHOW_SING_UP',status:false});
-                dispatch({type:'FILL_USER_NAME',userName:''});
-                dispatch({type:'FILL_EMAIL',email:''});
-                dispatch({type:'FILL_PASSWORD',password:''});
+                setUserName('');
+                setUserEmail('');
+                setUserPassword('');
             })
             .catch(function (error) {
                 console.log(error);
@@ -43,21 +43,15 @@ const SingUp = (props) =>{
             </div>
             <div className={SingUpStyle.inputField}>
                 <div className={SingUpStyle.containerInput}>
-                    <input id="username" placeholder={'Username'} value={data.userName}
-                           onChange={(event)=>{
-                            dispatch({type:'FILL_USER_NAME',userName:event.target.value})
-                    }}/>
-                    <input id="email" placeholder={'Email'} type="email" value={data.email}
-                           onChange={(event)=>{
-                            dispatch({type:'FILL_EMAIL',email:event.target.value})
-                    }}/>
-                    <input id="password" placeholder={'Password'} type="password" value={data.password}
-                           onChange={(event)=>{
-                            dispatch({type:'FILL_PASSWORD',password:event.target.value})
-                    }}/>
+                    <input id="username" placeholder={'Username'} value={userName}
+                           onChange={(event)=>{setUserName(event.target.value)}}/>
+                    <input id="email" placeholder={'Email'} type="email" value={userEmail}
+                           onChange={(event)=>{setUserEmail(event.target.value)}}/>
+                    <input id="password" placeholder={'Password'} type="password" value={userPassword}
+                           onChange={(event)=>{setUserPassword(event.target.value)}}/>
                 </div>
                 <div className={SingUpStyle.forSingUpButton}>
-                    <button className={SingUpStyle.btn} onClick={sendData}>Sing UP</button>
+                    <button onClick={sendData}>Sing UP</button>
                 </div>
                 <div className={SingUpStyle.showSingInContainer}>
                     <p onClick={()=>{props.setStatusOfBox(false)}}>

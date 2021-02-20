@@ -1,0 +1,18 @@
+.userButton button{
+    margin-top: 12px;
+    height: 21px;
+    border-color: #3A3838;
+    border-radius: 5px;
+    border-width: 1px;
+    width: 150px;
+    outline: none;
+    /*padding-bottom: 2px;*/
+    background-color:rgba(0, 0, 0, 0);
+    margin-left: 20px;
+}
+
+.userButton button:hover{
+    border-color: red;
+    color: red;
+    cursor: pointer;
+}

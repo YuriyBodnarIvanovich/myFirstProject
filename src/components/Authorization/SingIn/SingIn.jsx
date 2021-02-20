@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState} from "react";
 import SingInStyle from './SingIn.module.css'
 import {useDispatch, useSelector} from "react-redux";
 import axios from "axios";
@@ -7,20 +7,25 @@ const SingIn = (props)=>{
     const data = useSelector(state=>state.ApplePage);
     const dispatch = useDispatch();
 
+    const [userEmail,setEmail] = useState('');
+    const [userPassword,setUserPassword] = useState('');
+
+
     function check() {
         axios.post('http://localhost:3001/authorize', {
-            email:data.email,
-            password:data.password,
+            email:userEmail,
+            password:userPassword,
         })
             .then(function (response) {
                 console.log(response);
                 console.log(response.data.token.id_token);
                 localStorage.setItem('token', response.data.token.id_token);
-                dispatch({type:'SHOW_INPUT_BOX',status:false});
-                dispatch({type:'CHANGE_STATUS_OF_USER',userStatus:true});
+                props.setStatusOfInputBox(false);
+                dispatch({type:"CHANGE_STATUS_OF_USER",userStatus:true});
             })
             .catch(function (error) {
                 console.log(error);
+                alert(error);
             });
     }
 
@@ -41,17 +46,13 @@ const SingIn = (props)=>{
             </div>
             <div className={SingInStyle.inputField}>
                 <div className={SingInStyle.containerInput}>
-                    <input id="email" placeholder={'Email'} type="email" value={data.email}
-                           onChange={(event)=>{
-                               dispatch({type:'FILL_EMAIL',email:event.target.value})
-                           }}/>
-                    <input id="password" placeholder={'Password'} type="password" value={data.password}
-                           onChange={(event)=>{
-                               dispatch({type:'FILL_PASSWORD',password:event.target.value})
-                           }}/>
+                    <input id="email" placeholder={'Email'} type="email" value={userEmail}
+                           onChange={(event)=>{setEmail(event.target.value)}}/>
+                    <input id="password" placeholder={'Password'} type="password" value={userPassword}
+                           onChange={(event)=>{setUserPassword(event.target.value)}}/>
                 </div>
                 <div className={SingInStyle.forSingUpButton}>
-                    <button>Sing In</button>
+                    <button onClick={()=>{check()}}>Sing In</button>
                 </div>
                 <div className={SingInStyle.showSingInContainer}>
                     <p onClick={()=>{props.setStatusOfBox(true)}}>

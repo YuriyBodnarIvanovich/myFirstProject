@@ -33,9 +33,12 @@
 
     .add_information_container{
         width: 100%;
+        height: 30px;
+        box-sizing: border-box;
         min-width: 600px;
         display: grid;
         justify-content: right;
+
     }
 
     .add_information{
@@ -73,10 +76,13 @@
         width: 100%;
         display: grid;
         justify-content: right;
+        box-sizing: border-box;
 
     }
     .number_of_phone{
         display: flex;
+        box-sizing: border-box;
+        height: auto;
     }
     .number_of_phone p{
         font-family: Montserrat, sans-serif,sans-serif;
@@ -145,6 +151,8 @@
 
     .add_information_container{
         width: 100%;
+        height: 30px;
+        box-sizing: border-box;
         min-width: 600px;
         display: grid;
         justify-content: right;
@@ -250,6 +258,8 @@
 
     .add_information_container{
         width: 100%;
+        height: 30px;
+        box-sizing: border-box;
         min-width: 600px;
         display: grid;
         justify-content: right;
@@ -357,6 +367,8 @@
 
     .add_information_container{
         width: 400px;
+        height: 30px;
+        box-sizing: border-box;
         /*min-width: 600px;*/
         display: grid;
         justify-content: right;
@@ -470,6 +482,8 @@
 
     .add_information_container{
         width: 400px;
+        height: 30px;
+        box-sizing: border-box;
         /*min-width: 600px;*/
         display: grid;
         justify-content: right;
@@ -584,6 +598,8 @@
 
     .add_information_container{
         width: 100%;
+        height: 30px;
+        box-sizing: border-box;
         /*min-width: 600px;*/
         display: grid;
         justify-content: right;
@@ -700,6 +716,8 @@
 
     .add_information_container{
         width: 100%;
+        height: 30px;
+        box-sizing: border-box;
         /*min-width: 600px;*/
         display: grid;
         justify-content: right;

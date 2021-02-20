@@ -1,18 +1,42 @@
 import React, {useState} from "react";
 import Style from './IphoneModal.module.css';
 import ImgContent from "./ImgContent/ImgContent";
+import axios from "axios";
 
 const IphoneModal = (props) =>{
 
     const [indexOfColor,setIndexOfColor] = useState(0);
+    const [colorOfProduct, setColorOfProduct] = useState(props.photoData[0].color);
+
+    function setColor(color,index){
+        setColorOfProduct(color);
+        setIndexOfColor(index);
+        console.log('Colors:');
+        console.log(index + ",   " + color);
+    }
 
     const colorData = props.photoData.map((item,index)=>{
         return(
-            <div className={Style.color_item} style={{backgroundColor: `${item.color}`}} onClick={()=>setIndexOfColor(index)}>
+            <div className={Style.color_item} style={{backgroundColor: `${item.color}`}} onClick={()=>(setColor(item.color,index))}>
 
             </div>
         )
     })
+
+    function addToCart() {
+        axios.post('http://localhost:3001/addToCart', {
+            name:props.name,
+            color:colorOfProduct,
+            price:props.price,
+        }, {headers: {"Authorization" : `Bearer ${localStorage.getItem('token')}`}})
+            .then(function (response) {
+                console.log(response);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+
+    }
 
     return(
         <div className={Style.container}>
@@ -37,7 +61,7 @@ const IphoneModal = (props) =>{
                     </div>
                 </div>
                 <div className={Style.for_button}>
-                    <button>Buy</button>
+                    <button onClick={()=>{addToCart()}}>Buy</button>
                 </div>
             </div>
         </div>
