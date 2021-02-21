@@ -10,6 +10,7 @@ const INPUT_DATA_TO_ELEMENT = 'INPUT_DATA_TO_ELEMENT';
 const SHOW_NAME = 'SHOW_NAME';
 const CHANGE_NUMBER_OF_COLOR = 'CHANGE_NUMBER_OF_COLOR';
 const CHANGE_ACTIVE_COLOR = 'CHANGE_ACTIVE_COLOR';
+
 let initialData ={
     newElement: [
         {
@@ -25,14 +26,14 @@ let initialData ={
                     frontCamera: '',
                 },
             },
-            stateColorIphone7: '',
-            mainColor: '',
             status: true,
             photo:[
                 {
-                    color:'#000',
+                    color:'',
                     imgSrc:[
-                        {src:''},
+                        "",
+                        "",
+                        "",
                     ],
                 },
             ],
@@ -42,24 +43,18 @@ let initialData ={
         {
             color:'',
             imgSrc:[
-                {src:''},
+                "",
+                "",
+                "",
             ],
         },
     ],
 
     adminColorContainer:[
-        {
-            index:0,
-            status: false,
-            color: '',
-            photo:[
-                {
-                    value:'',
-                    status:false
-                },
-            ]
-        },
+
     ],
+
+
     numberOfColor:0,
     newItemOfColorContainer:{
         index:0,

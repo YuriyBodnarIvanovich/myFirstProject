@@ -18,6 +18,9 @@ const STATUS_OF_ROLE_USER = 'STATUS_OF_ROLE_USER';
 const STATUS_OF_ADMIN_PAGE = 'STATUS_OF_ADMIN_PAGE';
 
 
+const ADD_ADMIN_PRODUCT = "ADD_ADMIN_PRODUCT";
+
+
 const Date = {
     slideData:[
         {
@@ -33,6 +36,7 @@ const Date = {
             textOfButton:'Open'
         }
     ],
+    AdminProduct:[],
     Users:[],
     indexOfUsers: 0,
     indexOfSlide: 0,
@@ -156,6 +160,12 @@ const AppleReducer = (state = Date,action) =>{
             return{
                 ...state,
                 openAdminPage: action.status
+            }
+        }
+        case ADD_ADMIN_PRODUCT:{
+            return {
+                ...state,
+                AdminProduct:action.product
             }
         }
 
