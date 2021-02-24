@@ -18,12 +18,12 @@ const MenuUser = () =>{
 
     return(
         <div className={Style.container}>
-            <p>Info</p>
-            {data.roleOfAdmin ? <p onClick={()=>{setStatusOfAdmin(true)}}>Admin</p> : null}
-            {showAdmin ? <Admin setStatusOfAdmin={setStatusOfAdmin}/> : null}
-            <p onClick={()=>{setStatusOfCard(true)}}>Card</p>
+            <p className={Style.items}>Info</p>
+            {data.roleOfAdmin ? <p className={Style.items} onClick={()=>{setStatusOfAdmin(true)}}>Admin</p> : null}
+            {showAdmin ? <Admin className={Style.items} setStatusOfAdmin={setStatusOfAdmin}/> : null}
+            <p className={Style.items} onClick={()=>{setStatusOfCard(true)}}>Card</p>
             {showCard ? <Card setStatusOfCard={setStatusOfCard} /> : null}
-            <p onClick={()=>{exit()}}>Exit</p>
+            <p className={Style.items} onClick={()=>{exit()}}>Exit</p>
         </div>
     )
 }

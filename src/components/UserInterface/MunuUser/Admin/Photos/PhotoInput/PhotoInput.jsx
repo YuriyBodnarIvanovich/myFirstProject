@@ -17,6 +17,13 @@ const PhotoInput  = (props) =>{
         props.setStatusOfInput(false)
     }
 
+    function next(){
+        const newElement = JSON.parse(JSON.stringify(data.newElement));
+        newElement[0].photo.pop();
+        dispatch({type:"INPUT_DATA_TO_ELEMENT",newData:newElement});
+        props.setNextStatus(true)
+    }
+
     return(
      <div>
          <div className={Style.content}>
@@ -29,7 +36,7 @@ const PhotoInput  = (props) =>{
          </div>
          <div className={Style.next}>
              <button onClick={()=>{savePhoto()}}>Set Photos</button>
-             <button onClick={()=>{props.setNextStatus(true)}}>Next</button>
+             <button onClick={()=>{next()}}>Next</button>
          </div>
      </div>
     )

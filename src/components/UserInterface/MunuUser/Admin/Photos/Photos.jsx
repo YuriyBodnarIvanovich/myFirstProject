@@ -17,9 +17,10 @@ const Photos = () =>{
 
 
     if(nextStatus){
+
         return (
             <div>
-                <Demo/>
+                <Demo kindOfProduct={data.newElement[0].character.KindOfProduct}/>
             </div>
         )
     }else{
