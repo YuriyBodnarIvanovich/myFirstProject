@@ -11,12 +11,19 @@ const Admin = (props) =>{
 
     const [next,setStatusNext] = useState(false);
 
+    function setType(type){
+        const productType  = JSON.parse(JSON.stringify(data.newElement));
+        productType[0].character.KindOfProduct = type;
+        dispatch({type:"INPUT_DATA_TO_ELEMENT",newData:productType});
+        setStatusNext(true);
+    }
+
     const ChooseType = () =>{
         return(
             <div className={Style.choose_container}>
-                    <button onClick={()=>{setStatusNext(true)}}>Mac</button>
-                    <button onClick={()=>{setStatusNext(true)}}>Iphone</button>
-                    <button onClick={()=>{setStatusNext(true)}}>Watch Apple</button>
+                    <button onClick={()=>{setType('MAC')}}>Mac</button>
+                    <button onClick={()=>{setType('IPHONE')}}>Iphone</button>
+                    <button onClick={()=>{setType('WATCH')}}>Watch Apple</button>
             </div>
         )
     }
@@ -30,9 +37,8 @@ const Admin = (props) =>{
                         <img src="https://img.icons8.com/ios/50/000000/cancel.png" onClick={()=>{props.setStatusOfAdmin(false)}}/>
                     </div>
                 </div>
-                {/*{next ? <FillName/> : <ChooseType/> }*/}
-                {next ? <FillName/> : <Photos/> }
-
+                {next ? <FillName/> : <ChooseType/> }
+                {/*{next ? <FillName/> : <Photos/> }*/}
             </div>
         </div>
     )
