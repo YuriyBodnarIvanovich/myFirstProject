@@ -25,11 +25,12 @@ const Photos = () =>{
         )
     }else{
         if(inputPhotoStatus){
-            return(
-                <PhotoInput setStatusOfInput={setStatusOfInput} inputPhotoStatus={inputPhotoStatus}
-                            setIndexOfColor={setIndexOfColor} indexOfColor={indexOfColor}
-                            setNextStatus={setNextStatus}/>
-            )
+                return (
+                    <PhotoInput setStatusOfInput={setStatusOfInput} inputPhotoStatus={inputPhotoStatus}
+                                setIndexOfColor={setIndexOfColor} indexOfColor={indexOfColor}
+                                setNextStatus={setNextStatus}/>
+                )
+
         }else {
             return (
                 <ColorInput setStatusOfInput={setStatusOfInput} inputPhotoStatus={inputPhotoStatus}

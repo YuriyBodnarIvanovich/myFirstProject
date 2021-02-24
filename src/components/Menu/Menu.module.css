@@ -88,11 +88,11 @@
         font-family: Montserrat, sans-serif,sans-serif;
         color: #5B5A5A;
     }
-    .number_of_phone img{
-        /*width: 15px;*/
-        /*height: 15px;*/
-        /*margin-top: 16px;*/
-        /*margin-right: 4px;*/
+    .numberOfPhoneIMG{
+        width: 15px;
+        height: 15px;
+        margin-top: 16px;
+        margin-right: 4px;
     }
     .number_of_phone button{
         margin-top: 12px;

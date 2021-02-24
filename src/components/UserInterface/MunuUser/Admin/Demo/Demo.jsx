@@ -11,9 +11,9 @@ const Demo = (props) =>{
     const data = useSelector(state=>state.AdminPage);
     const dispatch = useDispatch();
 
-    const [statusOfItem, setStatusOfItem] = useState(false);
+    const [statusOfItem, setStatusOfItem] = useState(true);
 
-    if(props.kindOfProduct === 'IPHONE'){
+    if(data.newElement[0].character.KindOfProduct === 'IPHONE'){
         const CharactersIphoneData = () => {
             return(
                 <div className={Style.characters}>
@@ -36,15 +36,19 @@ const Demo = (props) =>{
         }
 
         return (
+            statusOfItem ?
             <div>
                 <IphoneModal
                     setStatusOfItem={setStatusOfItem}
                     CharactersIphoneData={<CharactersIphoneData/>}
-                    name={data.newElement[0].name} photoData={data.newElement[0].photo} price={data.newElement[0].price}/>
+                    name={data.newElement[0].name} photoData={data.newElement[0].photo} price={data.newElement[0].price}
+                    statusOfOpen={'admin'}/>
             </div>
+                :
+                <button>Restart</button>
 
         )
-    }else if(props.kindOfProduct === 'MAC'){
+    }else if(data.newElement[0].character.KindOfProduct === 'MAC'){
         return (
             <ModalProduct_Mac CharactersIphoneData={data.newElement[0].character}
                               photo={data.newElement[0].photo[0].imgSrc[0]}

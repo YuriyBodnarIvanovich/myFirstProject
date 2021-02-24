@@ -43,7 +43,8 @@ const ItemOfProductIphone = (props) =>{
                 <button onClick={()=>{setStatusOfItem(true)}}>Show More</button>
             </div>
             {statusOfItem ? <IphoneModal  setStatusOfItem={setStatusOfItem}
-                CharactersIphoneData={<CharactersIphoneData/>} name={props.name} photoData={props.photoData} price={props.price}/> : null}
+                CharactersIphoneData={<CharactersIphoneData/>} name={props.name} photoData={props.photoData} price={props.price}
+                    statusOfOpen={'goods'}/> : null}
         </div>
     )
 }

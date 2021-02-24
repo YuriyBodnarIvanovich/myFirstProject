@@ -51,7 +51,7 @@ const Menu = (props) =>{
                     </div>
                     <div className={MenuStyle.number_of_phone_container}>
                        <div className={MenuStyle.number_of_phone}>
-                           <img src="https://img.icons8.com/android/24/000000/phone.png"/>
+                           <img  className={MenuStyle.numberOfPhoneIMG} src="https://img.icons8.com/android/24/000000/phone.png"/>
                            <p>+38 099 999 9999</p>
                            {data.userStatus ? <UserInterface/> :  <button onClick={()=>{props.setStatusOfInputBox(true)}}>Sing in</button> }
                        </div>

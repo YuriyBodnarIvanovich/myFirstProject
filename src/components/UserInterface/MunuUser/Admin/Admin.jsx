@@ -3,6 +3,7 @@ import Style from './Admin.module.css';
 import {useDispatch, useSelector} from "react-redux";
 import FillName from "./FillName/FillName";
 import Photos from "./Photos/Photos";
+import Demo from "./Demo/Demo";
 
 const Admin = (props) =>{
 
@@ -37,7 +38,8 @@ const Admin = (props) =>{
                         <img src="https://img.icons8.com/ios/50/000000/cancel.png" onClick={()=>{props.setStatusOfAdmin(false)}}/>
                     </div>
                 </div>
-                {next ? <FillName/> : <ChooseType/> }
+                {/*{next ? <FillName/> : <ChooseType/> }*/}
+                {next ? <FillName/> : <Demo/> }
                 {/*{next ? <FillName/> : <Photos/> }*/}
             </div>
         </div>

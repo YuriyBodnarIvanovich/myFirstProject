@@ -38,6 +38,10 @@ const IphoneModal = (props) =>{
 
     }
 
+    function addItem(){
+
+    }
+
     return(
         <div className={Style.container}>
             <div className={Style.container_of_item}>
@@ -61,7 +65,11 @@ const IphoneModal = (props) =>{
                     </div>
                 </div>
                 <div className={Style.for_button}>
-                    <button onClick={()=>{addToCart()}}>Buy</button>
+                    {
+                        props.statusOfOpen === 'goods' ?  <button onClick={()=>{addToCart()}}>Buy</button>
+                            :
+                            <button>Add Item</button>
+                    }
                 </div>
             </div>
         </div>
