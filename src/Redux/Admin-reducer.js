@@ -14,65 +14,60 @@ const CHANGE_ACTIVE_COLOR = 'CHANGE_ACTIVE_COLOR';
 let initialData ={
     newElement: [
         {
-            name: 'Apple iPhone 12 Pro 128GB Pacific', price: 38999,
+            name: '', price: 0,
             character: {
-                screen:'6.1', processor: '',
-                RAM: '', internalMemory: '128', remainder: '',
+                screen:'', processor: '',
+                RAM: '', internalMemory: '', remainder: '',
                 SSD:'', videoCard:'', WorkingTime:'',
-                Bluetooth:'',Notifications:'', OperationSystem:'IOS',
-                KindOfProduct:'IPHONE',
+                Bluetooth:'',Notifications:'', OperationSystem:'',
+                KindOfProduct:'',
                 camera:{
-                    basicCamera: '12',
-                    frontCamera: '12',
+                    basicCamera: '',
+                    frontCamera: '',
                 },
             },
             status: true,
             photo:[
                 {
-                    color:'blue',
+                    color:'',
                     imgSrc:[
-                        "https://i8.rozetka.ua/goods/20300979/apple_iphone_12_pro_128gb_pacific_blue_images_20300979916.jpg",
-                        "https://i2.rozetka.ua/goods/20300978/apple_iphone_12_pro_128gb_pacific_blue_images_20300978761.jpg",
-                        "https://i8.rozetka.ua/goods/20300981/apple_iphone_12_pro_128gb_pacific_blue_images_20300981916.jpg",
-                    ],
-                },
-                {
-                    color:'black',
-                    imgSrc:[
-                        "https://i8.rozetka.ua/goods/20301173/apple_iphone_12_pro_128gb_graphite_images_20301173591.jpg",
-                        "https://i8.rozetka.ua/goods/20301172/apple_iphone_12_pro_128gb_graphite_images_20301172036.jpg",
-                        "https://i2.rozetka.ua/goods/20301175/apple_iphone_12_pro_128gb_graphite_images_20301175851.jpg",
+                        "",
+                        "",
+                        "",
                     ],
                 },
             ],
         },
-
-        // {
-        //     name: '', price: 0,
-        //     character: {
-        //         screen:'', processor: '',
-        //         RAM: '', internalMemory: '', remainder: '',
-        //         SSD:'', videoCard:'', WorkingTime:'',
-        //         Bluetooth:'',Notifications:'', OperationSystem:'',
-        //         KindOfProduct:'',
-        //         camera:{
-        //             basicCamera: '',
-        //             frontCamera: '',
-        //         },
-        //     },
-        //     status: true,
-        //     photo:[
-        //         {
-        //             color:'',
-        //             imgSrc:[
-        //                 "hello",
-        //                 "",
-        //                 "",
-        //             ],
-        //         },
-        //     ],
-        // },
     ],
+
+    emptyElement:[
+        {
+            name: '', price: 0,
+            character: {
+                screen:'', processor: '',
+                RAM: '', internalMemory: '', remainder: '',
+                SSD:'', videoCard:'', WorkingTime:'',
+                Bluetooth:'',Notifications:'', OperationSystem:'',
+                KindOfProduct:'',
+                camera:{
+                    basicCamera: '',
+                    frontCamera: '',
+                },
+            },
+            status: true,
+            photo:[
+                {
+                    color:'',
+                    imgSrc:[
+                        "",
+                        "",
+                        "",
+                    ],
+                },
+            ],
+        },
+    ],
+
     photo:[//new element for color array in element of array iphone
         {
             color:'',

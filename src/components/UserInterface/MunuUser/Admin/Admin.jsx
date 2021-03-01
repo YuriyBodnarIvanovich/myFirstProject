@@ -1,33 +1,31 @@
 import React, {useState} from "react";
 import Style from './Admin.module.css';
 import {useDispatch, useSelector} from "react-redux";
-import FillName from "./FillName/FillName";
-import Photos from "./Photos/Photos";
-import Demo from "./Demo/Demo";
+import FillName from "./AddProduct/FillName/FillName";
+import Photos from "./AddProduct/Photos/Photos";
+import Demo from "./AddProduct/Demo/Demo";
+import ChooseType from "./AddProduct/ChooseType/ChooseType";
+import CatalogOfProduct from "./DeleteProduct/CatalogOfProduct/CatalogOfProduct";
 
 const Admin = (props) =>{
 
     const data = useSelector(state=>state.AdminPage);
     const dispatch = useDispatch();
 
-    const [next,setStatusNext] = useState(false);
 
-    function setType(type){
-        const productType  = JSON.parse(JSON.stringify(data.newElement));
-        productType[0].character.KindOfProduct = type;
-        dispatch({type:"INPUT_DATA_TO_ELEMENT",newData:productType});
-        setStatusNext(true);
+    const [addProduct, addProductStatusSet] = useState(false);
+    const [deleteProduct, deleteProductStatusSet] = useState(false);
+
+    function add_Product(){
+        document.getElementById("chooseFunc").style.display = "none";
+        addProductStatusSet(true);
     }
 
-    const ChooseType = () =>{
-        return(
-            <div className={Style.choose_container}>
-                    <button onClick={()=>{setType('MAC')}}>Mac</button>
-                    <button onClick={()=>{setType('IPHONE')}}>Iphone</button>
-                    <button onClick={()=>{setType('WATCH')}}>Watch Apple</button>
-            </div>
-        )
+    function delete_Product(){
+        document.getElementById("chooseFunc").style.display = "none";
+        deleteProductStatusSet(true);
     }
+
 
 
     return(
@@ -38,9 +36,14 @@ const Admin = (props) =>{
                         <img src="https://img.icons8.com/ios/50/000000/cancel.png" onClick={()=>{props.setStatusOfAdmin(false)}}/>
                     </div>
                 </div>
-                {/*{next ? <FillName/> : <ChooseType/> }*/}
-                {next ? <FillName/> : <Demo/> }
-                {/*{next ? <FillName/> : <Photos/> }*/}
+                <div id={"chooseFunc"} className={Style.center}>
+                    <div className={Style.container_for_button}>
+                        <button onClick={()=>{add_Product()}}>Add Product</button>
+                        <button onClick={()=>{delete_Product()}}>Delete Product</button>
+                    </div>
+                </div>
+                {addProduct ? <ChooseType  data={data} dispatch={dispatch}/> : null }
+                {deleteProduct ? <CatalogOfProduct/> : null}
             </div>
         </div>
     )

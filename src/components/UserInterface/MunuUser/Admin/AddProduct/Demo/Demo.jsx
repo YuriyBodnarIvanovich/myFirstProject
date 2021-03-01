@@ -1,9 +1,9 @@
 import React, {useState} from "react";
 import Style from './Demo.module.css';
 import {useDispatch, useSelector} from "react-redux";
-import ItemOfProductIphone from "../../../../CatalogOfGoods/ItemOfProductIphone/ItemOfProductIphone";
-import ModalProduct_Mac from "../../../../CatalogOfGoods/ItemOfProductionMac/ModalProduct/ModalProduct";
-import IphoneModal from "../../../../CatalogOfGoods/ItemOfProductIphone/ModalWindowOfProduct/IPhone/IphoneModal";
+import ItemOfProductIphone from "../../../../../CatalogOfGoods/ItemOfProductIphone/ItemOfProductIphone";
+import ModalProduct_Mac from "../../../../../CatalogOfGoods/ItemOfProductionMac/ModalProduct/ModalProduct";
+import IphoneModal from "../../../../../CatalogOfGoods/ItemOfProductIphone/ModalWindowOfProduct/IPhone/IphoneModal";
 
 
 const Demo = (props) =>{
@@ -41,6 +41,7 @@ const Demo = (props) =>{
                 <IphoneModal
                     setStatusOfItem={setStatusOfItem}
                     CharactersIphoneData={<CharactersIphoneData/>}
+                    itemData={data.newElement[0]}
                     name={data.newElement[0].name} photoData={data.newElement[0].photo} price={data.newElement[0].price}
                     statusOfOpen={'admin'}/>
             </div>

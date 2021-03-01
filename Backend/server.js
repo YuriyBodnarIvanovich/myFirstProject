@@ -141,126 +141,278 @@ app.use(passport.session());
 
 
 app.post('/AddItemToBD', async function (request,response){
-    const charactersFields =    [request.body.item.character.screen,request.body.item.character.processor,
-                                request.body.item.character.RAM,request.body.item.character.internalMemory,
-                                request.body.item.character.remainder,request.body.item.character.SSD,
-                                request.body.item.character.videoCard,request.body.item.character.WorkingTime,
-                                request.body.item.character.Bluetooth,request.body.item.character.Notifications,
-                                request.body.item.character.OperationSystem, request.body.item.character.camera.basicCamera,
-                                request.body.item.character.camera.frontCamera];
 
-    const dataOfCharacters = "INSERT INTO characters(screen,processor,RAM,InternalMemory,remainder,SSD," +
-            " videoCard,WorkingTime,Bluetooth,Notifications,OperationSystem,BasicCamera,FrontCamera) " +
-            " VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)";
+    let idCharacters;
+    let idPrice;
+    // console.log(request.body.item);
+
+    const charactersFields =  [request.body.item.character.camera.basicCamera,request.body.item.character.Bluetooth,
+        request.body.item.character.camera.frontCamera,request.body.item.character.internalMemory,
+        request.body.item.character.KindOfProduct,request.body.item.character.Notifications,
+        request.body.item.character.OperationSystem,request.body.item.character.processor,
+        request.body.item.character.RAM,request.body.item.character.remainder,
+        request.body.item.character.screen, request.body.item.character.camera.SSD,
+        request.body.item.character.camera.videoCard, request.body.item.character.camera.WorkingTime];
+
+    const dataOfCharacters = "INSERT INTO characters(BasicCamera,Bluetooth,FrontCamera,InternalMemory,\n" +
+        "                      KindOfProduct,Notifications,OperationSystem,processor,RAM,remainder,screen,SSD" +
+        ",videoCard,WorkingTime) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
     connectionBD.promisePool.query( dataOfCharacters,charactersFields,function (err,result) {
         if(err){
             console.log(err);
         }
+        console.log("Characters is good!");
+    });
+    connectionBD.promisePool.query("SELECT idcharacters FROM characters" +
+        " WHERE idcharacters=(SELECT max(idcharacters) FROM characters);\n",async function (err,result){
+        await addItemToProduct(result[0].idcharacters, 'idcharacters');
     });
 
+    const insertIntoPrices = "INSERT INTO prices(Price) VALUES(?)";
 
-    const priceProductSql = "INSERT INTO prices(Price) VALUES("+ request.body.item.price +")";
-    connectionBD.promisePool.query(priceProductSql,function (err,result){
-        if(err) console.log(err);
-        else console.log("price done");
-    });
-
-    let idCharacters;
-    let idPrice;
-    const idPriceSQL = "SELECT idPrice FROM prices  \n" +
-        "ORDER BY idPrice DESC  \n" +
-        "LIMIT 1;";
-    const idCharactersSql = "SELECT idcharacters FROM characters  \n" +
-        "ORDER BY idcharacters DESC  \n" +
-        "LIMIT 1;";
-    connectionBD.promisePool.query(idCharactersSql,function (err,result){
+    connectionBD.promisePool.query(insertIntoPrices,[request.body.item.price],function (err,result){
         if(err){
             console.log(err);
-        }else {
-            console.log(result[0].idcharacters);
         }
+        console.log("Price is good!");
     });
 
-    connectionBD.promisePool.query(idCharactersSql,function (err,result){
-        if(err) console.log(err);
-        else{
-            addData(result[0].idcharacters,'idCharacters');
-            console.log(result);
-            console.log(result[0]);
-        }
+    connectionBD.promisePool.query("SELECT idPrice FROM prices" +
+        " WHERE idPrice=(SELECT max(idPrice) FROM prices);\n",async function (err,result){
+        await addItemToProduct(result[0].idPrice, 'idPrice');
     });
 
-    connectionBD.promisePool.query(idPriceSQL,function (err,result){
-        if(err) console.log(err);
-        else addData(result[0].idPrice,'idPrice');
-    });
 
-    const addData = (data,kindOfData) =>{
-        if(kindOfData==='idCharacters'){
-            idCharacters = data;
-        }else if(kindOfData==='idPrice') {
-            idPrice = data;
+
+
+
+
+    function addItemToProduct(value,kindOfField){
+        if(kindOfField === 'idcharacters'){
+            idCharacters = value
         }
+        else if(kindOfField === 'idPrice'){
+            idPrice = value
+        }
+
+        // console.log("id Characters: " + idCharacters);
+        // console.log("id Price: " + idPrice);
+
         if(idCharacters !==undefined && idPrice !==undefined){
-            console.log('idCharacters ' + idCharacters +  'idPrice ' + idPrice );
-            const fieldCart = [idCharacters,idPrice,request.body.item.name];
-            const sql = "INSERT INTO products(idCharacters,idPrice,name) VALUES(?,?,?)"
-            connectionBD.promisePool.query( sql,fieldCart,function (err,result) {
-                if(err) console.log(err);
-                else console.log("Products add done!");
-            });
+            const dataInsetIntoProducts = "INSERT INTO products(name,idPrice, idCharacters) VALUES(?, ?, ?)"
+
+            connectionBD.promisePool.query(dataInsetIntoProducts,[request.body.item.name, idPrice, idCharacters],
+                function (err,result){
+                    if(err){
+                        console.log(err)
+                    }
+                    console.log(result)
+                }
+            )
+         }
+        console.log("Inset Into products");
+
+    }
+
+
+
+    let lengthOfColor = request.body.item.photo.length;
+    let lengthOfPhoto = 0;
+    // console.log("length Color: " + lengthOfColor)
+
+    for(let i = 0; i<request.body.item.photo.length;i++){
+        lengthOfPhoto+= request.body.item.photo[i].imgSrc.length
+    }
+
+    // console.log("lenght Photo: " + lengthOfPhoto);
+
+
+    for(let i = 0;i<lengthOfColor;i++){
+        // console.log("color:")
+        // console.log(request.body.item.photo[i].color);
+        connectionBD.promisePool.query(`INSERT INTO colorOfPhoto(color) VALUES(?)`,[request.body.item.photo[i].color],
+            function (err,result){
+                if(err){
+                    console.log(err);
+                }
+            }
+        );
+    }
+
+
+    for(let i = 0;i<lengthOfColor;i++){
+        // console.log("color index: " + i);
+        // console.log("color: " +  request.body.item.photo[i].color);
+        const lengthOfPhotoColor = request.body.item.photo[i].imgSrc.length;
+        for(let y = 0;y < lengthOfPhotoColor;y++){
+            // console.log("photo index: " + y);
+            // console.log("color: " +  request.body.item.photo[i].imgSrc[y]);
+           await connectionBD.promisePool.query(`INSERT INTO catalogOfPhoto(srcOfPhoto) VALUES(?)`,[request.body.item.photo[i].imgSrc[y]],
+                function (err,result){
+                    if(err){
+                        console.log(err);
+                    }
+                }
+            );
         }
-    };
+    }
 
-    const elementOfColors = request.body.item.photo.filter((item)=>{
-        return item.color !=='';
-    }).map((item)=>{
-        return item.color;
-    })
 
-    const colorAddSql = "INSERT INTO colorOfPhoto(color) VALUES(?)";
-    elementOfColors.map((item)=>{
-        connectionBD.promisePool.query(colorAddSql,item,function (err,result){
-            if(err) console.log(err);
-            else console.log(result);
-        });
+    connectionBD.promisePool.query("SELECT idProduct FROM products" +
+        " WHERE idProduct=(SELECT max(idProduct) FROM products);\n",async function (err,result){
+        console.log("--------------------------------------------------")
+        console.log(result[0].idProduct);
+        await setDataPhoto(result[0].idProduct, 'idProduct');
     });
-    console.log("Colors" + elementOfColors.length + ",  " + elementOfColors);
 
-    //////!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    let idColors = [];
+    let idProduct;
+    async function setDataPhoto(value,kindOfField){
 
-    const getIdColorsSql = "SELECT idColorOfPhoto FROM colorOfPhoto  \n" +
-        "ORDER BY idColorOfPhoto DESC  \n" +
-        "LIMIT "+ elementOfColors.length +";"
+        if(kindOfField === 'idProduct'){
+            idProduct = value;
+        }
 
-    connectionBD.promisePool.query(getIdColorsSql,function (err,result){
-        console.log("Colors:");
-        console.log(result);
-    });
-    //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        console.log("idProductr")
+        console.log("idProduct: " + idProduct);
+
+        const arrOfIdPhoto = [];//фото які потрібно засунути в таблицю photos
+
+        for(let i = 0;i<lengthOfColor;i++){
+            const lengthOfPhotoColor = request.body.item.photo[i].imgSrc.length;
+            for(let y = 0;y < lengthOfPhotoColor;y++){
+                console.log('Src From: ' + request.body.item.photo[i].imgSrc[y])
+                const resultPhoto = await connectionBD.promisePool.query(`SELECT idSrcOfPhoto, srcOfPhoto FROM catalogOfPhoto
+                WHERE srcOfPhoto = '${request.body.item.photo[i].imgSrc[y]}' `);
+
+                console.log("idPhoto from BD: " + JSON.stringify(resultPhoto[0][0].idSrcOfPhoto) );
+                arrOfIdPhoto.push(resultPhoto[0][0].idSrcOfPhoto);
+            }
+        }
+
+        console.log(arrOfIdPhoto);
 
 
-    const elementsOfPhoto = request.body.item.photo.map((item)=>{
-        return item.imgSrc.filter((item)=>{
-            return item.src !=='';
-        }).map((itemSrs)=>{
-            return itemSrs.src;
-        });
-    });
-    elementsOfPhoto.splice(-1,1);
-    console.log("Photos: ");
-    console.log(elementsOfPhoto);
+        for(let i = 0; i < arrOfIdPhoto.length;i++){
+            for(let j = 0; j< request.body.item.photo.length;j++){
+                for(let y = 0; y < request.body.item.photo[j].imgSrc.length; y++){
+                    const resultSrcOfPhoto = await connectionBD.promisePool.query(`SELECT idSrcOfPhoto, srcOfPhoto
+                           FROM catalogOfPhoto WHERE idSrcOfPhoto = '${arrOfIdPhoto[i]}' `);
+                    if(resultSrcOfPhoto[0][0].srcOfPhoto === request.body.item.photo[j].imgSrc[y]){
+                        console.log(request.body.item.photo[j].color);
+                        const resultColor = await connectionBD.promisePool.query(`SELECT idColorOfPhoto, color FROM colorOfPhoto
+                        WHERE color = '${request.body.item.photo[j].color}' `);
+
+                        connectionBD.promisePool.query(`INSERT INTO photo(idProduct,idColorOfPhoto,idSrcOfPhoto) VALUES(?,?,?)`,
+                            [idProduct,resultColor[0][0].idColorOfPhoto, arrOfIdPhoto[i]],function (err,result){
+                                if(err){
+                                    console.log(err);
+                                }
+                            });
+
+                    }
+                }
+            }
+        }
+    }
+
+});
+
+app.post('/deleteProduct',passport.authenticate('jwt',{session:false}),async (req,res)=>{
+   await connectionBD.promisePool.query(`SELECT idProduct, name, idPrice, idCharacters FROM products 
+                                    WHERE name = '${req.body.name}'`,
+        function (err,result) {
+            deleteProduct(result[0], 'idUser')
+        }
+    )
 
 
-    const photoAddSql = "INSERT INTO photo(FirstPhoto, SecondPhoto, ThirdPhoto, idProduct, idColorOfPhoto) " +
-        "VALUES(?,?,?,?,?,)";
-    elementsOfPhoto.map((item)=>{
-        // connectionBD.promisePool.query()
-    });
+
+    async function deleteProduct(value){
+        await connectionBD.promisePool.query(`DELETE FROM products WHERE idProduct = '${value.idProduct}'`,
+            function (err,result) {
+               if(err){
+                   console.log(err)
+               }
+            }
+        );
+
+        await connectionBD.promisePool.query(`DELETE FROM prices WHERE idcharacters = '${value.idcharacters}'`,
+            function (err,result) {
+                if(err){
+                    console.log(err)
+                }
+            }
+        );
+
+        await connectionBD.promisePool.query(`DELETE FROM characters WHERE idPrice = '${value.idPrice}'`,
+            function (err,result) {
+                if(err){
+                    console.log(err)
+                }
+            }
+        );
+
+        await connectionBD.promisePool.query(`SELECT idPhoto, idProduct, idSrcOfPhoto, idColorOfPhoto FROM photo 
+                                                WHERE idProduct = '${value.idProduct}'`,
+            function (err,result) {
+                deletePhoto(result[0]);
+            }
+        );
+
+    }
+
+    async function deletePhoto(value){
+        await connectionBD.promisePool.query(`DELETE FROM photo WHERE idProduct = '${value.idProduct}'`,
+            function (err,result) {
+                if(err){
+                    console.log(err)
+                }
+            }
+        );
+
+        await connectionBD.promisePool.query(`DELETE FROM catalogOfPhoto WHERE idSrcOfPhoto = '${value.idSrcOfPhoto}'`,
+            function (err,result) {
+                if(err){
+                    console.log(err)
+                }
+            }
+        );
+
+
+
+    }
+
+
+
+
+
+
+
+
+
+
+
 
 
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 app.post('/addToCart',passport.authenticate('jwt', { session: false }), (req, res) => {
     let idUser;

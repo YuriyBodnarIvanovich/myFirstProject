@@ -1,0 +1,22 @@
+.choose_container{
+    width: 100%;
+    height: 600px;
+    color: #050505;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.choose_container button{
+    width: 250px;
+    height: 50px;
+    background: rgba(255, 255, 255, 0);
+    font-size: 24px;
+}
+
+
+.choose_container button:hover{
+    background: linear-gradient(90deg, rgba(255,255,255,0.4) 50%, rgba(87,84,88,0.1) 100%, rgba(252,252,252,0.1) 100%, rgba(28,27,26,0.1) 100%);
+}

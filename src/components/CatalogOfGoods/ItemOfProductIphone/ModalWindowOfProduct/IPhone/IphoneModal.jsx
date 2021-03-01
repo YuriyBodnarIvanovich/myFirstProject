@@ -2,11 +2,14 @@ import React, {useState} from "react";
 import Style from './IphoneModal.module.css';
 import ImgContent from "./ImgContent/ImgContent";
 import axios from "axios";
+import {useDispatch, useSelector} from "react-redux";
 
 const IphoneModal = (props) =>{
 
     const [indexOfColor,setIndexOfColor] = useState(0);
     const [colorOfProduct, setColorOfProduct] = useState(props.photoData[0].color);
+    const data = useSelector(state=>state.AdminPage);
+    const dispatch = useDispatch();
 
     function setColor(color,index){
         setColorOfProduct(color);
@@ -31,6 +34,7 @@ const IphoneModal = (props) =>{
         }, {headers: {"Authorization" : `Bearer ${localStorage.getItem('token')}`}})
             .then(function (response) {
                 console.log(response);
+                dispatch({type:"INPUT_DATA_TO_ELEMENT",newData:data.emptyElement});
             })
             .catch(function (error) {
                 console.log(error);
@@ -39,7 +43,16 @@ const IphoneModal = (props) =>{
     }
 
     function addItem(){
+        axios.post('http://localhost:3001/AddItemToBD', {
+            item: props.itemData
+        }, {headers: {"Authorization" : `Bearer ${localStorage.getItem('token')}`}})
+            .then(function (response) {
+                console.log(response);
 
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
     }
 
     return(
@@ -68,7 +81,7 @@ const IphoneModal = (props) =>{
                     {
                         props.statusOfOpen === 'goods' ?  <button onClick={()=>{addToCart()}}>Buy</button>
                             :
-                            <button>Add Item</button>
+                            <button onClick={()=>{addItem()}}>Add Item</button>
                     }
                 </div>
             </div>
