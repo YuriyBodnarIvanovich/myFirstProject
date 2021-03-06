@@ -33,7 +33,7 @@ async function openIphone(){
     });
     const resultOfColor = await connectionBD.promisePool.query("SELECT idProduct, color FROM colorOfPhoto " +
         "INNER JOIN photo USING(idColorOfPhoto) GROUP BY idProduct, color\n");
-    console.log(resultOfColor[0])
+    // console.log(resultOfColor[0])
 
     iPhoneArr.forEach(function (item,index) {
         item.photo =   resultOfColor[0].filter(el=>el.idProduct === item.id).map((result)=>{
@@ -53,7 +53,7 @@ async function openIphone(){
         "          USING(idSrcOfPhoto)\n" +
         "ORDER BY idProduct" );
 
-    console.log(resultOfPhoto[0]);
+    // console.log(resultOfPhoto[0]);
 
     iPhoneArr.forEach(function (item,index) {
         item.photo.map((itemPhoto)=>{
@@ -67,7 +67,7 @@ async function openIphone(){
         })
 
     });
-    console.log(iPhoneArr);
+    // console.log(iPhoneArr);
     return iPhoneArr
 }
 
