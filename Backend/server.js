@@ -211,7 +211,6 @@ app.post('/AddItemToBD', async function (request,response){
         connectionBD.promisePool.query(`SELECT idColorOfPhoto, color FROM colorOfPhoto WHERE color = '${color}'`,//check or exist this color in Bd
             function (err,result){
                 if(result.length === 0){
-                    console.log("Empty");
                     connectionBD.promisePool.query(`INSERT INTO colorOfPhoto(color) VALUES('${color}')`,//add color to BD
                         function (errColor,resultColor){
                             setPhoto(resultColor.insertId,indexOfColor)//send color to photo
@@ -248,112 +247,64 @@ app.post('/deleteProduct',passport.authenticate('jwt',{session:false}),async (re
     connectionBD.promisePool.query(`SELECT idProduct, name, idPrice, idCharacters FROM products
                                     WHERE name = '${req.body.name}'`,
         function (err,result) {
-            console.log(result)
-            deleteProduct(result[0], 'idUser')
+            deleteProduct(result[0]);//get data about product
             res.json({message: "Success!"});
         }
     )
 
+    function deleteProduct(value) {
 
-
-    async function deleteProduct(value){
-
-       console.log(" idProduct: " + value.idProduct);
-       console.log("  name: " + value.name);
-       console.log("  idPrice: " + value.idPrice);
-       console.log(" idCharacters: " + value.idCharacters);
-
-       connectionBD.promisePool.query(`DELETE FROM products WHERE idProduct = '${value.idProduct}'`,
-            function (err,result) {
-               if(err){
-                   console.log(err)
-               }
-            }
-        );
-
-       connectionBD.promisePool.query(`DELETE FROM characters WHERE idcharacters = '${value.idCharacters}'`,
-            function (err,result) {
+        connectionBD.promisePool.query(`SELECT idPhoto, idProduct, idSrcOfPhoto, idColorOfPhoto 
+                                        FROM photo 
+                                        WHERE idProduct = ${value.idProduct}`,//get data id of photo
+            function (err,resultPhoto){
                 if(err){
-                    console.log(err)
+                    console.log(err);
                 }
-            }
-        );
-
-       connectionBD.promisePool.query(`DELETE FROM prices WHERE idPrice = '${value.idPrice}'`,
-            function (err,result) {
-                if(err){
-                    console.log(err)
-                }
-            }
-        );
-
-        connectionBD.promisePool.query(`SELECT idPhoto, idProduct, idSrcOfPhoto, idColorOfPhoto FROM photo
-                                                WHERE idProduct = '${value.idProduct}'`,
-            function (err,result) {
-                console.log('hello');
-                console.log(result[0]);
-                deletePhoto(result[0]);
-            }
-        );
-
-    }
-
-   async function deletePhoto(value) {
-
-        connectionBD.promisePool.query(`SELECT COUNT(*) AS amount FROM photo WHERE idProduct = ${value.idProduct}`, function (err, result) {
-            for (let i = 0; i < result[0].amount; i++){
-                connectionBD.promisePool.query(`DELETE FROM photo WHERE idProduct = ${value.idProduct}`,function (err,result){
-                    console.log("done")
+                resultPhoto.forEach((item)=>{//delete photo src
+                   connectionBD.promisePool.query(`DELETE FROM catalogOfPhoto WHERE idSrcOfPhoto = ${item.idSrcOfPhoto}`,
+                       function (err,resultDeleteOfCatalog){
+                            if(err){
+                                console.log(err);
+                            }
+                       }
+                   )
+                });
+                resultPhoto.forEach((item)=>{//delete photo
+                    connectionBD.promisePool.query(`DELETE FROM photo WHERE idProduct = ${item.idProduct}`,
+                        function (err,resultDeleteOfCatalog){
+                            if(err){
+                                console.log(err);
+                            }
+                        }
+                    )
                 });
             }
-        });
 
-        // connectionBD.promisePool.query(`SELECT idSrcOfPhoto, idProduct FROM photo WHERE idProduct = ${value.idProduct}`,
-        //     function (err, result) {
-        //         console.log("idSrcOfPhoto------------------")
-        //         console.log(result[0][0].idSrcOfPhoto);
-        //     }
-        // );
-
-        const resultPhoto = await connectionBD.promisePool.query(`SELECT idSrcOfPhoto, idProduct FROM photo WHERE idProduct = ${value.idProduct}`);
-        console.log("1)")
-        console.log(resultPhoto);
-        console.log("2)")
-        console.log(resultPhoto[0]);
-        console.log("length:")
-        console.log(resultPhoto[0].length)
-        console.log("3)")
-        console.log(resultPhoto[0][0].idSrcOfPhoto);
-
-        for (let i = 0; i < resultPhoto[0].length;i++){
-            connectionBD.promisePool.query(`DELETE FROM catalogOfPhoto WHERE idSrcOfPhoto = '${resultPhoto[0][i].idSrcOfPhoto}'`,
-                function (err,result) {
-                    if(err){
-                        console.log(err)
-                    }
+        );
+        connectionBD.promisePool.query(`DELETE FROM characters WHERE idcharacters = ${value.idCharacters}`,
+            function (err,result){
+                if(err){
+                    console.log(err);
                 }
-            );
-        }
+            }
+        );
+        connectionBD.promisePool.query(`DELETE FROM prices WHERE idPrice = ${value.idPrice}`,
+            function (err,result){
+                if(err){
+                    console.log(err);
+                }
+            }
+        );
+        connectionBD.promisePool.query(`DELETE FROM products WHERE idProduct = ${value.idProduct}`,
+            function (err,result){
+                if(err){
+                    console.log(err);
+                }
+            }
+        );
     }
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 app.post('/addToCart',passport.authenticate('jwt', { session: false }), (req, res) => {
     let idUser;
