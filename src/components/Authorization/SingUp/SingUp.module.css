@@ -10,6 +10,13 @@
     box-shadow: 0 14px 28px rgba(0,0,0,0.3), 0 10px 10px rgba(0,0,0,0.4);
 }
 
+.errorMessage{
+    color: red;
+    /*font-size: 14px;*/
+    margin: 0;
+    padding-left: 10px;
+}
+
 .logo{
     background-image: url('https://www.iphones.ru/wp-content/uploads/2019/04/iOS-stock-15-for-iPhone-X-768x1663.jpg');
     background-position: center;

@@ -37,7 +37,20 @@ app.post('/singUp',(req,res)=>{
 
     auth0.database.signUp(data, function (err, userData) {
         if (err) {
+            console.log("Auth error");
+            console.log("________________________________________________________________________________________________________________________________");
             console.log(err);
+            console.log(err.originalError.response.body.error);
+            // let error = new Error(err.originalError.response.body.error);
+            // error.error = err;
+            // error.error_code = "sample_machine_readable_code"
+            //
+            // return error;
+            return res.status(400).json({
+                message: 'Bad',
+                textErr:err.originalError.response.body.error
+            });
+
         }
         else{
             connectionBD.promisePool.query("SELECT COUNT(*) AS Number\n" +
@@ -110,9 +123,10 @@ app.post('/authorize',(req,res)=>{
         realm: 'Username-Password-Authentication', // Optional field.
     };
     auth0.oauth.passwordGrant(data,async function (err, userData) {
-
         if (err) {
-            console.log(err);
+            return res.status(err.statusCode).json({
+                err: err.originalError.response.text
+            });
         }
         else{
             const Users = await dataBD.openUsers(req.body.email);

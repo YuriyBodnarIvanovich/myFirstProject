@@ -8,6 +8,8 @@ const SingUp = (props) =>{
     const [userName,setUserName] = useState('');
     const [userEmail,setUserEmail] = useState('');
     const [userPassword,setUserPassword] = useState('');
+    const [errorMessageData, setDataOfError]  = useState('');
+    const [errorMessage, setStatusOfError]  = useState(false);
 
     function sendData(){
         axios.post('http://localhost:3001/singUp', {
@@ -22,8 +24,16 @@ const SingUp = (props) =>{
                 setUserPassword('');
             })
             .catch(function (error) {
+                console.log("From server!!!!")
                 console.log(error);
-                alert('err');
+                if(error.response.data.textErr !==undefined){
+                    console.log(error.response.data.textErr);
+                    setDataOfError(error.response.data.textErr);
+                }else {
+                    console.log(error.response.data);
+                    setDataOfError("The password is weak");
+                }
+                setStatusOfError(true);
             });
     }
     return(
@@ -49,6 +59,7 @@ const SingUp = (props) =>{
                            onChange={(event)=>{setUserEmail(event.target.value)}}/>
                     <input id="password" placeholder={'Password'} type="password" value={userPassword}
                            onChange={(event)=>{setUserPassword(event.target.value)}}/>
+                    {errorMessage ? <p className={SingUpStyle.errorMessage} style={{fontSize:"14px"}}>{errorMessageData}</p> : null}
                 </div>
                 <div className={SingUpStyle.forSingUpButton}>
                     <button onClick={sendData}>Sing UP</button>

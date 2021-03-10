@@ -9,6 +9,7 @@ const SingIn = (props)=>{
 
     const [userEmail,setEmail] = useState('');
     const [userPassword,setUserPassword] = useState('');
+    const [errorMessage, setStatusOfError] = useState(false)
 
 
     function check() {
@@ -24,8 +25,8 @@ const SingIn = (props)=>{
                 dispatch({type:"CHANGE_STATUS_OF_USER",userStatus:true});
             })
             .catch(function (error) {
+                setStatusOfError(true)
                 console.log(error);
-                alert(error);
             });
     }
 
@@ -50,6 +51,7 @@ const SingIn = (props)=>{
                            onChange={(event)=>{setEmail(event.target.value)}}/>
                     <input id="password" placeholder={'Password'} type="password" value={userPassword}
                            onChange={(event)=>{setUserPassword(event.target.value)}}/>
+                    {errorMessage ? <p className={SingInStyle.errorMessage} style={{fontSize:"14px"}}>Bad password or email</p> : null}
                 </div>
                 <div className={SingInStyle.forSingUpButton}>
                     <button onClick={()=>{check()}}>Sing In</button>
