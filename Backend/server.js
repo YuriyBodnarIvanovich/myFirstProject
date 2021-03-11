@@ -35,7 +35,7 @@ app.post('/singUp',(req,res)=>{
         connection: 'Username-Password-Authentication' // Optional field.
     };
 
-    auth0.database.signUp(data, function (err, userData) {
+    auth0.database.signUp(data,  (err, userData) => {
         if (err) {
             return res.status(400).json({
                 message: 'Bad',
@@ -43,18 +43,15 @@ app.post('/singUp',(req,res)=>{
             });
         }
         else{
-            connectionBD.promisePool.query("SELECT COUNT(*) AS Number\n" +
-                "FROM nameOfUser",function (err,result) {
-                addData(result[0].Number+1,'idNameOfUser');
-            });
-            connectionBD.promisePool.query("SELECT COUNT(*) AS Number\n" +
-                "FROM email",function(err,result){
-                addData(result[0].Number+1,'idEmail')
-            });
-            connectionBD.promisePool.query("SELECT COUNT(*) AS Number\n" +
-                "FROM avatarPhoto",function(err,result){
-                addData(result[0].Number+1,'idAvatarPhoto')
-            });
+            connectionBD.promisePool.query("SELECT COUNT(*) AS Number FROM nameOfUser",
+                (err,result) => addData(result[0].Number+1,'idNameOfUser')
+            );
+            connectionBD.promisePool.query("SELECT COUNT(*) AS Number FROM email",
+                (err,result) => addData(result[0].Number+1,'idEmail')
+            );
+            connectionBD.promisePool.query("SELECT COUNT(*) AS Number FROM avatarPhoto",
+                (err,result) => addData(result[0].Number+1,'idAvatarPhoto')
+            );
             let idNameOfUser;
             let idEmail;
             let idAvatarPhoto;
@@ -64,40 +61,44 @@ app.post('/singUp',(req,res)=>{
                     idNameOfUser = data;
                     const fieldName = [idNameOfUser,req.body.name]
                     const sql = "INSERT INTO nameOfUser(idnameOfUser,name) VALUES(?,?)"
-                    connectionBD.promisePool.query(sql,fieldName,function (err,result) {
-                        if(err) console.log(err);
-                        else console.log("Данные добавлены");
-                    })
+                    connectionBD.promisePool.query(sql,fieldName,
+                        (err,result) => {
+                            if(err) console.log(err);
+                        }
+                    );
                 }
                 else if(kindOfData==='idEmail'){
                     idEmail =data;
                     const fieldName = [idEmail,req.body.email]
                     const sql = "INSERT INTO email(idemail,email) VALUES(?,?)"
-                    connectionBD.promisePool.query(sql,fieldName,function (err,result) {
-                        if(err) console.log(err);
-                        else console.log("Данные добавлены");
-                    })
+                    connectionBD.promisePool.query(sql,fieldName,
+                        (err,result) => {
+                            if(err) console.log(err);
+                        }
+                    );
                 }
                 else{
                     idAvatarPhoto = data;
                     const fieldName = [idAvatarPhoto,req.body.avatarPhoto]
                     const sql = "INSERT INTO avatarPhoto(idavatarPhoto,avatarPhotoUser) VALUES(?,?)"
-                    connectionBD.promisePool.query(sql,fieldName,function (err,result) {
-                        if(err) console.log(err);
-                        else console.log("Данные добавлены");
-                    })
+                    connectionBD.promisePool.query(sql,fieldName,
+                        (err,result) => {
+                            if(err) console.log(err);
+                        }
+                    );
                 }
 
                 if(idNameOfUser !== undefined && idEmail !== undefined  && idAvatarPhoto !== undefined && userData._id !== undefined){
                     const fieldUser = [idNameOfUser,idEmail,idAvatarPhoto,userData._id]
                     const sql = "INSERT INTO users(idnameOfUser,idemail,idavatarPhoto,subOfAuth0) VALUES(?,?,?,?)"
-                    connectionBD.promisePool.query(sql,fieldUser,function (err,result) {
-                        if(err) console.log(err);
-                        else console.log("Users Данные добавлены");
-                        return res.status(200).json({
-                            message: 'Good'
-                        });
-                    })
+                    connectionBD.promisePool.query(sql,fieldUser,
+                        (err,result) => {
+                            if(err) console.log(err);
+                            return res.status(200).json({
+                                message: 'Good'
+                            });
+                        }
+                    );
                 }
             }
         }
@@ -123,7 +124,6 @@ app.post('/authorize',(req,res)=>{
             console.log('UserData: ' + JSON.stringify(Users));
             for(let user of Users){
                 if(req.body.email === user.email){
-                    console.log('UserData: ' + JSON.stringify(Users));
                     return res.status(200).json({
                         token: userData,
                         Users: Users
@@ -136,7 +136,6 @@ app.post('/authorize',(req,res)=>{
 
 app.post('/checkJWT',passport.authenticate('jwt', { session: false }), async (req,res)=>{
     const Users = await dataBD.openUsers(req.user.userData.email);
-    console.log('UserData: ' + JSON.stringify(Users));
     res.json({message: "Success!",userData:Users});
 });
 
@@ -169,16 +168,12 @@ app.post('/AddItemToBD', async function (request,response){
                               );`;
     connectionBD.promisePool.query( dataOfCharacters,function (err,result) {//write characters to BD
         addItemToProduct(result.insertId,'idcharacters');//get characters id
-        if(err){
-            console.log(err);
-        }
+        if(err) console.log(err);
     });
 
     connectionBD.promisePool.query(`INSERT INTO prices (Price) VALUES (${request.body.item.price});`,function (err,result){//write price to BD
         addItemToProduct(result.insertId,'idPrice');// get price id
-        if(err){
-            console.log(err);
-        }
+        if(err) console.log(err);
     });
 
 
@@ -192,19 +187,17 @@ app.post('/AddItemToBD', async function (request,response){
         if(idCharacters !==undefined && idPrice !==undefined){//write product to BD
             connectionBD.promisePool.query(`INSERT INTO products(name,idPrice, idCharacters)
                                             VALUES('${request.body.item.name}', '${idPrice}', '${idCharacters}')`,
-                function (err,result){
-                    if(err){
-                        console.log(err)
-                    }
+                (err,result) => {
+                    if(err) console.log(err);
                     setDataPhoto(result.insertId);
                 }
-            )
+            );
          }
     }
 
     let idProduct;
 
-    async function setDataPhoto(value){
+    function setDataPhoto(value){
         idProduct = value;
         request.body.item.photo.forEach((item,index)=>{
             setColor(item.color,index);//set color from front-end
@@ -213,10 +206,10 @@ app.post('/AddItemToBD', async function (request,response){
 
     function setColor(color,indexOfColor){
         connectionBD.promisePool.query(`SELECT idColorOfPhoto, color FROM colorOfPhoto WHERE color = '${color}'`,//check or exist this color in Bd
-            function (err,result){
+            (err,result) => {
                 if(result.length === 0){
                     connectionBD.promisePool.query(`INSERT INTO colorOfPhoto(color) VALUES('${color}')`,//add color to BD
-                        function (errColor,resultColor){
+                        (errColor,resultColor) => {
                             setPhoto(resultColor.insertId,indexOfColor)//send color to photo
                         }
                     )
@@ -230,17 +223,13 @@ app.post('/AddItemToBD', async function (request,response){
     function setPhoto(idColorOfBD, indexOfPhoto){
         request.body.item.photo[indexOfPhoto].imgSrc.forEach((item)=>{
            connectionBD.promisePool.query(`INSERT INTO catalogOfPhoto(srcOfPhoto) VALUES('${item}')`,function (err,resultPhoto){
-               if(err){
-                   console.log(err)
-               }
+               if(err)  console.log(err);
                 connectionBD.promisePool.query(`INSERT INTO photo(idProduct,idColorOfPhoto,idSrcOfPhoto) 
                 VALUES(${idProduct},${idColorOfBD},${resultPhoto.insertId})`,
-                    function (err,result){
-                        if(err){
-                            console.log(err)
-                        }
+                    (err,result) =>{
+                        if(err) console.log(err);
                     }
-                )
+                );
            });
         });
     }
@@ -250,7 +239,7 @@ app.post('/AddItemToBD', async function (request,response){
 app.post('/deleteProduct',passport.authenticate('jwt',{session:false}),async (req,res)=>{
     connectionBD.promisePool.query(`SELECT idProduct, name, idPrice, idCharacters FROM products
                                     WHERE name = '${req.body.name}'`,
-        function (err,result) {
+        (err,result) => {
             deleteProduct(result[0]);//get data about product
             res.json({message: "Success!"});
         }
@@ -262,49 +251,37 @@ app.post('/deleteProduct',passport.authenticate('jwt',{session:false}),async (re
                                         FROM photo 
                                         WHERE idProduct = ${value.idProduct}`,//get data id of photo
             function (err,resultPhoto){
-                if(err){
-                    console.log(err);
-                }
+                if(err)  console.log(err);
                 resultPhoto.forEach((item)=>{//delete photo src
                    connectionBD.promisePool.query(`DELETE FROM catalogOfPhoto WHERE idSrcOfPhoto = ${item.idSrcOfPhoto}`,
-                       function (err,resultDeleteOfCatalog){
-                            if(err){
-                                console.log(err);
-                            }
+                       (err,resultDeleteOfCatalog) => {
+                            if(err) console.log(err);
                        }
-                   )
+                   );
                 });
                 resultPhoto.forEach((item)=>{//delete photo
                     connectionBD.promisePool.query(`DELETE FROM photo WHERE idProduct = ${item.idProduct}`,
-                        function (err,resultDeleteOfCatalog){
-                            if(err){
-                                console.log(err);
-                            }
+                        (err,resultDeleteOfCatalog) => {
+                            if(err) console.log(err);
                         }
-                    )
+                    );
                 });
             }
 
         );
         connectionBD.promisePool.query(`DELETE FROM characters WHERE idcharacters = ${value.idCharacters}`,
-            function (err,result){
-                if(err){
-                    console.log(err);
-                }
+            (err,result) => {
+                if(err) console.log(err);
             }
         );
         connectionBD.promisePool.query(`DELETE FROM prices WHERE idPrice = ${value.idPrice}`,
-            function (err,result){
-                if(err){
-                    console.log(err);
-                }
-            }
+             (err,result) => {
+                 if(err) console.log(err);
+             }
         );
         connectionBD.promisePool.query(`DELETE FROM products WHERE idProduct = ${value.idProduct}`,
-            function (err,result){
-                if(err){
-                    console.log(err);
-                }
+            (err,result) => {
+                if(err) console.log(err);
             }
         );
     }
@@ -315,30 +292,23 @@ app.post('/addToCart',passport.authenticate('jwt', { session: false }), (req, re
     let idProduct;
     let idColor;
     let idCart;
-    connectionBD.promisePool.query("SELECT idusers\n" +
-       "FROM users\n" +
-       "INNER join email\n" +
-       "\tUSING(idemail)\n" +
-       "WHERE email = '"+req.user.userData.email +"'",function (err,result) {
-       addData(result[0].idusers,'idUser');
-   });
+    connectionBD.promisePool.query(`SELECT idusers FROM users INNER join email USING(idemail)
+                                    WHERE email = ${req.user.userData.email}`,
+        (err,result) => addData(result[0].idusers,'idUser')
+    );
 
-    connectionBD.promisePool.query("SELECT idProduct\n" +
-        "FROM products\n" +
-        "WHERE name = '"+ req.body.name +"'",function (err, result) {
-        addData( result[0].idProduct,'idProduct');
-    });
+    connectionBD.promisePool.query(`SELECT idProduct FROM products WHERE name = ${req.body.name}`,
+        (err, result) => addData( result[0].idProduct,'idProduct')
+    );
 
-    connectionBD.promisePool.query("SELECT idColorOfPhoto\n" +
-        "FROM colorOfPhoto\n" +
-        "WHERE color = '"+ req.body.color+"'",function (err,result) {
-        addData(result[0].idColorOfPhoto,'idColor');
-    });
+    connectionBD.promisePool.query(`SELECT idColorOfPhoto FROM colorOfPhoto WHERE color = ${req.body.color} `,
+        (err,result) => addData(result[0].idColorOfPhoto,'idColor')
+    );
 
-    connectionBD.promisePool.query("SELECT COUNT(*) AS Number \n" +
-        "FROM cart",function (err,result) {
-        addData(result[0].Number,'idCart');
-    });
+    connectionBD.promisePool.query("SELECT COUNT(*) AS Number FROM cart",
+        (err,result) => addData(result[0].Number,'idCart')
+    );
+
     res.json({message: "Success!"});
     function addData(data,kindData) {
         if(kindData==='idUser'){
@@ -354,35 +324,33 @@ app.post('/addToCart',passport.authenticate('jwt', { session: false }), (req, re
             console.log('idUser ' + idUser +  'idProduct ' + idProduct + 'idColor ' + idColor + 'idCart' + idCart );
             const fieldCart = [idCart,idProduct,idColor,idUser]
             const sql = "INSERT INTO cart( idcart, idProduct, idColorOfPhoto, idusers) VALUES(?,?,?,?)"
-            connectionBD.promisePool.query( sql,fieldCart,function (err,result) {
-                if(err) console.log(err);
-                else console.log("Данные добавлены");
-            });
+            connectionBD.promisePool.query( sql,fieldCart,
+                (err,result) => {if(err) console.log(err)}
+            );
         }
     }
 });
 
 app.post('/deleteFromCard',passport.authenticate('jwt', { session: false }),(req,res)=>{
-    connectionBD.promisePool.query(`DELETE FROM cart WHERE idcart = ${req.body.idCard}`,function (err,result){
-        if(err){
-            console.log(err);
-        }else {
-            res.json({message: "Success!"});
+    connectionBD.promisePool.query(`DELETE FROM cart WHERE idcart = ${req.body.idCard}`,
+        (err,result) => {
+            if(err){
+                console.log(err);
+            }else {
+                res.json({message: "Success!"});
+            }
         }
-    });
+    );
 });
 
-app.get('/mac',async function(request,response){
+app.get('/mac',async (request,response)=>{
     const arr =  await dataBD.openMac();
-    console.log("Mac object!")
-    console.log(arr);
     response.send(arr);
 });
 
-app.get('/iPhone', async function(request,response){
+app.get('/iPhone', async (request,response)=>{
     const arr = await dataBD.openIphone();
     response.send(arr);
-    console.log('iPhones Opens!!!')
 });
 
 
