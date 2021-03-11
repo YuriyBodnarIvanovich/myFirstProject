@@ -46,8 +46,8 @@ function App() {
         }
         useEffect(() => {
             const timer = setTimeout(() => {
-                setTimeout(checkJWT(), 1000);
-            }, 1000);
+                setTimeout(checkJWT(), 0);
+            }, 0);
             return () => clearTimeout(timer);
         }, []);
 
@@ -67,24 +67,12 @@ function App() {
                     <Menu setStatusOfInputBox={setStatusOfInputBox}/>
                     {showInputBox ? <AuthBox showInputBox={showInputBox} setStatusOfInputBox={setStatusOfInputBox}/> : null}
                     <div className={"page"}>
-                        {/*<Route path='/Mac'*/}
-                        {/*       render={ () => <Mac />} />*/}
                         <Route exact path='/'
                                render={ () => <Apple />} />
                         <Route exact path='/CatalogOfGoods'
                                render={ () => <CatalogOfGoods />} />
                         <Route exact path='/Contact'
                                render={ () => <Contact />} />
-                        {/*<Route path='/IPhone'*/}
-                        {/*       render={ () =><Iphone />} />*/}
-                        {/*{*/}
-                        {/*    data.openAdminPage ?*/}
-                        {/*        <Route path='/Admin'*/}
-                        {/*               render={ () => <Admin/>} />*/}
-                        {/*               :*/}
-                        {/*        <div> </div>*/}
-                        {/*}*/}
-
                     </div>
                     {
                         data.showRightCart ?

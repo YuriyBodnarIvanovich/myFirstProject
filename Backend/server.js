@@ -37,20 +37,10 @@ app.post('/singUp',(req,res)=>{
 
     auth0.database.signUp(data, function (err, userData) {
         if (err) {
-            console.log("Auth error");
-            console.log("________________________________________________________________________________________________________________________________");
-            console.log(err);
-            console.log(err.originalError.response.body.error);
-            // let error = new Error(err.originalError.response.body.error);
-            // error.error = err;
-            // error.error_code = "sample_machine_readable_code"
-            //
-            // return error;
             return res.status(400).json({
                 message: 'Bad',
                 textErr:err.originalError.response.body.error
             });
-
         }
         else{
             connectionBD.promisePool.query("SELECT COUNT(*) AS Number\n" +
@@ -370,6 +360,16 @@ app.post('/addToCart',passport.authenticate('jwt', { session: false }), (req, re
             });
         }
     }
+});
+
+app.post('/deleteFromCard',passport.authenticate('jwt', { session: false }),(req,res)=>{
+    connectionBD.promisePool.query(`DELETE FROM cart WHERE idcart = ${req.body.idCard}`,function (err,result){
+        if(err){
+            console.log(err);
+        }else {
+            res.json({message: "Success!"});
+        }
+    });
 });
 
 app.get('/mac',async function(request,response){

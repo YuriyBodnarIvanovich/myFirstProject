@@ -151,6 +151,7 @@ async function openUsers(idAuth){
         item.CartList = resultCart[0].filter((element) =>
         {return item.idUser === element.idusers}).map((p) => {
             return {
+                idCard: p.idcart,
                 name: p.ProductName,
                 price: p.Price,
                 color: p.color

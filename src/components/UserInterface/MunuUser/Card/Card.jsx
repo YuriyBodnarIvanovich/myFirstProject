@@ -1,6 +1,7 @@
-import React from "react";
+import React, {useEffect} from "react";
 import Style from './Card.module.css';
 import {useDispatch, useSelector} from "react-redux";
+import axios from "axios";
 
 
 const Card = (props) =>{
@@ -10,6 +11,25 @@ const Card = (props) =>{
 
 
     const catalog = data.Users[0].CartList.map((item,index)=>{
+        function deleteItem(){
+            console.log(item.idCard);
+            axios.post('http://localhost:3001/deleteFromCard', {
+                idCard: item.idCard
+            }, {headers: {"Authorization" : `Bearer ${localStorage.getItem('token')}`}})
+                .then(function (response) {
+                    console.log(response);
+                    let upDateUser = JSON.parse(JSON.stringify(data.Users));
+                    upDateUser[0].CartList =  data.Users[0].CartList.filter((itemCard)=>itemCard.idCard !== item.idCard).map(itemCard=>{
+                        return itemCard;
+                    });
+                    dispatch({type:"CHANGE_ARRAY_OF_USERS",array:upDateUser});
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+
+        }
+
         return(
             <tr>
                 <td style={{width:"40px"}}>{index + 1}</td>
@@ -19,6 +39,11 @@ const Card = (props) =>{
                     <div style={{backgroundColor:`${item.color}`, width:'14px',height:'14px',
                         borderRadius:"5px"}}/>
                 </td>
+                <td><img className={Style.delete_button} style={{marginLeft:"13px"}}
+                         src="https://img.icons8.com/officel/40/000000/delete-sign.png"
+                        onClick={deleteItem}/></td>
+                <td><img className={Style.delete_button}
+                         src="https://img.icons8.com/color/48/000000/checked-radio-button--v1.png"/></td>
             </tr>
         )
     })
@@ -39,6 +64,8 @@ const Card = (props) =>{
                                 <th className={Style.name}>Name</th>
                                 <th className={Style.price}>Price</th>
                                 <th className={Style.color}>Color</th>
+                                <th>Delete</th>
+                                <th>Buy</th>
                             </tr>
                             </thead>
                         </table>

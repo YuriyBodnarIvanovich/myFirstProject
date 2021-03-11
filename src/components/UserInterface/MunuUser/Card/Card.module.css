@@ -84,10 +84,16 @@ table{
     overflow-x:auto;
     margin-top: 0px;
 }
+
+.delete_button{
+    width: 25px;
+    height: 25px;
+}
+
 th{
     padding: 20px 15px;
     text-align: left;
-    font-weight: 500;
+    /*font-weight: 500;*/
     font-size: 15px;
     color: #fff;
     text-transform: uppercase;
@@ -96,7 +102,7 @@ td{
     padding: 15px;
     text-align: left;
     vertical-align:middle;
-    font-weight: 300;
+    /*font-weight: 300;*/
     font-size: 14px;
     color: #fff;
     border-bottom: solid 1px rgba(255,255,255,0.2);
@@ -109,7 +115,7 @@ tr:hover{
 
 
 .name{
-    /*width: 100px;*/
+    width: 180px;
 }
 .price{
     /*width: 40px;*/
