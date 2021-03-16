@@ -1,9 +1,6 @@
 import React, {useState} from "react";
 import Style from './Admin.module.css';
 import {useDispatch, useSelector} from "react-redux";
-import FillName from "./AddProduct/FillName/FillName";
-import Photos from "./AddProduct/Photos/Photos";
-import Demo from "./AddProduct/Demo/Demo";
 import ChooseType from "./AddProduct/ChooseType/ChooseType";
 import CatalogOfProduct from "./DeleteProduct/CatalogOfProduct/CatalogOfProduct";
 

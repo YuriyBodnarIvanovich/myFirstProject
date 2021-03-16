@@ -1,7 +1,6 @@
 import React, {useState} from "react";
 import Style from './Demo.module.css';
 import {useDispatch, useSelector} from "react-redux";
-import ItemOfProductIphone from "../../../../../CatalogOfGoods/ItemOfProductIphone/ItemOfProductIphone";
 import ModalProduct_Mac from "../../../../../CatalogOfGoods/ItemOfProductionMac/ModalProduct/ModalProduct";
 import IphoneModal from "../../../../../CatalogOfGoods/ItemOfProductIphone/ModalWindowOfProduct/IPhone/IphoneModal";
 
@@ -49,23 +48,18 @@ const Demo = (props) =>{
                 <button>Restart</button>
 
         )
-    }else if(data.newElement[0].character.KindOfProduct === 'MAC'){
+    }
+    else if(data.newElement[0].character.KindOfProduct === 'MAC'){
         return (
             <ModalProduct_Mac CharactersIphoneData={data.newElement[0].character}
                               photo={data.newElement[0].photo[0].imgSrc[0]}
                               price={data.newElement[0].price} catalogOfPhoto={data.newElement[0].photo}/>
         )
-    }else {
+    }
+    else {
         return <h1>Sorry</h1>
     }
 
-
-    // return(
-    //     <div>
-    //         <h1>Demo</h1>
-    //         <button onClick={()=>{console.log(data.newElement[0])}}>Show info</button>
-    //     </div>
-    // )
 }
 
 export default Demo;

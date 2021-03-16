@@ -37,6 +37,7 @@ let initialData ={
                     ],
                 },
             ],
+            idAuthor:0
         },
     ],
 
@@ -65,6 +66,7 @@ let initialData ={
                     ],
                 },
             ],
+            idAuthor:0,
         },
     ],
 

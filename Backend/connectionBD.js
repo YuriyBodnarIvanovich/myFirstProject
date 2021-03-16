@@ -3,7 +3,7 @@ const connectionBD = require("./connectionToHost");
 async function openIphone(){
 
     let iPhoneArr = [];
-    const result  =  await connectionBD.promisePool.query("SELECT idProduct, name, price, kindOfProduct, screen, processor, RAM, InternalMemory, OperationSystem, remainder, BasicCamera, FrontCamera\n" +
+    const result  =  await connectionBD.promisePool.query("SELECT idProduct, name, price, idAuthor, kindOfProduct, screen, processor, RAM, InternalMemory, OperationSystem, remainder, BasicCamera, FrontCamera\n" +
         "\tFROM products \n" +
         "\t\tINNER JOIN prices \n" +
         "        \tUSING(idPrice) \n" +
@@ -18,6 +18,7 @@ async function openIphone(){
         return {
             id: p.idProduct,
             name: p.name, price: p.price,
+            idAuthor:p.idAuthor,
             character: {
                 screen: p.screen, processor: p.processor,
                 RAM: p.RAM, internalMemory: p.InternalMemory,
@@ -73,7 +74,7 @@ async function openIphone(){
 
 async function openMac(){
     let macArray = [];
-    const result = await connectionBD.promisePool.query("SELECT idProduct, name, price, kindOfProduct, screen, processor, RAM, remainder, SSD, videoCard\n" +
+    const result = await connectionBD.promisePool.query("SELECT idProduct, name, price,idAuthor, kindOfProduct, screen, processor, RAM, remainder, SSD, videoCard\n" +
         "FROM products\n" +
         "     INNER JOIN prices\n" +
         "        USING(idPrice)\n" +
@@ -84,6 +85,7 @@ async function openMac(){
     macArray = result[0].filter((p)=>{return p.kindOfProduct === 'MAC'}).map((p,index)=>{
         return{
             id: p.idProduct, name:p.name, price: p.price,
+            idAuthor:p.idAuthor,
             photo:[],
             characters:{
                 screen: p.screen, processor:p.processor,

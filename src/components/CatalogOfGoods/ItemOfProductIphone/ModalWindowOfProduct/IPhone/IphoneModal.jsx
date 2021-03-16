@@ -9,6 +9,7 @@ const IphoneModal = (props) =>{
     const [indexOfColor,setIndexOfColor] = useState(0);
     const [colorOfProduct, setColorOfProduct] = useState(props.photoData[0].color);
     const data = useSelector(state=>state.AdminPage);
+    const dataUser = useSelector(state=>state.ApplePage);
     const dispatch = useDispatch();
 
     function setColor(color,index){
@@ -44,7 +45,8 @@ const IphoneModal = (props) =>{
 
     function addItem(){
         axios.post('http://localhost:3001/AddItemToBD', {
-            item: props.itemData
+            item: props.itemData,
+            author:dataUser.Users[0].idUser
         }, {headers: {"Authorization" : `Bearer ${localStorage.getItem('token')}`}})
             .then(function (response) {
                 console.log(response);
