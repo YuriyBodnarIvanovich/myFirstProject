@@ -37,6 +37,7 @@ app.post('/singUp',(req,res)=>{
 
     auth0.database.signUp(data, function (err, userData) {
         if (err) {
+            console.log(err);
             return res.status(400).json({
                 message: 'Bad',
                 textErr:err.originalError.response.body.error
@@ -366,6 +367,32 @@ app.post('/deleteFromCard',passport.authenticate('jwt', { session: false }),(req
     });
 });
 
+app.post('/addAdmin',passport.authenticate('jwt', { session: false }),(req,res)=>{
+    console.log('additem!!!!');
+    console.log(req.body.idUser);
+    connectionBD.promisePool.query(`INSERT INTO RolesOfUsers( idUser, nameOfRole) VALUES(${req.body.idUser},'admin')`,
+        function (err,result){
+            if(err){
+                console.log(err);
+            }
+            console.log(result)
+        }
+    )
+    res.json({message: "Success!"});
+});
+
+app.post('/deleteAdmin',passport.authenticate('jwt', { session: false }),(req,res)=>{
+    console.log('deleteAdmin!!!!');
+    console.log(req.body.idUser);
+    connectionBD.promisePool.query(`DELETE FROM RolesOfUsers WHERE idUser = ${req.body.idUser}`,function (err,result){
+        if(err){
+            console.log(err);
+        }else {
+            res.json({message: "Success!"});
+        }
+    });
+});
+
 app.get('/mac',async function(request,response){
     const arr =  await dataBD.openMac();
     console.log("Mac object!")
@@ -377,6 +404,29 @@ app.get('/iPhone', async function(request,response){
     const arr = await dataBD.openIphone();
     response.send(arr);
     console.log('iPhones Opens!!!')
+});
+
+app.get('/getUsersData', async function(request,response){
+    const arr = await dataBD.getUsersData();
+    console.log('Users data get!');
+
+    let usersData = arr.users.map((item)=>{
+       return(
+           item
+       )
+    });
+    usersData.map((item)=>{
+        arr.roleOfUser.forEach((itemOfRole)=>{
+            if(item.idusers === itemOfRole.idUser){
+                return item.role = true
+            }
+        });
+    });
+
+    console.log(usersData)
+
+    response.send(usersData);
+
 });
 
 

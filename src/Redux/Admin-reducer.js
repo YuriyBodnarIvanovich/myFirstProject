@@ -10,8 +10,10 @@ const INPUT_DATA_TO_ELEMENT = 'INPUT_DATA_TO_ELEMENT';
 const SHOW_NAME = 'SHOW_NAME';
 const CHANGE_NUMBER_OF_COLOR = 'CHANGE_NUMBER_OF_COLOR';
 const CHANGE_ACTIVE_COLOR = 'CHANGE_ACTIVE_COLOR';
+const CHANGE_USERS_DATA = 'CHANGE_USERS_DATA';
 
 let initialData ={
+    usersData: [],
     newElement: [
         {
             name: '', price: 0,
@@ -255,6 +257,12 @@ const AdminReducer = (state = initialData,action) =>{
             return {
                 ...state,
                 colorActive:action.newValue
+            }
+        }
+        case CHANGE_USERS_DATA:{
+            return{
+                ...state,
+                usersData: action.newData
             }
         }
     }

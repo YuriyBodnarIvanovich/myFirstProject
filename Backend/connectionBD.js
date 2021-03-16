@@ -161,7 +161,7 @@ async function openUsers(idAuth){
         });
     });
 
-    const resultRoles = await connectionBD.promisePool.query("SELECT name, nameOfRole, subOfAuth0\n" +
+    const resultRoles = await connectionBD.promisePool.query("SELECT  name, nameOfRole, subOfAuth0\n" +
         "FROM RolesOfUsers\n" +
         "INNER JOIN users\n" +
         "\tON RolesOfUsers.idUser = users.idusers\n" +
@@ -178,6 +178,28 @@ async function openUsers(idAuth){
     return user
 }
 
+
+async function getUsersData(){
+    let data= {}
+    let users = [];
+    let roleOfUser = [];
+    const query = "SELECT idusers, email, name" +
+        " FROM users INNER JOIN email USING(idemail)" +
+        " INNER JOIN nameOfUser USING(idnameOfUser)"
+    users = await   connectionBD.promisePool.query(query);
+
+    const queryRoles = "SELECT idUser, nameOfRole " +
+                        "FROM RolesOfUsers";
+
+    roleOfUser = await connectionBD.promisePool.query(queryRoles);
+    data.users = users[0];
+    data.roleOfUser =roleOfUser[0];
+    console.log('Get Users!');
+    return data;
+
+}
+
 module.exports.openIphone = openIphone;
 module.exports.openMac = openMac;
 module.exports.openUsers = openUsers;
+module.exports.getUsersData = getUsersData;

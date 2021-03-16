@@ -3,6 +3,7 @@ import Style from './Admin.module.css';
 import {useDispatch, useSelector} from "react-redux";
 import ChooseType from "./AddProduct/ChooseType/ChooseType";
 import CatalogOfProduct from "./DeleteProduct/CatalogOfProduct/CatalogOfProduct";
+import GrantAccess from "./GrantAccess/GrantAccess";
 
 const Admin = (props) =>{
 
@@ -12,6 +13,7 @@ const Admin = (props) =>{
 
     const [addProduct, addProductStatusSet] = useState(false);
     const [deleteProduct, deleteProductStatusSet] = useState(false);
+    const [grantAccess, grantAccessStusSet] = useState(false);
 
     function add_Product(){
         document.getElementById("chooseFunc").style.display = "none";
@@ -23,6 +25,10 @@ const Admin = (props) =>{
         deleteProductStatusSet(true);
     }
 
+    function grant_Access(){
+        document.getElementById("chooseFunc").style.display = "none";
+        grantAccessStusSet(true);
+    }
 
 
     return(
@@ -37,10 +43,12 @@ const Admin = (props) =>{
                     <div className={Style.container_for_button}>
                         <button onClick={()=>{add_Product()}}>Add Product</button>
                         <button onClick={()=>{delete_Product()}}>Delete Product</button>
+                        <button onClick={()=>{grant_Access()}}>Grant access</button>
                     </div>
                 </div>
                 {addProduct ? <ChooseType  data={data} dispatch={dispatch}/> : null }
                 {deleteProduct ? <CatalogOfProduct/> : null}
+                {grantAccess ? <GrantAccess/> : null}
             </div>
         </div>
     )

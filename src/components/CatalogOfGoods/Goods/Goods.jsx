@@ -23,9 +23,6 @@ const Goods = () =>{
             console.log(resData);
             dispatch({type: 'CHANGE_ARRAY', array: resData});
         })
-            .then(function (response) {
-                console.log(response);
-            })
             .catch(function (error) {
                 console.log(error);
             });
