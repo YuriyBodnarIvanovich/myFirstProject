@@ -20,11 +20,6 @@ const GrantAccess  = () =>{
             });
     },[]);
 
-    const dataUsers = data.usersData.map((item)=>{
-        return(
-            <p>{item.email}</p>
-        )
-    })
 
     const ItemOfTable = (propsItem) =>{
 
@@ -61,6 +56,21 @@ const GrantAccess  = () =>{
 
         }
 
+        function deleteUser(){
+            axios.post('http://localhost:3001/deleteUser',{
+                idUser:propsItem.idUsers
+            },{headers: {"Authorization" : `Bearer ${localStorage.getItem('token')}`}})
+                .then(function (response) {
+                    console.log(response);
+                    let dataUser = JSON.parse(JSON.stringify(data.usersData));
+                    dataUser = dataUser.filter(item => item.iduser !== propsItem.idUsers);
+                    dispatch({type:"CHANGE_USERS_DATA",newData:dataUser});
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+        }
+
         return(
             <tr>
 
@@ -83,6 +93,10 @@ const GrantAccess  = () =>{
                         </label>
                     </td>
                 }
+                <td className={Style.delete_item}>
+                    <img src={"https://img.icons8.com/officel/40/000000/delete-sign.png"}
+                        onClick={deleteUser}/>
+                </td>
 
 
             </tr>
@@ -114,6 +128,7 @@ const GrantAccess  = () =>{
                                 <th className={Style.email}>Email</th>
                                 <th className={Style.name}>Name</th>
                                 <th className={Style.name}>Admin</th>
+                                <th className={Style.name}>Delete</th>
                             </tr>
                             </thead>
                         </table>

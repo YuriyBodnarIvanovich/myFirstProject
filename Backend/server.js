@@ -35,7 +35,7 @@ app.post('/singUp',(req,res)=>{
         connection: 'Username-Password-Authentication' // Optional field.
     };
 
-    auth0.database.signUp(data, function (err, userData) {
+    auth0.database.signUp(data, async function (err, userData) {
         if (err) {
             console.log(err);
             return res.status(400).json({
@@ -44,55 +44,64 @@ app.post('/singUp',(req,res)=>{
             });
         }
         else{
-            connectionBD.promisePool.query("SELECT COUNT(*) AS Number\n" +
-                "FROM nameOfUser",function (err,result) {
-                addData(result[0].Number+1,'idNameOfUser');
-            });
-            connectionBD.promisePool.query("SELECT COUNT(*) AS Number\n" +
-                "FROM email",function(err,result){
-                addData(result[0].Number+1,'idEmail')
-            });
-            connectionBD.promisePool.query("SELECT COUNT(*) AS Number\n" +
-                "FROM avatarPhoto",function(err,result){
-                addData(result[0].Number+1,'idAvatarPhoto')
-            });
-            let idNameOfUser;
+
+            let idName;
             let idEmail;
-            let idAvatarPhoto;
+            let idAvatarOfPhoto;
+
+
+            const queryName = `INSERT INTO nameOfUser(name) VALUES('${req.body.name}')`;
+            connectionBD.promisePool.query(queryName,function (err,result) {
+                if(err) {
+                    console.log("err from name!")
+                    console.log(err);
+                }
+                else{
+                    addData(result.insertId,"idNameOfUser");
+                    console.log("Данные добавлены")
+                }
+            });
+
+            const queryEmail = `INSERT INTO email(email) VALUES('${req.body.email}')`
+            connectionBD.promisePool.query(queryEmail,function (err,result) {
+                if(err) {
+                    console.log("err from email!")
+                    console.log(err);
+                }
+                else{
+                    addData(result.insertId,"idEmail");
+                    console.log("Данные добавлены")
+                }
+            });
+
+            const queryAvatar = "INSERT INTO" +
+                " avatarPhoto(avatarPhotoUser)" +
+                " VALUES('https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png')"
+            connectionBD.promisePool.query(queryAvatar,function (err,result) {
+                if(err) {
+                    console.log("err from avatar!")
+                    console.log(err);
+                }
+                else{
+                    addData(result.insertId,"idAvatarOfPhoto");
+                    console.log("Данные добавлены")
+                }
+            });
 
             function addData(data,kindOfData){
                 if(kindOfData==='idNameOfUser'){
-                    idNameOfUser = data;
-                    const fieldName = [idNameOfUser,req.body.name]
-                    const sql = "INSERT INTO nameOfUser(idnameOfUser,name) VALUES(?,?)"
-                    connectionBD.promisePool.query(sql,fieldName,function (err,result) {
-                        if(err) console.log(err);
-                        else console.log("Данные добавлены");
-                    })
+                    idName = data;
                 }
                 else if(kindOfData==='idEmail'){
-                    idEmail =data;
-                    const fieldName = [idEmail,req.body.email]
-                    const sql = "INSERT INTO email(idemail,email) VALUES(?,?)"
-                    connectionBD.promisePool.query(sql,fieldName,function (err,result) {
-                        if(err) console.log(err);
-                        else console.log("Данные добавлены");
-                    })
+                    idEmail = data;
                 }
                 else{
-                    idAvatarPhoto = data;
-                    const fieldName = [idAvatarPhoto,req.body.avatarPhoto]
-                    const sql = "INSERT INTO avatarPhoto(idavatarPhoto,avatarPhotoUser) VALUES(?,?)"
-                    connectionBD.promisePool.query(sql,fieldName,function (err,result) {
-                        if(err) console.log(err);
-                        else console.log("Данные добавлены");
-                    })
+                    idAvatarOfPhoto = data;
                 }
-
-                if(idNameOfUser !== undefined && idEmail !== undefined  && idAvatarPhoto !== undefined && userData._id !== undefined){
-                    const fieldUser = [idNameOfUser,idEmail,idAvatarPhoto,userData._id]
-                    const sql = "INSERT INTO users(idnameOfUser,idemail,idavatarPhoto,subOfAuth0) VALUES(?,?,?,?)"
-                    connectionBD.promisePool.query(sql,fieldUser,function (err,result) {
+                if(idName !== undefined && idEmail !== undefined  && idAvatarOfPhoto !== undefined && userData._id !== undefined){
+                    const sql = `INSERT INTO users(idnameOfUser,idemail,idavatarPhoto,subOfAuth0)
+                                    VALUES('${idName}','${idEmail}','${idAvatarOfPhoto}','${userData._id}')`;
+                    connectionBD.promisePool.query(sql,function (err,result) {
                         if(err) console.log(err);
                         else console.log("Users Данные добавлены");
                         return res.status(200).json({
@@ -391,6 +400,52 @@ app.post('/deleteAdmin',passport.authenticate('jwt', { session: false }),(req,re
             res.json({message: "Success!"});
         }
     });
+});
+
+app.post('/deleteUser',passport.authenticate('jwt', { session: false }),(req,res)=>{
+    console.log("Delete User");
+    console.log(req.body.idUser);
+    const queryGetData = `SELECT idusers,idnameOfUser,idemail FROM users WHERE idusers = ${req.body.idUser}`;
+    connectionBD.promisePool.query(queryGetData,function (err,result){
+        if(err){
+            console.log(err);
+        }
+
+        console.log(result);
+        console.log(result[0].idusers);
+        console.log(result[0].idnameOfUser);
+        console.log(result[0].idemail);
+        deleteEmail(result[0].idemail);
+        deleteName(result[0].idnameOfUser);
+        deleteUser(result[0].idusers);
+    });
+
+    function deleteEmail(idValue){
+        connectionBD.promisePool.query(`DELETE FROM email WHERE idemail = ${idValue}`,function (err,result){
+            if(err){
+                console.log(err);
+            }
+        });
+    }
+
+    function deleteName(idValue){
+        connectionBD.promisePool.query(`DELETE FROM nameOfUser WHERE idnameOfUser = ${idValue}`,function (err,result){
+            if(err){
+                console.log(err);
+            }
+        });
+    }
+
+    function deleteUser(idValue){
+        connectionBD.promisePool.query(`DELETE FROM users WHERE idusers = ${idValue}`,function (err,result){
+            if(err){
+                console.log(err);
+            }else {
+                res.json({message: "Success!"});
+            }
+        });
+    }
+
 });
 
 app.get('/mac',async function(request,response){
