@@ -112,9 +112,13 @@
     margin-top: 10px;
 }
 
+
+
+
 .container_of_photo img{
     height: 230px;
 }
+
 
 
 .characters{
@@ -170,6 +174,7 @@
     /*margin-top: 1px;*/
     border-radius: 8px;
     background-color: #3A3838;
+    transition: 1.3s;
 }
 
 

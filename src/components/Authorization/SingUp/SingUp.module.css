@@ -8,6 +8,29 @@
     border-radius: 5px;
     box-sizing: border-box;
     box-shadow: 0 14px 28px rgba(0,0,0,0.3), 0 10px 10px rgba(0,0,0,0.4);
+    /*opacity: 0.1;*/
+    /*transition:  opacity 2s;*/
+
+    animation: fadeInFromNone 1s ease-out;
+
+}
+
+
+@keyframes fadeInFromNone {
+    0% {
+        display: none;
+        opacity: 0;
+    }
+
+    5% {
+        display: block;
+        opacity: 0;
+    }
+
+    100% {
+        display: block;
+        opacity: 1;
+    }
 }
 
 .errorMessage{

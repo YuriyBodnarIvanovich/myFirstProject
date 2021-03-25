@@ -3,11 +3,14 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 
 const AuthenticationClient = require('auth0').AuthenticationClient;
+const ManagementClient = require('auth0').ManagementClient;
+
 const app = express();
 const strategy = require('./passport').strategy;
 const passport = require("passport");
 const dataBD = require('./connectionBD');
 const connectionBD = require("./connectionToHost");
+
 
 app.use(cors());
 app.use(
@@ -25,6 +28,9 @@ const auth0 = new AuthenticationClient({
     clientSecret: 'T9SNiX6na8Sshg6qeFQVXjzsz5GA5hx-AgWsLyD05TOXjYwzyDsr9M-htlStDQ4H',
     scope: 'read:users update:users',
 });
+
+
+
 
 app.post('/singUp',(req,res)=>{
     console.log(req.body.name + " " + req.body.email + ' ' + req.body.password);
@@ -325,6 +331,8 @@ app.post('/addToCart',passport.authenticate('jwt', { session: false }), (req, re
     let idProduct;
     let idColor;
     let idCart;
+
+
     connectionBD.promisePool.query("SELECT idusers\n" +
         "FROM users\n" +
         "INNER join email\n" +
@@ -405,46 +413,62 @@ app.post('/deleteAdmin',passport.authenticate('jwt', { session: false }),(req,re
 app.post('/deleteUser',passport.authenticate('jwt', { session: false }),(req,res)=>{
     console.log("Delete User");
     console.log(req.body.idUser);
-    const queryGetData = `SELECT idusers,idnameOfUser,idemail FROM users WHERE idusers = ${req.body.idUser}`;
-    connectionBD.promisePool.query(queryGetData,function (err,result){
-        if(err){
-            console.log(err);
-        }
 
-        console.log(result);
-        console.log(result[0].idusers);
-        console.log(result[0].idnameOfUser);
-        console.log(result[0].idemail);
-        deleteEmail(result[0].idemail);
-        deleteName(result[0].idnameOfUser);
-        deleteUser(result[0].idusers);
+    console.log(req.headers.authorization)
+
+    const management = new ManagementClient({
+        token: req.headers.authorization,
+        domain: 'dev-uwll33xb.eu.auth0.com'
     });
 
-    function deleteEmail(idValue){
-        connectionBD.promisePool.query(`DELETE FROM email WHERE idemail = ${idValue}`,function (err,result){
-            if(err){
-                console.log(err);
-            }
-        });
-    }
+    management.getClient({ client_id: '6030c72783fa6f00749b8dd2' }, function(err, client) {
+        if (err) {
+            console.log(err)
+        }
 
-    function deleteName(idValue){
-        connectionBD.promisePool.query(`DELETE FROM nameOfUser WHERE idnameOfUser = ${idValue}`,function (err,result){
-            if(err){
-                console.log(err);
-            }
-        });
-    }
+        console.log(client);
+    });
 
-    function deleteUser(idValue){
-        connectionBD.promisePool.query(`DELETE FROM users WHERE idusers = ${idValue}`,function (err,result){
-            if(err){
-                console.log(err);
-            }else {
-                res.json({message: "Success!"});
-            }
-        });
-    }
+    // const queryGetData = `SELECT idusers,idnameOfUser,idemail FROM users WHERE idusers = ${req.body.idUser}`;
+    // connectionBD.promisePool.query(queryGetData,function (err,result){
+    //     if(err){
+    //         console.log(err);
+    //     }
+    //
+    //     console.log(result);
+    //     console.log(result[0].idusers);
+    //     console.log(result[0].idnameOfUser);
+    //     console.log(result[0].idemail);
+    //     deleteEmail(result[0].idemail);
+    //     deleteName(result[0].idnameOfUser);
+    //     deleteUser(result[0].idusers);
+    // });
+    //
+    // function deleteEmail(idValue){
+    //     connectionBD.promisePool.query(`DELETE FROM email WHERE idemail = ${idValue}`,function (err,result){
+    //         if(err){
+    //             console.log(err);
+    //         }
+    //     });
+    // }
+    //
+    // function deleteName(idValue){
+    //     connectionBD.promisePool.query(`DELETE FROM nameOfUser WHERE idnameOfUser = ${idValue}`,function (err,result){
+    //         if(err){
+    //             console.log(err);
+    //         }
+    //     });
+    // }
+    //
+    // function deleteUser(idValue){
+    //     connectionBD.promisePool.query(`DELETE FROM users WHERE idusers = ${idValue}`,function (err,result){
+    //         if(err){
+    //             console.log(err);
+    //         }else {
+    //             res.json({message: "Success!"});
+    //         }
+    //     });
+    // }
 
 });
 
