@@ -19,6 +19,7 @@ const STATUS_OF_ADMIN_PAGE = 'STATUS_OF_ADMIN_PAGE';
 
 
 const ADD_ADMIN_PRODUCT = "ADD_ADMIN_PRODUCT";
+const SET_DARK_THEME = 'SET_DARK_THEME';
 
 
 const Date = {
@@ -40,6 +41,7 @@ const Date = {
     Users:[],
     indexOfUsers: 0,
     indexOfSlide: 0,
+    darkTheme: true,
 
     ShowBox: false,
     ShowSingIn: false,
@@ -166,6 +168,12 @@ const AppleReducer = (state = Date,action) =>{
             return {
                 ...state,
                 AdminProduct:action.product
+            }
+        }
+        case SET_DARK_THEME:{
+            return {
+                ...state,
+                darkTheme: action.status
             }
         }
 

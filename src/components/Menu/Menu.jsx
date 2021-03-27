@@ -26,13 +26,16 @@ const Menu = (props) =>{
         <div className={MenuStyle.main_Container}>
             <div className={MenuStyle.main}>
                 <div className={MenuStyle.logo}>
-                    <img src={'http://134976.lp.tobiz.net/img/400x0/e82506fcf71d9af9f785610ca969d08e.png'}/>
+                    {data.darkTheme ? <h3 style={{color:"white"}}>Apple device</h3>
+                        :   <img src={'http://134976.lp.tobiz.net/img/400x0/e82506fcf71d9af9f785610ca969d08e.png'}/>
+                    }
+
                 </div>
                 <div className={MenuStyle.menu_logo}>
                     <img src="https://img.icons8.com/ios-filled/64/000000/menu--v1.png"/>
                 </div>
                 <div className={MenuStyle.add_information_container}>
-                    <div className={MenuStyle.add_information}>
+                    <div className={`${data.darkTheme ? MenuStyle.add_information_dark : MenuStyle.add_information}`}>
                         <NavLink to='/'>
                             <p>Main Page</p>
                         </NavLink>
@@ -50,9 +53,17 @@ const Menu = (props) =>{
                         </NavLink>
                     </div>
                     <div className={MenuStyle.number_of_phone_container}>
-                       <div className={MenuStyle.number_of_phone}>
-                           <img  className={MenuStyle.numberOfPhoneIMG} src="https://img.icons8.com/android/24/000000/phone.png"/>
+                       <div className={`${data.darkTheme ? MenuStyle.number_of_phone_dark : MenuStyle.number_of_phone}`}>
+                           {
+                               data.darkTheme ?
+                                   <img  className={MenuStyle.numberOfPhoneIMG} src="https://www.flaticon.com/svg/vstatic/svg/2948/2948005.svg?token=exp=1616859060~hmac=1db4a27b6966a4b71bf8203d2277b73f"/>
+                                   :
+                                   <img  className={MenuStyle.numberOfPhoneIMG} src="https://img.icons8.com/android/24/000000/phone.png"/>
+                           }
+
+
                            <p>+38 099 999 9999</p>
+                           <button onClick={()=>{dispatch({type:"SET_DARK_THEME",status: ! data.darkTheme})}}>dark Theme</button>
                            {data.userStatus ? <UserInterface/> :  <button onClick={()=>{props.setStatusOfInputBox(true)}}>Sing in</button> }
                        </div>
                     </div>

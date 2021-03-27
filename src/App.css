@@ -1,5 +1,5 @@
 
-.main{
+.main_Light{
   width: 100%;
   /*display: grid;*/
   /*grid-template-columns: 0.8fr;*/
@@ -8,7 +8,18 @@
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
-  background-position: right;
+  background-position:right;
+}
+.main_Dark{
+  width: 100%;
+  /*background-image: url('https://www.zastavki.com/pictures/originals/2019Computers___Apple_Two_2019_Apple_New_MacBook_Pros_on_a_Black_Background_136312_.jpg');*/
+  /*background-image: url('https://www.zastavki.com/pictures/originals/2018Computers___Apple_Open_Apple_MacBook_on_black_background_129988_.jpg');*/
+  background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3) ), url('https://www.zastavki.com/pictures/originals/2018Computers___Apple_Open_Apple_MacBook_on_black_background_129988_.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-position:right;
+  background-color: rgba(225,225,225,0.7);
 }
 .page{
   display: grid;

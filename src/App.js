@@ -53,17 +53,7 @@ function App() {
 
         return (
           <BrowserRouter>
-                <div className="main">
-                    {data.showLeftMenu ?
-                        <div>
-                            <LeftMenu/>
-                            <div className={"hideContent"} onClick={()=>dispatch({type:'Show_Left_Menu',status:false})}>
-                            </div>
-                        </div>
-                        :
-                        <div style={{display:'none'}}>
-                        </div>
-                    }
+                <div className={`${data.darkTheme ? "main_Dark" : "main_Light"}`}>
                     <Menu setStatusOfInputBox={setStatusOfInputBox}/>
                     {showInputBox ? <AuthBox showInputBox={showInputBox} setStatusOfInputBox={setStatusOfInputBox}/> : null}
                     <div className={"page"}>
@@ -74,15 +64,6 @@ function App() {
                         <Route exact path='/Contact'
                                render={ () => <Contact />} />
                     </div>
-                    {
-                        data.showRightCart ?
-                            <div>
-                                <RightCart/>
-                                <div className={"hideContent"} onClick={()=>dispatch({type:'SHOW_RIGHT_CART',status:false})}> </div>
-                            </div>
-                            :
-                            <div style={{display:'none'}}> </div>
-                    }
                 <Force/>
                 </div>
           </BrowserRouter>
