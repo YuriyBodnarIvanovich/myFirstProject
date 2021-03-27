@@ -1,7 +1,9 @@
 import React, {useState} from "react";
 import ContentPageStyle from "./ImgContent.module.css";
+import {useSelector} from "react-redux";
 
 const ImgContent_Mac = (props) =>{
+    const dataApple = useSelector(state=> state.ApplePage);
 
 
     const [indexOfPhoto,setIndexOfPhoto] = useState(0);
