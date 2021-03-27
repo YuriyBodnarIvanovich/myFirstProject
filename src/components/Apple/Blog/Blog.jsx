@@ -1,8 +1,10 @@
 import React from 'react';
 import BlogStyle from './Blog.module.css';
+import {useSelector} from "react-redux";
 
 
 const Blog = () =>{
+    const data = useSelector(state=> state.ApplePage);
 
     const catalogInfo = [
         {
@@ -44,30 +46,47 @@ const Blog = () =>{
 
     const catalog = catalogInfo.map((item)=>{
         return(
-            <div className={BlogStyle.item}>
-                <img src={item.imgSrc}/>
-                <p>
-                    <b>
-                        {item.title}
-                    </b>
-                </p>
-                <p>
-                    {item.info}
-                </p>
-            </div>
+            data.darkTheme ?
+                <div className={BlogStyle.item}>
+                    <img src={item.imgSrc}/>
+                    <p style={{color:"white"}}>
+                        <b>
+                            {item.title}
+                        </b>
+                    </p>
+                    <p style={{color:"white", opacity:"0.7"}}>
+                        {item.info}
+                    </p>
+                </div>
+                :
+                <div className={BlogStyle.item}>
+                    <img src={item.imgSrc}/>
+                    <p>
+                        <b>
+                            {item.title}
+                        </b>
+                    </p>
+                    <p>
+                        {item.info}
+                    </p>
+                </div>
         )
     })
 
     return(
         <div className={BlogStyle.container}>
-           <div className={BlogStyle.container_two}>
+           <div className={`${data.darkTheme ? BlogStyle.container_two_dark : BlogStyle.container_two}`}>
               <div className={BlogStyle.main}>
                   <div className={BlogStyle.title_main}>
-                      <h1>Read our blog</h1>
+                      {data.darkTheme ? <h1 style={{color:"white"}}>Read our blog</h1> : <h1>Read our blog</h1>}
                   </div>
-                  <div className={BlogStyle.plain_container}>
+                  <div className={`${data.darkTheme ? BlogStyle.plain_container_dark : BlogStyle.plain_container}`}>
                       <div className={BlogStyle.title_in_plain}>
-                          <p>We share the experience of using Apple equipment and gadgets first hand</p>
+                          {data.darkTheme ?
+                              <p style={{color:"white"}}>We share the experience of using Apple equipment and gadgets first hand</p>
+                          :
+                              <p>We share the experience of using Apple equipment and gadgets first hand</p>
+                          }
                       </div>
                       <div className={BlogStyle.catalog_container}>
                           <div className={BlogStyle.catalog}>

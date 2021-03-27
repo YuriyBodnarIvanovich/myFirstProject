@@ -111,9 +111,9 @@
 .inputField input:hover{
 
 }
-::placeholder {
-    color: #115684;
-}
+/*::placeholder {*/
+/*    color: #115684;*/
+/*}*/
 
 .inputField p{
     font-family: 'Montserrat', serif;
