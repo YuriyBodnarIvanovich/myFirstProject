@@ -1,8 +1,9 @@
 import React from "react";
 import Style from './ShopAppleDevices.module.css';
+import {useSelector} from "react-redux";
 
 const ShopAppleDevices  = () =>{
-
+    const data = useSelector(state=> state.ApplePage);
     const catalogData = [
         {
             src:'http://134976.lp.tobiz.net/img/400x400/490eefe24d9483d725720894c0526971.jpg',
@@ -26,28 +27,49 @@ const ShopAppleDevices  = () =>{
 
     const catalog = catalogData.map((item)=>{
         return(
-            <div className={Style[item.style]}>
-            <img src={item.src}/>
-            <div>
-                <p className={Style.title_of_item}><b>{item.title}</b></p>
-                <p>
-                    <text>{item.info}</text>
-                </p>
-            </div>
-        </div>
+            data.darkTheme ?
+
+                <div className={Style[item.style]} style={{backgroundColor:"#1F201F"}}>
+                    <img src={item.src}/>
+                    <div>
+                        <p className={Style.title_of_item} style={{color:"white"}}><b>{item.title}</b></p>
+                        <p>
+                            <text style={{color:"white",padding:"5px"}}>{item.info}</text>
+                        </p>
+                    </div>
+                 </div>
+                :
+
+                <div className={Style[item.style]}>
+                    <img src={item.src}/>
+                    <div>
+                        <p className={Style.title_of_item}><b>{item.title}</b></p>
+                        <p>
+                            <text>{item.info}</text>
+                        </p>
+                    </div>
+                </div>
         )
     });
 
     return(
         <div className={Style.appleDevice_container}>
-            <div className={Style.appleDevice_container_two}>
+            <div className={`${data.darkTheme ? Style.appleDevice_container_two_dark : Style.appleDevice_container_two }`}>
                <div className={Style.main}>
                    <div className={Style.appleDevice_title_container_two}>
                        <div className={Style.appleDevice_title_container}>
                            <div className={Style.main_title}>
-                               <h1>Shop at Apple Devices</h1>
+                               {data.darkTheme ?
+                                   <h1 style={{color:"white"}}>Shop at Apple Devices</h1>
+                                   :
+                                   <h1>Shop at Apple Devices</h1>
+                               }
                            </div>
-                           <p>Why have hundreds of thousands of customers chosen our store for more than 10 years?</p>
+                           {data.darkTheme ?
+                               <p style={{color:"white"}}>Why have hundreds of thousands of customers chosen our store for more than 10 years?</p>
+                           :
+                               <p>Why have hundreds of thousands of customers chosen our store for more than 10 years?</p>
+                           }
                        </div>
                    </div>
                    <div className={Style.appleDevice_notification_container}>
