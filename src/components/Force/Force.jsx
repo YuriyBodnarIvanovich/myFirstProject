@@ -3,6 +3,7 @@ import ForceStyle from './Force.module.css';
 import {useSelector} from "react-redux";
 
 const Force = () =>{
+
     const data = useSelector(state=>state.ApplePage);
 
     return(

@@ -10,6 +10,7 @@ import ItemOfMac from "../ItemOfProductionMac/ItemOfMac";
 
 
 const Goods = () =>{
+    const dataApple = useSelector(state=> state.ApplePage);
     const dataIphone = useSelector(state =>state.IphonePage);
     const dataMac = useSelector(state =>state.macPage);
     const dispatch = useDispatch();
@@ -128,22 +129,33 @@ const Goods = () =>{
 
 
     return(
-        <div className={Style.container}>
+        <div className={`${dataApple.darkTheme ? Style.container_dark : Style.container}`}>
           <div className={Style.main}>
-              <div className={Style.for_title}>
-                  <h1>Catalog of Apple equipment and devices</h1>
-                  <p>
-                      Our catalog presents the official certified Apple equipment,
-                      on ready we give a guarantee of 5 years!
-                  </p>
-              </div>
+              {dataApple.darkTheme ?
+                  <div className={Style.for_title}>
+                      <h1 style={{color:"white"}}>Catalog of Apple equipment and devices</h1>
+                      <p style={{color:"white"}}>
+                          Our catalog presents the official certified Apple equipment,
+                          on ready we give a guarantee of 5 years!
+                      </p>
+                  </div>
+                  :
+                  <div className={Style.for_title}>
+                      <h1>Catalog of Apple equipment and devices</h1>
+                      <p>
+                          Our catalog presents the official certified Apple equipment,
+                          on ready we give a guarantee of 5 years!
+                      </p>
+                  </div>
+
+              }
               <div className={Style.options_container}>
-                    <div className={Style.options}>
+                    <div className={`${dataApple.darkTheme ? Style.options_dark : Style.options}`}>
                         <div className={Style.for_title_in_options}>
                             <samp onClick={()=>{setMenu(!statusOfMenu)}}>{titleOfMenu}</samp>
                             {
                                 statusOfMenu ?
-                                    <div className={Style.menu_type_of_product}>
+                                    <div className={`${dataApple.darkTheme ? Style.menu_type_of_product_dark : Style.menu_type_of_product}`}>
                                         <samp onClick={()=>{setTitleOfMenu('Iphone')}}>Iphone</samp>
                                         <samp onClick={()=>{setTitleOfMenu('Mac')}}>Mac</samp>
                                         <samp onClick={()=>{setTitleOfMenu('Apple Watch')}}>Apple Watch</samp>
@@ -153,9 +165,9 @@ const Goods = () =>{
                             }
 
                         </div>
-                        <div className={Style.for_search}>
+                        <div className={`${dataApple.darkTheme ? Style.for_search_dark : Style.for_search}`}>
                             <input/>
-                            <img src="https://img.icons8.com/material-sharp/24/000000/search.png" alt={''}/>
+                            {/*<img src="https://img.icons8.com/material-sharp/24/000000/search.png" alt={''}/>*/}
                         </div>
                         <div className={Style.for_range_container}>
                             <div>

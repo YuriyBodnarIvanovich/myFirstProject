@@ -41,7 +41,7 @@ const Date = {
     Users:[],
     indexOfUsers: 0,
     indexOfSlide: 0,
-    darkTheme: true,
+    darkTheme: false,
 
     ShowBox: false,
     ShowSingIn: false,

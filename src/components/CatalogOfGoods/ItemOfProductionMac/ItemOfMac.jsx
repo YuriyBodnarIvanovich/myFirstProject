@@ -6,6 +6,7 @@ import {useDispatch, useSelector} from "react-redux";
 
 
 const ItemOfMac = (props) => {
+    const dataApple = useSelector(state=> state.ApplePage);
 
     const [showItem, setStatusOfItem] = useState(false);
     const [confirmDeleteBox, setStatusOfDeleteBox] = useState(false)
@@ -18,7 +19,7 @@ const ItemOfMac = (props) => {
 
     const CharactersMacData = () => {
         return(
-            <div className={Style.characters}>
+            <div className={`${dataApple.darkTheme ? Style.characters_dark : Style.characters}`}>
                 {props.character.screen !== '' ?
                     <p><sub>Screen: {props.character.screen}</sub></p> : null }
                 {props.character.RAM !== '' ?
@@ -65,7 +66,7 @@ const ItemOfMac = (props) => {
 
 
     return(
-        <div className={Style.container}>
+        <div className={`${dataApple.darkTheme ? Style.container_dark : Style.container}`}>
             {
                 props.statusOfDelete ? <div className={Style.delete_item_container}>
                     <div className={Style.delete_item_button}>
@@ -77,12 +78,17 @@ const ItemOfMac = (props) => {
             }
 
             <div className={Style.container_of_photo}>
-                <img src={props.photo} alt={''}/>
+               <div className={Style.color_of_img}>
+                   <img src={props.photo} alt={''}/>
+               </div>
             </div>
-            <p className={Style.container_of_name}><b>{props.name}</b></p>
+            <p className={Style.container_of_name}>
+                {dataApple.darkTheme ?  <b style={{color:"white"}}>{props.name}</b> :  <b>{props.name}</b>}
+
+            </p>
             <CharactersMacData/>
             <div className={Style.for_price}>
-                <p>{props.price + " ₴"}</p>
+                {dataApple.darkTheme ?  <p style={{color:"white"}}>{props.price + " ₴"}</p> :  <p>{props.price + " ₴"}</p>}
             </div>
             <div className={Style.for_button}>
                 <button onClick={()=>{setStatusOfItem(true)}}>Show More</button>

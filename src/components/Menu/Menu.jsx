@@ -63,7 +63,7 @@ const Menu = (props) =>{
 
 
                            <p>+38 099 999 9999</p>
-                           <button onClick={()=>{dispatch({type:"SET_DARK_THEME",status: ! data.darkTheme})}}>dark Theme</button>
+                           {/*<button onClick={()=>{dispatch({type:"SET_DARK_THEME",status: ! data.darkTheme})}}>dark Theme</button>*/}
                            {data.userStatus ? <UserInterface/> :  <button onClick={()=>{props.setStatusOfInputBox(true)}}>Sing in</button> }
                        </div>
                     </div>

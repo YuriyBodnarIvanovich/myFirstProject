@@ -7,6 +7,8 @@ import axios from "axios";
 
 
 const ItemOfProductIphone = (props) =>{
+    const dataApple = useSelector(state=> state.ApplePage);
+
     const [statusOfItem, setStatusOfItem] = useState(false);
     const [confirmDeleteBox, setStatusOfDeleteBox] = useState(false)
 
@@ -16,7 +18,7 @@ const ItemOfProductIphone = (props) =>{
 
     const CharactersIphoneData = () => {
         return(
-            <div className={Style.characters}>
+            <div className={`${dataApple.darkTheme ? Style.characters_dark : Style.characters}`}>
                 {props.character.screen !== '' ?
                     <p><sub>Screen: {props.character.screen}</sub></p> : null }
                 {props.character.processor !== '' ?
@@ -25,8 +27,8 @@ const ItemOfProductIphone = (props) =>{
                     <p><sub>RAM: {props.character.RAM}</sub></p> : null }
                 {props.character.internalMemory !== '' ?
                     <p><sub>Internal Memory: {props.character.internalMemory}</sub></p> : null }
-                {props.character.remainder !== null ?
-                    <p><sub>Remainder: {props.character.remainder}</sub></p> : null }
+                {/*{props.character.remainder !== null ?*/}
+                {/*    <p><sub>Remainder: {props.character.remainder}</sub></p> : null }*/}
                 {props.character.camera.basicCamera !== '' ?
                     <p><sub>Basic Camera: {props.character.camera.basicCamera}</sub></p> : null }
                 {props.character.camera.frontCamera !== '' ?
@@ -74,7 +76,7 @@ const ItemOfProductIphone = (props) =>{
     }
 
     return(
-        <div className={Style.container}>
+        <div className={`${dataApple.darkTheme ? Style.container_dark : Style.container}`}>
             {
                 props.statusOfDelete ? <div className={Style.delete_item_container}>
                         <div className={Style.delete_item_button}>
@@ -85,11 +87,15 @@ const ItemOfProductIphone = (props) =>{
                     : null
             }
             <div className={Style.container_of_photo}>
-                <img src={props.photo} alt={''}/>
+                <div className={Style.color_of_photo}>
+                    <img src={props.photo} alt={''}/>
+                </div>
             </div>
-            <p className={Style.container_of_name}><b>{props.name}</b></p>
+            <p className={Style.container_of_name}>
+                {dataApple.darkTheme ? <b style={{color:"white"}}>{props.name}</b> : <b>{props.name}</b>}
+            </p>
             <CharactersIphoneData/>
-            <div className={Style.for_price}>
+            <div className={`${dataApple.darkTheme ? Style.for_price_dark : Style.for_price}`}>
                 <p>{props.price + " ₴"}</p>
             </div>
             <div className={Style.for_button}>

@@ -64,6 +64,12 @@ function App() {
                         <Route exact path='/Contact'
                                render={ () => <Contact />} />
                     </div>
+                    <div className="for_change_theme">
+                        <label className="switch">
+                            <input type="checkbox"  onClick={()=>{dispatch({type:"SET_DARK_THEME",status: ! data.darkTheme})}}/>
+                            <span className="slider"/>
+                        </label>
+                    </div>
                 <Force/>
                 </div>
           </BrowserRouter>

@@ -93,7 +93,7 @@
     .add_information_dark p:hover{
         cursor: pointer;
         border-bottom-width: 1px;
-        border-bottom-color: #3A3838;
+        border-bottom-color: white;
         border-bottom-style: solid;
     }
 
