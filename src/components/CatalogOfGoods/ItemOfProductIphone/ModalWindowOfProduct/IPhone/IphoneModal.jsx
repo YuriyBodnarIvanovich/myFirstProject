@@ -21,7 +21,7 @@ const IphoneModal = (props) =>{
 
     const colorData = props.photoData.map((item,index)=>{
         return(
-            <div className={Style.color_item} style={{backgroundColor: `${item.color}`}} onClick={()=>(setColor(item.color,index))}>
+            <div className={`${dataUser.darkTheme ? Style.color_item_dark : Style.color_item}`} style={{backgroundColor: `${item.color}`}} onClick={()=>(setColor(item.color,index))}>
 
             </div>
         )
@@ -58,20 +58,27 @@ const IphoneModal = (props) =>{
     }
 
     return(
-        <div className={Style.container}>
-            <div className={Style.container_of_item}>
+        <div className={`${dataUser.darkTheme ? Style.container_dark : Style.container}`}>
+            <div className={`${dataUser.darkTheme ? Style.container_of_item_dark : Style.container_of_item}`}>
                 <div className={Style.exit}>
-                    <img src="https://img.icons8.com/ios/50/000000/cancel.png" onClick={()=>{props.setStatusOfItem(false)}}/>
+                    {dataUser.darkTheme ?  <b style={{color:"white"}} onClick={()=>{props.setStatusOfItem(false)}}>×</b>
+                                           :
+                        <img src="https://img.icons8.com/ios/50/000000/cancel.png" onClick={()=>{props.setStatusOfItem(false)}}/>}
                 </div>
-                <h1>{props.name}</h1>
+                {dataUser.darkTheme ?  <h1 style={{color:"white"}}>{props.name}</h1> :  <h1>{props.name}</h1>}
                 <div className={Style.container_for_content}>
                     <div className={Style.left_content}>
                         <div className={Style.container_of_colors}>
                             {colorData}
                         </div>
                         <div>
-                            <p><b>Price:</b> <em>{props.price + " ₴"}</em></p>
-                            <h3>Characters:</h3>
+                            {dataUser.darkTheme ?
+                                <p style={{color:"white"}}><b>Price:</b> <em style={{color:"white"}}>{props.price + " ₴"}</em></p>
+                                :
+                                <p><b>Price:</b> <em>{props.price + " ₴"}</em></p>
+                            }
+
+                            {dataUser.darkTheme ? <h3 style={{color:"white"}}>Characters:</h3> : <h3>Characters:</h3>}
                             {props.CharactersIphoneData}
                         </div>
                     </div>

@@ -1,12 +1,15 @@
 @media only screen and (min-width: 1200px){
     .photo{
-        width: 550px;
+        width: 530px;
         height: 400px;
         display: grid;
         grid-template-columns: 300px 150px;
         justify-content: right;
         /*border-style: solid;*/
         box-sizing: border-box;
+        margin-left: 40px;
+        background-color: white;
+        border-radius: 10px;
     }
 
     .mainPhoto{
