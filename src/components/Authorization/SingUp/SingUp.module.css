@@ -15,6 +15,20 @@
 
 }
 
+.container_dark{
+    width: 400px;
+    height: 460px;
+    background-color: #0F0F0F;
+    border-radius: 5px;
+    box-sizing: border-box;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.3), 0 10px 10px rgba(0,0,0,0.4);
+    /*opacity: 0.1;*/
+    /*transition:  opacity 2s;*/
+
+    animation: fadeInFromNone 1s ease-out;
+
+}
+
 
 @keyframes fadeInFromNone {
     0% {
@@ -46,14 +60,32 @@
     width: 100%;
     height: 100px;
 }
+
+.logo_dark{
+    background-image: url('https://www.zastavki.com/pictures/originals/2018Computers___Apple_Open_Apple_MacBook_on_black_background_129988_.jpg');
+    background-position: bottom;
+    background-size: 700px;
+    background-position-y:-245px;
+    background-position-x:-245px;
+    width: 100%;
+    height: 100px;
+}
 .logoText{
     text-align: center;
+    font-size: 22px;
+    /*cursor: none;*/
 }
 
 .logo_background{
     width: 100%;
     height: 100px;
     background: rgba(255,255,255,0.3);
+}
+
+.logo_background_dark{
+    width: 100%;
+    height: 100px;
+    background: rgba(0,0,0,0.3);
 }
 
 .logo p{
@@ -71,16 +103,14 @@
     padding-right: 10px;
 }
 
+.exit b{
+    font-size: 20px;
+    cursor: pointer;
+}
+
 .exit img{
     height: 20px;
     cursor: pointer;
-}
-.inputField{
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
 }
 .containerInput{
     display: flex;
@@ -88,6 +118,15 @@
     justify-content: center;
     grid-gap: 10px;
 }
+
+.inputField{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 .inputField input{
     width: 350px;
     height: 22px;
@@ -108,14 +147,43 @@
     border-bottom-width: 2px;
     color: #115684;
 }
-.inputField input:hover{
 
-}
-/*::placeholder {*/
-/*    color: #115684;*/
-/*}*/
 
 .inputField p{
+    font-family: 'Montserrat', serif;
+    font-size: 30px;
+}
+
+.inputField_dark{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.inputField_dark input{
+    width: 350px;
+    height: 22px;
+    resize: none;
+    margin-left: 10px;
+    border: none;
+    outline: none;
+    box-sizing: border-box;
+    font-family: 'Montserrat', serif;
+    font-size: 20px;
+    line-height: 1.2;
+    display: block;
+    background: transparent;
+    padding: 0 5px;
+    margin-top: 25px;
+    border-bottom-color: white;
+    border-bottom-style: outset;
+    border-bottom-width: 2px;
+    color: white;
+}
+
+.inputField_dark p{
     font-family: 'Montserrat', serif;
     font-size: 30px;
 }
@@ -146,19 +214,73 @@
     cursor: pointer;
 }
 
+.forSingUpButton_dark{
+    width: 100%;
+    height: 100px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    padding-top: 30px;
+}
+
+.forSingUpButton_dark button{
+    width: 200px;
+    height: 36px;
+    font-size: 18px;
+    font-family: 'Open Sans', sans-serif;
+    background-color: white;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    color: black;
+}
+.forSingUpButton_dark button:hover{
+    background: #A33838;
+    margin-top: 1px;
+    cursor: pointer;
+}
+
 .showSingInContainer{
     width: 100%;
     text-align: center;
+    display: flex;
+    justify-content: center;
 }
 
 .showSingInContainer p{
+    /*width: 200px;*/
     font-size: 18px;
+    display: block;
+    box-sizing: border-box;
 }
 
 .showSingInContainer p:hover{
     color: #115684;
     cursor: pointer;
 }
+
+
+.showSingInContainer_dark{
+    width: 100%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+
+.showSingInContainer_dark p{
+    /*width: 200px;*/
+    font-size: 18px;
+    display: block;
+    box-sizing: border-box;
+    color: white;
+}
+
+.showSingInContainer_dark p:hover{
+    color: #A33838;
+    cursor: pointer;
+}
+
+
 
 @media only screen and (min-width: 328px) and (max-width: 437px) {
 

@@ -5,10 +5,11 @@ import SingIn from "./SingIn/SingIn";
 import AuthBoxStyle from './AuthBox.module.css';
 
 const AuthBox = (props) => {
+    const dataApple = useSelector(state=> state.ApplePage);
     const [SingUpBox, setStatusOfBox] = useState(true)
 
     return(
-        <div className={AuthBoxStyle.container}>
+        <div className={`${dataApple.darkTheme ? AuthBoxStyle.container_dark : AuthBoxStyle.container}`}>
             {
                 SingUpBox ?
                     <SingUp setStatusOfInputBox={props.setStatusOfInputBox} showInputBox={props.showInputBox}
