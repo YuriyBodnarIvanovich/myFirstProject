@@ -70,7 +70,7 @@ function App() {
                             <span className="slider"/>
                         </label>
                     </div>
-                <Force/>
+                {/*<Force/>*/}
                 </div>
           </BrowserRouter>
       );

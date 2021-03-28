@@ -32,7 +32,10 @@ const Menu = (props) =>{
 
                 </div>
                 <div className={MenuStyle.menu_logo}>
-                    <img src="https://img.icons8.com/ios-filled/64/000000/menu--v1.png"/>
+                    {
+                        data.darkTheme ? <p style={{color:"white"}}>Menu</p> :
+                            <img src="https://img.icons8.com/ios-filled/64/000000/menu--v1.png"/>
+                    }
                 </div>
                 <div className={MenuStyle.add_information_container}>
                     <div className={`${data.darkTheme ? MenuStyle.add_information_dark : MenuStyle.add_information}`}>

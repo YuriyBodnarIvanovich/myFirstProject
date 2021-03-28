@@ -55,6 +55,35 @@
     color: red;
 }
 
+.menu_dark{
+    width: 130px;
+    /*min-height: 100px;*/
+    height: 60px;
+    /*z-index: 3;*/
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-style: solid;
+    border-radius: 5px;
+    border-width: 1px;
+    margin-top: 5px;
+    box-sizing: border-box;
+    padding: 8px;
+    background-color: black;
+
+}
+
+.menu_dark p{
+    margin: 0;
+    height: 24px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.menu_dark p:hover{
+    color: red;
+}
+
 ::-webkit-scrollbar {
     width: 6px;
 }

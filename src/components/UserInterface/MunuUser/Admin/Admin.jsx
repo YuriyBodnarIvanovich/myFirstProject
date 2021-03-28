@@ -7,6 +7,10 @@ import GrantAccess from "./GrantAccess/GrantAccess";
 
 const Admin = (props) =>{
 
+
+    const dataApple = useSelector(state=>state.ApplePage);
+
+
     const data = useSelector(state=>state.AdminPage);
     const dispatch = useDispatch();
 
@@ -33,7 +37,7 @@ const Admin = (props) =>{
 
     return(
         <div className={Style.container}>
-            <div className={Style.container_of_AdminPage}>
+            <div className={`${dataApple.darkTheme ? Style.container_of_AdminPage_dark : Style.container_of_AdminPage}`}>
                 <div className={Style.top}>
                     <div className={Style.exit}>
                         <img src="https://img.icons8.com/ios/50/000000/cancel.png" onClick={()=>{props.setStatusOfAdmin(false)}}/>

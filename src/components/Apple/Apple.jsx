@@ -10,12 +10,12 @@ const Apple = () =>{
 
     return(
        <div>
-           <MainNotice/>
-            <AboutUs/>
-            <ShopAppleDevices/>
-           <RecommendedProduct/>
-           <Blog/>
-           <ConnectingWithUs/>
+           {/*<MainNotice/>*/}
+           {/* <AboutUs/>*/}
+           {/* <ShopAppleDevices/>*/}
+           {/*<RecommendedProduct/>*/}
+           {/*<Blog/>*/}
+           {/*<ConnectingWithUs/>*/}
        </div>
     );
 }

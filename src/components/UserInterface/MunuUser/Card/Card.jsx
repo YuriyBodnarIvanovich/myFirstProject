@@ -64,7 +64,7 @@ const Card = (props) =>{
         )
     })
     return(
-        <div className={Style.container}>
+        <div className={`${data.darkTheme ? Style.container_dark : Style.container}`}>
             <div className={Style.container_of_card}>
 
                 <div className={Style.top}>
@@ -72,7 +72,7 @@ const Card = (props) =>{
                         <img src="https://img.icons8.com/ios/50/000000/cancel.png" onClick={()=>{props.setStatusOfCard(false)}}/>
                     </div>
                 </div>
-                <div className={Style.container_of_table}>
+                <div className={`${data.darkTheme ? Style.container_of_table_dark : Style.container_of_table}`}>
                     <div className={Style.tbl_header}>
                         <table cellPadding="0" cellSpacing="0" border="0">
                             <thead>

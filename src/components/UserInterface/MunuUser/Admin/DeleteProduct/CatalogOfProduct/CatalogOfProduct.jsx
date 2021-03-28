@@ -6,6 +6,7 @@ import ItemOfMac from "../../../../../CatalogOfGoods/ItemOfProductionMac/ItemOfM
 
 
 const CatalogOfProduct = () =>{
+    const dataApple = useSelector(state=>state.ApplePage);
 
     const dataIphone = useSelector(state =>state.IphonePage);
     const dataMac = useSelector(state =>state.macPage);
@@ -63,7 +64,7 @@ const CatalogOfProduct = () =>{
                 <button onClick={()=>{setStatusOfMenu(!showMenu)}}>{typeOfMenu}</button>
                 {
                     showMenu ?
-                        <div className={Style.menu}>
+                        <div className={`${dataApple.darkTheme ? Style.menu_dark : Style.menu}`}>
                             <p onClick={()=>{setTypeOfMenu('IPhone')}}>IPhone</p>
                             <p onClick={()=>{setTypeOfMenu('Mac')}}>Mac</p>
                         </div>

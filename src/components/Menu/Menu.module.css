@@ -182,18 +182,16 @@
     .main_Container{
         width: 100%;
         height: 100px;
-        display: grid;
-        grid-template-columns: 0.8fr;
+        display: flex;
         justify-content: center;
         grid-gap: 20px;
         padding-top: 20px;
-        /*max-width: 1400px;*/
     }
 
     .main{
         width: 1000px;
         display: grid;
-        grid-template-columns: 300px 700px;
+        grid-template-columns: 1fr 1fr;
         justify-content: center;
     }
     .menu_logo{
@@ -202,7 +200,8 @@
     }
     .menu_logo img{
         width: 200px;
-        display: block;
+
+
     }
     .logo{
         width: 100%;
@@ -220,6 +219,7 @@
         min-width: 600px;
         display: grid;
         justify-content: right;
+
     }
 
     .add_information{
@@ -227,8 +227,8 @@
         height: 40px;
         display: flex;
         flex-direction: row;
-        /*box-sizing: content-box;*/
     }
+
 
     .add_information p{
         height: 18px;
@@ -246,25 +246,68 @@
         border-bottom-style: solid;
     }
 
+    .add_information a{
+        text-decoration: none; /* Отменяем подчеркивание у ссылки */
+    }
+    .add_information a:hover{
+        text-decoration: none; /* Отменяем подчеркивание у ссылки */
+    }
+
+    .add_information_dark{
+        width: 100%;
+        height: 40px;
+        display: flex;
+        flex-direction: row;
+    }
+
+
+    .add_information_dark p{
+        height: 18px;
+        margin-left: 10px;
+
+        font-family: Montserrat, sans-serif,sans-serif;
+        color: white;
+        box-sizing: content-box;
+
+    }
+    .add_information_dark p:hover{
+        cursor: pointer;
+        border-bottom-width: 1px;
+        border-bottom-color: white;
+        border-bottom-style: solid;
+    }
+
+    .add_information_dark a{
+        text-decoration: none; /* Отменяем подчеркивание у ссылки */
+    }
+    .add_information_dark a:hover{
+        text-decoration: none; /* Отменяем подчеркивание у ссылки */
+    }
+
     .number_of_phone_container{
         width: 100%;
         display: grid;
         justify-content: right;
+        box-sizing: border-box;
 
     }
-    .number_of_phone{
-        display: flex;
-    }
-    .number_of_phone p{
-        font-family: Montserrat, sans-serif,sans-serif;
-        color: #5B5A5A;
-    }
-    .number_of_phone img{
+    .numberOfPhoneIMG{
         width: 15px;
         height: 15px;
         margin-top: 16px;
         margin-right: 4px;
     }
+
+    .number_of_phone{
+        display: flex;
+        box-sizing: border-box;
+        height: auto;
+    }
+    .number_of_phone p{
+        font-family: Montserrat, sans-serif,sans-serif;
+        color: #5B5A5A;
+    }
+
     .number_of_phone button{
         margin-top: 12px;
         height: 21px;
@@ -272,13 +315,43 @@
         border-radius: 5px;
         border-width: 1px;
         width: 150px;
+        outline: none;
         /*padding-bottom: 2px;*/
         background-color:rgba(0, 0, 0, 0);
         margin-left: 20px;
-        outline: none;
     }
 
     .number_of_phone button:hover{
+        border-color: red;
+        color: red;
+        cursor: pointer;
+    }
+
+    .number_of_phone_dark{
+        display: flex;
+        box-sizing: border-box;
+        height: auto;
+    }
+    .number_of_phone_dark p{
+        font-family: Montserrat, sans-serif,sans-serif;
+        color: white;
+    }
+
+    .number_of_phone_dark button{
+        margin-top: 12px;
+        height: 21px;
+        border-color: white;
+        border-radius: 5px;
+        border-width: 1px;
+        width: 150px;
+        outline: none;
+        color: white;
+        /*padding-bottom: 2px;*/
+        background-color:rgba(0, 0, 0, 0);
+        margin-left: 20px;
+    }
+
+    .number_of_phone_dark button:hover{
         border-color: red;
         color: red;
         cursor: pointer;
@@ -289,18 +362,16 @@
     .main_Container{
         width: 100%;
         height: 100px;
-        display: grid;
-        grid-template-columns: 0.8fr;
+        display: flex;
         justify-content: center;
-        /*grid-gap: 20px;*/
+        grid-gap: 20px;
         padding-top: 20px;
-        /*max-width: 1400px;*/
     }
 
     .main{
         width: 800px;
         display: grid;
-        grid-template-columns: 200px 600px;
+        grid-template-columns: 1fr 1fr;
         justify-content: center;
     }
     .menu_logo{
@@ -309,7 +380,8 @@
     }
     .menu_logo img{
         width: 200px;
-        display: block;
+
+
     }
     .logo{
         width: 100%;
@@ -327,6 +399,7 @@
         min-width: 600px;
         display: grid;
         justify-content: right;
+
     }
 
     .add_information{
@@ -334,8 +407,8 @@
         height: 40px;
         display: flex;
         flex-direction: row;
-        /*box-sizing: content-box;*/
     }
+
 
     .add_information p{
         height: 18px;
@@ -353,25 +426,68 @@
         border-bottom-style: solid;
     }
 
+    .add_information a{
+        text-decoration: none; /* Отменяем подчеркивание у ссылки */
+    }
+    .add_information a:hover{
+        text-decoration: none; /* Отменяем подчеркивание у ссылки */
+    }
+
+    .add_information_dark{
+        width: 100%;
+        height: 40px;
+        display: flex;
+        flex-direction: row;
+    }
+
+
+    .add_information_dark p{
+        height: 18px;
+        margin-left: 10px;
+
+        font-family: Montserrat, sans-serif,sans-serif;
+        color: white;
+        box-sizing: content-box;
+
+    }
+    .add_information_dark p:hover{
+        cursor: pointer;
+        border-bottom-width: 1px;
+        border-bottom-color: white;
+        border-bottom-style: solid;
+    }
+
+    .add_information_dark a{
+        text-decoration: none; /* Отменяем подчеркивание у ссылки */
+    }
+    .add_information_dark a:hover{
+        text-decoration: none; /* Отменяем подчеркивание у ссылки */
+    }
+
     .number_of_phone_container{
         width: 100%;
         display: grid;
         justify-content: right;
+        box-sizing: border-box;
 
     }
-    .number_of_phone{
-        display: flex;
-    }
-    .number_of_phone p{
-        font-family: Montserrat, sans-serif,sans-serif;
-        color: #5B5A5A;
-    }
-    .number_of_phone img{
+    .numberOfPhoneIMG{
         width: 15px;
         height: 15px;
         margin-top: 16px;
         margin-right: 4px;
     }
+
+    .number_of_phone{
+        display: flex;
+        box-sizing: border-box;
+        height: auto;
+    }
+    .number_of_phone p{
+        font-family: Montserrat, sans-serif,sans-serif;
+        color: #5B5A5A;
+    }
+
     .number_of_phone button{
         margin-top: 12px;
         height: 21px;
@@ -379,13 +495,43 @@
         border-radius: 5px;
         border-width: 1px;
         width: 150px;
+        outline: none;
         /*padding-bottom: 2px;*/
         background-color:rgba(0, 0, 0, 0);
         margin-left: 20px;
-        outline: none;
     }
 
     .number_of_phone button:hover{
+        border-color: red;
+        color: red;
+        cursor: pointer;
+    }
+
+    .number_of_phone_dark{
+        display: flex;
+        box-sizing: border-box;
+        height: auto;
+    }
+    .number_of_phone_dark p{
+        font-family: Montserrat, sans-serif,sans-serif;
+        color: white;
+    }
+
+    .number_of_phone_dark button{
+        margin-top: 12px;
+        height: 21px;
+        border-color: white;
+        border-radius: 5px;
+        border-width: 1px;
+        width: 150px;
+        outline: none;
+        color: white;
+        /*padding-bottom: 2px;*/
+        background-color:rgba(0, 0, 0, 0);
+        margin-left: 20px;
+    }
+
+    .number_of_phone_dark button:hover{
         border-color: red;
         color: red;
         cursor: pointer;
@@ -427,6 +573,38 @@
     .logo img{
         width: 200px;
         display: block;
+    }
+
+    .add_information_dark{
+        width: 100%;
+        height: 40px;
+        display: flex;
+        flex-direction: row;
+        display: none;
+    }
+
+
+    .add_information_dark p{
+        height: 18px;
+        margin-left: 10px;
+
+        font-family: Montserrat, sans-serif,sans-serif;
+        color: white;
+        box-sizing: content-box;
+
+    }
+    .add_information_dark p:hover{
+        cursor: pointer;
+        border-bottom-width: 1px;
+        border-bottom-color: white;
+        border-bottom-style: solid;
+    }
+
+    .add_information_dark a{
+        text-decoration: none; /* Отменяем подчеркивание у ссылки */
+    }
+    .add_information_dark a:hover{
+        text-decoration: none; /* Отменяем подчеркивание у ссылки */
     }
 
     .add_information_container{
@@ -476,6 +654,7 @@
     .number_of_phone p{
         font-family: Montserrat, sans-serif,sans-serif;
         color: #5B5A5A;
+
     }
     .number_of_phone img{
         width: 15px;
@@ -501,6 +680,38 @@
         color: red;
         cursor: pointer;
     }
+
+    .number_of_phone_dark{
+        display: flex;
+        box-sizing: border-box;
+        height: auto;
+
+    }
+    .number_of_phone_dark p{
+        font-family: Montserrat, sans-serif,sans-serif;
+        color: white;
+        width: 200px;
+    }
+
+    .number_of_phone_dark button{
+        margin-top: 12px;
+        height: 21px;
+        border-color: white;
+        border-radius: 5px;
+        border-width: 1px;
+        width: 150px;
+        outline: none;
+        color: white;
+        /*padding-bottom: 2px;*/
+        background-color:rgba(0, 0, 0, 0);
+        margin-left: 20px;
+    }
+
+    .number_of_phone_dark button:hover{
+        border-color: red;
+        color: red;
+        cursor: pointer;
+    }
 }
 
 @media only screen and (min-width: 438px) and (max-width: 599px) {
@@ -513,6 +724,38 @@
         /*!*grid-gap: 20px;*!*/
         /*padding-top: 20px;*/
 
+    }
+
+    .number_of_phone_dark{
+        display: flex;
+        box-sizing: border-box;
+        height: auto;
+
+    }
+    .number_of_phone_dark p{
+        font-family: Montserrat, sans-serif,sans-serif;
+        color: white;
+        width: 200px;
+    }
+
+    .number_of_phone_dark button{
+        margin-top: 12px;
+        height: 21px;
+        border-color: white;
+        border-radius: 5px;
+        border-width: 1px;
+        width: 150px;
+        outline: none;
+        color: white;
+        /*padding-bottom: 2px;*/
+        background-color:rgba(0, 0, 0, 0);
+        margin-left: 20px;
+    }
+
+    .number_of_phone_dark button:hover{
+        border-color: red;
+        color: red;
+        cursor: pointer;
     }
 
     .main{
@@ -615,6 +858,37 @@
         border-color: red;
         color: red;
         cursor: pointer;
+    }
+    .add_information_dark{
+        width: 100%;
+        height: 40px;
+        display: flex;
+        flex-direction: row;
+        display: none;
+    }
+
+
+    .add_information_dark p{
+        height: 18px;
+        margin-left: 10px;
+
+        font-family: Montserrat, sans-serif,sans-serif;
+        color: white;
+        box-sizing: content-box;
+
+    }
+    .add_information_dark p:hover{
+        cursor: pointer;
+        border-bottom-width: 1px;
+        border-bottom-color: white;
+        border-bottom-style: solid;
+    }
+
+    .add_information_dark a{
+        text-decoration: none; /* Отменяем подчеркивание у ссылки */
+    }
+    .add_information_dark a:hover{
+        text-decoration: none; /* Отменяем подчеркивание у ссылки */
     }
 }
 
@@ -709,12 +983,16 @@
         font-size: 14px;
         font-family: Montserrat, sans-serif,sans-serif;
         color: #5B5A5A;
+        display: none;
+
+
     }
     .number_of_phone img{
         width: 15px;
         height: 15px;
         margin-top: 16px;
         margin-right: 4px;
+        display: none;
     }
     .number_of_phone button{
         margin-top: 12px;
@@ -733,6 +1011,78 @@
         border-color: red;
         color: red;
         cursor: pointer;
+    }
+    .number_of_phone_dark{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        box-sizing: border-box;
+        height: auto;
+
+    }
+    .number_of_phone_dark p{
+        font-family: Montserrat, sans-serif,sans-serif;
+        color: white;
+        width: 140px;
+        font-size: 10px;
+        display: none;
+    }
+
+    .number_of_phone_dark button{
+        margin-top: 12px;
+        height: 21px;
+        border-color: white;
+        border-radius: 5px;
+        border-width: 1px;
+        width: 100px;
+        outline: none;
+        color: white;
+        /*padding-bottom: 2px;*/
+        background-color:rgba(0, 0, 0, 0);
+        margin-left: 20px;
+    }
+
+    .number_of_phone_dark button:hover{
+        border-color: red;
+        color: red;
+        cursor: pointer;
+    }
+    .add_information_dark{
+        width: 100%;
+        height: 40px;
+        display: flex;
+        flex-direction: row;
+        display: none;
+    }
+    .number_of_phone_dark img{
+        display: none;
+        width: 15px;
+        height: 15px;
+        margin-top: 16px;
+        margin-right: 4px;
+    }
+
+    .add_information_dark p{
+        height: 18px;
+        margin-left: 10px;
+
+        font-family: Montserrat, sans-serif,sans-serif;
+        color: white;
+        box-sizing: content-box;
+
+    }
+    .add_information_dark p:hover{
+        cursor: pointer;
+        border-bottom-width: 1px;
+        border-bottom-color: white;
+        border-bottom-style: solid;
+    }
+
+    .add_information_dark a{
+        text-decoration: none; /* Отменяем подчеркивание у ссылки */
+    }
+    .add_information_dark a:hover{
+        text-decoration: none; /* Отменяем подчеркивание у ссылки */
     }
 }
 
@@ -814,6 +1164,46 @@
         border-bottom-style: solid;
     }
 
+    .number_of_phone_dark{
+        display: flex;
+        box-sizing: border-box;
+        height: auto;
+        /*display: none;*/
+
+    }
+    .number_of_phone_dark p{
+        font-family: Montserrat, sans-serif,sans-serif;
+        color: white;
+        /*width: 200px;*/
+        display: none;
+    }
+
+    .number_of_phone_dark button{
+        margin-top: 12px;
+        height: 21px;
+        border-color: white;
+        border-radius: 5px;
+        border-width: 1px;
+        width: 150px;
+        outline: none;
+        color: white;
+        /*padding-bottom: 2px;*/
+        background-color:rgba(0, 0, 0, 0);
+        margin-left: 20px;
+    }
+    .number_of_phone_dark img{
+        display: none;
+        width: 15px;
+        height: 15px;
+        margin-top: 16px;
+        margin-right: 4px;
+    }
+
+    .number_of_phone_dark button:hover{
+        border-color: red;
+        color: red;
+        cursor: pointer;
+    }
     .number_of_phone_container{
         width: 100%;
         display: grid;
@@ -853,6 +1243,38 @@
         border-color: red;
         color: red;
         cursor: pointer;
+    }
+
+    .add_information_dark{
+        width: 100%;
+        height: 40px;
+        display: flex;
+        flex-direction: row;
+        display: none;
+    }
+
+
+    .add_information_dark p{
+        height: 18px;
+        margin-left: 10px;
+
+        font-family: Montserrat, sans-serif,sans-serif;
+        color: white;
+        box-sizing: content-box;
+
+    }
+    .add_information_dark p:hover{
+        cursor: pointer;
+        border-bottom-width: 1px;
+        border-bottom-color: white;
+        border-bottom-style: solid;
+    }
+
+    .add_information_dark a{
+        text-decoration: none; /* Отменяем подчеркивание у ссылки */
+    }
+    .add_information_dark a:hover{
+        text-decoration: none; /* Отменяем подчеркивание у ссылки */
     }
 }
 
