@@ -2,6 +2,7 @@ import React,{useState} from "react";
 import SingInStyle from './SingIn.module.css'
 import {useDispatch, useSelector} from "react-redux";
 import axios from "axios";
+import SingUpStyle from "../SingUp/SingUp.module.css";
 
 const SingIn = (props)=>{
     const data = useSelector(state=>state.ApplePage);
@@ -31,21 +32,23 @@ const SingIn = (props)=>{
     }
 
     return(
-        <div className={SingInStyle.container}>
-            <div className={SingInStyle.logo}>
-                <div className={SingInStyle.logo_background}>
+        <div className={`${data.darkTheme ? SingInStyle.container_dark : SingInStyle.container}`}>
+            <div className={`${data.darkTheme ? SingInStyle.logo_dark : SingInStyle.logo}`}>
+                <div className={`${data.darkTheme ? SingInStyle.logo_background_dark : SingInStyle.logo_background}`}>
                     <div className={SingInStyle.exit}>
-                        <img src="https://img.icons8.com/ios/24/000000/close-window.png"
-                             onClick={()=>{props.setStatusOfInputBox(false)}}/>
+                        {data.darkTheme ?  <b style={{color:"white"}}
+                                                   onClick={()=>{props.setStatusOfInputBox(false)}}>×</b>
+                            :
+                            <img src="https://img.icons8.com/ios/24/000000/close-window.png"
+                                 onClick={()=>{props.setStatusOfInputBox(false)}}/>
+                        }
                     </div>
                     <div className={SingInStyle.logoText}>
-                        <p>
-                            Authentication
-                        </p>
+                        {data.darkTheme ? <p style={{color:"white"}}>Authentication</p> : <p>Authentication</p>}
                     </div>
                 </div>
             </div>
-            <div className={SingInStyle.inputField}>
+            <div className={`${data.darkTheme ? SingInStyle.inputField_dark : SingInStyle.inputField}`}>
                 <div className={SingInStyle.containerInput}>
                     <input id="email" placeholder={'Email'} type="email" value={userEmail}
                            onChange={(event)=>{setEmail(event.target.value)}}/>
@@ -53,10 +56,10 @@ const SingIn = (props)=>{
                            onChange={(event)=>{setUserPassword(event.target.value)}}/>
                     {errorMessage ? <p className={SingInStyle.errorMessage} style={{fontSize:"14px"}}>Bad password or email</p> : null}
                 </div>
-                <div className={SingInStyle.forSingUpButton}>
+                <div className={`${data.darkTheme ? SingInStyle.forSingUpButton_dark : SingInStyle.forSingUpButton}`}>
                     <button onClick={()=>{check()}}>Sing In</button>
                 </div>
-                <div className={SingInStyle.showSingInContainer}>
+                <div className={`${data.darkTheme ? SingUpStyle.showSingInContainer_dark : SingUpStyle.showSingInContainer}`}>
                     <p onClick={()=>{props.setStatusOfBox(true)}}>
                         I already have an account
                     </p>
