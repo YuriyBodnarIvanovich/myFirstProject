@@ -147,10 +147,27 @@
         background-color: white;
         height: 800px;
     }
+    .container_dark {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        background-color: #1F201F;
+        height: 800px;
+    }
     .main{
         width: 1000px;
         height: 800px;
         background-color: white;
+        box-sizing: border-box;
+        display: grid;
+        grid-template-columns: 0.6fr;
+        justify-content: center;
+        padding-top: 30px;
+    }
+    .main_dark{
+        width: 1000px;
+        height: 800px;
+        background-color: #1F201F;
         box-sizing: border-box;
         display: grid;
         grid-template-columns: 0.6fr;
@@ -266,10 +283,27 @@
         background-color: white;
         height: 800px;
     }
+    .container_dark {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        background-color: #1F201F;
+        height: 800px;
+    }
     .main{
         width: 800px;
         height: 800px;
         background-color: white;
+        box-sizing: border-box;
+        display: grid;
+        grid-template-columns: 0.6fr;
+        justify-content: center;
+        padding-top: 30px;
+    }
+    .main_dark{
+        width: 800px;
+        height: 800px;
+        background-color: #1F201F;
         box-sizing: border-box;
         display: grid;
         grid-template-columns: 0.6fr;
@@ -387,10 +421,27 @@
         background-color: white;
         height: 1100px;
     }
+    .container_dark {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        background-color: #1F201F;
+        height: 1100px;
+    }
     .main{
         width: 600px;
         height: 1100px;
         background-color: white;
+        box-sizing: border-box;
+        display: grid;
+        grid-template-columns: 0.6fr;
+        justify-content: center;
+        padding-top: 30px;
+    }
+    .main_dark{
+        width: 600px;
+        height: 1100px;
+        background-color: #1F201F;
         box-sizing: border-box;
         display: grid;
         grid-template-columns: 0.6fr;
@@ -509,10 +560,27 @@
         background-color: white;
         height: 1200px;
     }
+    .container_dark {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        background-color: #1F201F;
+        height: 1200px;
+    }
     .main{
         width: 400px;
         height: 1200px;
         background-color: white;
+        box-sizing: border-box;
+        display: grid;
+        grid-template-columns: 0.6fr;
+        justify-content: center;
+        padding-top: 30px;
+    }
+    .main_dark{
+        width: 400px;
+        height: 1200px;
+        background-color: #1F201F;
         box-sizing: border-box;
         display: grid;
         grid-template-columns: 0.6fr;
@@ -641,10 +709,27 @@
         background-color: white;
         height: 1250px;
     }
+    .container_dark {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        background-color: #1F201F;
+        height: 1250px;
+    }
     .main{
         width: 300px;
         height: 1250px;
         background-color: white;
+        box-sizing: border-box;
+        display: grid;
+        grid-template-columns: 0.6fr;
+        justify-content: center;
+        padding-top: 30px;
+    }
+    .main_dark{
+        width: 300px;
+        height: 1250px;
+        background-color: #1F201F;
         box-sizing: border-box;
         display: grid;
         grid-template-columns: 0.6fr;
@@ -769,10 +854,27 @@
         background-color: white;
         height: 1550px;
     }
+    .container_dark {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        background-color: #1F201F;
+        height: 1550px;
+    }
     .main{
         width: 100%;
         height: 1550px;
         background-color: white;
+        box-sizing: border-box;
+        display: grid;
+        grid-template-columns: 0.6fr;
+        justify-content: center;
+        padding-top: 30px;
+    }
+    .main_dark{
+        width: 100%;
+        height: 1550px;
+        background-color: #1F201F;
         box-sizing: border-box;
         display: grid;
         grid-template-columns: 0.6fr;

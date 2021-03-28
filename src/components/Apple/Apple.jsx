@@ -11,11 +11,11 @@ const Apple = () =>{
     return(
        <div>
            <MainNotice/>
-           {/* <AboutUs/>*/}
-           {/* <ShopAppleDevices/>*/}
-           {/*<RecommendedProduct/>*/}
-           {/*<Blog/>*/}
-           {/*<ConnectingWithUs/>*/}
+            <AboutUs/>
+            <ShopAppleDevices/>
+           <RecommendedProduct/>
+           <Blog/>
+           <ConnectingWithUs/>
        </div>
     );
 }
