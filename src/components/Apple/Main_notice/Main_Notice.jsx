@@ -13,7 +13,7 @@ const MainNotice = () =>{
                    </p>
                    <p className={`${data.darkTheme ? NoticeStyle.second_title_dark : NoticeStyle.second_title }`}>
                        In our store you will find original Apple devices,
-                       original covers,<br/> and much more!
+                       original covers, and much more!
                    </p>
                </div>
                 <div className={NoticeStyle.container_for_button}>

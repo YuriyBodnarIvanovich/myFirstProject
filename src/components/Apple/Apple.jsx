@@ -10,7 +10,7 @@ const Apple = () =>{
 
     return(
        <div>
-           {/*<MainNotice/>*/}
+           <MainNotice/>
            {/* <AboutUs/>*/}
            {/* <ShopAppleDevices/>*/}
            {/*<RecommendedProduct/>*/}
