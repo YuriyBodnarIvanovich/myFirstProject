@@ -2,7 +2,6 @@ import React, {useEffect, useState} from "react";
 import Style from './Goods.module.css';
 import Slider from '@material-ui/core/Slider';
 import { makeStyles } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
 import axios from "axios";
 import {useDispatch, useSelector} from "react-redux";
 import ItemOfProductIphone from "../ItemOfProductIphone/ItemOfProductIphone";

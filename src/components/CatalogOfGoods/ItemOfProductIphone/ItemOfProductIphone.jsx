@@ -1,6 +1,5 @@
 import React, {useState} from "react";
 import Style from './ItemOfProduct.module.css'
-import {Link} from "@material-ui/core";
 import IphoneModal from "./ModalWindowOfProduct/IPhone/IphoneModal";
 import {useDispatch, useSelector} from "react-redux";
 import axios from "axios";
