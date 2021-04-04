@@ -1,6 +1,5 @@
 .container{
     position: relative;
-    /*background-color: #050505;*/
     width: 148px;
     height: 100px;
     margin-left: 20px;
@@ -39,6 +38,10 @@
 .items:hover{
     color: red;
     background-color:rgba(0, 0, 0, 0.1);
+}
+
+.container p{
+    margin: 0;
 }
 
 /*.container p{*/

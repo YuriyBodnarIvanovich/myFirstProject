@@ -40,33 +40,35 @@ const Menu = (props) =>{
                 <div className={MenuStyle.add_information_container}>
                     <div className={`${data.darkTheme ? MenuStyle.add_information_dark : MenuStyle.add_information}`}>
                         <NavLink to='/'>
-                            <p>Main Page</p>
+                            <p className={MenuStyle.menu_item}>Main Page</p>
                         </NavLink>
-                        <p>·</p>
+                        <p className={MenuStyle.menu_item}>·</p>
                         <NavLink to='/CatalogOfGoods'>
-                            <p>Goods</p>
+                            <p className={MenuStyle.menu_item}>Goods</p>
                         </NavLink>
-                        <p>·</p>
-                        <p>Reviews</p>
-                        <p>·</p>
-                        <p>Payment and delivery</p>
-                        <p>·</p>
+                        <p className={MenuStyle.menu_item}>·</p>
+                        <p className={MenuStyle.menu_item}>Reviews</p>
+                        <p className={MenuStyle.menu_item}>·</p>
+                        <p className={MenuStyle.menu_item}>Payment and delivery</p>
+                        <p className={MenuStyle.menu_item}>·</p>
                         <NavLink to='/Contact'>
-                            <p>Contacts</p>
+                            <p className={MenuStyle.menu_item}>Contacts</p>
                         </NavLink>
                     </div>
                     <div className={MenuStyle.number_of_phone_container}>
                        <div className={`${data.darkTheme ? MenuStyle.number_of_phone_dark : MenuStyle.number_of_phone}`}>
                            {
                                data.darkTheme ?
-                                   <img  className={MenuStyle.numberOfPhoneIMG} src="https://www.flaticon.com/svg/vstatic/svg/2948/2948005.svg?token=exp=1616859060~hmac=1db4a27b6966a4b71bf8203d2277b73f"/>
+                                   null
                                    :
                                    <img  className={MenuStyle.numberOfPhoneIMG} src="https://img.icons8.com/android/24/000000/phone.png"/>
                            }
 
 
-                           <p>+38 099 999 9999</p>
-                           {/*<button onClick={()=>{dispatch({type:"SET_DARK_THEME",status: ! data.darkTheme})}}>dark Theme</button>*/}
+                           {data.darkTheme ?
+                               <p className={MenuStyle.number_of_phone_title_dark}>+38 099 999 9999</p>
+                           :
+                               <p className={MenuStyle.number_of_phone_title}>+38 099 999 9999</p>}
                            {data.userStatus ? <UserInterface/> :  <button onClick={()=>{props.setStatusOfInputBox(true)}}>Sing in</button> }
                        </div>
                     </div>

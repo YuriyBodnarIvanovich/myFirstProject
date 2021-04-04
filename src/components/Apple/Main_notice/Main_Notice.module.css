@@ -446,6 +446,7 @@
         /*justify-content: center;*/
         grid-row-gap: 30px;
         box-sizing: border-box;
+        align-items: center;
     }
 
     .title{
@@ -531,6 +532,8 @@
         grid-row-gap: 30px;
         box-sizing: border-box;
         text-align: center;
+        align-items: center;
+        padding-top: 120px;
     }
 
     .title{
